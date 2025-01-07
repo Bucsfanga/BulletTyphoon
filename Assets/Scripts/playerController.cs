@@ -20,6 +20,6 @@ public class playerController : MonoBehaviour
         moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         transform.position += moveDir * speed * Time.deltaTime;
 
-        moveDir
+       // moveDir
     }
 }
