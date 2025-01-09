@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
-    [SerializeField] int healthIncrease = 30;
-    [SerializeField] float respawnTime = 60f;
+    [SerializeField] int healthIncrease;
+    [SerializeField] float respawnTime;
 
     private Vector3 initialPosition;
 
@@ -18,11 +18,16 @@ public class HealthPack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player detected");
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            //Debug.Log("Player detected");
+            playerController player = other.GetComponent<playerController>();
+            if (player != null)
             {
-                playerHealth.IncreaseHealth(healthIncrease);
+                if (player.isHealthFull())
+                {
+                    return;
+                }
+
+                player.IncreaseHealth(healthIncrease);
 
                 gameObject.SetActive(false);
                 Invoke("Respawn", respawnTime);
