@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cameraControerler : MonoBehaviour
+public class cameraController : MonoBehaviour
 {
     [SerializeField] int sens;
     [SerializeField] int lockVertMin, lockVertMax;
@@ -18,24 +18,20 @@ public class cameraControerler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
-        // Get inputs
-        float mouseX =Input.GetAxis("mouseX X") * sens * Time.deltaTime;
-        float mouseY =Input.GetAxis("mouseX Y") * sens * Time.deltaTime;
+        //get input
+        float mouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
 
-        // Tie the mouseY to the rotX of the camera - look up and down
-        if (invertY)
+        //tie the mouseY to the rotX of the camera
+        if(invertY)
             rotX += mouseY;
         else
             rotX -= mouseY;
-
-        // Clamp the cmera on the x-Axis
+        // clamp camera on the X-axis
         rotX = Mathf.Clamp(rotX, lockVertMin, lockVertMax);
-
-        // Rotate the camera on the X-Axis
+        // rotate camera on x-axis
         transform.localRotation = Quaternion.Euler(rotX, 0, 0);
-
-        // Rotate the player on the Y-Axis - look left and right
+        // rotate player on the Y-axis - look left and right
         transform.parent.Rotate(Vector3.up * mouseX);
     }
 }
