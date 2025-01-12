@@ -1,85 +1,148 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class gameManager : MonoBehaviour
+
+
+public class GameManager : MonoBehaviour
 {
-    public static gameManager instance;
+    // UI Panels
+    public GameObject mainMenu;
+    public GameObject hud;
+    public GameObject pauseMenu;
+    public GameObject settingsMenu;
 
-    [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuPause;
-    [SerializeField] GameObject menuWin;
-    [SerializeField] GameObject menuLose;
 
-    public Image playerHPBar;
-    public GameObject damagePanel;
 
-    public GameObject player;
-    public playerController playerScript;
+    // HUD Elements
+    public Slider healthBar;
+    public TextMeshProUGUI ammoCounter;
+    public TextMeshProUGUI interactPrompt;
 
-    public bool isPaused;
 
-    int goalCount;
+    // Settings Menu Elements
+    public Slider volumeSlider;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private bool isPaused = false;
+    private AudioSource audioSource;
+
+
+
+    void Start()
     {
-        instance = this;
-        player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+        audioSource = Camera.main.GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            volumeSlider.value = audioSource.volume;
+            volumeSlider.onValueChanged.AddListener(UpdateVolume);
+        }
     }
 
-    // Update is called once per frame
+
+
+    // ------------------------------
+    // Main Menu Functions
+    // ------------------------------
+
+    public void StartGame()
+    {
+        mainMenu.SetActive(false);  // Hide Main Menu
+        hud.SetActive(true);  // Show HUD
+        SceneManager.LoadScene("MainGame");
+    }
+
+    public void OpenSettingsFromMainMenu()
+    {
+        mainMenu.SetActive(false);  // Hide Main Menu
+        settingsMenu.SetActive(true);  // Show Settings Menu
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();  // Quit the application
+        Debug.Log("Game Quit.");
+    }
+
+    // ------------------------------
+    // HUD Functions
+    // ------------------------------
+
+    public void UpdateHealth(float currentHealth, float maxHealth)
+    {
+        healthBar.value = currentHealth / maxHealth;
+    }
+
+    public void UpdateAmmo(int currentAmmo, int maxAmmo)
+    {
+        ammoCounter.text = $"Ammo: {currentAmmo}/{maxAmmo}";
+    }
+
+    public void ShowInteractionPrompt(string message)
+    {
+        interactPrompt.text = message;
+        interactPrompt.gameObject.SetActive(true);
+    }
+
+    public void HideInteractionPrompt()
+    {
+        interactPrompt.gameObject.SetActive(false);
+    }
+
+    // ------------------------------
+    // Pause Menu Functions
+    // ------------------------------
+
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (menuActive == null)
-            {
-                statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
-            }
-            else if(menuActive == menuPause)
-            {
-                stateUnpause();
-            }
+            if (isPaused)
+                ResumeGame();
+            else
+                PauseGame();
         }
     }
 
-    public void statePause()
+    public void PauseGame()
     {
-        isPaused = !isPaused;
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;  // Pause the game
+        isPaused = true;
     }
 
-    public void stateUnpause()
+    public void ResumeGame()
     {
-        isPaused = !isPaused;
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        menuActive.SetActive(false);
-        menuActive = null;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;  // Resume the game
+        isPaused = false;
     }
 
-    public void updateGameGoal(int amount)
+    public void RestartGame()
     {
-        goalCount += amount;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload current scene
+    }
 
-        if(goalCount <= 0)
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Leah");
+    }
+    // ------------------------------
+    // Settings Menu Functions
+    // ------------------------------
+    public void UpdateVolume(float volume)
+    {
+        if (audioSource != null)
         {
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            audioSource.volume = volume;  // Update audio source volume
         }
     }
 
-    public void youLose()
+    public void CloseSettings()
     {
-        statePause();
-        menuActive = menuLose;
-        menuActive.SetActive(true);
+        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(true);  // Show Pause Menu after closing settings
     }
 }
