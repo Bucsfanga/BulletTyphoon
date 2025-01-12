@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-       
+        mainMenu.SetActive(false);  // Hide Main Menu
+        hud.SetActive(true);  // Show HUD
+        SceneManager.LoadScene("MainGame");
     }
 
     public void OpenSettingsFromMainMenu()
