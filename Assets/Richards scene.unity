@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.06
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3e5399bd195de7649b874f58c1b9f8a3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3ac5855d931abfb4e8293e375da7f368, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1071,6 +1071,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2503194d9456e52468211c844e51d111, type: 3}
+--- !u!1001 &495045680
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2625602760605563254, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849158507222602612, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5c89045da8ba3a4187acdbaf6564a80, type: 3}
 --- !u!1001 &575056578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2015,7 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.98039216, g: 0.7513375, b: 0.09019609, a: 1}
+  m_Color: {r: 0.98039216, g: 0.7513375, b: 0.09019609, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3799,6 +3856,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6106951922503866094, guid: 6f60a241bf8506e49bf14d29549e2887, type: 3}
+      propertyPath: shootDist
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6898131481963016926, guid: 6f60a241bf8506e49bf14d29549e2887, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3936,7 +3997,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: de3b5c19539b7814a8f5b98ee2ddf978, type: 3}
     - target: {fileID: 1237964154846196520, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 1237964154846196520, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_Color.b
@@ -4008,11 +4069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3327165375845365580, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 294
+      value: 957.1703
       objectReference: {fileID: 0}
     - target: {fileID: 3327165375845365580, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 231
+      value: 543.4366
       objectReference: {fileID: 0}
     - target: {fileID: 3472287191516264730, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4045,6 +4106,10 @@ PrefabInstance:
     - target: {fileID: 4780028161128085460, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_LocalScale.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871219692409555767, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5348429316499261659, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_LocalScale.x
@@ -4106,6 +4171,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: de3b5c19539b7814a8f5b98ee2ddf978, type: 3}
+    - target: {fileID: 7277399915372729465, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 7277399915372729465, guid: e1481bc99b3f9a841a684bc301cb43d9, type: 3}
       propertyPath: m_Material
       value: 
@@ -4410,3 +4479,4 @@ SceneRoots:
   - {fileID: 386749732}
   - {fileID: 207273956}
   - {fileID: 362034812}
+  - {fileID: 495045680}
