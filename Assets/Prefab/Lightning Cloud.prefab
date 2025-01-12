@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2806203104976426634}
   - component: {fileID: 7805118827735117326}
   - component: {fileID: 6850534911318389722}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lightning Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
