@@ -16,11 +16,10 @@ public class GameManager : MonoBehaviour
 
 
     // HUD Elements
-    public RectTransform healthFill;  
+    public Slider healthBar;
     public TextMeshProUGUI ammoCounter;
     public TextMeshProUGUI interactPrompt;
 
-    private float fullWidth;
 
     // Settings Menu Elements
     public Slider volumeSlider;
@@ -32,8 +31,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        fullWidth = healthFill.sizeDelta.x;
-
         audioSource = Camera.main.GetComponent<AudioSource>();
         if (audioSource != null)
         {
@@ -73,8 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHealth(float currentHealth, float maxHealth)
     {
-        float healthPercentage = currentHealth / maxHealth;  // Calculate percentage (0 to 1)
-        healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
+        healthBar.value = currentHealth / maxHealth;
     }
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
