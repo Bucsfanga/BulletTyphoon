@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     // HUD Elements
     public RectTransform healthFill; 
+ 
     public TextMeshProUGUI ammoCounter;
     public TextMeshProUGUI interactPrompt;
 
@@ -69,6 +70,9 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // HUD Functions
     // ------------------------------
+
+
+
 
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
