@@ -14,9 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject settingsMenu;
 
 
-
     // HUD Elements
-    public RectTransform healthFill;  
+    public RectTransform healthFill; 
     public TextMeshProUGUI ammoCounter;
     public TextMeshProUGUI interactPrompt;
 
@@ -71,11 +70,6 @@ public class GameManager : MonoBehaviour
     // HUD Functions
     // ------------------------------
 
-    public void UpdateHealth(float currentHealth, float maxHealth)
-    {
-        float healthPercentage = currentHealth / maxHealth;  // Calculate percentage (0 to 1)
-        healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
-    }
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
     {
@@ -148,5 +142,11 @@ public class GameManager : MonoBehaviour
     {
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);  // Show Pause Menu after closing settings
+    }
+	
+	    public void UpdateHealth(float currentHealth, float maxHealth)
+    {
+        float healthPercentage = currentHealth / maxHealth;  // Calculate percentage (0 to 1)
+        healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
     }
 }
