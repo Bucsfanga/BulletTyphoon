@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public GameObject settingsMenu;
 
 
-
     // HUD Elements
     public RectTransform healthFill; 
  
@@ -72,10 +71,6 @@ public class GameManager : MonoBehaviour
     // HUD Functions
     // ------------------------------
 
-    public void UpdateHealth(float currentHealth, float maxHealth)
-    {
-        healthBar.value = currentHealth / maxHealth;
-    }
 
 
 
