@@ -2,16 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyAi : MonoBehaviour, IDamage
+public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Renderer model;
-    [SerializeField] Transform shootPos;
-
-
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
-
+    [SerializeField] Renderer model;
+    [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
@@ -27,18 +24,18 @@ public class enemyAi : MonoBehaviour, IDamage
     void Start()
     {
         colorOrig = model.material.color;
-        gameManager.instance.updateGameGoal(1);
+        GameManager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerInRange)
+        if (playerInRange)
         {
-            playerDir = gameManager.instance.player.transform.position - transform.position;
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            playerDir = GameManager.instance.player.transform.position - transform.position;
+            agent.SetDestination(GameManager.instance.player.transform.position);
 
-            if (agent.remainingDistance<=agent.stoppingDistance)
+            if(agent.remainingDistance <= agent.stoppingDistance)
             {
                 faceTarget();
             }
@@ -48,14 +45,12 @@ public class enemyAi : MonoBehaviour, IDamage
                 StartCoroutine(shoot());
             }
         }
-
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
-        { 
+        if (other.CompareTag("Player"))
+        {
             playerInRange = true;
         }
     }
@@ -67,12 +62,6 @@ public class enemyAi : MonoBehaviour, IDamage
             playerInRange = false;
         }
     }
-
-    void faceTarget()
-    {
-        Quaternion rot = Quaternion.LookRotation(playerDir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime*faceTargetSpeed);
-    }
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -81,7 +70,7 @@ public class enemyAi : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
+            GameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
@@ -100,5 +89,11 @@ public class enemyAi : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 }

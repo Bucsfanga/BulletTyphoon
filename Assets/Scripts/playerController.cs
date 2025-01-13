@@ -40,25 +40,24 @@ public class playerController : MonoBehaviour, IDamage
         sprint();
     }
 
-    void movement(){
-
+    void movement()
+    {
         if (controller.isGrounded)
         {
             jumpCount = 0;
             playerVel = Vector3.zero;
         }
-    // moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        // transform.position += moveDir * speed * Time.deltaTime;
 
         moveDir = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
 
         jump();
+
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
 
-        if(Input.GetButtonDown("Shoot"))
+        if (Input.GetButtonDown("Shoot"))
         {
             shoot();
         }
@@ -76,12 +75,11 @@ public class playerController : MonoBehaviour, IDamage
             speed /= sprintMod;
             isSprinting = false;
         }
-
     }
 
     void jump()
     {
-        if (Input.GetButtonDown("Jump")&& jumpCount < jumpMax)
+        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
@@ -91,11 +89,9 @@ public class playerController : MonoBehaviour, IDamage
     void shoot()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
         {
-
             Debug.Log(hit.collider.name);
-
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if (dmg != null)
             {
@@ -112,19 +108,43 @@ public class playerController : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.youLose();
+            GameManager.instance.youLose();
         }
+    }
+    public void IncreaseHealth(int amount)
+    {
+        if(HP >= HPOrig)
+        {
+            Debug.Log("Health is already full");
+            return;
+        }
+
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig; // Don't heal past max health
+        }
+
+        updatePlayerUI();
+        Debug.Log("Health increased. Current health: " + HP);
+    }
+
+    public bool isHealthFull()
+    {
+        return HP >= HPOrig;
     }
 
     IEnumerator flashDamagePanel()
     {
-        gameManager.instance.damagePanel.SetActive(true);
+        GameManager.instance.damagePanel.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gameManager.instance.damagePanel.SetActive(false);
+        GameManager.instance.damagePanel.SetActive(false);
     }
 
     void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP/HPOrig;
+        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
+
+
 }
