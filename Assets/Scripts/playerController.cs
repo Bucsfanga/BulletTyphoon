@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreMask;
 
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpMax;
@@ -18,13 +20,15 @@ public class playerController : MonoBehaviour
     Vector3 playerVel;
 
     int jumpCount;
+    int HPOrig;
 
     bool isSprinting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        HPOrig = HP;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -95,4 +99,52 @@ public class playerController : MonoBehaviour
             }
         }
     }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        updatePlayerUI();
+        StartCoroutine(flashDamagePanel());
+
+        if (HP <= 0)
+        {
+            gameManager.instance.youLose();
+        }
+    }
+    public void IncreaseHealth(int amount)
+    {
+        if(HP >= HPOrig)
+        {
+            Debug.Log("Health is already full");
+            return;
+        }
+
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig; // Don't heal past max health
+        }
+
+        updatePlayerUI();
+        Debug.Log("Health increased. Current health: " + HP);
+    }
+
+    public bool isHealthFull()
+    {
+        return HP >= HPOrig;
+    }
+
+    IEnumerator flashDamagePanel()
+    {
+        gameManager.instance.damagePanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.damagePanel.SetActive(false);
+    }
+
+    void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
+
+
 }
