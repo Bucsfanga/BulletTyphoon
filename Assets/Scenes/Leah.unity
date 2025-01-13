@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OpenSettingsFromMainMenu
         m_Mode: 1
@@ -992,7 +992,7 @@ MonoBehaviour:
   hud: {fileID: 952030953}
   pauseMenu: {fileID: 1069269582}
   settingsMenu: {fileID: 1833362220}
-  healthFill: {fileID: 921531519}
+  healthFill: {fileID: 1935981179}
   ammoCounter: {fileID: 655297265}
   interactPrompt: {fileID: 787509862}
   volumeSlider: {fileID: 1128412186}
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CloseSettings
         m_Mode: 1
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitToMainMenu
         m_Mode: 1
@@ -2070,7 +2070,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -3976,7 +3976,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496429343}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
