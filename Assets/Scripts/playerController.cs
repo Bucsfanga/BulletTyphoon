@@ -108,7 +108,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.youLose();
+            GameManager.instance.youLose();
         }
     }
     public void IncreaseHealth(int amount)
@@ -136,14 +136,14 @@ public class playerController : MonoBehaviour, IDamage
 
     IEnumerator flashDamagePanel()
     {
-        gameManager.instance.damagePanel.SetActive(true);
+        GameManager.instance.damagePanel.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        gameManager.instance.damagePanel.SetActive(false);
+        GameManager.instance.damagePanel.SetActive(false);
     }
 
     void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
 

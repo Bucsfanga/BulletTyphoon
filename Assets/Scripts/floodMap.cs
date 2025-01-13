@@ -83,7 +83,7 @@ public class floodMap : MonoBehaviour
 
     void updateSubmergedOverlay()
     {
-        player = gameManager.instance.player.transform;
+        player = GameManager.instance.player.transform;
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level

@@ -14,7 +14,7 @@ public class lightningCloudSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = gameManager.instance.player.transform;
+        player = GameManager.instance.player.transform;
         if (player == null)
         {
             Debug.LogError("Player reference is null");

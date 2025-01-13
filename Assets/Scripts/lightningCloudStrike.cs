@@ -32,7 +32,7 @@ public class lightningCloudStrike : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = gameManager.instance.player.transform;
+        player = GameManager.instance.player.transform;
         if (ground == null)
         {
             Debug.LogError("Map boundary reference is null");
