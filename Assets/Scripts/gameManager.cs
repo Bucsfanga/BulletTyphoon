@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
             volumeSlider.value = audioSource.volume;
             volumeSlider.onValueChanged.AddListener(UpdateVolume);
         }
+        audioManager.instance.PlayBackgroundAudio("StormBackground");
     }
 
     // Update is called once per frame

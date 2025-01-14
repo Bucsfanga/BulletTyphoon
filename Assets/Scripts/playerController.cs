@@ -105,11 +105,16 @@ public class playerController : MonoBehaviour, IDamage
         HP -= amount;
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());
+       
 
         if (HP <= 0)
         {
+            //Play random death sound
+            audioManager.instance.PlaySound(audioManager.instance.GetRandomSound(audioManager.instance.deathSounds));
             GameManager.instance.youLose();
         }
+        //Play random damage sound after death check so no overlap on death damage tick.
+        audioManager.instance.PlaySound(audioManager.instance.GetRandomSound(audioManager.instance.damageSounds));
     }
     public void IncreaseHealth(int amount)
     {

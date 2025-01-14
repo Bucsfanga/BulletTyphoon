@@ -100,6 +100,8 @@ public class floodMap : MonoBehaviour
 
     IEnumerator displayWarning(TMP_Text warningText, string message, int duration)
     {
+        //Play warning siren sound
+        StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 5));
         // Display warning countdown
         for (int i = duration; i > 0; i--)
         {
