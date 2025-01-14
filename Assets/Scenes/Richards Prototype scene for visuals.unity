@@ -60632,7 +60632,7 @@ MonoBehaviour:
   targetMaterial: {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
   transitionDuration: 2
   delayBeforeEffect: 5
-  stormSmoothness: 1
+  stormSmoothness: 0.5
   stormMetallic: 1
 --- !u!4 &2087486676 stripped
 Transform:
