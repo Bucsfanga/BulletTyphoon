@@ -3,14 +3,14 @@ using System.Collections;
 
 public class weatherController : MonoBehaviour
 {
-    public Material stormSkybox;
-    public Material clearSkybox;
-    public Light directionalLight;
-    public Color stormAmbientLight = Color.gray;
-    public Color clearAmbientLight = Color.white;
-    public float stormFogDensity = 0.02f;
-    public float clearFogDensity = 0.0f;
-    public float transitionDuration = 2f;
+    [SerializeField] Material stormSkybox;
+    [SerializeField] Material clearSkybox;
+    [SerializeField] Light directionalLight;
+    [SerializeField] Color stormAmbientLight = Color.gray;
+    [SerializeField] Color clearAmbientLight = Color.white;
+    [SerializeField] float stormFogDensity = 0.02f;
+    [SerializeField] float clearFogDensity = 0.0f;
+    [SerializeField] float transitionDuration = 2f;
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
