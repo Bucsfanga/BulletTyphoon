@@ -3,73 +3,53 @@ using UnityEngine;
 
 public class lightningCloudStrike : MonoBehaviour
 {
-    public bool IsTargetingPlayer { get; set; }
     [SerializeField] int numberOfStrikes;
     [SerializeField] float strikeInterval;
     [SerializeField] float strikeRadius;
     [SerializeField] GameObject lightningPrefab;
     [SerializeField] GameObject strikeIndicatorPrefab;
-    [SerializeField] GameObject ground;
 
     private Transform player;
     private int activeStrikes;
-    private Vector3 groundMin, groundMax;
 
     public float StrikeRadius => strikeRadius; // Public getter for strike radius
-    public Vector3 GroundMin
-    {
-        get => groundMin;
-        set => groundMin = value;
-    }
-    public Vector3 GroundMax
-    {
-        get => groundMax;
-        set => groundMax = value;
-    }
 
-    public GameObject Ground => ground;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameManager.instance.player.transform;
-        if (ground == null)
+        player = gameManager.instance.player.transform;
+        if (player == null)
         {
-            Debug.LogError("Map boundary reference is null");
+            Debug.LogError("player reference is null");
+            Destroy(gameObject);
             return;
         }
-
-        Transform groundTransform = ground.transform;
-
-        float halfWidth = groundTransform.localScale.x * 5f;
-        float halfLength = groundTransform.localScale.z * 5f;
-        groundMin = new Vector3(groundTransform.position.x - halfWidth, groundTransform.position.y, groundTransform.position.z - halfLength);
-        groundMax = new Vector3(groundTransform.position.x + halfWidth, groundTransform.position.y, groundTransform.position.z + halfLength);
 
         StartCoroutine(strikeSequence());
     }
 
     IEnumerator strikeSequence()
     {
-        // Determine the strike position once, directly below the cloud's center
-        Vector3 strikePosition = getStrikePosition(transform.position);
-        Vector3 cloudPosition = transform.position;
-
-        // Spawn strike indicator
-        GameObject indicator = Instantiate(strikeIndicatorPrefab, strikePosition, Quaternion.identity);
-        indicator.transform.localScale = new Vector3(strikeRadius * 2, 0.1f, strikeRadius * 2);
-
         for (int i = 0; i < numberOfStrikes; i++)
         {
-            // Spawn lightning bolt at the cloud's position
+            Vector3 playerPosition = player.position;
+            Vector3 cloudPosition = playerPosition + Vector3.up * 40f; // Cloud above player
+            Vector3 strikePosition = getStrikePosition(playerPosition);
+
+            // Spawn strike indicator           
+            GameObject indicator = Instantiate(strikeIndicatorPrefab, strikePosition, Quaternion.identity);
+            indicator.transform.localScale = new Vector3(strikeRadius * 2, 0.1f, strikeRadius * 2);
+
+            // Spawn lightning  bolt
             GameObject lightningBolt = Instantiate(lightningPrefab, cloudPosition, Quaternion.identity);
             activeStrikes++;
 
             // Initialize damageRadius in Damage script
             Damage damageScript = lightningBolt.GetComponent<Damage>();
-            if (damageScript != null)
+            if (damageScript != null )
             {
-                damageScript.setDamageRadius(StrikeRadius);
+                damageScript.setDamageRadius(StrikeRadius); // Pass strike radius to damage radius
             }
 
             // Adjust lightning bolt's collider radius to match strike radius
@@ -82,22 +62,16 @@ public class lightningCloudStrike : MonoBehaviour
             // Attach indicator to lightning bolt
             StartCoroutine(destroyBoltIfObstructed(lightningBolt, strikePosition, indicator));
 
-            // Wait before spawning the next bolt
+            // Wait before next strike
             yield return new WaitForSeconds(strikeInterval);
         }
 
-        // Wait for all active strikes to finish before destroying the cloud
-        while (activeStrikes > 0)
+        while( activeStrikes > 0)
         {
             yield return null;
         }
 
-        if (indicator != null)
-        {
-            Destroy(indicator);
-        }
-
-        Destroy(gameObject);
+        Destroy(gameObject); // Destroy cloud once strikes are exhausted
     }
 
     Vector3 getStrikePosition(Vector3 origin)
@@ -106,30 +80,52 @@ public class lightningCloudStrike : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = origin + Vector3.up * 50;
 
-        int layerMask = LayerMask.GetMask("Default", "Structure", "Ground");
+        int layerMask = LayerMask.GetMask("Default", "Structure");
 
         if (Physics.Raycast(rayOrigin, Vector3.down, out hit, Mathf.Infinity, layerMask))
         {
-            if (hit.collider != null)
-            {
-                return hit.point; // Return point of contact with surface
-            }
+            return hit.point; // Return point of contact with surface
         }
 
-        return new Vector3(origin.x, ground.transform.position.y, origin.z); // Place on ground by default
+        return origin; // If no obstruction target player
     }
 
     IEnumerator destroyBoltIfObstructed(GameObject lightningBolt, Vector3 strikePosition, GameObject indicator)
     {
+        RaycastHit hit;
+        Vector3 lightningStartPosition = lightningBolt.transform.position;
+
+        // Use ray cast to detect obstruction
+        if (Physics.Raycast(lightningStartPosition, (strikePosition - lightningStartPosition).normalized, out hit, Mathf.Infinity))
+        {
+            if (hit.collider is BoxCollider)// Destroy bolt on contact with box collider
+            {
+                // Update indicator to spawn at obstruction point
+                indicator.transform.position = hit.point;
+
+                // Stop lightning bolt from visually passing through the structure
+                lightningBolt.transform.position = hit.point;
+
+                Destroy(lightningBolt);
+
+                if (indicator != null)
+                {
+                    Destroy(indicator);
+                }
+
+                activeStrikes--;
+                yield break;
+            }
+        }
+
+        // Wait for lightning to be destroyed naturally
         while (lightningBolt != null)
         {
-            // Destroy the bolt if it falls below or at the indicator's Y position
-            if (lightningBolt.transform.position.y <= indicator.transform.position.y)
+            if (lightningBolt.transform.position.y < indicator.transform.position.y)
             {
                 Destroy(lightningBolt);
 
-                // Destroy the associated indicator
-                if (activeStrikes == 0 && indicator != null)
+                if (indicator != null)
                 {
                     Destroy(indicator);
                 }
@@ -141,12 +137,12 @@ public class lightningCloudStrike : MonoBehaviour
             yield return null;
         }
 
-        // If the bolt is destroyed elsewhere, destroy the associated indicator
-        if (activeStrikes == 0 && indicator != null)
+        if (indicator != null)
         {
             Destroy(indicator);
         }
 
         activeStrikes--;
     }
+
 }

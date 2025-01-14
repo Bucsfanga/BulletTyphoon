@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4166964825793987478}
   - component: {fileID: 3205892763576127106}
   - component: {fileID: 4142666837585981952}
-  - component: {fileID: -6019687331780961065}
-  m_Layer: 1
+  - component: {fileID: 9031051642441137128}
+  m_Layer: 0
   m_Name: Lightning Strike Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &-6019687331780961065
-SphereCollider:
+--- !u!136 &9031051642441137128
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,6 +105,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.05
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000011920929}

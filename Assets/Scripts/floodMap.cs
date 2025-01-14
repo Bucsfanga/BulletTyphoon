@@ -12,7 +12,7 @@ public class floodMap : MonoBehaviour
    
     private Vector3 startPosition;
     private Vector3 targetPosition;
-    private bool isFlooding;
+    private bool isFlooding = false;
     private Transform player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,17 +34,37 @@ public class floodMap : MonoBehaviour
     {
         yield return new WaitForSeconds(floodStartTime); // Delay until flood start time
 
-        // Display incoming warning countdown
-        yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
-        
+        // Display warning countdown
+        for (int i = warningDuration; i > 0; i--)
+        {
+            if (incomingWarningText != null)
+            {
+                incomingWarningText.text = $"Warning: Map will flood in {Mathf.CeilToInt(i)} seconds!";
+            }
+            yield return new WaitForSeconds(1f);
+        }
+
+        // Clear warning text
+        if (incomingWarningText != null)
+        {
+            incomingWarningText.text = "";
+        }
         isFlooding = true;
+
         float elapsedTime = 0f;
         while (elapsedTime < floodDuration)
         {
             // Gradually move the water up to the target height
             transform.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / floodDuration) * floodingSpeed);
+
             updateSubmergedOverlay(); // Check if player is submerged
 
+            //Check if we are within the last warning duration's seconds
+            if(elapsedTime >= floodDuration - warningDuration && outgoingWarningText != null && string.IsNullOrEmpty(outgoingWarningText.text))
+            {
+                StartCoroutine(displayOutgoingWarning());
+            }
+            
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -53,10 +73,7 @@ public class floodMap : MonoBehaviour
         transform.position = targetPosition;
 
         // Pause briefly at flood height
-        float recedeWarningTime = floodDuration -warningDuration;
-        yield return new WaitForSeconds(recedeWarningTime);
-
-        yield return StartCoroutine(displayWarning(outgoingWarningText, "Warning: Flood will recede in {0} seconds!", warningDuration));
+        yield return new WaitForSeconds(floodDuration);
 
         // Flood recedes to starting position
         elapsedTime = 0f;
@@ -83,7 +100,7 @@ public class floodMap : MonoBehaviour
 
     void updateSubmergedOverlay()
     {
-        player = GameManager.instance.player.transform;
+        player = gameManager.instance.player.transform;
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level
@@ -98,24 +115,22 @@ public class floodMap : MonoBehaviour
         }
     }
 
-    IEnumerator displayWarning(TMP_Text warningText, string message, int duration)
+    IEnumerator displayOutgoingWarning()
     {
-        //Play warning siren sound
-        StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 5));
         // Display warning countdown
-        for (int i = duration; i > 0; i--)
+        for (int i = warningDuration; i > 0; i--)
         {
-            if (warningText != null)
+            if (outgoingWarningText != null)
             {
-                warningText.text = string.Format(message, i);
+                outgoingWarningText.text = $"Warning: Flood will recede in {Mathf.CeilToInt(i)} seconds!";
             }
             yield return new WaitForSeconds(1f);
         }
 
         // Clear warning text
-        if (warningText != null)
+        if (outgoingWarningText != null)
         {
-            warningText.text = "";
+            outgoingWarningText.text = "";
         }
     }
 }

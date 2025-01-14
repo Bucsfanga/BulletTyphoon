@@ -45,25 +45,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2813806177953116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e251bb777bc61864cbec981f535829f0, type: 3}
+  m_Script: {fileID: 11500000, guid: adc2a4ddffc6e2c48abd0ee4a4497f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
-  hud: {fileID: 0}
-  pauseMenu: {fileID: 5573213465774658584}
-  settingsMenu: {fileID: 0}
-  player: {fileID: 7392056728957234339, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
-  playerScript: {fileID: 0}
-  damagePanel: {fileID: 8111606867436781871}
-  playerHPBar: {fileID: 6306537076120240568}
-  menuPause: {fileID: 0}
   menuActive: {fileID: 0}
+  menuPause: {fileID: 5573213465774658584}
   menuWin: {fileID: 4161046929069424843}
   menuLose: {fileID: 7186552667294541962}
-  healthFill: {fileID: 0}
-  ammoCounter: {fileID: 0}
-  interactPrompt: {fileID: 0}
-  volumeSlider: {fileID: 0}
+  playerHPBar: {fileID: 6306537076120240568}
+  damagePanel: {fileID: 8111606867436781871}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
+  isPaused: 0
 --- !u!1 &222980498849242982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3297,7 +3290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 1, a: 0.392}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
