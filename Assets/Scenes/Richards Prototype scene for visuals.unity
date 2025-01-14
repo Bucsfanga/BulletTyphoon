@@ -49452,6 +49452,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2186217001014013416, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
   m_PrefabInstance: {fileID: 778163792}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1743032707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+  m_PrefabInstance: {fileID: 7801807121407500775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1743746503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60606,12 +60611,29 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
   m_PrefabInstance: {fileID: 7801807121407500775}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1743032707}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6138c55ce5174554f8fec2e727f0c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2086682844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743032707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3b95570c82f348ba090bab57699ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMaterial: {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
+  transitionDuration: 2
+  delayBeforeEffect: 5
+  stormSmoothness: 1
+  stormMetallic: 1
 --- !u!4 &2087486676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2186217001014013416, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
@@ -62689,6 +62711,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: materialEffect
+      value: 
+      objectReference: {fileID: 2086682844}
+    - target: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: stormFogDensity
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
       propertyPath: m_Name
       value: Weather Changer
@@ -62696,7 +62726,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2086682844}
   m_SourcePrefab: {fileID: 100100000, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

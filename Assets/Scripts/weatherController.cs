@@ -11,6 +11,7 @@ public class weatherController : MonoBehaviour
     [SerializeField] float stormFogDensity = 0.02f;
     [SerializeField] float clearFogDensity = 0.0f;
     [SerializeField] float transitionDuration = 2f; // Duration of the transition
+    [SerializeField] private MaterialStormEffect materialEffect;
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
@@ -50,6 +51,11 @@ public class weatherController : MonoBehaviour
         {
             directionalLight.intensity *= 0.5f; // Dim light
         }
+
+        if(materialEffect != null)
+        {
+            materialEffect.OnStormBegin();
+        }
     }
 
     public void endStorm()
@@ -62,6 +68,12 @@ public class weatherController : MonoBehaviour
         {
             directionalLight.intensity = originalLightIntensity; // Restore light
         }
+
+        if(materialEffect !=null)
+        {
+            materialEffect.OnStormEnd();
+        }
+
     }
 
     private IEnumerator transitionToSkybox(Material fromSkybox, Material toSkybox)
