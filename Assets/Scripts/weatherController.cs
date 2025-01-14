@@ -10,22 +10,38 @@ public class weatherController : MonoBehaviour
     [SerializeField] Color clearAmbientLight = Color.white;
     [SerializeField] float stormFogDensity = 0.02f;
     [SerializeField] float clearFogDensity = 0.0f;
-    [SerializeField] float transitionDuration = 2f;
+    [SerializeField] float transitionDuration = 2f; // Duration of the transition
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {  // saving the original settings
+    private void Start()
+    {
+        // Save original settings
         originalAmbientLight = RenderSettings.ambientLight;
         originalLightIntensity = directionalLight.intensity;
+
+        // this ensures the clear skybox is set as the active skybox on start up.
+        RenderSettings.skybox = clearSkybox;
+
+        if (clearSkybox.HasProperty("_Exposure"))
+        {
+            clearSkybox.SetFloat("_Exposure", 1f);
+        }
+        if (stormSkybox.HasProperty("_Exposure"))
+        {
+            stormSkybox.SetFloat("_Exposure", 0f);
+        }
+
+        RenderSettings.ambientLight = clearAmbientLight;
+        RenderSettings.fog = false; // Enable fog in case it's needed
+        RenderSettings.fogDensity = clearFogDensity;
+
     }
 
     public void startStorm()
     {
-        RenderSettings.skybox = stormSkybox;
+        StartCoroutine(transitionToSkybox(clearSkybox, stormSkybox));
         RenderSettings.ambientLight = stormAmbientLight;
         RenderSettings.fog = true;
         RenderSettings.fogDensity = stormFogDensity;
@@ -38,7 +54,7 @@ public class weatherController : MonoBehaviour
 
     public void endStorm()
     {
-        RenderSettings.skybox = clearSkybox;
+        StartCoroutine(transitionToSkybox(stormSkybox, clearSkybox));
         RenderSettings.ambientLight = originalAmbientLight;
         RenderSettings.fog = false;
 
@@ -48,33 +64,34 @@ public class weatherController : MonoBehaviour
         }
     }
 
-   private IEnumerator FadeSkybox(Material fromSkybox, Material toSkybox)
+    private IEnumerator transitionToSkybox(Material fromSkybox, Material toSkybox)
     {
         float elapsedTime = 0f;
 
         // Set the initial skybox
         RenderSettings.skybox = fromSkybox;
-        float fromExposure = fromSkybox.GetFloat("_Exposure");
-        float toExposure = toSkybox.GetFloat("_Exposure");
 
-        // Start blending
+        // Ensure materials are set to their initial states
+        fromSkybox.SetFloat("_Exposure", 1f);
+        toSkybox.SetFloat("_Exposure", 0f);
+
         while (elapsedTime < transitionDuration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / transitionDuration;
 
-            fromSkybox.SetFloat("_Exposure", Mathf.Lerp(fromExposure, 0f, t));
-            toSkybox.SetFloat("_Exposure", Mathf.Lerp(0f, toExposure, t));
+            // Interpolate exposure values for smooth blending
+            fromSkybox.SetFloat("_Exposure", Mathf.Lerp(1f, 0f, t));
+            toSkybox.SetFloat("_Exposure", Mathf.Lerp(0f, 1f, t));
 
-            yield return null;
+            yield return null; // Wait for the next frame
         }
 
-        // Ensure the final values are set
+        // Ensure final states are set
         fromSkybox.SetFloat("_Exposure", 0f);
         toSkybox.SetFloat("_Exposure", 1f);
 
-        // Set the new skybox
+        // Set the active skybox to the target material
         RenderSettings.skybox = toSkybox;
     }
 }
-
