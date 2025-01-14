@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6855624630913132328}
   - component: {fileID: 6792182371412620673}
   - component: {fileID: 2806203104976426634}
-  - component: {fileID: 7805118827735117326}
   - component: {fileID: 6850534911318389722}
   m_Layer: 2
   m_Name: Lightning Cloud
@@ -88,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7805118827735117326
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951853346521304662}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6e253dc59c001e44ab9d35ee01215549, type: 3}
 --- !u!114 &6850534911318389722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343554d1c6e2ce74fb6a608ce92f6283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfStrikes: 3
+  numberOfStrikes: 5
   strikeInterval: 1
   strikeRadius: 3
   lightningPrefab: {fileID: 2731511340950769273, guid: ba25521a28bc9d44789208a807c87b06, type: 3}
   strikeIndicatorPrefab: {fileID: 8032016237644996513, guid: c6634582196ffc4498ae8732d5a95178, type: 3}
+  ground: {fileID: 62954291054599861, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}

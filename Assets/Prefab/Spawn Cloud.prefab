@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningCloud: {fileID: 1951853346521304662, guid: ca42e80b064a3b84490bbd02810d57f1, type: 3}
-  cloudSpawnInterval: 5
-  initialDelay: 5
+  cloudSpawnInterval: 1
+  initialDelay: 1
+  isTargetingPlayer: 0
