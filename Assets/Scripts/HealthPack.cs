@@ -27,6 +27,7 @@ public class HealthPack : MonoBehaviour
                     return;
                 }
 
+                audioManager.instance.PlaySound("HealthPackPickup");
                 player.IncreaseHealth(healthIncrease);
 
                 gameObject.SetActive(false);

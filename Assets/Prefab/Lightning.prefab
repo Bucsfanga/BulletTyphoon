@@ -54,7 +54,7 @@ MonoBehaviour:
   damageAmount: 1
   damageInterval: 0
   speed: 150
-  destroyTime: 1
+  destroyTime: 3
   delayTime: 2
 --- !u!135 &2956158390569432616
 SphereCollider:
