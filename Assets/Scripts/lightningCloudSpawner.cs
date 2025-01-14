@@ -7,6 +7,7 @@ public class lightningCloudSpawner : MonoBehaviour
     [SerializeField] float cloudSpawnInterval;
     [SerializeField] float initialDelay;
     [SerializeField] bool isTargetingPlayer;
+    [SerializeField] weatherController weatherController;
 
     private Transform player;
     private lightningCloudStrike cloudStrikeInstance;
@@ -20,8 +21,19 @@ public class lightningCloudSpawner : MonoBehaviour
             Debug.LogError("Player reference is null");
             return;
         }
-
+        if (weatherController != null) 
+        {
+            weatherController.startStorm(); // this notifies the weather controller that a storm is starting.
+        }
         StartCoroutine(spawnLightningCloud());
+    }
+
+    private void OnDestroy()
+    {
+        if (weatherController !=null)
+        {
+            weatherController.endStorm();// this is telling the weather controller that the storm has ended.
+        }
     }
 
     IEnumerator spawnLightningCloud()
