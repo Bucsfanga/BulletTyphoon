@@ -60185,58 +60185,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2186217001014013416, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
   m_PrefabInstance: {fileID: 1016559753}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2086682842
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2086682844}
-  - component: {fileID: 2086682843}
-  m_Layer: 0
-  m_Name: Weather Changer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2086682843
+--- !u!114 &2086682843 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+  m_PrefabInstance: {fileID: 7801807121407500775}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086682842}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6138c55ce5174554f8fec2e727f0c61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stormSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
-  clearSkybox: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
-  directionalLight: {fileID: 0}
-  stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
-  stormFogDensity: 0.01
-  clearFogDensity: 0
-  transitionDuration: 1
---- !u!4 &2086682844
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086682842}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.824104, y: 90.25613, z: -40.832176}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2087486676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2186217001014013416, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
@@ -62266,6 +62225,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
+--- !u!1001 &7801807121407500775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.824104
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 90.25613
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.832176
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624903860389683253, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: m_Name
+      value: Weather Changer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -62282,4 +62298,4 @@ SceneRoots:
   - {fileID: 608291076}
   - {fileID: 95912128}
   - {fileID: 857389634}
-  - {fileID: 2086682844}
+  - {fileID: 7801807121407500775}
