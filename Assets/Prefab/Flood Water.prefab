@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floodHeight: 5
   floodDuration: 15
-  floodStartTime: 15
+  floodStartTime: 20
   floodingSpeed: 5
   warningDuration: 10
   incomingWarningText: {fileID: 0}

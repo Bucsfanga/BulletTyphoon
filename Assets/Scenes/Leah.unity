@@ -992,7 +992,7 @@ MonoBehaviour:
   hud: {fileID: 952030953}
   pauseMenu: {fileID: 1069269582}
   settingsMenu: {fileID: 1833362220}
-  healthFill: {fileID: 1935981179}
+  healthFill: {fileID: 921531519}
   ammoCounter: {fileID: 655297265}
   interactPrompt: {fileID: 787509862}
   volumeSlider: {fileID: 1128412186}
@@ -2416,7 +2416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &921531519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2461,7 +2461,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.91
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2566,7 +2566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &952030954
 RectTransform:
   m_ObjectHideFlags: 0
