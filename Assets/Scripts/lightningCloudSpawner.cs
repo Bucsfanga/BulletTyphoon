@@ -21,11 +21,19 @@ public class lightningCloudSpawner : MonoBehaviour
             Debug.LogError("Player reference is null");
             return;
         }
-        if (weatherController != null) 
+
+        // this will start the storm after the initial delay value has passed
+        if (weatherController != null)
         {
-            weatherController.startStorm(); // this notifies the weather controller that a storm is starting.
+            StartCoroutine(StartStormAfterDelay());
         }
         StartCoroutine(spawnLightningCloud());
+    }
+
+    private IEnumerator StartStormAfterDelay()
+    {
+        yield return new WaitForSeconds(initialDelay);
+        weatherController.startStorm();
     }
 
     private void OnDestroy()

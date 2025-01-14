@@ -59393,7 +59393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7543825573840225071, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
       propertyPath: initialDelay
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7543825573840225071, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
       propertyPath: weatherController
@@ -60221,7 +60221,7 @@ MonoBehaviour:
   clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
   stormFogDensity: 0.01
   clearFogDensity: 0
-  transitionDuration: 2
+  transitionDuration: 5
 --- !u!4 &2086682844
 Transform:
   m_ObjectHideFlags: 0
