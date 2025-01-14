@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class weatherController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class weatherController : MonoBehaviour
     public Color clearAmbientLight = Color.white;
     public float stormFogDensity = 0.02f;
     public float clearFogDensity = 0.0f;
+    public float transitionDuration = 2f;
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
@@ -45,4 +47,34 @@ public class weatherController : MonoBehaviour
             directionalLight.intensity = originalLightIntensity; // Restore light
         }
     }
+
+   private IEnumerator FadeSkybox(Material fromSkybox, Material toSkybox)
+    {
+        float elapsedTime = 0f;
+
+        // Set the initial skybox
+        RenderSettings.skybox = fromSkybox;
+        float fromExposure = fromSkybox.GetFloat("_Exposure");
+        float toExposure = toSkybox.GetFloat("_Exposure");
+
+        // Start blending
+        while (elapsedTime < transitionDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / transitionDuration;
+
+            fromSkybox.SetFloat("_Exposure", Mathf.Lerp(fromExposure, 0f, t));
+            toSkybox.SetFloat("_Exposure", Mathf.Lerp(0f, toExposure, t));
+
+            yield return null;
+        }
+
+        // Ensure the final values are set
+        fromSkybox.SetFloat("_Exposure", 0f);
+        toSkybox.SetFloat("_Exposure", 1f);
+
+        // Set the new skybox
+        RenderSettings.skybox = toSkybox;
+    }
 }
+
