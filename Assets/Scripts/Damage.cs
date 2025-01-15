@@ -113,7 +113,16 @@ public class Damage : MonoBehaviour
 
         if (type == damageType.moving)
         {
-            Destroy(gameObject);
+            IDamage dmg = other.GetComponent<IDamage>();
+
+            if (dmg != null)
+            {
+                dmg.takeDamage(damageAmount);
+                hasDealtDamage = true;
+
+                Destroy(gameObject);
+                return;
+            }
         }
     }
 }

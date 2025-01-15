@@ -5,12 +5,17 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator anim;
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] Renderer model;
-    [SerializeField] Transform shootPos;
+    [SerializeField] Transform shootPos, headPos;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [SerializeField] int FOV;
+    [SerializeField] int animSpeedTrans;
+
+    float angleToPlayer;
 
     bool isShooting;
     bool playerInRange;
@@ -30,21 +35,47 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
+        float agentSpeed = agent.velocity.normalized.magnitude;
+        float animSpeed = anim.GetFloat("Speed");
+
+        anim.SetFloat("Speed", Mathf.MoveTowards(animSpeed, agentSpeed, Time.deltaTime * animSpeedTrans));
+
+        if (playerInRange && canSeePlayer())
         {
-            playerDir = GameManager.instance.player.transform.position - transform.position;
-            agent.SetDestination(GameManager.instance.player.transform.position);
 
-            if(agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
 
-            if (!isShooting)
+        }
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = GameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+
+        Debug.DrawRay(headPos.position, playerDir);
+
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            if(hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
             {
-                StartCoroutine(shoot());
+                agent.SetDestination(GameManager.instance.player.transform.position);
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
+
+                return true;
             }
         }
+
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,7 +124,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerDir);
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 }
