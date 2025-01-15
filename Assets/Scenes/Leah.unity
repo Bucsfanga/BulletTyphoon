@@ -992,6 +992,14 @@ MonoBehaviour:
   hud: {fileID: 952030953}
   pauseMenu: {fileID: 1069269582}
   settingsMenu: {fileID: 1833362220}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
+  damagePanel: {fileID: 0}
+  playerHPBar: {fileID: 0}
+  menuPause: {fileID: 0}
+  menuActive: {fileID: 0}
+  menuWin: {fileID: 0}
+  menuLose: {fileID: 0}
   healthFill: {fileID: 1935981179}
   ammoCounter: {fileID: 655297265}
   interactPrompt: {fileID: 787509862}
@@ -2133,7 +2141,7 @@ GameObject:
   - component: {fileID: 816485230}
   - component: {fileID: 816485229}
   m_Layer: 5
-  m_Name: MainCanvas
+  m_Name: MainCanvasUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
