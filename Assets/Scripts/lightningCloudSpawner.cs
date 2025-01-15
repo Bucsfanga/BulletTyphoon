@@ -7,6 +7,7 @@ public class lightningCloudSpawner : MonoBehaviour
     [SerializeField] float cloudSpawnInterval;
     [SerializeField] float initialDelay;
     [SerializeField] bool isTargetingPlayer;
+    [SerializeField] weatherController weatherController;
 
     private Transform player;
     private lightningCloudStrike cloudStrikeInstance;
@@ -20,8 +21,17 @@ public class lightningCloudSpawner : MonoBehaviour
             Debug.LogError("Player reference is null");
             return;
         }
-
+        if (weatherController != null)
+        {
+            StartCoroutine(StartStormAfterDelay());
+        }
         StartCoroutine(spawnLightningCloud());
+    }
+
+    private IEnumerator StartStormAfterDelay()
+    {
+        yield return new WaitForSeconds(initialDelay);
+        weatherController.startStorm();
     }
 
     IEnumerator spawnLightningCloud()

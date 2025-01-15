@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(false);  // Hide Main Menu
         hud.SetActive(true);  // Show HUD
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Prototype Level");  // Load game scene
     }
 
     public void OpenSettingsFromMainMenu()
