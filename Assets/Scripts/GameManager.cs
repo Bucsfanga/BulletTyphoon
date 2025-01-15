@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public GameObject damagePanel;
     public Image playerHPBar;
 
+    public TMP_Text goalCountText;
+
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuWin;
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         goalCount += amount;
+        goalCountText.text = goalCount.ToString("F0");
 
         if (goalCount <= 0)
         {
