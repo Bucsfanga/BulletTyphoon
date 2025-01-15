@@ -40,29 +40,23 @@ public class audioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            InitializeAudioSources();
+            SetupBackgroundMusic();
         }
-        else
+        else if (instance != this)
         {
-            Debug.LogError("Should not have more than 1 audio manager");
+            Debug.LogError($"Destroying audio manager on {gameObject.name} because instance already exists");
             Destroy(gameObject);
-            return;
         }
-
-        Debug.Log($"Number of audio clips before initialization: {audioClips.Length}");
-        InitializeAudioSources();
-        SetupBackgroundMusic();
     }
 
     private void InitializeAudioSources()
     {
-        Debug.Log($"Initializing audio sources. Number of clips: {audioClips.Length}");
         audioSources = new AudioSource[audioClips.Length];
         for (int i = 0; i < audioClips.Length; i++)
         {
             audioSources[i] = Instantiate(audioSourceTemplate, transform);
             audioSources[i].volume = defaultSoundVolume;
-            Debug.Log($"Created audio source {i} for clip: {audioClips[i].name}");
         }
     }
 
