@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 // interface for damageable objects
-public interface iDamage
+public interface IDamage
 {
     // method to apply damage
     void takeDamage(int amount);
