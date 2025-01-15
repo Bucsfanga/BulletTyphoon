@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4624903860389683253}
   - component: {fileID: 6558663849257660068}
+  - component: {fileID: 3218192573131998190}
   m_Layer: 0
   m_Name: Weather Changer
   m_TagString: Untagged
@@ -49,6 +50,24 @@ MonoBehaviour:
   directionalLight: {fileID: 0}
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
-  stormFogDensity: 0.01
+  stormFogDensity: 0.001
   clearFogDensity: 0
   transitionDuration: 1
+  materialEffect: {fileID: 3218192573131998190}
+--- !u!114 &3218192573131998190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959107012602527694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab3b95570c82f348ba090bab57699ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMaterial: {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
+  transitionDuration: 1.5
+  delayBeforeEffect: 5
+  stormSmoothness: 1
+  stormMetallic: 1
