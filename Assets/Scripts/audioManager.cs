@@ -49,17 +49,20 @@ public class audioManager : MonoBehaviour
             return;
         }
 
+        Debug.Log($"Number of audio clips before initialization: {audioClips.Length}");
         InitializeAudioSources();
         SetupBackgroundMusic();
     }
 
     private void InitializeAudioSources()
     {
+        Debug.Log($"Initializing audio sources. Number of clips: {audioClips.Length}");
         audioSources = new AudioSource[audioClips.Length];
         for (int i = 0; i < audioClips.Length; i++)
         {
             audioSources[i] = Instantiate(audioSourceTemplate, transform);
             audioSources[i].volume = defaultSoundVolume;
+            Debug.Log($"Created audio source {i} for clip: {audioClips[i].name}");
         }
     }
 
@@ -135,7 +138,7 @@ public class audioManager : MonoBehaviour
 
         if (musicClip == null)
         {
-            Debug.LogError($"Failed to find music: {name}");
+            Debug.LogError($"Failed to find audio: {name}");
             return;
         }
 
