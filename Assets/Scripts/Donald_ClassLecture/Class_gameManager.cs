@@ -1,11 +1,15 @@
 using UnityEngine;
+using TMPro;
 
-public class gameManager : MonoBehaviour
+public class Class_gameManager : MonoBehaviour
 {
-    public static gameManager instance;
+    public static Class_gameManager instance;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
+
+    //[SerializeField] GameObject menuPause;
+
 
     public bool isPaused;
 
@@ -48,5 +52,11 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+    }
+
+    public void updateGaemGoal(int amount)
+    {
+        goalCount += amount;
+        goalCountText.text = goalC
     }
 }
