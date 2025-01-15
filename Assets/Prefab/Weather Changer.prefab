@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4624903860389683253}
   - component: {fileID: 6558663849257660068}
-  - component: {fileID: 4893952722062307934}
+  - component: {fileID: 3218192573131998190}
   m_Layer: 0
   m_Name: Weather Changer
   m_TagString: Untagged
@@ -53,8 +53,8 @@ MonoBehaviour:
   stormFogDensity: 0.001
   clearFogDensity: 0
   transitionDuration: 1
-  materialEffect: {fileID: 4893952722062307934}
---- !u!114 &4893952722062307934
+  materialEffect: {fileID: 3218192573131998190}
+--- !u!114 &3218192573131998190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,5 +69,5 @@ MonoBehaviour:
   targetMaterial: {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
   transitionDuration: 1.5
   delayBeforeEffect: 5
-  stormSmoothness: 0.5
+  stormSmoothness: 1
   stormMetallic: 1
