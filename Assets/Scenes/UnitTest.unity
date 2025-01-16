@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &69197775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7039732524239520880, guid: 6ddccf276632204428262c82ee805293, type: 3}
-  m_PrefabInstance: {fileID: 199453158}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &88394035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,14 +192,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BT_UI
       objectReference: {fileID: 0}
-    - target: {fileID: 4659297583126158997, guid: 6ddccf276632204428262c82ee805293, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 2091371978}
-    - target: {fileID: 4659297583126158997, guid: 6ddccf276632204428262c82ee805293, type: 3}
-      propertyPath: goalCountText
-      value: 
-      objectReference: {fileID: 69197775}
     - target: {fileID: 7004804796619091088, guid: 6ddccf276632204428262c82ee805293, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -294,6 +275,18 @@ PrefabInstance:
     - target: {fileID: 7269489271279321625, guid: 6ddccf276632204428262c82ee805293, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -246
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919234302211593683, guid: 6ddccf276632204428262c82ee805293, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919234302211593683, guid: 6ddccf276632204428262c82ee805293, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919234302211593683, guid: 6ddccf276632204428262c82ee805293, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2124,11 +2117,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4204414189270545754, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
   m_PrefabInstance: {fileID: 535790783}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2091371978 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5996096419211561618, guid: 6ddccf276632204428262c82ee805293, type: 3}
-  m_PrefabInstance: {fileID: 199453158}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7528231402877032907
 PrefabInstance:
