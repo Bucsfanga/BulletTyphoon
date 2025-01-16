@@ -1,16 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-<<<<<<< HEAD
-=======
-using System.Collections;
->>>>>>> UnitTest
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
-<<<<<<< HEAD
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] Renderer model;
@@ -20,20 +15,6 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] int FOV;
     [SerializeField] int animSpeedTrans;
 
-=======
-    [SerializeField] Renderer model;
-    [SerializeField] Transform shootPos, headPos;
-
-    [SerializeField] int HP;
-    [SerializeField] int faceTargetSpeed;
-    [SerializeField] int FOV;
-    [SerializeField] int animSpeedTrans;
-
-    [SerializeField] GameObject bullet;
-    [SerializeField] float shootRate;
-    [SerializeField] int shootrange;
-
->>>>>>> UnitTest
     float angleToPlayer;
 
     bool isShooting;
@@ -55,17 +36,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         float agentSpeed = agent.velocity.normalized.magnitude;
-<<<<<<< HEAD
         float animSpeed = anim.GetFloat("Speed");
-=======
-        float animSpeed = anim.GetFloat("speed");
->>>>>>> UnitTest
 
         anim.SetFloat("Speed", Mathf.MoveTowards(animSpeed, agentSpeed, Time.deltaTime * animSpeedTrans));
 
         if (playerInRange && canSeePlayer())
         {
-<<<<<<< HEAD
 
 
         }
@@ -82,42 +58,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             if (hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
-=======
-            if (!isShooting)
-            {
-                StartCoroutine(shoot());
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Playyer"))
-        {
-            playerInRange = true;
-        }
-    } 
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Playyer"))
-        {
-            playerInRange = false;
-        }
-    }
-
-    bool canSeePlayer()
-    {
-        playerDir = GameManager.instance.player.transform.position - transform.position;
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-
-        Debug.DrawRay(transform.position, playerDir);
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, playerDir, out hit))
-        {
-            // Hey can you see the player
-            if(hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
->>>>>>> UnitTest
             {
                 agent.SetDestination(GameManager.instance.player.transform.position);
 
@@ -130,10 +70,7 @@ public class EnemyAI : MonoBehaviour, IDamage
                 {
                     StartCoroutine(shoot());
                 }
-<<<<<<< HEAD
 
-=======
->>>>>>> UnitTest
                 return true;
             }
         }
@@ -141,7 +78,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         return false;
     }
 
-<<<<<<< HEAD
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -157,14 +93,6 @@ public class EnemyAI : MonoBehaviour, IDamage
             playerInRange = false;
         }
     }
-=======
-    void faceTarget()
-    {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
-    }
-
->>>>>>> UnitTest
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -192,14 +120,11 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
-<<<<<<< HEAD
     }
 
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
-=======
->>>>>>> UnitTest
     }
 }
