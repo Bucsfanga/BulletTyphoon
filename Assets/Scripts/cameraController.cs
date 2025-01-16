@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cameraControerler : MonoBehaviour
+public class cameraController : MonoBehaviour
 {
     [SerializeField] int sens;
     [SerializeField] int lockVertMin, lockVertMax;
@@ -20,8 +20,8 @@ public class cameraControerler : MonoBehaviour
     {
      
         // Get inputs
-        float mouseX =Input.GetAxis("mouseX X") * sens * Time.deltaTime;
-        float mouseY =Input.GetAxis("mouseX Y") * sens * Time.deltaTime;
+        float mouseX =Input.GetAxis("Mouse X") * sens * Time.deltaTime;
+        float mouseY =Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
 
         // Tie the mouseY to the rotX of the camera - look up and down
         if (invertY)
@@ -29,7 +29,7 @@ public class cameraControerler : MonoBehaviour
         else
             rotX -= mouseY;
 
-        // Clamp the cmera on the x-Axis
+        // Clamp the camera on the x-Axis
         rotX = Mathf.Clamp(rotX, lockVertMin, lockVertMax);
 
         // Rotate the camera on the X-Axis
