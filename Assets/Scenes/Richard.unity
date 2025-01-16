@@ -212,6 +212,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 4934030539565230837, guid: 6ddccf276632204428262c82ee805293, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934030539565230837, guid: 6ddccf276632204428262c82ee805293, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: 6ddccf276632204428262c82ee805293, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1805,10 +1813,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
-      propertyPath: directionalLight
-      value: 
-      objectReference: {fileID: 705507994}
     - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
       propertyPath: m_Name
       value: Weather Changer
@@ -2316,13 +2320,13 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
+  - {fileID: 199453158}
+  - {fileID: 535790783}
   - {fileID: 721796489}
   - {fileID: 1198651837}
-  - {fileID: 199453158}
   - {fileID: 1966407065}
   - {fileID: 1604558974}
   - {fileID: 2054169038}
-  - {fileID: 535790783}
   - {fileID: 758658078}
   - {fileID: 342862708}
   - {fileID: 599859086}
