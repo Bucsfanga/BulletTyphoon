@@ -30,6 +30,7 @@ public class Class_enemyAI : MonoBehaviour, Class_IDamage
     void Start()
     {
         colorOrig = model.material.color;
+        Class_gameManager.instance.updateGaemGoal(1);
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class Class_enemyAI : MonoBehaviour, Class_IDamage
 
     bool canSeePlayer()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        /*playerDir = Class_gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
@@ -59,7 +60,7 @@ public class Class_enemyAI : MonoBehaviour, Class_IDamage
             // Hey can you see the player
             if(hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
             {
-                agent.SetDestination(gameManager.instance.player.transform.position);
+                agent.SetDestination(Class_gameManager.instance.player.transform.position);
 
                 if (agent.remainigDistance <= agent.stoppingDistance)
                 {
@@ -72,15 +73,15 @@ public class Class_enemyAI : MonoBehaviour, Class_IDamage
                 }
                 return true;
             }
-        }
+        }*/
 
         return false;
     }
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDIr.x,0, playerDir.z))
-            transform.
+        //Quaternion rot = Quaternion.LookRotation(new Vector3(playerDIr.x,0, playerDir.z))
+            //transform.
     }
 
     public void takeDamage(int amount)
@@ -91,6 +92,7 @@ public class Class_enemyAI : MonoBehaviour, Class_IDamage
 
         if (HP <= 0)
         {
+            Class_gameManager.instance.updateGaemGoal(-1);
             Destroy(gameObject);
         }
     }

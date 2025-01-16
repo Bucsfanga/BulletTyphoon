@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public Slider volumeSlider;
 
     private bool isPaused = false;
-    private AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
 
     int goalCount;
 

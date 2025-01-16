@@ -5,9 +5,10 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     enum damageType { moving, stationary, falling, flood }
+
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
-    private float damageRadius;
+    
     [SerializeField] int damageAmount, damageInterval;
     [SerializeField] float speed;
     [SerializeField] int destroyTime;
@@ -15,6 +16,7 @@ public class Damage : MonoBehaviour
 
     private bool hasDealtDamage = false; // Flag to prevent multiple applications of damage
     private bool isApplyingDamage = false;
+    private float damageRadius;
 
     public void setDamageRadius(float radius)
     {

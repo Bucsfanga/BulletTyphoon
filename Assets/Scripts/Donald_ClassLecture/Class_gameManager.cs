@@ -7,14 +7,19 @@ public class Class_gameManager : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject menuWin;
+    [SerializeField] GameObject menuLose;
 
     //[SerializeField] GameObject menuPause;
 
+    public GameObject damagePanel;
 
     public bool isPaused;
 
+    int goalCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         instance = this;
     }
@@ -57,6 +62,21 @@ public class Class_gameManager : MonoBehaviour
     public void updateGaemGoal(int amount)
     {
         goalCount += amount;
-        goalCountText.text = goalC
+        //goalCountText.text = goalCount;
+
+        //WIn Condition
+        if(goalCount<= 0)
+        {
+            statePause();
+            menuActive = menuWin;
+            menuActive.SetActive(true);
+        }
+    }
+
+    public void youLose()
+    {
+        statePause();
+        menuActive = menuLose;
+        menuActive.SetActive(true);
     }
 }

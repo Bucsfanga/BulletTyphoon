@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
-public class Class_playerController : MonoBehaviour
+public class Class_playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreMask;
 
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMode;
     [SerializeField] int jumpMax;
@@ -92,5 +94,23 @@ public class Class_playerController : MonoBehaviour
                 dmg.takeDamage(shootDamage);
             }
         }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        StartCoroutine(flashDamagePanel());
+
+        if (HP <= 0)
+        {
+            Class_gameManager.instance.youLose();
+        }
+    }
+
+    IEnumerator flashDamagePanel()
+    {
+        Class_gameManager.instance.damagePanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        Class_gameManager.instance.damagePanel.SetActive(false);
     }
 }
