@@ -572,10 +572,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4204414189270545754, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1233996989}
-    - targetCorrespondingSourceObject: {fileID: 4204414189270545754, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1795110006}
+    - targetCorrespondingSourceObject: {fileID: 5878915823241560524, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1233996989}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
 --- !u!1001 &536387073
@@ -584,7 +584,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2073876545}
+    m_TransformParent: {fileID: 1389507817}
     m_Modifications:
     - target: {fileID: 100052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_Name
@@ -592,15 +592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.096
+      value: -0.09600031
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.167
+      value: -0.16700065
       objectReference: {fileID: 0}
     - target: {fileID: 400052, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1415,6 +1415,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: affdf276ae2522c4f8647f8787fb0971, type: 3}
+--- !u!4 &1389507817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5878915823241560524, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+  m_PrefabInstance: {fileID: 535790783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1403797305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1755,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: directionalLight
+      value: 
+      objectReference: {fileID: 705507994}
     - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
       propertyPath: m_Name
       value: Weather Changer

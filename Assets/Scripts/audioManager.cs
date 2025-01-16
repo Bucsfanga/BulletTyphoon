@@ -52,7 +52,7 @@ public class audioManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Debug.LogError($"Destroying audio manager on {gameObject.name} because instance already exists");
+            //Debug.LogError($"Destroying audio manager on {gameObject.name} because instance already exists");
             Destroy(gameObject);
         }
     }
@@ -147,7 +147,7 @@ public class audioManager : MonoBehaviour
         }
         if (musicClip == null)
         {
-            Debug.LogError($"Failed to find audio: {name}");
+            //Debug.LogError($"Failed to find audio: {name}");
             return;
         }
 

@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;
+        colorOrig = model.sharedMaterial.color;
         GameManager.instance.updateGameGoal(1);
     }
 
@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
         float agentSpeed = agent.velocity.normalized.magnitude;
-        float animSpeed = anim.GetFloat("speed");
+        float animSpeed = anim.GetFloat("Speed");
 
         anim.SetFloat("Speed", Mathf.MoveTowards(animSpeed, agentSpeed, Time.deltaTime * animSpeedTrans));
 
@@ -54,14 +54,14 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Playyer"))
+        if(other.CompareTag("Player"))
         {
             playerInRange = true;
         }
     } 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Playyer"))
+        if(other.CompareTag("Player"))
         {
             playerInRange = false;
         }
@@ -119,9 +119,9 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
-        model.material.color = Color.red;
+        model.sharedMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        model.sharedMaterial.color = colorOrig;
     }
 
     IEnumerator shoot()
