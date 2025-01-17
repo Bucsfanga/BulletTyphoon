@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour, IDamage
 
     int jumpCount;
     int HPOrig;
+    float baseSpeed;
 
     bool _isSprinting;
     bool _isJumping;
@@ -61,8 +62,8 @@ public class playerController : MonoBehaviour, IDamage
         get => _isSprinting;
         set
         {
-            speed = value ? (speed *= sprintMod) : (speed /= sprintMod);
             _isSprinting = value;
+            speed = value ? baseSpeed * sprintMod : baseSpeed;
         }
     }
 
@@ -92,6 +93,7 @@ public class playerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOrig = HP;
+        baseSpeed = speed;
         updatePlayerUI();
         camController = playerCamera.GetComponent<cameraController>();
     }
@@ -110,18 +112,22 @@ public class playerController : MonoBehaviour, IDamage
 
     void movement()
     {
+        // Movement checks
         if (controller.isGrounded)
         {
             isJumping = false;
-        }
 
-        moveDir = Input.GetAxis("Horizontal") * transform.right +
-            Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveDir * speed * Time.deltaTime);
+            // Ensures correct speed when landing
+            isSprinting = Input.GetButton("Sprint");
+        }
 
         jump();
         crouch();
 
+        // Movement implementation
+        moveDir = Input.GetAxis("Horizontal") * transform.right +
+            Input.GetAxis("Vertical") * transform.forward;
+        controller.Move(moveDir * speed * Time.deltaTime);
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
 
@@ -158,11 +164,9 @@ public class playerController : MonoBehaviour, IDamage
             if (!isSprinting)
                 isSprinting = true;
         }
-        else if (Input.GetButtonUp("Sprint") && !isJumping && !isCrouching)
+        else if (Input.GetButtonUp("Sprint") && !isJumping)
         {
-            if (isCrouching) return;
-            if (isSprinting)
-                isSprinting = false;
+            isSprinting = false;
         }
     }
 
@@ -184,14 +188,16 @@ public class playerController : MonoBehaviour, IDamage
         {
             if (isSprinting)
             {
-                // Stop sprinting if crouch is pressed
                 isSprinting = false;
             }
-            if (!isJumping)
+            if (isJumping)
+            {
+                return;
+            }
+            else
             {
                 isCrouching = !isCrouching;
             }
-            if (isJumping) return;
         }
     }
 
@@ -252,7 +258,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void updatePlayerUI()
     {
-        GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        //GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
 
