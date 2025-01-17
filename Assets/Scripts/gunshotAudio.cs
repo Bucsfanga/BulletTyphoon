@@ -3,7 +3,7 @@ using UnityEngine;
 public class gunshotAudio : MonoBehaviour
 {
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource gunShotSource;
+    [SerializeField] private AudioSource gunAudioSource;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip gunShotClip;
@@ -26,16 +26,37 @@ public class gunshotAudio : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if(gunShotSource == null)
+        // If the audio source is not set, add an audio source to the game object
+        if (gunAudioSource == null)
         {
-            gunShotSource = gameObject.AddComponent<AudioSource>();
-            gunShotSource.playOnAwake = false;
+            gunAudioSource = gameObject.AddComponent<AudioSource>();
+            gunAudioSource.playOnAwake = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        gunShotSource.PlayOn
+        if (Input.GetButtonDown(fireButton))
+        {
+            PlayGunShot();
+        }
+    }
+
+    void PlayGunShot()
+    {
+        if (useRandomPitch)
+        {
+            gunAudioSource.pitch = Random.Range(minPitch, maxPitch);
+        }
+        gunAudioSource.PlayOneShot(gunShotClip, volumeMultiplier);
+    }
+
+    void PlayGunReload()
+    { 
+    if(Input.GetButtonDown(reloadButton))
+        {
+            gunAudioSource.PlayOneShot(gunReloadClip);
+        }
     }
 }
