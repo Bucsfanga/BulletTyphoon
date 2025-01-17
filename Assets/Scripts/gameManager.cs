@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public Slider volumeSlider;
 
     private bool isPaused = false;
+    private AudioSource audioSource;
 
     int goalCount;
 
@@ -55,12 +56,12 @@ public class GameManager : MonoBehaviour
     {
         fullWidth = healthFill.sizeDelta.x;
 
-        /*audioSource = Camera.main.GetComponent<AudioSource>();
+        audioSource = Camera.main.GetComponent<AudioSource>();
         if (audioSource != null)
         {
             volumeSlider.value = audioSource.volume;
             volumeSlider.onValueChanged.AddListener(UpdateVolume);
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -231,10 +232,10 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     public void UpdateVolume(float volume)
     {
-       /* if (audioSource != null)
+        if (audioSource != null)
         {
             audioSource.volume = volume;  // Update audio source volume
-        }*/
+        }
     }
 
     public void CloseSettings()
