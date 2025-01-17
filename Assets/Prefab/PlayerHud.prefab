@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7633322929345048434}
   - component: {fileID: 2326086873236176704}
   m_Layer: 5
-  m_Name: PlayerHP
+  m_Name: PlayerHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
