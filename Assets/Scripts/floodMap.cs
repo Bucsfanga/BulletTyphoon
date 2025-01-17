@@ -36,7 +36,8 @@ public class floodMap : MonoBehaviour
 
         // Display incoming warning countdown
         yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
-        
+        yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 3));
+
         isFlooding = true;
         float elapsedTime = 0f;
         while (elapsedTime < floodDuration)
@@ -106,6 +107,7 @@ public class floodMap : MonoBehaviour
             if (warningText != null)
             {
                 warningText.text = string.Format(message, i);
+                audioManager.instance.DelayPlaySound("WarningSirenFinal", 3);
             }
             yield return new WaitForSeconds(1f);
         }
