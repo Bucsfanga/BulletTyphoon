@@ -11,7 +11,7 @@ public class gunshotAudio : MonoBehaviour
     [SerializeField] private AudioClip gunReloadClip;
 
     [Header("Input Detection")]
-    [SerializeField] private string fireButton = "Fire1";
+    [SerializeField] private string fireButton = "Shoot";
     [SerializeField] private string reloadButton = "Reload";
     [SerializeField] private bool useInputDetection = true;
 

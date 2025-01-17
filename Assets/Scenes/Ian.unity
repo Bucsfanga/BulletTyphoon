@@ -569,7 +569,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5878915823241560524, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1233996989}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7392056728957234339, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2073876546}
+    - targetCorrespondingSourceObject: {fileID: 7392056728957234339, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2073876552}
   m_SourcePrefab: {fileID: 100100000, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
 --- !u!1001 &536387073
 PrefabInstance:
@@ -1591,6 +1597,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e28dc7210d1244c85ba78d7814867b, type: 3}
+--- !u!1 &1492561257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7392056728957234339, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+  m_PrefabInstance: {fileID: 535790783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1504579429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2118,6 +2129,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4204414189270545754, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
   m_PrefabInstance: {fileID: 535790783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073876546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492561257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72c5c57c6333044cab7d21766f3590c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
+  gunClickClip: {fileID: 8300000, guid: 53f5b15c510bd214f86a4b4768bd977b, type: 3}
+  gunReloadClip: {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
+  fireButton: Fire1
+  reloadButton: Reload
+  useInputDetection: 1
+  volumeMultiplier: 7.66
+  useRandomPitch: 1
+  minPitch: 0.95
+  maxPitch: 1.05
+--- !u!81 &2073876552
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492561257}
+  m_Enabled: 1
 --- !u!1001 &7528231402877032907
 PrefabInstance:
   m_ObjectHideFlags: 0
