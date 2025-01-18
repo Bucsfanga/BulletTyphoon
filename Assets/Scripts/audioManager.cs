@@ -79,7 +79,6 @@ public class audioManager : MonoBehaviour
 
         //Set the audio source seetings automatically
         backgroundAudioSource.loop = true;
-        backgroundAudioSource.playOnAwake = false;
         backgroundAudioSource.volume = defaultBackgroundVolume;
 
         //Play the background audio on awake if the boolean is set to true (togglable in the inspector for testing)
@@ -134,25 +133,8 @@ public class audioManager : MonoBehaviour
 
     public void PlayBackgroundAudio(string name)
     {
-        //Initialize audio clip variable
-        AudioClip musicClip = null;
-        //Loop through audio clips and find the matching clip to the input name (if not found, log an error and return)
-        foreach (AudioClip clip in audioClips)
-        {
-            if (clip.name == name)
-            {
-                musicClip = clip;
-                break;
-            }
-        }
-        if (musicClip == null)
-        {
-            //Debug.LogError($"Failed to find audio: {name}");
-            return;
-        }
-
-        //Set the background audio source clip to the found clip, play the background audio, and fade in the audio
-        backgroundAudioSource.clip = musicClip;
+        //Set the background audio source clip to the background audio clip, play the background audio, and fade in the audio
+        backgroundAudioSource.clip = backgroundAudioClip;
         backgroundAudioSource.Play();
         StartCoroutine(FadeBackgroundAudio(fadeInDuration, defaultBackgroundVolume));
     }
