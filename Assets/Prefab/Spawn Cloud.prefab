@@ -46,5 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningCloud: {fileID: 1951853346521304662, guid: ca42e80b064a3b84490bbd02810d57f1, type: 3}
   cloudSpawnInterval: 1
+  spawnRadius: 30
   initialDelay: 1
+  spawnHeight: 100
   isTargetingPlayer: 0
+  weatherController: {fileID: 0}
