@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     int goalCount;
+    public int goalCheckpoint = 0;
 
     void Awake()
     {
@@ -126,12 +127,26 @@ public class GameManager : MonoBehaviour
         menuActive = null;
     }
 
+    // Track number of living enemies in level
     public void updateGameGoal(int amount)
     {
         goalCount += amount;
         goalCountText.text = goalCount.ToString("F0");
 
-        if (goalCount <= 0)
+        //if (goalCount <= 0)
+        //{
+        //    statePause();
+        //    menuActive = menuWin;
+        //    menuActive.SetActive(true);
+        //}
+    }
+
+    // Track win condition of player reaching goal position on level
+    public void updateGameWinCondition(int amount)
+    {
+        goalCheckpoint += amount;
+
+        if (goalCheckpoint >= 1)
         {
             statePause();
             menuActive = menuWin;
