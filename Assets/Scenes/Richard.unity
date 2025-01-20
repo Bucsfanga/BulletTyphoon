@@ -220,11 +220,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c725c16acef90c41b1c727853383a78, type: 3}
---- !u!20 &129151306 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7863667111643256090, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
-  m_PrefabInstance: {fileID: 535790783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &199453158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567,10 +562,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7392056728957234339, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1215430211}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
 --- !u!1001 &599859086
 PrefabInstance:
@@ -1140,31 +1132,6 @@ PrefabInstance:
       addedObject: {fileID: 1432988933}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}
---- !u!1 &1215430202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7392056728957234339, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
-  m_PrefabInstance: {fileID: 535790783}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1215430211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215430202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30fb7fb0b6f3407468479cf3b15d5808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0.35
-  range: 100
-  maxAmmo: 20
-  currentAmmo: 0
-  reloadTime: 2
-  fpsCam: {fileID: 129151306}
-  muzzleFlash: {fileID: 2137032511}
-  shootSound: {fileID: 0}
 --- !u!1001 &1215463566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2344,11 +2311,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
---- !u!198 &2137032511 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6088685422382910599, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
-  m_PrefabInstance: {fileID: 535790783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7528231402877032907
 PrefabInstance:
   m_ObjectHideFlags: 0
