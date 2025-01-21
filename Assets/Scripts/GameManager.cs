@@ -54,11 +54,11 @@ public class GameManager : MonoBehaviour
     {
         fullWidth = healthFill.sizeDelta.x;
 
-        audioSource = Camera.main.GetComponent<AudioSource>();
-        if (audioSource != null)
+      //  audioSource = Camera.main.GetComponent<AudioSource>();
+      //  if (audioSource != null)
         {
-            volumeSlider.value = audioSource.volume;
-            volumeSlider.onValueChanged.AddListener(UpdateVolume);
+        //    volumeSlider.value = audioSource.volume;
+       //     volumeSlider.onValueChanged.AddListener(UpdateVolume);
         }
     }
 
@@ -219,10 +219,10 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     public void UpdateVolume(float volume)
     {
-        if (audioSource != null)
-        {
-            audioSource.volume = volume;  // Update audio source volume
-        }
+       // if (audioSource != null)
+       // {
+       //     audioSource.volume = volume;  // Update audio source volume
+        //}
     }
 
     public void CloseSettings()
