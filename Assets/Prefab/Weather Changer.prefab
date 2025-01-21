@@ -84,11 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca545527f04aa41acbc6bcb4fb2588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainDropPrefab: {fileID: 0}
+  rainDropPrefab: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
   numberOfRaindrops: 1000
   spawnHeight: 50
   spawnAreaWidth: 50
   spawnAreaLength: 50
-  rainSpeed: 1500
+  rainSpeed: 500
   baseScale: {x: 0.04, y: 0.2, z: 0.04}
-  scaleVariation: 0.5
+  scaleVariation: 1
