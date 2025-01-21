@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public playerController playerScript;
     public GameObject damagePanel;
     public Image playerHPBar;
+    public GameObject creditsMenu;
 
     public TMP_Text goalCountText;
 
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         fullWidth = healthFill.sizeDelta.x;
+
+        mainMenu.SetActive(true);  // Show Main Menu at start
+        creditsMenu.SetActive(false);  // Ensure credits are hidden
 
         /*audioSource = Camera.main.GetComponent<AudioSource>();
         if (audioSource != null)
@@ -137,7 +141,17 @@ public class GameManager : MonoBehaviour
             menuActive.SetActive(true);
         }
     }
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
 
+    public void BackToMainMenu()
+    {
+        creditsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
     // ------------------------------
     // HUD Functions
     // ------------------------------

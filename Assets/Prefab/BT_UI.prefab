@@ -4743,6 +4743,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   damagePanel: {fileID: 5542092471514405164}
   playerHPBar: {fileID: 3122917409137324840}
+  credits: {fileID: 0}
   goalCountText: {fileID: 7039732524239520880}
   menuPause: {fileID: 3736460729613925873}
   menuActive: {fileID: 0}
