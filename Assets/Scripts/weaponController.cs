@@ -9,11 +9,6 @@ public class WeaponController : MonoBehaviour
     public int currentAmmo;
     public float reloadTime = 2f;
 
-    [Header("References")]
-    public Camera fpsCam;
-    public ParticleSystem muzzleFlash; // Optional
-    public AudioSource shootSound; // Optional
-
     private bool isReloading = false;
     private float nextTimeToFire = 0f;
 
@@ -24,10 +19,6 @@ public class WeaponController : MonoBehaviour
 
         // Update UI at start
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);
-
-        // Get camera if not assigned
-        if (fpsCam == null)
-            fpsCam = Camera.main;
     }
 
     void Update()
@@ -57,26 +48,6 @@ public class WeaponController : MonoBehaviour
 
         // Update UI
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);
-
-        // Play effects if assigned
-        if (muzzleFlash != null)
-            muzzleFlash.Play();
-        if (shootSound != null)
-            shootSound.Play();
-
-        // Raycast for hit detection
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        {
-            Debug.Log("Hit: " + hit.transform.name);
-
-            // Add hit effects or damage here
-            // Example:
-            // if (hit.transform.TryGetComponent<Target>(out Target target))
-            // {
-            //     target.TakeDamage(damage);
-            // }
-        }
     }
 
     void Reload()

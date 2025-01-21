@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4624903860389683253}
   - component: {fileID: 6558663849257660068}
   - component: {fileID: 3218192573131998190}
+  - component: {fileID: 141911432961518949}
   m_Layer: 0
   m_Name: Weather Changer
   m_TagString: Untagged
@@ -47,13 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stormSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   clearSkybox: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
-  directionalLight: {fileID: 0}
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
   stormFogDensity: 0.001
   clearFogDensity: 0
   transitionDuration: 1
   materialEffect: {fileID: 3218192573131998190}
+  rainManager: {fileID: 141911432961518949}
 --- !u!114 &3218192573131998190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +72,23 @@ MonoBehaviour:
   delayBeforeEffect: 5
   stormSmoothness: 0.5
   stormMetallic: 1
+--- !u!114 &141911432961518949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959107012602527694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ca545527f04aa41acbc6bcb4fb2588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rainDropPrefab: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+  numberOfRaindrops: 1000
+  spawnHeight: 30
+  spawnAreaWidth: 50
+  spawnAreaLength: 50
+  rainSpeed: 500
+  baseScale: {x: 0.04, y: 0.2, z: 0.04}
+  scaleVariation: 0.5

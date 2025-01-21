@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI interactPrompt;
 
     private float fullWidth;
+    private Light directionalLight; //variable for finding light and its intensity.
+    private float originalLightIntensity;
 
     // Settings Menu Elements
     public Slider volumeSlider;
@@ -48,6 +50,17 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+
+        //finding the direction light in the scene
+        directionalLight = Object.FindAnyObjectByType<Light>();
+        if (directionalLight != null)
+        {
+            originalLightIntensity = directionalLight.intensity;
+        }
+        else
+        {
+            Debug.LogWarning("No directional light found in the scene.");
+        }
     }
 
     void Start()
@@ -229,6 +242,25 @@ public class GameManager : MonoBehaviour
     {
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);  // Show Pause Menu after closing settings
+    }
+
+    // ------------------------------
+    // Weather Changer Function
+    // ------------------------------
+    public void setStormLighting(bool isStorm)
+    {
+        if (directionalLight != null)
+        {
+            if (isStorm)
+            {
+                directionalLight.intensity = originalLightIntensity * 0.5f; // This dims the light for the storm.
+
+            }
+            else
+            {
+                directionalLight.intensity = originalLightIntensity;// This returns the light to its original spot when storm is not active.
+            }
+        }
     }
 
 }

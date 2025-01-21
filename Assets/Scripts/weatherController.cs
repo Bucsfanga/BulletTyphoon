@@ -5,13 +5,13 @@ public class weatherController : MonoBehaviour
 {
     [SerializeField] Material stormSkybox;
     [SerializeField] Material clearSkybox;
-    [SerializeField] Light directionalLight;
     [SerializeField] Color stormAmbientLight = Color.gray;
     [SerializeField] Color clearAmbientLight = Color.white;
     [SerializeField] float stormFogDensity = 0.02f;
     [SerializeField] float clearFogDensity = 0.0f;
     [SerializeField] float transitionDuration = 2f; // Duration of the transition
     [SerializeField] private MaterialStormEffect materialEffect;
+    [SerializeField] private RainManager rainManager;
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
@@ -20,7 +20,7 @@ public class weatherController : MonoBehaviour
     {
         // Save original settings
         originalAmbientLight = RenderSettings.ambientLight;
-        originalLightIntensity = directionalLight.intensity;
+
 
         // this ensures the clear skybox is set as the active skybox on start up.
         RenderSettings.skybox = clearSkybox;
@@ -47,9 +47,12 @@ public class weatherController : MonoBehaviour
         RenderSettings.fog = true;
         RenderSettings.fogDensity = stormFogDensity;
 
-        if (directionalLight != null)
+        GameManager.instance.setStormLighting(true);
+
+        //This will start the rain effect
+        if (rainManager != null)
         {
-            directionalLight.intensity *= 0.5f; // Dim light
+            rainManager.StartRain();
         }
 
         if (materialEffect != null)
@@ -64,9 +67,12 @@ public class weatherController : MonoBehaviour
         RenderSettings.ambientLight = originalAmbientLight;
         RenderSettings.fog = false;
 
-        if (directionalLight != null)
+        GameManager.instance.setStormLighting(false);
+
+        //This will stop the rain effect.
+        if (rainManager != null)
         {
-            directionalLight.intensity = originalLightIntensity; // Restore light
+            rainManager.StopRain();
         }
 
         if (materialEffect != null)
