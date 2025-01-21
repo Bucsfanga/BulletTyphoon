@@ -1860,12 +1860,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5073855307578072613, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
-      propertyPath: scaleVariation
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073855307578072613, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
-      propertyPath: numberOfRaindrops
-      value: 1000
+      propertyPath: rainSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
       propertyPath: m_Name
