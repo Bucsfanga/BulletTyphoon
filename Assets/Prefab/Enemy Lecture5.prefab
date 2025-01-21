@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 5370814144153264616}
   - component: {fileID: 7547897407851271940}
   m_Layer: 0
-  m_Name: Enemy 1
+  m_Name: Enemy Lecture5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -958,6 +958,8 @@ MonoBehaviour:
   shootRate: 0.5
   FOV: 90
   animSpeedTrans: 1
+  roamPauseTime: 3
+  roamDist: 30
 --- !u!195 &6688558445443194076
 NavMeshAgent:
   m_ObjectHideFlags: 0

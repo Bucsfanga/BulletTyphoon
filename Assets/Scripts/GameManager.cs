@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Settings Menu Elements
     public Slider volumeSlider;
 
-    private bool isPaused = false;
+    public bool isPaused = false;
     private AudioSource audioSource;
 
     int goalCount;

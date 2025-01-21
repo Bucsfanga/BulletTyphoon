@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     #region Variables
     [SerializeField] CharacterController controller;
@@ -19,8 +21,11 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] float targetFOV;
     [SerializeField] private float zoomSpeed = 5f;
 
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
+    [SerializeField] float shootRate;
 
     cameraController camController;
 
@@ -30,6 +35,7 @@ public class playerController : MonoBehaviour, IDamage
     int jumpCount;
     int HPOrig;
     float baseSpeed;
+    int gunListPos;
 
     bool _isSprinting;
     bool _isJumping;
@@ -102,6 +108,13 @@ public class playerController : MonoBehaviour, IDamage
     void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+       
+        if(!GameManager.instance.isPaused)
+        {
+            movement();
+            selectGun();
+        }
+
         movement();
         sprint();
 
@@ -116,6 +129,7 @@ public class playerController : MonoBehaviour, IDamage
         if (controller.isGrounded)
         {
             isJumping = false;
+            jumpCount = 0;
 
             // Ensures correct speed when landing
             isSprinting = Input.GetButton("Sprint");
@@ -261,5 +275,37 @@ public class playerController : MonoBehaviour, IDamage
         GameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
 
+        changeGun();
+    }
+
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
+        }
+    }
+
+    void changeGun()
+    {
+        // Change player gun stats
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+
+        // Change the model
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
+    }
 }
