@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4624903860389683253}
   - component: {fileID: 6558663849257660068}
   - component: {fileID: 3218192573131998190}
+  - component: {fileID: 5073855307578072613}
   m_Layer: 0
   m_Name: Weather Changer
   m_TagString: Untagged
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 15.824104, y: 90.25613, z: -40.832176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2883642793256077504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6558663849257660068
@@ -47,13 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stormSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   clearSkybox: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
-  directionalLight: {fileID: 0}
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
   stormFogDensity: 0.001
   clearFogDensity: 0
   transitionDuration: 1
   materialEffect: {fileID: 3218192573131998190}
+  rainManager: {fileID: 5073855307578072613}
 --- !u!114 &3218192573131998190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +73,85 @@ MonoBehaviour:
   delayBeforeEffect: 5
   stormSmoothness: 0.5
   stormMetallic: 1
+--- !u!114 &5073855307578072613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959107012602527694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ca545527f04aa41acbc6bcb4fb2588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rainDrop: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+  numberOfRaindrops: 500
+  spawnHeight: 50
+  spawnAreaWidth: 30
+  spawnAreaLength: 30
+  rainSpeed: 1000
+  minScale: 0.05
+  maxScale: 0.2
+--- !u!1001 &3863809209071703732
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4624903860389683253}
+    m_Modifications:
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 998.2759
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 677.6439
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 40.832176
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+      propertyPath: m_Name
+      value: Rain Drop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+--- !u!4 &2883642793256077504 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+  m_PrefabInstance: {fileID: 3863809209071703732}
+  m_PrefabAsset: {fileID: 0}

@@ -11,6 +11,7 @@ public class weatherController : MonoBehaviour
     [SerializeField] float clearFogDensity = 0.0f;
     [SerializeField] float transitionDuration = 2f; // Duration of the transition
     [SerializeField] private MaterialStormEffect materialEffect;
+    [SerializeField] private RainManager rainManager;
 
     private Color originalAmbientLight;
     private float originalLightIntensity;
@@ -48,6 +49,12 @@ public class weatherController : MonoBehaviour
 
         GameManager.instance.setStormLighting(true);
 
+        //This will start the rain effect
+        if (rainManager != null)
+        {
+            rainManager.StartRain();
+        }
+
         if (materialEffect != null)
         {
             materialEffect.OnStormBegin();
@@ -61,6 +68,12 @@ public class weatherController : MonoBehaviour
         RenderSettings.fog = false;
 
         GameManager.instance.setStormLighting(false);
+
+        //This will stop the rain effect.
+        if (rainManager != null)
+        {
+            rainManager.StopRain();
+        }
 
         if (materialEffect != null)
         {

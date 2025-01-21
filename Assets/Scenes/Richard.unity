@@ -1859,10 +1859,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6558663849257660068, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
-      propertyPath: directionalLight
-      value: 
-      objectReference: {fileID: 705507994}
+    - target: {fileID: 5073855307578072613, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: rainSpeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 6959107012602527694, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
       propertyPath: m_Name
       value: Weather Changer
