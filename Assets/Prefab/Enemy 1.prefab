@@ -885,7 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393084646473715108}
   - component: {fileID: 8016658269722910028}
-  - component: {fileID: 5043725945079057392}
+  - component: {fileID: 2194793932007050247}
   - component: {fileID: 6688558445443194076}
   - component: {fileID: 5370814144153264616}
   - component: {fileID: 7547897407851271940}
@@ -905,7 +905,7 @@ Transform:
   m_GameObject: {fileID: 7464408434758840107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21, y: 0, z: 15.200001}
+  m_LocalPosition: {x: 18.399998, y: 0.0000011324883, z: 66.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -935,7 +935,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5043725945079057392
+--- !u!114 &2194793932007050247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -944,19 +944,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7464408434758840107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44a53bba269b25242b9b531d777f089b, type: 3}
+  m_Script: {fileID: 11500000, guid: db4ec3ac82c76c34fbc85c4e274ac7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6688558445443194076}
   anim: {fileID: 8016658269722910028}
   HP: 3
-  faceTargetSpeed: 8
+  faceTargetSpeed: 12
   model: {fileID: 5748435042456992796}
   shootPos: {fileID: 6181280681646725881}
   headPos: {fileID: 2892698414700248962}
   bullet: {fileID: 2541754595932758718, guid: 7c291fa046b9b884cb14959745a4e2d0, type: 3}
   shootRate: 0.5
-  FOV: 45
+  FOV: 90
   animSpeedTrans: 1
 --- !u!195 &6688558445443194076
 NavMeshAgent:
