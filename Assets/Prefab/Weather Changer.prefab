@@ -31,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 15.824104, y: 90.25613, z: -40.832176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 592339147243110669}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6558663849257660068
@@ -85,73 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ca545527f04aa41acbc6bcb4fb2588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainDrop: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
+  rainDropPrefab: {fileID: 0}
   numberOfRaindrops: 1000
   spawnHeight: 50
-  spawnAreaWidth: 30
-  spawnAreaLength: 30
-  rainSpeed: 800
+  spawnAreaWidth: 50
+  spawnAreaLength: 50
+  rainSpeed: 1500
   baseScale: {x: 0.04, y: 0.2, z: 0.04}
   scaleVariation: 0.5
---- !u!1001 &1559277390319132537
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4624903860389683253}
-    m_Modifications:
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1014.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 767.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-      propertyPath: m_Name
-      value: Rain Drop
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
---- !u!4 &592339147243110669 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2133514174624358004, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
-  m_PrefabInstance: {fileID: 1559277390319132537}
-  m_PrefabAsset: {fileID: 0}

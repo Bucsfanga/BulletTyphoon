@@ -3,7 +3,7 @@ using UnityEngine;
 public class RainManager : MonoBehaviour
 {
     [Header("Rain Settings")]
-    [SerializeField] private GameObject rainDrop;
+    [SerializeField] private GameObject rainDropPrefab;
     [SerializeField] private int numberOfRaindrops = 1000;
     [SerializeField] private float spawnHeight = 20f;
     [SerializeField] private float spawnAreaWidth = 30f;
@@ -11,8 +11,8 @@ public class RainManager : MonoBehaviour
     [SerializeField] private float rainSpeed = 10f;
 
     [Header("Raindrop Scale")]
-    [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f); // This is the default raindrop scale
-    [SerializeField] private float scaleVariation = 0.2f; // This is so the raindrops dont look exactly the same as they fall, by default, it is set to %20.
+    [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f); // Default raindrop scale
+    [SerializeField] private float scaleVariation = 0.2f; // How much the scale can vary (20% by default)
 
     private GameObject[] raindrops;
     private bool isRaining = false;
@@ -24,7 +24,7 @@ public class RainManager : MonoBehaviour
         raindrops = new GameObject[numberOfRaindrops];
         for (int i = 0; i < numberOfRaindrops; i++)
         {
-            raindrops[i] = Instantiate(rainDrop, Vector3.zero, Quaternion.Euler(0, 0, 0));
+            raindrops[i] = Instantiate(rainDropPrefab, Vector3.zero, Quaternion.Euler(0, 0, 0));
             raindrops[i].transform.parent = transform;
             raindrops[i].SetActive(false);
 
