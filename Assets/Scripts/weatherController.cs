@@ -5,7 +5,6 @@ public class weatherController : MonoBehaviour
 {
     [SerializeField] Material stormSkybox;
     [SerializeField] Material clearSkybox;
-    [SerializeField] Light directionalLight;
     [SerializeField] Color stormAmbientLight = Color.gray;
     [SerializeField] Color clearAmbientLight = Color.white;
     [SerializeField] float stormFogDensity = 0.02f;
@@ -20,7 +19,7 @@ public class weatherController : MonoBehaviour
     {
         // Save original settings
         originalAmbientLight = RenderSettings.ambientLight;
-        originalLightIntensity = directionalLight.intensity;
+ 
 
         // this ensures the clear skybox is set as the active skybox on start up.
         RenderSettings.skybox = clearSkybox;
@@ -47,10 +46,7 @@ public class weatherController : MonoBehaviour
         RenderSettings.fog = true;
         RenderSettings.fogDensity = stormFogDensity;
 
-        if (directionalLight != null)
-        {
-            directionalLight.intensity *= 0.5f; // Dim light
-        }
+        GameManager.instance.setStormLighting(true);
 
         if (materialEffect != null)
         {
@@ -64,10 +60,7 @@ public class weatherController : MonoBehaviour
         RenderSettings.ambientLight = originalAmbientLight;
         RenderSettings.fog = false;
 
-        if (directionalLight != null)
-        {
-            directionalLight.intensity = originalLightIntensity; // Restore light
-        }
+        GameManager.instance.setStormLighting(false);
 
         if (materialEffect != null)
         {
