@@ -9,8 +9,10 @@ public class RainManager : MonoBehaviour
     [SerializeField] private float spawnAreaWidth = 30f;
     [SerializeField] private float spawnAreaLength = 30f;
     [SerializeField] private float rainSpeed = 10f;
-    [SerializeField] private float minScale = 0.5f;
-    [SerializeField] private float maxScale = 1.5f;
+
+    [Header("Raindrop Scale")]
+    [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f); // This is the default raindrop scale
+    [SerializeField] private float scaleVariation = 0.2f; // This is so the raindrops dont look exactly the same as they fall, by default, it is set to %20.
 
     private GameObject[] raindrops;
     private bool isRaining = false;
@@ -26,9 +28,13 @@ public class RainManager : MonoBehaviour
             raindrops[i].transform.parent = transform;
             raindrops[i].SetActive(false);
 
-            // Randomize the scale of each raindrop
-            float randomScale = Random.Range(minScale, maxScale);
-            raindrops[i].transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+            // Apply scale with slight random variation
+            float randomVariation = 1f + Random.Range(-scaleVariation, scaleVariation);
+            raindrops[i].transform.localScale = new Vector3(
+                baseScale.x * randomVariation,
+                baseScale.y * randomVariation,
+                baseScale.z * randomVariation
+            );
         }
 
         // Find the player
