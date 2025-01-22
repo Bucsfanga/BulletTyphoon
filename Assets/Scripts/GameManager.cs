@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     public RectTransform healthFill;
 
     public TextMeshProUGUI ammoCounter;
+    public Image[] ammoBullets; // Array to hold the bullet images
+    public float bulletAlpha = 0.3f; // Alpha value for empty bullets
+
     public TextMeshProUGUI interactPrompt;
 
     private float fullWidth;
@@ -172,12 +175,36 @@ public class GameManager : MonoBehaviour
     // ------------------------------
 
 
+    // setting up the bullet count functions
+    public void UpdateAmmoBorder(int currentAmmo, int maxAmmo)
+    {
+        // Calculate how many bullets should be shown as "filled"
+        float bulletsToShow = (float)currentAmmo / maxAmmo * ammoBullets.Length;
 
+        // Update each bullet image
+        for (int i = 0; i < ammoBullets.Length; i++)
+        {
+            Color bulletColor = ammoBullets[i].color;
+
+            // If this bullet should be "filled"
+            if (i < bulletsToShow)
+            {
+                bulletColor.a = .5f; // change opacity
+            }
+            else
+            {
+                bulletColor.a = bulletAlpha; // Reduced opacity for empty bullets
+            }
+
+            ammoBullets[i].color = bulletColor;
+        }
+    }
 
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
     {
         ammoCounter.text = $"Ammo: {currentAmmo}/{maxAmmo}";
+        UpdateAmmoBorder(currentAmmo, maxAmmo);
     }
 
     public void ShowInteractionPrompt(string message)
