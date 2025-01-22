@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fb7fb0b6f3407468479cf3b15d5808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGunStats: {fileID: 0}
+  currentGunStats: {fileID: 11400000, guid: 534be40e4c5475a449cc5b4c78081142, type: 2}
   reloadTime: 2
 --- !u!23 &295099188394051281
 MeshRenderer:
