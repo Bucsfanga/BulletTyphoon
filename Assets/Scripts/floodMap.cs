@@ -45,8 +45,9 @@ public class floodMap : MonoBehaviour
             currentTargetPosition = new Vector3(startPosition.x, Mathf.Min(currentTargetPosition.y + floodLevelHeight, startPosition.y + maxFloodHeight), startPosition.z);
 
             // Display warning before flood rises and play flood warning sound
-            yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
             yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
+            yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
+            
 
             isFlooding = true;
 
@@ -94,7 +95,7 @@ public class floodMap : MonoBehaviour
             if (warningText != null)
             {
                 warningText.text = string.Format(message, i);
-                audioManager.instance.DelayPlaySound("WarningSirenFinal", 0);
+                
             }
             yield return new WaitForSeconds(1f);
         }
