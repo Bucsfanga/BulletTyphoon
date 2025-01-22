@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8173484540328783845}
   - component: {fileID: 4480636203663141971}
   - component: {fileID: 5084758928411599102}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Flood Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.5, z: 0}
-  m_LocalScale: {x: 300, y: 4, z: 300}
+  m_LocalScale: {x: 180, y: 50, z: 155}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,6 @@ MonoBehaviour:
   floodStartTime: 15
   maxFloodHeight: 30
   warningDuration: 10
-  incomingWarningText: {fileID: 0}
-  submergedOverlay: {fileID: 0}
 --- !u!33 &944368518931695211
 MeshFilter:
   m_ObjectHideFlags: 0
