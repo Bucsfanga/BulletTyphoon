@@ -26,6 +26,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
+    [SerializeField] private WeaponController weaponController;
 
     cameraController camController;
 
@@ -303,6 +304,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
+
+        // this updates the weapon controller when a different weapon is currently equipped.
+        if (weaponController != null) 
+        {
+            weaponController.OnGunChanged(gunList[gunListPos]);
+        }
 
         // Change the model
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
