@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 4204414189270545754}
   - component: {fileID: 2930703826504036120}
   - component: {fileID: 4228352413156273655}
+  - component: {fileID: 4639156283568960086}
   - component: {fileID: 295099188394051281}
   - component: {fileID: 3665577372538198858}
   - component: {fileID: 5025794513211620947}
@@ -304,9 +305,26 @@ MonoBehaviour:
   zoomSpeed: 5
   gunList: []
   gunModel: {fileID: 3220929859451520127}
-  shootDamage: 1
-  shootDist: 100
-  shootRate: 0.5
+  shootDamage: 0
+  shootDist: 0
+  shootRate: 0
+--- !u!114 &4639156283568960086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392056728957234339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fb7fb0b6f3407468479cf3b15d5808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.1
+  range: 100
+  maxAmmo: 20
+  currentAmmo: 0
+  reloadTime: 2
 --- !u!23 &295099188394051281
 MeshRenderer:
   m_ObjectHideFlags: 0
