@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     int goalCount;
     public int goalCheckpoint = 0;
+    public TMP_Text incomingWarningText;
+    public GameObject submergedOverlay;
 
     void Awake()
     {
