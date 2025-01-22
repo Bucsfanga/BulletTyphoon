@@ -4311,7 +4311,7 @@ MonoBehaviour:
   menuActive: {fileID: 0}
   menuWin: {fileID: 5117835524347632095}
   menuLose: {fileID: 4744907706425060284}
-  healthFill: {fileID: 0}
+  healthFill: {fileID: 2110780405160899831}
   ammoCounter: {fileID: 5402528392569471356}
   ammoBullets:
   - {fileID: 5590215681251567618}
@@ -4337,6 +4337,8 @@ MonoBehaviour:
   bulletAlpha: 0.3
   interactPrompt: {fileID: 0}
   volumeSlider: {fileID: 0}
+  isPaused: 0
+  goalCheckpoint: 0
 --- !u!1001 &440820279168519797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4713,6 +4715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &2110780405160899831 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3771781541223618947, guid: 5b47b3f377cf7cf49b710fc0852e1f3a, type: 3}
+  m_PrefabInstance: {fileID: 2959692662748884340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3110765077125038295 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 160256639507672483, guid: 5b47b3f377cf7cf49b710fc0852e1f3a, type: 3}
