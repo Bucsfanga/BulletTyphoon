@@ -86,9 +86,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rainDropPrefab: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
   numberOfRaindrops: 1000
-  spawnHeight: 30
+  spawnHeight: 60
   spawnAreaWidth: 50
   spawnAreaLength: 50
-  rainSpeed: 500
-  baseScale: {x: 0.04, y: 0.2, z: 0.04}
+  rainSpeed: 1300
+  baseScale: {x: 0.05, y: 0.2, z: 0.05}
   scaleVariation: 0.5
