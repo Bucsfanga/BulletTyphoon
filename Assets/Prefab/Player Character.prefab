@@ -308,6 +308,7 @@ MonoBehaviour:
   shootDamage: 0
   shootDist: 0
   shootRate: 0
+  weaponController: {fileID: 4639156283568960086}
 --- !u!114 &4639156283568960086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,10 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fb7fb0b6f3407468479cf3b15d5808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.1
-  range: 100
-  maxAmmo: 20
-  currentAmmo: 0
+  currentGunStats: {fileID: 0}
   reloadTime: 2
 --- !u!23 &295099188394051281
 MeshRenderer:
