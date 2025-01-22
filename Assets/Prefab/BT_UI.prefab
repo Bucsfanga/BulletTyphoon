@@ -2095,7 +2095,7 @@ GameObject:
   - component: {fileID: 1235830826857571716}
   - component: {fileID: 4935772337753944012}
   m_Layer: 5
-  m_Name: Submerged Underwater
+  m_Name: Submerged Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4299,10 +4299,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 5996096419211561618}
-  hud: {fileID: 0}
+  hud: {fileID: 1377207491128861346}
   pauseMenu: {fileID: 3736460729613925873}
   settingsMenu: {fileID: 0}
-  player: {fileID: 7392056728957234339, guid: 7591bb6d292a18842b74e5739210a85f, type: 3}
+  player: {fileID: 0}
   playerScript: {fileID: 0}
   damagePanel: {fileID: 5542092471514405164}
   playerHPBar: {fileID: 8715877879688395109}
@@ -4339,6 +4339,8 @@ MonoBehaviour:
   volumeSlider: {fileID: 0}
   isPaused: 0
   goalCheckpoint: 0
+  incomingWarningText: {fileID: 7167304202022905489}
+  submergedOverlay: {fileID: 4518836500613931572}
 --- !u!1001 &440820279168519797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4693,6 +4695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1377207491128861346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4183318629905076182, guid: 5b47b3f377cf7cf49b710fc0852e1f3a, type: 3}
+  m_PrefabInstance: {fileID: 2959692662748884340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1588715515543298683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4548266822291820303, guid: 5b47b3f377cf7cf49b710fc0852e1f3a, type: 3}
