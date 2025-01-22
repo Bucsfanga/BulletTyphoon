@@ -3574,11 +3574,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 138.66812
+      value: 2.84
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.900002
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3586,19 +3586,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659259
+      value: 0.9456159
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.258819
+      value: 0.3252854
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3606,7 +3606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -30
+      value: 37.966
       objectReference: {fileID: 0}
     - target: {fileID: 4204414189270545754, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3619,7 +3619,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7392056728957234339, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 915480357}
   m_SourcePrefab: {fileID: 100100000, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
 --- !u!1001 &413466326
 PrefabInstance:
@@ -6452,6 +6455,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 103602211527389925, guid: 1723e0b72f658f94abf3c5dc5c760f17, type: 3}
   m_PrefabInstance: {fileID: 801598994}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &915480352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7392056728957234339, guid: c9ae51f61bc7fb7488f30b8418f86717, type: 3}
+  m_PrefabInstance: {fileID: 409368104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &915480357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915480352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fb7fb0b6f3407468479cf3b15d5808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.1
+  range: 100
+  maxAmmo: 20
+  currentAmmo: 0
+  reloadTime: 2
 --- !u!4 &921200804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 103602211527389925, guid: 1723e0b72f658f94abf3c5dc5c760f17, type: 3}
@@ -13377,6 +13402,10 @@ PrefabInstance:
     - target: {fileID: 5664373331680999821, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543825573840225071, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
+      propertyPath: initialDelay
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7543825573840225071, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
       propertyPath: weatherController
