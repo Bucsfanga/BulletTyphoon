@@ -68,11 +68,13 @@ public class Damage : MonoBehaviour
     {
         isApplyingDamage = true;
 
-        while (true)
+        while (dmg != null && ((MonoBehaviour)dmg) != null)
         {
             dmg.takeDamage(damageAmount);
             yield return new WaitForSeconds(damageInterval); // Damage interval
         }
+
+        isApplyingDamage = false;
     }
 
     private void OnTriggerExit(Collider other)

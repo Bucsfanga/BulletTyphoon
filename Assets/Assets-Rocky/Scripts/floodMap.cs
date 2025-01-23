@@ -127,7 +127,7 @@ public class floodMap : MonoBehaviour
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level
-            bool isUnderwater = player.position.y < currentFloodHeight;
+            bool isUnderwater = player.position.y < currentFloodHeight + 26.3;
             submergedOverlay.SetActive(isUnderwater);
 
             //Debug.Log($"Player Y: {player.position.y}, Water Y: {currentFloodHeight}, Underwater: {isUnderwater}");

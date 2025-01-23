@@ -305,9 +305,9 @@ MonoBehaviour:
   zoomSpeed: 5
   gunList: []
   gunModel: {fileID: 3220929859451520127}
-  shootDamage: 1
-  shootDist: 150
-  shootRate: 0.25
+  shootDamage: 0
+  shootDist: 0
+  shootRate: 0
   weaponController: {fileID: 4639156283568960086}
 --- !u!114 &4639156283568960086
 MonoBehaviour:
