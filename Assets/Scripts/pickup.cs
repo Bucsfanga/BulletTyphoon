@@ -21,10 +21,10 @@ public class pickup : MonoBehaviour
             pick.getGunStats(gun);
 
             //This will find and update the weapon controller
-            WeaponController platyerWeaponController = other.GetComponent<WeaponController>();
-            if (platyerWeaponController != null) 
+            WeaponController playerWeaponController = other.GetComponent<WeaponController>();
+            if (playerWeaponController != null) 
             {
-                platyerWeaponController.OnGunChanged(gun);
+                playerWeaponController.OnGunChanged(gun);
             }
 
             Destroy(gameObject);
