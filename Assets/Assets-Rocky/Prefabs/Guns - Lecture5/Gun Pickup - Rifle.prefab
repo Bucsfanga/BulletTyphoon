@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 4b0b52ecf758bc2408096be93489fb9c, type: 2}
-  weaponController: {fileID: 0}
 --- !u!33 &8258798531000037636
 MeshFilter:
   m_ObjectHideFlags: 0

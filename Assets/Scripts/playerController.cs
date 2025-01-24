@@ -31,7 +31,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    [SerializeField] private WeaponController weaponController;
+    [SerializeField] int ammoCur;
+    [SerializeField] int ammoMax;
+    [SerializeField] float reloadTime;
+    public ParticleSystem hitEffect;
+    public AudioClip[] shootSound;
+    public float shootSoundVol;
+    public gunStats currentGunStats;
 
     [Header("-----Audio-----")]
     [SerializeField] AudioClip[] audSteps;
@@ -50,8 +56,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int HPOrig;
     float baseSpeed;
     int gunListPos;
+    int currentAmmo, maxAmmo;
     float shootTimer; // Lecture 6
 
+    bool isReloading;
     bool _isSprinting;
     bool _isJumping;
     bool _isCrouching;
@@ -114,6 +122,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (gunList.Count > 0)
+        {
+            gunListPos = 0;
+            changeGun();
+        }
+        else
+        {
+            Debug.LogError("Player has no starting gun assigned!");
+        }
+
         HPOrig = HP;
         baseSpeed = speed;
         updatePlayerUI();
@@ -125,15 +143,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
-       
-        if(!GameManager.instance.isPaused)
+
+        if (!GameManager.instance.isPaused)
         {
+            shootTimer += Time.deltaTime; // Increment timer every frame.
             movement();
             selectGun();
-            shootTimer += Time.deltaTime;
+            reload();
         }
 
-        movement();
         sprint();
 
         //Updates FOV with lerp
@@ -174,6 +192,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         jump();
         crouch();
+        reload();
 
         // Movement implementation
         moveDir = Input.GetAxis("Horizontal") * transform.right +
@@ -183,10 +202,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         playerVel.y -= gravity * Time.deltaTime;
 
         // Controls
-        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate)
+        if (gunList.Count > 0 && gunListPos >= 0 && gunListPos < gunList.Count)
         {
-            shoot();
+            if (Input.GetButton("Shoot") && shootTimer >= shootRate && !isReloading)
+            {
+                if (currentAmmo == 0 && !isReloading)
+                {
+                    reload();
+                }
+                else
+                {
+                    shoot();
+                }
+            }
         }
+
         if (Input.GetButtonDown("Fire2"))
         {
             zoom(30f);
@@ -197,7 +227,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             zoom(60f);
             camController.sens = (int)(camController.sens / 0.4);
         }
-
 
     }
 
@@ -257,45 +286,56 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void shoot()
     {
-        //if (gunListPos < 0 || gunListPos >=gunList.Count)
-        //{
-        //    Debug.LogError("gunListPos is out of bounds.");
-        //    return;
-        //}
-        //var currentGun = gunList[gunListPos];
+        if (shootTimer < shootRate) return; // Prevent shooting if timer is less than the fire rate.
 
-        //// Validate shoot sound
-        //if (currentGun.shootSound == null || currentGun.shootSound.Length == 0)
-        //{
-        //    Debug.LogError($"No shoot sound assigned for {currentGun.name}");
-        //    return;
-        //}
+        shootTimer = 0; // Reset the timer when shooting.
 
-        StartCoroutine(flashMuzzleFire());
-        shootTimer = 0;
+        // Play shooting sound
+        if (shootSound != null && shootSound.Length > 0)
+        {
+            aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);
+        }
 
-        /*aud.PlayOneShot(currentGun.shootSound[Random.Range(0, currentGun.shootSound.Length)], currentGun.shootSoundVol);*/ // Lecture 6
+        // Visual effects
+        //StartCoroutine(flashMuzzleFire());
 
         // Check for hit
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreMask))
         {
-            //// Validate hitEffect
-            //if (currentGun.hitEffect == null)
-            //{
-            //    Debug.LogError($"No hit effect assigned for {currentGun.name}");
-            //    return;
-            //}
+            Instantiate(hitEffect, hit.point, Quaternion.identity);
 
-            //Instantiate(currentGun.hitEffect, hit.point, Quaternion.identity); // Lecture 6
-
-            //Debug.Log(hit.collider.name);
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if (dmg != null)
             {
                 dmg.takeDamage(shootDamage);
             }
         }
+
+        // Reduce ammo
+        currentAmmo--;
+        GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+    }
+        
+    void reload()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
+        {
+            isReloading = true;
+            Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
+
+            // Wait for reload time
+            Invoke("FinishReload", reloadTime);
+        }
+    }
+
+    void FinishReload()
+    {
+        currentAmmo = maxAmmo;
+        isReloading = false;
+
+        GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+        Debug.Log("Reload complete!"); // Debug log to confirm.
     }
 
     IEnumerator flashMuzzleFire()
@@ -357,6 +397,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
 
+        currentGunStats = gun; // Store current gun for reference
         changeGun();
     }
 
@@ -380,12 +421,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
+        maxAmmo = gunList[gunListPos].ammoMax;
+        currentAmmo = gunList[gunListPos].ammoCur;
+        hitEffect = gunList[gunListPos].hitEffect;
+        shootSound = gunList[gunListPos].shootSound;
+        shootSoundVol = gunList[gunListPos].shootSoundVol;
 
-        //// this updates the weapon controller when a different weapon is currently equipped.
-        //if (weaponController != null) 
-        //{
-        //    weaponController.OnGunChanged(gunList[gunListPos]);
-        //}
+        GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);
 
         // Change the model
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;

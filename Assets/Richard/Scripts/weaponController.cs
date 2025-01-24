@@ -99,6 +99,7 @@ public class WeaponController : MonoBehaviour
         range = newGunStats.shootDist;
         maxAmmo = newGunStats.ammoMax;
         currentAmmo = newGunStats.ammoCur;
+        
 
         // Update UI
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);

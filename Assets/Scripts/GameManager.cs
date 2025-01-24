@@ -178,10 +178,10 @@ public class GameManager : MonoBehaviour
 
 
     // setting up the bullet count functions
-    public void UpdateAmmoBorder(int currentAmmo, int maxAmmo)
+    public void UpdateAmmoBorder(int ammoCur, int ammoMax)
     {
         // Calculate how many bullets should be shown as "filled"
-        float bulletsToShow = (float)currentAmmo / maxAmmo * ammoBullets.Length;
+        int bulletsToShow = Mathf.CeilToInt((float)ammoCur / ammoMax * ammoBullets.Length);
 
         // Update each bullet image
         for (int i = 0; i < ammoBullets.Length; i++)
@@ -203,10 +203,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void UpdateAmmo(int currentAmmo, int maxAmmo)
+    public void UpdateAmmo(int ammoCur, int ammoMax)
     {
-        ammoCounter.text = $"Ammo: {currentAmmo}/{maxAmmo}";
-        UpdateAmmoBorder(currentAmmo, maxAmmo);
+        ammoCounter.text = $"Ammo: {ammoCur}/{ammoMax}";
+        UpdateAmmoBorder(ammoCur, ammoMax);
     }
 
     public void ShowInteractionPrompt(string message)
