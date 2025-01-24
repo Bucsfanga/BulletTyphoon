@@ -46,6 +46,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] [Range (0,1)] float audHurtVol;
     [SerializeField] AudioClip[] audJump;
     [SerializeField][Range(0, 1)] float audJumpVol;
+    [SerializeField] AudioClip[] audReload;
+    [SerializeField][Range(0, 1)] float audReloadVol;
 
     cameraController camController;
 
@@ -323,6 +325,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             isReloading = true;
             Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
+            aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);
 
             // Wait for reload time
             Invoke("FinishReload", reloadTime);
