@@ -3,7 +3,6 @@ using UnityEngine;
 public class pickup : MonoBehaviour
 {
     [SerializeField] gunStats gun;
-    [SerializeField] WeaponController weaponController; // this is referencing the weapon controller
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,15 +16,12 @@ public class pickup : MonoBehaviour
 
         if (pick != null)
         {
-            // Transfer gun to object that enters trigger
-            pick.getGunStats(gun);
+            // Create a new gunStats instance and copy the gun data
+            gunStats newGun = ScriptableObject.CreateInstance<gunStats>();
+            gun.CopyTo(newGun);
 
-            //This will find and update the weapon controller
-            WeaponController platyerWeaponController = other.GetComponent<WeaponController>();
-            if (platyerWeaponController != null) 
-            {
-                platyerWeaponController.OnGunChanged(gun);
-            }
+            // Transfer the new gun to the player
+            pick.getGunStats(newGun);
 
             Destroy(gameObject);
         }
