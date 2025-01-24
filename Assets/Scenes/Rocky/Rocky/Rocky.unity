@@ -1810,7 +1810,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7727678290209711103, guid: 1ef69e6794c6155409286898324e6951, type: 3}
       propertyPath: m_Name
-      value: Player Character Lecture 6
+      value: new_Player
       objectReference: {fileID: 0}
     - target: {fileID: 7757225989418653649, guid: 1ef69e6794c6155409286898324e6951, type: 3}
       propertyPath: m_LocalPosition.x

@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 2787557943666070389}
   - component: {fileID: 7772745885528923364}
   m_Layer: 3
-  m_Name: Player Character Lecture 6
+  m_Name: new_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
