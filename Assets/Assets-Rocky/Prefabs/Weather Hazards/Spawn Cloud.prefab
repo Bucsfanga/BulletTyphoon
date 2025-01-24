@@ -50,4 +50,4 @@ MonoBehaviour:
   initialDelay: 15
   spawnHeight: 100
   isTargetingPlayer: 0
-  weatherController: {fileID: 0}
+  weatherController: {fileID: 7597955201385322122, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
