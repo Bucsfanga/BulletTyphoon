@@ -389,7 +389,7 @@ MonoBehaviour:
   shootRate: 0.25
   ammoCur: 20
   ammoMax: 20
-  reloadTime: 2
+  reloadTime: 1
   hitEffect: {fileID: 970440554703164915, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
@@ -419,6 +419,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 683511084dddbb84eb4ad5d15cf0276c, type: 3}
   - {fileID: 8300000, guid: e3b00927b365aeb4e8f2f26175bf7caf, type: 3}
   audJumpVol: 0.5
+  audReload:
+  - {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
+  audReloadVol: 0.5
 --- !u!23 &3125970127319342210
 MeshRenderer:
   m_ObjectHideFlags: 0
