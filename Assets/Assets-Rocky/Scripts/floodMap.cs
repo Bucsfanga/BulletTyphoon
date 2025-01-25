@@ -49,7 +49,7 @@ public class floodMap : MonoBehaviour
             Debug.LogError("GameManager instance is null!");
         }
 
-        startPosition = transform.position;
+        startPosition = transform.parent.position;
         currentTargetPosition = startPosition;
         currentFloodHeight = startPosition.y;
 
@@ -79,20 +79,20 @@ public class floodMap : MonoBehaviour
 
             // Gradually raise water level to target height
             float elapsedTime = 0f;
-            Vector3 previousPosition = transform.position;
+            Vector3 previousPosition = transform.parent.position;
 
             while (elapsedTime < floodRisingDuration)
             {
-                transform.position = Vector3.Lerp(previousPosition, currentTargetPosition, elapsedTime / floodRisingDuration);
+                transform.parent.position = Vector3.Lerp(previousPosition, currentTargetPosition, elapsedTime / floodRisingDuration);
 
-                updateCurrentFloodHeight(transform.position.y);            
+                updateCurrentFloodHeight(transform.parent.position.y);            
 
                 elapsedTime += Time.deltaTime * floodingSpeed;
                 yield return null;
             }
 
-            transform.position = currentTargetPosition; // Ensure water reaches target position
-            updateCurrentFloodHeight(transform.position.y);
+            transform.parent.position = currentTargetPosition; // Ensure water reaches target position
+            updateCurrentFloodHeight(transform.parent.position.y);
             
             yield return new WaitForSeconds(floodPauseDuration); // Pause water level at target height
         }
@@ -111,7 +111,6 @@ public class floodMap : MonoBehaviour
         if (newHeight > currentFloodHeight)
         {
             currentFloodHeight = newHeight;
-            //Debug.Log($"Updated Flood Height: {currentFloodHeight} at {Time.time}");
         }     
     }
 
@@ -123,13 +122,11 @@ public class floodMap : MonoBehaviour
             return;
         }
 
-
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level
-            bool isUnderwater = player.position.y < currentFloodHeight + 26.3;
+            bool isUnderwater = player.position.y + 1 < currentFloodHeight;
             submergedOverlay.SetActive(isUnderwater);
-
             //Debug.Log($"Player Y: {player.position.y}, Water Y: {currentFloodHeight}, Underwater: {isUnderwater}");
         }
     }
