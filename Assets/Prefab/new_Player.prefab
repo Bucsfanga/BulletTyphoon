@@ -315,8 +315,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7757225989418653649}
-  - component: {fileID: 728973506873413511}
   - component: {fileID: 1138692288029349319}
+  - component: {fileID: 728973506873413511}
   - component: {fileID: 3125970127319342210}
   - component: {fileID: 3246868445400327159}
   - component: {fileID: 2787557943666070389}
@@ -344,6 +344,14 @@ Transform:
   - {fileID: 4727459757134207217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+--- !u!33 &1138692288029349319
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727678290209711103}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &728973506873413511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +389,7 @@ MonoBehaviour:
   shootRate: 0.25
   ammoCur: 20
   ammoMax: 20
-  reloadTime: 2
+  reloadTime: 1
   hitEffect: {fileID: 970440554703164915, guid: 47096eff328e11a418ace7db2d72aa97, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
@@ -411,14 +419,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 683511084dddbb84eb4ad5d15cf0276c, type: 3}
   - {fileID: 8300000, guid: e3b00927b365aeb4e8f2f26175bf7caf, type: 3}
   audJumpVol: 0.5
---- !u!33 &1138692288029349319
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727678290209711103}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  audReload:
+  - {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
+  audReloadVol: 0.5
 --- !u!23 &3125970127319342210
 MeshRenderer:
   m_ObjectHideFlags: 0
