@@ -17,7 +17,6 @@ public class spawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.instance.updateGameGoal(numToSpawn);
         spawnCount = 0;
     }
 
@@ -49,5 +48,6 @@ public class spawner : MonoBehaviour
         spawnTimer = 0;
         Instantiate(objectToSpawn, spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
         spawnCount++;
+        GameManager.instance.updateGameGoal(1);
     }
 }
