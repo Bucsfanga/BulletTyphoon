@@ -6,50 +6,32 @@ public class weatherController : MonoBehaviour
     [SerializeField] Material stormSkybox;
     [SerializeField] Material clearSkybox;
     [SerializeField] Color stormAmbientLight = Color.gray;
-    [SerializeField] Color clearAmbientLight = Color.white;
     [SerializeField] float stormFogDensity = 0.02f;
-    [SerializeField] float clearFogDensity = 0.0f;
-    [SerializeField] float transitionDuration = 2f; // Duration of the transition
     [SerializeField] private MaterialStormEffect materialEffect;
     [SerializeField] private RainManager rainManager;
-
-    private Color originalAmbientLight;
-    private float originalLightIntensity;
+    [SerializeField] float transitionDuration = 2f; // Duration of the transition
 
     private void Start()
     {
-        // Save original settings
-        originalAmbientLight = RenderSettings.ambientLight;
-
-
-        // this ensures the clear skybox is set as the active skybox on start up.
-        RenderSettings.skybox = clearSkybox;
-
-        if (clearSkybox.HasProperty("_Exposure"))
-        {
-            clearSkybox.SetFloat("_Exposure", 1f);
-        }
-        if (stormSkybox.HasProperty("_Exposure"))
-        {
-            stormSkybox.SetFloat("_Exposure", 0f);
-        }
-
-        RenderSettings.ambientLight = clearAmbientLight;
-        RenderSettings.fog = false; // Enable fog in case it's needed
-        RenderSettings.fogDensity = clearFogDensity;
-
+        // Set the storm effects as the default ambiance
+        InitializeStormEffects();
+        StartCoroutine(transitionToSkybox(clearSkybox, stormSkybox));
     }
 
-    public void startStorm()
+    private void InitializeStormEffects()
     {
-        StartCoroutine(transitionToSkybox(clearSkybox, stormSkybox));
+        // Set storm skybox and effects
+        RenderSettings.skybox = stormSkybox;
+
+        if (stormSkybox.HasProperty("_Exposure"))
+        {
+            stormSkybox.SetFloat("_Exposure", 1f);
+        }
+
         RenderSettings.ambientLight = stormAmbientLight;
         RenderSettings.fog = true;
         RenderSettings.fogDensity = stormFogDensity;
 
-        GameManager.instance.setStormLighting(true);
-
-        //This will start the rain effect
         if (rainManager != null)
         {
             rainManager.StartRain();
@@ -59,27 +41,6 @@ public class weatherController : MonoBehaviour
         {
             materialEffect.OnStormBegin();
         }
-    }
-
-    public void endStorm()
-    {
-        StartCoroutine(transitionToSkybox(stormSkybox, clearSkybox));
-        RenderSettings.ambientLight = originalAmbientLight;
-        RenderSettings.fog = false;
-
-        GameManager.instance.setStormLighting(false);
-
-        //This will stop the rain effect.
-        if (rainManager != null)
-        {
-            rainManager.StopRain();
-        }
-
-        if (materialEffect != null)
-        {
-            materialEffect.OnStormEnd();
-        }
-
     }
 
     private IEnumerator transitionToSkybox(Material fromSkybox, Material toSkybox)

@@ -20,19 +20,9 @@ public class lightningCloudSpawner : MonoBehaviour
             Debug.LogError("Player reference is null");
             return;
         }
-        if (weatherController != null)
-        {
-            StartCoroutine(StartStormAfterDelay());
-        }
 
         setSpawnHeight();
         StartCoroutine(spawnLightningCloud());
-    }
-
-    private IEnumerator StartStormAfterDelay()
-    {
-        yield return new WaitForSeconds(initialDelay);
-        weatherController.startStorm();
     }
 
     IEnumerator spawnLightningCloud()

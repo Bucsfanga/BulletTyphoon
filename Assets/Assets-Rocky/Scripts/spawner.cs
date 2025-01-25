@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
-    [SerializeField] GameObject objectToSpawn;
+    [SerializeField] GameObject[] objectToSpawn;
     [SerializeField] int numToSpawn;
     [SerializeField] int timeBetweenSpawns;
     [SerializeField] Transform[] spawnPos;
@@ -30,6 +30,7 @@ public class spawner : MonoBehaviour
             if(spawnCount < numToSpawn && spawnTimer >= timeBetweenSpawns)
             {
                 spawn();
+                GameManager.instance.updateGameGoal(1);
             }
         }
     }
@@ -44,10 +45,11 @@ public class spawner : MonoBehaviour
 
     void spawn()
     {
-        int spawnInt = Random.Range(0, spawnPos.Length);
-        spawnTimer = 0;
-        Instantiate(objectToSpawn, spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
+        int spawnInt = Random.Range(0, spawnPos.Length); // Choose random position
+        int objectInt = Random.Range(0, objectToSpawn.Length); // Choose random object
+
+        spawnTimer = 0; // Reset spawn timer
+        Instantiate(objectToSpawn[objectInt], spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
         spawnCount++;
-        GameManager.instance.updateGameGoal(1);
     }
 }

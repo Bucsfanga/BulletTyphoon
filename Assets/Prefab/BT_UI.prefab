@@ -4298,15 +4298,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e251bb777bc61864cbec981f535829f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 5996096419211561618}
+  mainMenu: {fileID: 0}
   hud: {fileID: 1377207491128861346}
   pauseMenu: {fileID: 3736460729613925873}
   settingsMenu: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   damagePanel: {fileID: 5542092471514405164}
-  playerHPBar: {fileID: 3122917409137324840}
-  credits: {fileID: 0}
+  playerHPBar: {fileID: 8715877879688395109}
+  creditsMenu: {fileID: 0}
   goalCountText: {fileID: 7039732524239520880}
   menuPause: {fileID: 3736460729613925873}
   menuActive: {fileID: 0}
