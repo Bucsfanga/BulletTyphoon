@@ -56,12 +56,10 @@ public class GameManager : MonoBehaviour
         mainMenu.SetActive(true);  // Show Main Menu at start
         creditsMenu.SetActive(false);  // Ensure credits are hidden
 
-        /*audioSource = Camera.main.GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            volumeSlider.value = audioSource.volume;
-            volumeSlider.onValueChanged.AddListener(UpdateVolume);
-        }*/
+
+
+        volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
+        volumeSlider.onValueChanged.AddListener(UpdateVolume);
     }
 
     // Update is called once per frame
@@ -217,10 +215,8 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     public void UpdateVolume(float volume)
     {
-       /* if (audioSource != null)
-        {
-            audioSource.volume = volume;  // Update audio source volume
-        }*/
+       
+        audioManager.instance.SetBackgroundAudioVolume(volume);
     }
 
     public void CloseSettings()

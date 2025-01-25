@@ -31,4 +31,13 @@ public class buttonFunctions : MonoBehaviour
     {
         GameManager.instance.BackToMainMenu();
     }
+    // Function for the Quit to Main Menu button
+    public void QuitToMainMenu()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.QuitToMainMenu();
+        }
+
+    }
 }
