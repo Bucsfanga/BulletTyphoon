@@ -5238,6 +5238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -134.52003
