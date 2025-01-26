@@ -49,12 +49,10 @@ MonoBehaviour:
   stormSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   clearSkybox: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  clearAmbientLight: {r: 1, g: 1, b: 1, a: 1}
-  stormFogDensity: 0.01
-  clearFogDensity: 0
-  transitionDuration: 2
+  stormFogDensity: 0.001
   materialEffect: {fileID: 8947643349049343367}
   rainManager: {fileID: 5131275925511579950}
+  transitionDuration: 2
 --- !u!114 &8947643349049343367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,9 +84,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rainDropPrefab: {fileID: 4037640867250306535, guid: 3cef34e9e0f583346a426708ddcce2f6, type: 3}
   numberOfRaindrops: 1000
-  spawnHeight: 100
-  spawnAreaWidth: 30
-  spawnAreaLength: 30
-  rainSpeed: 10
+  spawnHeight: 80
+  spawnAreaWidth: 70
+  spawnAreaLength: 70
+  rainSpeed: 1300
   baseScale: {x: 0.04, y: 0.2, z: 0.04}
   scaleVariation: 0.2

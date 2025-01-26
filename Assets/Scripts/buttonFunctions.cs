@@ -23,4 +23,21 @@ public class buttonFunctions : MonoBehaviour
         Application.Quit();
 #endif
     }
+    public void ShowCredits()
+    {
+        GameManager.instance.ShowCredits();
+    }
+    public void BackToMainMenu()
+    {
+        GameManager.instance.BackToMainMenu();
+    }
+    // Function for the Quit to Main Menu button
+    public void QuitToMainMenu()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.QuitToMainMenu();
+        }
+
+    }
 }
