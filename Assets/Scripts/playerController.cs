@@ -61,14 +61,69 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int currentAmmo, maxAmmo;
     float shootTimer; // Lecture 6
 
-    bool isReloading;
-    bool _isSprinting;
-    bool _isJumping;
-    bool _isCrouching;
-    bool isPlayingSteps; // Lecture 6
+    private float originalFOV;
+    private bool _isShooting;
+    private bool _isReloading;
+    private bool _isSprinting;
+    private bool _isJumping;
+    private bool _isCrouching;
+    private bool _isPlayingSteps;
     #endregion
 
     #region GET/SET
+    public bool isPlayingSteps
+    {
+        get => _isPlayingSteps;
+        set
+        {
+            if (value)
+            {
+                aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+            }
+            _isPlayingSteps = value;
+        }
+    }
+
+    public bool isHealthFull => HP >= HPOrig;
+
+    public bool isShooting
+    {
+        get => _isShooting;
+        set
+        {
+            if (value)
+            {
+                aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);
+            }
+            _isShooting = value;
+        }
+    }
+
+    public bool isReloading
+    {
+        get => _isReloading;
+        set
+        {
+            if (value)
+            {
+                _isReloading = value;
+                Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
+                aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);
+
+                // Wait for reload time
+                Invoke("FinishReload", reloadTime);
+            }
+            else
+            {
+                _isReloading = value;
+                currentAmmo = maxAmmo;
+
+                GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+                Debug.Log("Reload complete!"); // Debug log to confirm.
+            }
+        }
+    }
+
     public bool isJumping
     {
         get => _isJumping;
@@ -134,6 +189,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             Debug.LogError("Player has no starting gun assigned!");
         }
 
+        originalFOV = targetFOV;
         HPOrig = HP;
         baseSpeed = speed;
         updatePlayerUI();
@@ -164,8 +220,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     IEnumerator playSteps()
     {
         isPlayingSteps = true;
-
-        aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
 
         if(!isSprinting)
             yield return new WaitForSeconds(0.5f);
@@ -221,12 +275,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if (Input.GetButtonDown("Fire2"))
         {
-            zoom(30f);
+            zoom(targetFOV / 2);
             camController.sens = (int)(camController.sens * 0.4);
         }
         if (Input.GetButtonUp("Fire2"))
         {
-            zoom(60f);
+            zoom(originalFOV);
             camController.sens = (int)(camController.sens / 0.4);
         }
 
@@ -295,7 +349,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         // Play shooting sound
         if (shootSound != null && shootSound.Length > 0)
         {
-            aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);
+            isShooting = true;
         }
 
         // Visual effects
@@ -324,21 +378,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
             isReloading = true;
-            Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
-            aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);
-
-            // Wait for reload time
-            Invoke("FinishReload", reloadTime);
         }
     }
 
     void FinishReload()
     {
-        currentAmmo = maxAmmo;
         isReloading = false;
-
-        GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
-        Debug.Log("Reload complete!"); // Debug log to confirm.
     }
 
     IEnumerator flashMuzzleFire()
@@ -362,25 +407,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     }
     public void IncreaseHealth(int amount)
     {
-        if(HP >= HPOrig)
+        if(isHealthFull)
         {
             Debug.Log("Health is already full");
             return;
         }
 
         HP += amount;
-        if (HP > HPOrig)
+        if (isHealthFull)
         {
             HP = HPOrig; // Don't heal past max health
         }
 
         updatePlayerUI();
         Debug.Log("Health increased. Current health: " + HP);
-    }
-
-    public bool isHealthFull()
-    {
-        return HP >= HPOrig;
     }
 
     IEnumerator flashDamagePanel()

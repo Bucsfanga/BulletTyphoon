@@ -22,7 +22,7 @@ public class HealthPack : MonoBehaviour
             playerController player = other.GetComponent<playerController>();
             if (player != null)
             {
-                if (player.isHealthFull())
+                if (player.isHealthFull)
                 {
                     return;
                 }
