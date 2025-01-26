@@ -8961,6 +8961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 62954291054599861, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7844239730596407333, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.50001
@@ -9993,6 +9997,18 @@ PrefabInstance:
     - target: {fileID: 2144349843206986982, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
       propertyPath: m_Name
       value: Flood Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683639004928462594, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+      propertyPath: scrollSpeedX
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683639004928462594, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+      propertyPath: scrollSpeedY
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349918732339127733, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+      propertyPath: floodingSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

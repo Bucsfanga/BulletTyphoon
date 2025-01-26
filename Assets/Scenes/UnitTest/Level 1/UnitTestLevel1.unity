@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6922a499a3eec994c9b20588a6cfd3cd, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -227,11 +231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.000000308378
       objectReference: {fileID: 0}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalRotation.y
@@ -239,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.0000003100202
       objectReference: {fileID: 0}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -255,7 +259,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 202899888}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
 --- !u!1001 &56984121
@@ -270,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.038734
@@ -327,6 +338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -388,6 +403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 16
@@ -542,6 +561,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4802899d07cd5b47b605e45278819d4, type: 3}
+--- !u!4 &83526516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+  m_PrefabInstance: {fileID: 2052992401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &86901859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -836,6 +860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 8
@@ -1108,6 +1136,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1708962029105668970, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 2289925039811782747, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 2523929561636497655, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 53fea407df5fd294393652dc76882d5e, type: 2}
+    - target: {fileID: 2807864719862928426, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 3346291575712907508, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 3454530217334173137, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 3587315034611205900, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 401ad4983cc206c4f923a26dd2542db1, type: 2}
+    - target: {fileID: 4004215903048957209, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 4094198529717613357, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 4157832778565033419, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
     - target: {fileID: 4600135830754652454, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.864853
@@ -1148,6 +1216,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6169647811420577120, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 6540522446897976991, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 6845976720282776542, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 6921134601848863529, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 7525375800959932960, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1165,6 +1253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -126.32532
@@ -1214,6 +1306,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
   m_PrefabInstance: {fileID: 1810890621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &202899888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+  m_PrefabInstance: {fileID: 572897418}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &214758158
 PrefabInstance:
@@ -1351,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 16
@@ -1412,6 +1513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -1547,6 +1652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -1653,6 +1762,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 261911713977207376, guid: d1b0df6db13605341b43d60099e9136e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0744bcab18e19e444b1498ebfd1b47b1, type: 2}
     - target: {fileID: 2503220581951251161, guid: d1b0df6db13605341b43d60099e9136e, type: 3}
       propertyPath: m_Name
       value: Ramp
@@ -1684,6 +1797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -1804,6 +1921,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8947643349049343367, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: targetMaterial2
+      value: 
+      objectReference: {fileID: 2100000, guid: 0744bcab18e19e444b1498ebfd1b47b1, type: 2}
+    - target: {fileID: 8947643349049343367, guid: 13157bdfed8740747aac2a07998c647e, type: 3}
+      propertyPath: delayBeforeEffect
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1821,6 +1946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -118.12051
@@ -1939,6 +2068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -2446,6 +2579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -2507,6 +2644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -74.68018
@@ -2552,6 +2693,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2206c623952e1be429973242b955b134, type: 3}
+--- !u!1001 &572897418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2113947396}
+    m_Modifications:
+    - target: {fileID: 162584487599433031, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_Name
+      value: floating platform fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4837222e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000013118215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
 --- !u!1001 &577271894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2564,6 +2762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -2844,7 +3046,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
+  - {fileID: 2100000, guid: 57affabf9cc8f1443a25f2ff280d83a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2883,8 +3085,8 @@ Transform:
   m_GameObject: {fileID: 656302689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -121.58361, y: -25.03641, z: -100.27509}
-  m_LocalScale: {x: 91, y: 10, z: 0.009999999}
+  m_LocalPosition: {x: -124.88361, y: -25.03641, z: -100.27509}
+  m_LocalScale: {x: 91, y: 10, z: -7.66}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 88165163}
@@ -2901,6 +3103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -124.71107
@@ -2958,6 +3164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6922a499a3eec994c9b20588a6cfd3cd, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -3008,7 +3218,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1044132704}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
 --- !u!4 &690154728 stripped
@@ -3130,6 +3343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -3191,6 +3408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -3521,6 +3742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07199097
@@ -3583,6 +3808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6922a499a3eec994c9b20588a6cfd3cd, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -3633,7 +3862,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 83526516}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
 --- !u!4 &807169056 stripped
@@ -3710,6 +3942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -3779,6 +4015,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
   m_PrefabInstance: {fileID: 986015516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &936669338
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 578367412}
+    m_Modifications:
+    - target: {fileID: 162584487599433031, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_Name
+      value: floating platform fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
 --- !u!1001 &986015516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3791,6 +4084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 45
@@ -3934,6 +4231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -3983,6 +4284,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+--- !u!4 &1044132704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+  m_PrefabInstance: {fileID: 936669338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1046937026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
@@ -4065,6 +4371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -4236,6 +4546,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+--- !u!1001 &1101785876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 637926113}
+    m_Modifications:
+    - target: {fileID: 162584487599433031, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_Name
+      value: floating platform fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
 --- !u!1001 &1125615401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4327,7 +4694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1192357539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4392,6 +4759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 3571922004459595636, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 516e6f11e8de6624eb6be4bac8c14555, type: 2}
     - target: {fileID: 7844239730596407333, guid: 60cf447cbefd9dd44987b7a264396e48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.50001
@@ -4449,6 +4820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 42
@@ -4746,6 +5121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -4811,6 +5190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -4872,6 +5255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -4978,6 +5365,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7fdce16316ad34f99f983776ef9544, type: 3}
+--- !u!4 &1283101884 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+  m_PrefabInstance: {fileID: 1101785876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299043936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5052,6 +5444,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6734699111858058863, guid: b6dac2e05834fe14ea951d1d9b020560, type: 3}
   m_PrefabInstance: {fileID: 1016370322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1313209278
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 180005247}
+    m_Modifications:
+    - target: {fileID: 162584487599433031, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_Name
+      value: floating platform fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
 --- !u!1001 &1323937122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5169,6 +5618,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 261911713977207376, guid: d1b0df6db13605341b43d60099e9136e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0744bcab18e19e444b1498ebfd1b47b1, type: 2}
     - target: {fileID: 2503220581951251161, guid: d1b0df6db13605341b43d60099e9136e, type: 3}
       propertyPath: m_Name
       value: Ramp (1)
@@ -5341,6 +5794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -5476,6 +5933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6922a499a3eec994c9b20588a6cfd3cd, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -5526,7 +5987,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1283101884}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
 --- !u!1001 &1422383773
@@ -5541,6 +6005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6922a499a3eec994c9b20588a6cfd3cd, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -5591,7 +6059,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889057988}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
 --- !u!4 &1424077283 stripped
@@ -5611,6 +6082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -5746,6 +6221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 16
@@ -5891,6 +6370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 16
@@ -5952,6 +6435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
@@ -6017,6 +6504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -6078,6 +6569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3738861
@@ -6145,6 +6640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -6237,6 +6736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -6301,6 +6804,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2846038386360212477, guid: 29e28dc7210d1244c85ba78d7814867b, type: 3}
   m_PrefabInstance: {fileID: 418619332}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1889057988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+  m_PrefabInstance: {fileID: 1313209278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1892237607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6313,6 +6821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
@@ -6491,10 +7003,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1686750309064456473, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3678d966bbe5c1243860a33dc25ea136, type: 2}
+    - target: {fileID: 3243745953998388142, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3678d966bbe5c1243860a33dc25ea136, type: 2}
     - target: {fileID: 3453220092123076620, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
       propertyPath: m_Name
       value: Map Border
       objectReference: {fileID: 0}
+    - target: {fileID: 3681958288330260862, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3678d966bbe5c1243860a33dc25ea136, type: 2}
     - target: {fileID: 4959241070173762060, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55
@@ -6547,6 +7071,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5975075421400512340, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3678d966bbe5c1243860a33dc25ea136, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6564,6 +7092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -6700,6 +7232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -6761,6 +7297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ramp Wide (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3495505322419755568, guid: 2206c623952e1be429973242b955b134, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
       propertyPath: m_LocalPosition.x
       value: -102.12051
@@ -6811,6 +7351,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3605262545905092114, guid: 2206c623952e1be429973242b955b134, type: 3}
   m_PrefabInstance: {fileID: 773050810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2052992401
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 403221388}
+    m_Modifications:
+    - target: {fileID: 162584487599433031, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_Name
+      value: floating platform fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
 --- !u!1001 &2054169038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6942,6 +7539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bridge Wide
       objectReference: {fileID: 0}
+    - target: {fileID: 1446964179046825112, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a46ddefb78a484643af07aed081bf055, type: 2}
     - target: {fileID: 4957350010056140782, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
       propertyPath: m_LocalScale.z
       value: 50
@@ -7080,6 +7681,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building
       objectReference: {fileID: 0}
+    - target: {fileID: 1708962029105668970, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 2289925039811782747, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 2523929561636497655, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 53fea407df5fd294393652dc76882d5e, type: 2}
+    - target: {fileID: 2807864719862928426, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 3346291575712907508, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 3454530217334173137, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 3587315034611205900, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 401ad4983cc206c4f923a26dd2542db1, type: 2}
+    - target: {fileID: 4004215903048957209, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 4094198529717613357, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 4157832778565033419, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
     - target: {fileID: 4600135830754652454, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
       propertyPath: m_LocalPosition.x
       value: -119.582344
@@ -7120,6 +7761,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5815015706044818091, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a5e74c1ed8337d4cbfafd0490ba8951, type: 2}
+    - target: {fileID: 6169647811420577120, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 6540522446897976991, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 99c80548b1df7044281ddaed1d658ead, type: 2}
+    - target: {fileID: 6845976720282776542, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 6921134601848863529, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
+    - target: {fileID: 7525375800959932960, guid: 61cfde3be3c04614a9205483ce8cfc79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e429c8ff9e485574b8aa09ee44b4da19, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
