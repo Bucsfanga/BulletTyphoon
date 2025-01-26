@@ -6,6 +6,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Animator anim;
+    [SerializeField] bool isElite;
+    [SerializeField] Color eliteTintColor;
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] Renderer model;
@@ -34,7 +36,26 @@ public class EnemyAI : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;   
+        if (model == null)
+        {
+            Debug.LogError($"Renderer (model) is not assigned on {gameObject.name}");
+            return;
+        }
+
+        if (model.sharedMaterial == null)
+        {
+            Debug.LogError($"Material is missing on the Renderer of {gameObject.name}");
+            return;
+        }
+
+        model.material = new Material(model.sharedMaterial); // Create new material for elite
+        colorOrig = model.material.color; // Save original color
+
+        if (isElite)
+        {
+            eliteTint();
+        }
+
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
     }
@@ -55,7 +76,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             }
         }
         else if (!playerInRange)
-        { 
+        {
             if (!isRoaming && agent.remainingDistance < 0.1f)
             {
                 co = StartCoroutine(roam());
@@ -85,27 +106,33 @@ public class EnemyAI : MonoBehaviour, IDamage
         playerDir = GameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
-        Debug.DrawRay(headPos.position, playerDir);
+        // Adjust FOV check to include some vertical lenience
+        float verticalAngleToPlayer = Vector3.Angle(Vector3.ProjectOnPlane(playerDir, Vector3.right), transform.forward);
 
-        RaycastHit hit;
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        Debug.DrawRay(headPos.position, playerDir); // Draw ray for visual test in editor
+
+        if (angleToPlayer <= FOV && verticalAngleToPlayer <= FOV)
         {
-            if (hit.collider.CompareTag("Player") && angleToPlayer <= FOV)
+            RaycastHit hit;
+            if (Physics.Raycast(headPos.position, playerDir, out hit))
             {
-                agent.SetDestination(GameManager.instance.player.transform.position);
-
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (hit.collider.CompareTag("Player"))
                 {
-                    faceTarget();
-                }
+                    agent.SetDestination(GameManager.instance.player.transform.position);
 
-                if (!isShooting)
-                {
-                    StartCoroutine(shoot());
-                }
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        faceTarget();
+                    }
 
-                agent.stoppingDistance = stoppingDistOrig;
-                return true;
+                    if (!isShooting)
+                    {
+                        StartCoroutine(shoot());
+                    }
+
+                    agent.stoppingDistance = stoppingDistOrig;
+                    return true;
+                }
             }
         }
 
@@ -130,40 +157,71 @@ public class EnemyAI : MonoBehaviour, IDamage
     }
     public void takeDamage(int amount)
     {
+        Debug.Log($"[Damage Taken] Object: {gameObject.name}, Damage: {amount}");
         HP -= amount;
 
-        if(agent != null && agent.isActiveAndEnabled)
+        if (agent != null && agent.isActiveAndEnabled)
         {
-           agent.SetDestination(GameManager.instance.player.transform.position); // Go to player last know location
-        }      
+            agent.SetDestination(GameManager.instance.player.transform.position); // Go to player last know location
+        }
 
-        if(co != null)
+        if (co != null)
         {
             StopCoroutine(co);
+            co = null;
             isRoaming = false;
         }
 
-        StartCoroutine(flashRed());
-
-        if (HP <= 0)
+        if (HP > 0)
         {
-            GameManager.instance.updateGameGoal(-1);
-            agent.enabled = false;
-            Destroy(gameObject);
+            StartCoroutine(flashRed());
+        }
+        else
+        {
+            GameManager.instance.updateGameGoal(-1); // Subtract 1 from game goals enemy counter
+
+            // Stop any remaining coroutines
+            StopAllCoroutines();
+
+            // Disable components to avoid further errors
+            if (agent != null)
+            {
+                agent.enabled = false;
+            }
+
+            Destroy(gameObject); // Destroy object
         }
     }
 
     IEnumerator flashRed()
     {
-        model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        if (!isElite)
+        {
+            model.material.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            model.material.color = colorOrig;
+        } 
+        else
+        {
+            model.material.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            eliteTint();
+        }
+        
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        
+        // Aim for middle of player
+        Vector3 playerMidsection = GameManager.instance.player.transform.position + Vector3.up * 1.0f;
+
+        // Calculate direction toward adjusted player position
+        Vector3 directionToPlayer = (playerMidsection - shootPos.position).normalized;
+
+        // Instantiate bullet and set forward direction
+        GameObject spawnedBullet = Instantiate(bullet, shootPos.position, Quaternion.LookRotation(directionToPlayer));
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -171,7 +229,15 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, 0, playerDir.z));
+        Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
+
+    void eliteTint()
+    {
+        model.material.color = colorOrig * eliteTintColor; // Tint over base color
+        model.material.SetColor("_EmissionColor", eliteTintColor * 5.0f); // Add glow effect
+        model.material.EnableKeyword("_EMISSION");
+    }
+
 }

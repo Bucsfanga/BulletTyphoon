@@ -145,6 +145,12 @@ public class audioManager : MonoBehaviour
         StartCoroutine(FadeBackgroundAudio(fadeOutDuration, 0f));
     }
 
+    //Getter for the background audio volume
+    public float GetBackgroundAudioVolume()
+    {
+        return backgroundAudioSource.volume;
+    }
+
     //Setter for the background audio volume - must be b/w 0 and 1
     public void SetBackgroundAudioVolume(float volume)
     {
