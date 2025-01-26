@@ -299,7 +299,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         }
 
         // Visual effects
-        //StartCoroutine(flashMuzzleFire());
+        StartCoroutine(flashMuzzleFire());
 
         // Check for hit
         RaycastHit hit;
