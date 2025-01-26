@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 630240670755586313}
   - component: {fileID: 6303561054951999748}
   m_Layer: 0
-  m_Name: 'Fire Hit '
+  m_Name: floating platform fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,14 +46,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162584487599433031}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -616,7 +616,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -3.3
+      scalar: 25.12
       minScalar: 0
       maxCurve:
         serializedVersion: 2

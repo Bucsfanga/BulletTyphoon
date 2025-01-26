@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
             // If this bullet should be "filled"
             if (i < bulletsToShow)
             {
-                bulletColor.a = 1f; // change opacity
+                bulletColor.a = .75f; // change opacity
             }
             else
             {
