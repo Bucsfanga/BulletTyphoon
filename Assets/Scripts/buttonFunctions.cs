@@ -35,7 +35,11 @@ public class buttonFunctions : MonoBehaviour
     public void startGame()
     {
         GameManager.instance.StartGame();
-        GameManager.instance.stateUnpause();
+    }
+
+    public void nextLevel()
+    {
+        GameManager.instance.NextLevel();
     }
 
     // Back button for settings menu

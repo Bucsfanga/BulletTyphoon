@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -43,14 +42,20 @@ public class GameManager : MonoBehaviour
     // Settings Menu Elements
     public Slider volumeSlider;
 
-    public bool isPaused = false;
-    public bool isRestarting = false;
+    public bool isPaused;
     private AudioSource audioSource;
 
     int goalCount;
     public int goalCheckpoint = 0;
     public TMP_Text incomingWarningText;
     public GameObject submergedOverlay;
+
+    public static class GameState
+    {
+        public static bool isRestarting;
+        public static bool isNextLevel;
+        public static bool showCredits;
+    }
 
     void Awake()
     {
@@ -59,11 +64,20 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (isRestarting)
+        if (GameState.showCredits)
+        {
+            initializeMainMenu();
+            GameState.showCredits = false; // Reset flag
+            ShowCredits(); // Trigger credit display
+            return;
+        }
+
+        if (GameState.isRestarting || GameState.isNextLevel)
         {
             // Skip initializing main menu and unpause game
             hud.SetActive(true);
             pauseMenu.SetActive(false);
+            menuMain.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
             Cursor.visible = false;
@@ -78,9 +92,9 @@ public class GameManager : MonoBehaviour
         {
             initializeMainMenu(); // Initialize main menu for fresh start
         }
-        
-        isRestarting = false; // Reset flag
 
+        GameState.isRestarting = false; // Reset flag
+        GameState.isNextLevel = false; // Reset flag
 
         volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
 
@@ -116,16 +130,18 @@ public class GameManager : MonoBehaviour
 
     private void initializeMainMenu()
     {
-        statePause();
-        menuActive = menuMain;
+        Debug.Log("Initializing Main Menu!");
         menuMain.SetActive(true);
+        menuActive = menuMain;
         hud.SetActive(false);
         pauseMenu.SetActive(false);
+        statePause();
 
         if (player != null)
         {
             player.SetActive(false);
         }
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -136,6 +152,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
         hud.SetActive(true);  // Show HUD
         pauseMenu.SetActive(false);
@@ -150,6 +167,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+
 
     public void OpenSettingsFromMainMenu()
     {
@@ -327,9 +346,33 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Verify correct scene is reloading
-        isRestarting = true;
+        GameState.isRestarting = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload current scene
+    }
+
+    public void NextLevel()
+    {
+        Debug.Log("Loading next level");
+        GameState.isNextLevel = true;
+        Time.timeScale = 1f;
+
+        // Load next scene based on build index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Check if next scene index is within bounds
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("No more levels to load. Play credits.");
+            GameState.isNextLevel = false;
+            GameState.showCredits = true;
+            SceneManager.LoadScene(0);
+        }
     }
 
     // ------------------------------
@@ -346,6 +389,7 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuMain)
         {
             menuMain.SetActive(false);
+            hud.SetActive(false);
             menuSettings.SetActive(true);
             menuActive = menuSettings;
         }
