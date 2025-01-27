@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
         hud.SetActive(true);  // Show HUD
         pauseMenu.SetActive(false);
@@ -144,6 +145,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+
 
     public void OpenSettingsFromMainMenu()
     {
@@ -340,6 +343,7 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuMain)
         {
             menuMain.SetActive(false);
+            hud.SetActive(false);
             menuSettings.SetActive(true);
             menuActive = menuSettings;
         }

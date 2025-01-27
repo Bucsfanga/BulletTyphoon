@@ -35,6 +35,5 @@ public class buttonFunctions : MonoBehaviour
     public void startGame()
     {
         GameManager.instance.StartGame();
-        GameManager.instance.stateUnpause();
     }
 }
