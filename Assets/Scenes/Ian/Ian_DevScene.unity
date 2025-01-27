@@ -9385,25 +9385,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-      propertyPath: aud
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 337686781}
-    - target: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-      propertyPath: gunshotAudio
-      value: 
-      objectReference: {fileID: 2064500647}
-    m_RemovedComponents:
-    - {fileID: 3617346688309544551, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2064500647}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
 --- !u!1001 &1378814787
 PrefabInstance:
@@ -13468,27 +13456,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5978813038430697412, guid: b4b6d3d31e2583a49906dba7c58c40b1, type: 3}
   m_PrefabInstance: {fileID: 1164579744}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2064500640 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-  m_PrefabInstance: {fileID: 1373843969}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2064500647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064500640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72c5c57c6333044cab7d21766f3590c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeMultiplier: 1
-  useRandomPitch: 1
-  minPitch: 0.95
-  maxPitch: 1.05
 --- !u!4 &2066525911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 83474845299414642, guid: d1b0df6db13605341b43d60099e9136e, type: 3}

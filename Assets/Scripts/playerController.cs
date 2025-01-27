@@ -50,9 +50,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField][Range(0, 1)] float audJumpVol;
     [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
-
-
     [SerializeField] gunshotAudio gunshotAudio;
+    [SerializeField] gunReloadAudio gunReloadAudio;
+    [SerializeField] gunClickAudio gunClickAudio;
+
     cameraController camController;
 
     Vector3 moveDir;
@@ -115,6 +116,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 _isReloading = value;
                 Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
                 //aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);IAN TODO: Commented out to use the audioManager singleton
+                gunReloadAudio.PlayGunReload();
+
 
                 // Wait for reload time
                 Invoke("FinishReload", reloadTime);
@@ -380,6 +383,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         // Reduce ammo
         currentAmmo--;
+        if( currentAmmo <= 0)
+        {
+            gunClickAudio.PlayGunClick();
+        }
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
     }
         
@@ -407,12 +414,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         HP -= amount;
         //aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol); // Commented out to use the audioManager singleton
-        audioManager.PlayRandomDamageSound();
+        if (HP > 0)
+        {
+            audioManager.PlayRandomDamageSound();
+        }
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());
 
         if (HP <= 0)
         {
+            audioManager.PlayRandomDeathSound();
             GameManager.instance.youLose();
         }
     }
