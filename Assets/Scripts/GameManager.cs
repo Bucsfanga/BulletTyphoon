@@ -10,15 +10,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     // UI Panels
-    public GameObject mainMenu;
     public GameObject hud;
     public GameObject pauseMenu;
-    public GameObject settingsMenu;
     public GameObject player;
     public playerController playerScript;
     public GameObject damagePanel;
     public Image playerHPBar;
-    public GameObject creditsMenu;
 
     public TMP_Text goalCountText;
 
@@ -26,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuMain;
+    [SerializeField] GameObject menuSettings;
+    [SerializeField] GameObject menuCredits;
 
     // HUD Elements
     public RectTransform healthFill;
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Slider volumeSlider;
 
     public bool isPaused = false;
+    public bool isRestarting = false;
     private AudioSource audioSource;
 
     int goalCount;
@@ -54,32 +55,31 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
-
-        //finding the direction light in the scene
-        directionalLight = Object.FindAnyObjectByType<Light>();
-        if (directionalLight != null)
-        {
-            originalLightIntensity = directionalLight.intensity;
-        }
-        else
-        {
-            Debug.LogWarning("No directional light found in the scene.");
-        }
     }
 
     void Start()
     {
-        fullWidth = healthFill.sizeDelta.x;
+        if (isRestarting)
+        {
+            // Skip initializing main menu and unpause game
+            hud.SetActive(true);
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
 
-        mainMenu.SetActive(true);  // Show Main Menu at start
-        creditsMenu.SetActive(false);  // Ensure credits are hidden
-
-
-
-        volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
-        volumeSlider.onValueChanged.AddListener(UpdateVolume);
+            if (player != null)
+            {
+                player.SetActive(true);
+            }
+        }
+        else
+        {
+            initializeMainMenu(); // Initialize main menu for fresh start
+        }
+        
+        isRestarting = false; // Reset flag
     }
 
     // Update is called once per frame
@@ -87,17 +87,41 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (menuActive == null)
+            if (menuActive == menuPause)
+            {
+                stateUnpause();
+            }
+            else if (menuActive == menuCredits)
+            {
+                CloseCredits();
+            }
+            else if (menuActive == menuSettings)
+            {
+                CloseSettings();
+            }
+            else if (menuActive == null && hud.activeSelf)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause)
-            {
-                stateUnpause();
-            }
         }
+    }
+
+    private void initializeMainMenu()
+    {
+        statePause();
+        menuActive = menuMain;
+        menuMain.SetActive(true);
+        hud.SetActive(false);
+        pauseMenu.SetActive(false);
+
+        if (player != null)
+        {
+            player.SetActive(false);
+        }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // ------------------------------
@@ -106,15 +130,28 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        mainMenu.SetActive(false);  // Hide Main Menu
+        menuMain.SetActive(false);  // Hide Main Menu
         hud.SetActive(true);  // Show HUD
-        SceneManager.LoadScene("UnitTest");  // Load game scene
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;  // Resume the game
+        isPaused = false;
+
+        if (player != null)
+        {
+            player.SetActive(true);
+        }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        //SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load event
+        //SceneManager.LoadScene("UnitTestLevel1"); // Load game scene
     }
 
     public void OpenSettingsFromMainMenu()
     {
-        mainMenu.SetActive(false);  // Hide Main Menu
-        settingsMenu.SetActive(true);  // Show Settings Menu
+        menuMain.SetActive(false);  // Hide Main Menu
+        menuSettings.SetActive(true);  // Show Settings Menu
     }
 
     public void QuitGame()
@@ -131,7 +168,7 @@ public class GameManager : MonoBehaviour
     }
     public void statePause()
     {
-        isPaused = !isPaused;
+        isPaused = true;
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -139,12 +176,16 @@ public class GameManager : MonoBehaviour
 
     public void stateUnpause()
     {
-        isPaused = !isPaused;
+        isPaused = false;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        menuActive.SetActive(false);
-        menuActive = null;
+
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+            menuActive = null;
+        }
     }
 
     // Track number of living enemies in level
@@ -175,15 +216,38 @@ public class GameManager : MonoBehaviour
     }
     public void ShowCredits()
     {
-        mainMenu.SetActive(false);
-        creditsMenu.SetActive(true);
+        if (menuActive == menuMain)
+        {
+            menuMain.SetActive(false);
+            menuCredits.SetActive(true);
+            menuActive = menuCredits;
+
+            // Trigger credit scroller
+            creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            if (scroller != null)
+            {
+                scroller.startScrolling();
+            }
+        }
     }
 
-    public void BackToMainMenu()
+    public void CloseCredits()
     {
-        creditsMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        if (menuActive == menuCredits)
+        {
+            // Reset credit scroller
+            creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            if (scroller != null)
+            {
+                scroller.resetCredits();
+            }
+
+            menuCredits.SetActive(false);
+            menuMain.SetActive(true);
+            menuActive = menuMain;
+        }
     }
+
     // ------------------------------
     // HUD Functions
     // ------------------------------
@@ -259,28 +323,39 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Verify correct scene is reloading
+        isRestarting = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload current scene
     }
 
-    public void QuitToMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Leah");
-    }
     // ------------------------------
     // Settings Menu Functions
     // ------------------------------
     public void UpdateVolume(float volume)
     {
-       
+
         audioManager.instance.SetBackgroundAudioVolume(volume);
+    }
+
+    public void ShowSettings()
+    {
+        if (menuActive == menuMain)
+        {
+            menuMain.SetActive(false);
+            menuSettings.SetActive(true);
+            menuActive = menuSettings;
+        }
     }
 
     public void CloseSettings()
     {
-        settingsMenu.SetActive(false);
-        pauseMenu.SetActive(true);  // Show Pause Menu after closing settings
+        if (menuActive == menuSettings)
+        {
+            menuSettings.SetActive(false);
+            menuMain.SetActive(true);  // Show main menu after closing settings
+            menuActive = menuMain;
+        }
     }
 
     // ------------------------------
@@ -301,5 +376,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 }
