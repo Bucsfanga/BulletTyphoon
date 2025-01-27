@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3538682643977317781}
   - component: {fileID: 103156383148160480}
   - component: {fileID: 8917480493352762539}
-  m_Layer: 0
-  m_Name: Blue_Bullet
+  m_Layer: 7
+  m_Name: Blue_Bullet (Elite)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,10 +177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   rb: {fileID: 8917480493352762539}
-  damageAmount: 3
+  damageAmount: 4
   damageInterval: 0
-  speed: 45
-  destroyTime: 0.5
+  speed: 50
+  destroyTime: 1
   delayTime: 0
   ignoreLayer:
     serializedVersion: 2
