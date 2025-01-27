@@ -649,13 +649,13 @@ MonoBehaviour:
   anim: {fileID: 371369767154781859}
   isElite: 1
   eliteTintColor: {r: 1, g: 1, b: 1, a: 0}
-  HP: 10
+  HP: 5
   faceTargetSpeed: 20
   model: {fileID: 172717894638058128}
   shootPos: {fileID: 21171581696606555}
   headPos: {fileID: 4330440769950855106}
   bullet: {fileID: 3187402950819126395, guid: 89a7ce43e198e104ab12ef0dedd8b8f2, type: 3}
-  shootRate: 1.5
+  shootRate: 3
   FOV: 90
   animSpeedTrans: 1
   roamPauseTime: 3

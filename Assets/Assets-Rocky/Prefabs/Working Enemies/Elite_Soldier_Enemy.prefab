@@ -83,7 +83,7 @@ MonoBehaviour:
   headPos: {fileID: 8894759642582898545}
   bullet: {fileID: 2541754595932758718, guid: 7c291fa046b9b884cb14959745a4e2d0, type: 3}
   shootRate: 1
-  FOV: 90
+  FOV: 360
   animSpeedTrans: 1
   roamPauseTime: 3
   roamDist: 30
