@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RainManager : MonoBehaviour
@@ -9,6 +11,7 @@ public class RainManager : MonoBehaviour
     [SerializeField] private float spawnAreaWidth = 30f;
     [SerializeField] private float spawnAreaLength = 30f;
     [SerializeField] private float rainSpeed = 10f;
+    [SerializeField] private float rainStartDelay = 0.2f;// adding a delay function
 
     [Header("Raindrop Scale")]
     [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f); // Default raindrop scale
@@ -16,6 +19,7 @@ public class RainManager : MonoBehaviour
 
     private GameObject[] raindrops;
     private bool isRaining = false;
+    private bool isWaitingToRain = false; // this tracks the delay state.
     private Transform playerTransform;
 
     private void Start()
@@ -78,7 +82,20 @@ public class RainManager : MonoBehaviour
 
     public void StartRain()
     {
+        if (!isWaitingToRain && !isRaining)
+        {
+            StartCoroutine(StartRainWithDelay());
+        }
+    }
+
+    private IEnumerator StartRainWithDelay()
+    {
+        isWaitingToRain = true;
+        yield return new WaitForSeconds(rainStartDelay);
+
+        isWaitingToRain = false;
         isRaining = true;
+
         foreach (GameObject raindrop in raindrops)
         {
             RepositionRaindrop(raindrop);
@@ -86,8 +103,15 @@ public class RainManager : MonoBehaviour
         }
     }
 
+
     public void StopRain()
     {
+        if (isWaitingToRain)
+        {
+            StopAllCoroutines();
+            isWaitingToRain = false;
+        }
+
         isRaining = false;
         foreach (GameObject raindrop in raindrops)
         {
