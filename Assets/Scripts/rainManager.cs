@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class RainManager : MonoBehaviour
 {
@@ -11,15 +10,18 @@ public class RainManager : MonoBehaviour
     [SerializeField] private float spawnAreaWidth = 30f;
     [SerializeField] private float spawnAreaLength = 30f;
     [SerializeField] private float rainSpeed = 10f;
-    [SerializeField] private float rainStartDelay = 0.2f;// adding a delay function
+    [SerializeField] private float rainStartDelay = 3f;
+
+    [Header("Collision Settings")]
+    [SerializeField] private LayerMask ignoreCollisionLayers; // Set this in inspector to include layers
 
     [Header("Raindrop Scale")]
-    [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f); // Default raindrop scale
-    [SerializeField] private float scaleVariation = 0.2f; // How much the scale can vary (20% by default)
+    [SerializeField] private Vector3 baseScale = new Vector3(0.04f, 0.2f, 0.04f);
+    [SerializeField] private float scaleVariation = 0.2f;
 
     private GameObject[] raindrops;
     private bool isRaining = false;
-    private bool isWaitingToRain = false; // this tracks the delay state.
+    private bool isWaitingToRain = false;
     private Transform playerTransform;
 
     private void Start()
@@ -30,9 +32,23 @@ public class RainManager : MonoBehaviour
         {
             raindrops[i] = Instantiate(rainDropPrefab, Vector3.zero, Quaternion.Euler(0, 0, 0));
             raindrops[i].transform.parent = transform;
+
+            // Add a Rigidbody if it doesn't exist
+            if (raindrops[i].GetComponent<Rigidbody>() == null)
+            {
+                Rigidbody rb = raindrops[i].AddComponent<Rigidbody>();
+                rb.useGravity = false;
+                rb.isKinematic = true;
+            }
+
+            // Add RaindropCollision script to each raindrop
+            if (raindrops[i].GetComponent<RaindropCollision>() == null)
+            {
+                raindrops[i].AddComponent<RaindropCollision>().Initialize(this);
+            }
+
             raindrops[i].SetActive(false);
 
-            // Apply scale with slight random variation
             float randomVariation = 1f + Random.Range(-scaleVariation, scaleVariation);
             raindrops[i].transform.localScale = new Vector3(
                 baseScale.x * randomVariation,
@@ -41,7 +57,6 @@ public class RainManager : MonoBehaviour
             );
         }
 
-        // Find the player
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -59,13 +74,26 @@ public class RainManager : MonoBehaviour
         {
             if (raindrop.activeSelf)
             {
-                // Move the raindrop down
-                raindrop.transform.Translate(Vector3.down * rainSpeed * Time.deltaTime, Space.World);
+                // Check for collisions before moving
+                Vector3 movement = Vector3.down * rainSpeed * Time.deltaTime;
+                RaycastHit hit;
 
-                // If the raindrop is below ground level, reset its position
-                if (raindrop.transform.position.y < 0)
+                // Raycast to detect obstacles, ignore specified layers
+                if (Physics.Raycast(raindrop.transform.position, Vector3.down, out hit, movement.magnitude, ~ignoreCollisionLayers))
                 {
+                    // If we hit something that's not in our ignore layers, reposition the raindrop
                     RepositionRaindrop(raindrop);
+                }
+                else
+                {
+                    // Move the raindrop if no collision detected
+                    raindrop.transform.Translate(movement, Space.World);
+
+                    // If the raindrop is below ground level, reset its position
+                    if (raindrop.transform.position.y < 0)
+                    {
+                        RepositionRaindrop(raindrop);
+                    }
                 }
             }
         }
@@ -73,7 +101,6 @@ public class RainManager : MonoBehaviour
 
     private void RepositionRaindrop(GameObject raindrop)
     {
-        // Calculate a random position within the spawn area, centered on the player
         float randomX = Random.Range(-spawnAreaWidth / 2, spawnAreaWidth / 2) + playerTransform.position.x;
         float randomZ = Random.Range(-spawnAreaLength / 2, spawnAreaLength / 2) + playerTransform.position.z;
 
@@ -103,7 +130,6 @@ public class RainManager : MonoBehaviour
         }
     }
 
-
     public void StopRain()
     {
         if (isWaitingToRain)
@@ -116,6 +142,28 @@ public class RainManager : MonoBehaviour
         foreach (GameObject raindrop in raindrops)
         {
             raindrop.SetActive(false);
+        }
+    }
+}
+
+// Add this as a new script (RaindropCollision.cs)
+public class RaindropCollision : MonoBehaviour
+{
+    private RainManager rainManager;
+
+    public void Initialize(RainManager manager)
+    {
+        rainManager = manager;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // If the raindrop collides with anything, reposition it
+        // The layer mask in the main script will prevent this from triggering with ignored objects
+        if (rainManager != null)
+        {
+            gameObject.SetActive(false);
+            gameObject.SetActive(true); // This will trigger repositioning through the main script
         }
     }
 }
