@@ -7,7 +7,6 @@ public class weatherController : MonoBehaviour
     [SerializeField] Material clearSkybox;
     [SerializeField] Color stormAmbientLight = Color.gray;
     [SerializeField] float stormFogDensity = 0.02f;
-    [SerializeField] private MaterialStormEffect materialEffect;
     [SerializeField] private RainManager rainManager;
     [SerializeField] float transitionDuration = 2f; // Duration of the transition
 
@@ -35,11 +34,6 @@ public class weatherController : MonoBehaviour
         if (rainManager != null)
         {
             rainManager.StartRain();
-        }
-
-        if (materialEffect != null)
-        {
-            materialEffect.OnStormBegin();
         }
     }
 

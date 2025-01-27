@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3406359485720655038}
   - component: {fileID: 7597955201385322122}
-  - component: {fileID: 8947643349049343367}
   - component: {fileID: 5131275925511579950}
   m_Layer: 0
   m_Name: Weather Changer
@@ -50,26 +49,8 @@ MonoBehaviour:
   clearSkybox: {fileID: 2100000, guid: cede08c9fc471e64884909cd4bbeaf59, type: 2}
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   stormFogDensity: 0.001
-  materialEffect: {fileID: 8947643349049343367}
   rainManager: {fileID: 5131275925511579950}
   transitionDuration: 2
---- !u!114 &8947643349049343367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333204437693946569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb86f6f0044aa54d9f4ffd063569120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetMaterial: {fileID: 2100000, guid: 19d46f0129fa62b4db82fbfd1025433c, type: 2}
-  transitionDuration: 2
-  delayBeforeEffect: 10
-  stormSmoothness: 1
-  stormMetallic: 1
 --- !u!114 &5131275925511579950
 MonoBehaviour:
   m_ObjectHideFlags: 0
