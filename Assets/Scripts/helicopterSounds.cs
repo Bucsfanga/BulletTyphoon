@@ -18,7 +18,7 @@ public class HelicopterSound : MonoBehaviour
         audioSource.spatialBlend = 1f; // 1 = fully 3D sound
 
         // Find the player (adjust the tag as needed)
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameManager.instance.player.transform;
     }
 
     void Update()

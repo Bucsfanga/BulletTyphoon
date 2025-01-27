@@ -57,7 +57,7 @@ public class RainManager : MonoBehaviour
             );
         }
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameManager.instance.player.transform;
     }
 
     private void Update()
