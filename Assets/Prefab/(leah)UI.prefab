@@ -6065,7 +6065,6 @@ MonoBehaviour:
   interactPrompt: {fileID: 0}
   volumeSlider: {fileID: 0}
   isPaused: 0
-  isRestarting: 0
   goalCheckpoint: 0
   incomingWarningText: {fileID: 7167304202022905489}
   submergedOverlay: {fileID: 4518836500613931572}
