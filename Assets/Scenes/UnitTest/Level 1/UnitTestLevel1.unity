@@ -7271,18 +7271,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1812722018668924384, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349615987764960015, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349615987764960015, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3955183871223328722, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Name
       value: BT_UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414222195731190204, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: scrollSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414222195731190204, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: offscreenTop
+      value: 2550
       objectReference: {fileID: 0}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 908057018}
-    - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: menuMain
-      value: 
-      objectReference: {fileID: 1808389541}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: playerScript
       value: 
@@ -7372,11 +7388,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
---- !u!1 &1808389541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1812722018668924384, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-  m_PrefabInstance: {fileID: 1808389540}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1810890621
 PrefabInstance:
   m_ObjectHideFlags: 0
