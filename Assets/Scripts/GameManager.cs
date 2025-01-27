@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -96,8 +95,6 @@ public class GameManager : MonoBehaviour
 
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
-
-        isRestarting = false; // Reset flag
 
         volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
 
