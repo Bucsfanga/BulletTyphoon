@@ -143,9 +143,6 @@ public class GameManager : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        //SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to scene load event
-        //SceneManager.LoadScene("UnitTestLevel1"); // Load game scene
     }
 
     public void OpenSettingsFromMainMenu()
