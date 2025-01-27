@@ -31,6 +31,11 @@ public class audioManager : MonoBehaviour
     {
         "Death 1", "Death 2", "Death 3", "Death 4", "Death 5"
     };
+    [SerializeField]
+    private List<string> jumpSounds = new List<string>
+    {
+        "Player Jump 1", "Player Jump 2", "Player Jump 3"
+    };
 
     //Labeled section for the audio settings. Created separate background and sound volumes, as well as a boolean to play music on awake, and fade in/out durations
     [Header("Audio Settings")]
@@ -39,6 +44,11 @@ public class audioManager : MonoBehaviour
     [SerializeField] private bool playBackgroundOnAwake = true;
     [SerializeField] private float fadeInDuration = 2f;
     [SerializeField] private float fadeOutDuration = 1f;
+    //TODO:: Move the settings to audio manager
+    [SerializeField] private float volumeMultiplier = 1f;
+    [SerializeField] public bool useRandomPitch = true;
+    [SerializeField] private float minPitch = 0.95f;
+    [SerializeField] private float maxPitch = 1.05f;
 
     private void Awake()
     {
@@ -180,6 +190,11 @@ public class audioManager : MonoBehaviour
         PlaySound(GetRandomSound(deathSounds));
     }
 
+    public void PlayRandomJumpSound()
+    {
+        PlaySound(GetRandomSound(jumpSounds));
+    }
+
     //For delayed sound effects such as thunder, crack of lightning, or explosion. Not currently used in the project.
     public IEnumerator DelayPlaySound(string name, float delay)
     {
@@ -211,6 +226,9 @@ public class audioManager : MonoBehaviour
 }
 
 //TODO::
+
+//Add volume sliders for jump, footsteps, and other sound effects
+
 //Add a method to play footsteps sounds on an animation event
 //Add a PlayRandomShootSound method
 //Add a PlayGunClickSound method

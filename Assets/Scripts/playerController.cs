@@ -8,7 +8,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Header("-----Components-----")]
     #region Variables
     [SerializeField] CharacterController controller;
-    [SerializeField] AudioSource aud; // Lecture 6
+    //[SerializeField] AudioSource aud; // Lecture 6 - IAN NOTE: Commenting out to use the audioManager singleton
+    [SerializeField] audioManager audioManager; //using the audioManager rather than accessing the AudioSource directly
     [SerializeField] LayerMask ignoreMask;
     [SerializeField] Transform playerCamera;
 
@@ -40,6 +41,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public gunStats currentGunStats;
 
     [Header("-----Audio-----")]
+    
     [SerializeField] AudioClip[] audSteps;
     [SerializeField][Range(0, 1)] float audStepsVol;
     [SerializeField] AudioClip[] audHurt;
@@ -49,6 +51,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
 
+
+    [SerializeField] gunshotAudio gunshotAudio;
     cameraController camController;
 
     Vector3 moveDir;
@@ -78,7 +82,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (value)
             {
-                aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+                //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
         }
@@ -93,7 +97,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (value)
             {
-                aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);
+                //aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);IAN TODO: Commented out to use the audioManager singleton
+                //audioManager.instance.PlaySound();
+                //gunshotAudio.PlayGunShot();
             }
             _isShooting = value;
         }
@@ -108,7 +114,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             {
                 _isReloading = value;
                 Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
-                aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);
+                //aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);IAN TODO: Commented out to use the audioManager singleton
 
                 // Wait for reload time
                 Invoke("FinishReload", reloadTime);
@@ -188,6 +194,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             Debug.LogError("Player has no starting gun assigned!");
         }
+
+        audioManager = audioManager.instance; //set the audioManager instance to the instance in the scene
 
         originalFOV = targetFOV;
         HPOrig = HP;
@@ -317,7 +325,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 isCrouching = false;
             }
             isJumping = true;
-            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol); // Lecture 6
+            //aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol); // Lecture 6 IAN TODO: Commented out to use the audioManager singleton
+            audioManager.PlayRandomJumpSound();
         }
     }
 
@@ -347,10 +356,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0; // Reset the timer when shooting.
 
         // Play shooting sound
-        if (shootSound != null && shootSound.Length > 0)
-        {
-            isShooting = true;
-        }
+        gunshotAudio.PlayGunShot();
+        //if (shootSound != null && shootSound.Length > 0)
+        //{
+        //    isShooting = true;
+        //}
 
         // Visual effects
         StartCoroutine(flashMuzzleFire());
@@ -396,7 +406,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void takeDamage(int amount)
     {
         HP -= amount;
-        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol); // Lecture 6
+        //aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol); // Commented out to use the audioManager singleton
+        audioManager.PlayRandomDamageSound();
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());
 
