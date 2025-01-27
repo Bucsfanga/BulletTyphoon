@@ -41,4 +41,18 @@ public class buttonFunctions : MonoBehaviour
     {
         GameManager.instance.NextLevel();
     }
+
+    // Back button for settings menu
+    public void BackToMainMenuFromSettings()
+    {
+        GameManager.instance.CloseSettings();
+        
+    }
+
+    // Back button for credits menu
+    public void BackToMainMenuFromCredits()
+    {
+         GameManager.instance.CloseCredits();
+        
+    }
 }
