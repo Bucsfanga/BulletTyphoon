@@ -36,4 +36,9 @@ public class buttonFunctions : MonoBehaviour
     {
         GameManager.instance.StartGame();
     }
+
+    public void nextLevel()
+    {
+        GameManager.instance.NextLevel();
+    }
 }
