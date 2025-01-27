@@ -70,5 +70,8 @@ MonoBehaviour:
   spawnAreaLength: 70
   rainSpeed: 1300
   rainStartDelay: 2
+  ignoreCollisionLayers:
+    serializedVersion: 2
+    m_Bits: 8
   baseScale: {x: 0.04, y: 0.2, z: 0.04}
   scaleVariation: 0.2
