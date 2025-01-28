@@ -76,17 +76,17 @@ MonoBehaviour:
   anim: {fileID: 942845887068889294}
   isElite: 1
   eliteTintColor: {r: 1, g: 1, b: 0, a: 1}
-  HP: 50
+  HP: 25
   faceTargetSpeed: 25
   model: {fileID: 2839277094855289739}
   shootPos: {fileID: 3385718499673080654}
   headPos: {fileID: 8894759642582898545}
-  bullet: {fileID: 2541754595932758718, guid: 7c291fa046b9b884cb14959745a4e2d0, type: 3}
-  shootRate: 1
+  bullet: {fileID: 2541754595932758718, guid: 570a7a984aa0fab4ba195a15354fd875, type: 3}
+  shootRate: 0.2
   FOV: 360
   animSpeedTrans: 1
   roamPauseTime: 3
-  roamDist: 30
+  roamDist: 0
 --- !u!195 &7311448031821520079
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ NavMeshAgent:
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 15
+  m_StoppingDistance: 30
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -151,7 +151,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 20
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &631915943700890192
 GameObject:
