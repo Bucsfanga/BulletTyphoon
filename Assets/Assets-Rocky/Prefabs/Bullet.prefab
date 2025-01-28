@@ -181,7 +181,7 @@ MonoBehaviour:
   damageInterval: 0
   speed: 25
   destroyTime: 3
-  delayTime: 0
+  delayTime: 2
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 64
