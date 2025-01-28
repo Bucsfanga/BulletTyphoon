@@ -147,7 +147,7 @@ MonoBehaviour:
   - {fileID: 6761835456492627211, guid: 1706f0d4666956f4789a08c949861459, type: 3}
   - {fileID: 772500331538710409, guid: eee702cd0a913734295cf06ffc9c6443, type: 3}
   numToSpawn: 6
-  timeBetweenSpawns: 5
+  timeBetweenSpawns: 1
   spawnPos:
   - {fileID: 1426513364943125268}
   - {fileID: 4998598853625054216}

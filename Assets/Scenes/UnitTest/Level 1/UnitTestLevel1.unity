@@ -8274,10 +8274,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalEnemy_Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 7366987149523745371, guid: b4802899d07cd5b47b605e45278819d4, type: 3}
-      propertyPath: timeBetweenSpawns
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
