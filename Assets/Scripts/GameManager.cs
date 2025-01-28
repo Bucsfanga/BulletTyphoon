@@ -391,9 +391,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (menuActive == menuMain)
+        if (menuActive == menuPause)
         {
-            menuMain.SetActive(false);
+            menuPause.SetActive(false);
             hud.SetActive(false);
             menuSettings.SetActive(true);
             menuActive = menuSettings;
@@ -405,8 +405,8 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            menuMain.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuMain;
+            menuPause.SetActive(true);  // Show main menu after closing settings
+            menuActive = menuPause;
         }
     }
 
