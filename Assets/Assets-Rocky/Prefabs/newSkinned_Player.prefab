@@ -812,11 +812,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   playerCamera: {fileID: 2254086628070290735}
-  HP: 4
-  speed: 8
+  HP: 10
+  speed: 5
   sprintMod: 2
   jumpMax: 2
-  jumpSpeed: 15
+  jumpSpeed: 14
   crouchHeight: 0
   crouchMod: 0
   gravity: 18
