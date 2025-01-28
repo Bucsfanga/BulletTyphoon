@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
     public GameObject damagePanel;
+    public GameObject buttonInteract;
     public Image playerHPBar;
 
+    public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
 
     [SerializeField] GameObject menuPause;
