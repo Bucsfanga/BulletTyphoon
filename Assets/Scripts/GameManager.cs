@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI ammoCounter;
     public Image[] ammoBullets; // Array to hold the bullet images
-    public float bulletAlpha = 0.3f; // Alpha value for empty bullets
+    public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
+    public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI interactPrompt;
 
@@ -294,11 +295,11 @@ public class GameManager : MonoBehaviour
             // If this bullet should be "filled"
             if (i < bulletsToShow)
             {
-                bulletColor.a = .75f; // change opacity
+                bulletColor.a = bulletAlphaLoaded; // change opacity
             }
             else
             {
-                bulletColor.a = bulletAlpha; // Reduced opacity for empty bullets
+                bulletColor.a = bulletAlphaSpented; // Reduced opacity for empty bullets
             }
 
             ammoBullets[i].color = bulletColor;

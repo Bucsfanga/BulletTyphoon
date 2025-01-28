@@ -6956,8 +6956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 320, y: 90}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4348895145568156675
 CanvasRenderer:
@@ -7755,7 +7755,8 @@ MonoBehaviour:
   - {fileID: 702472826622648151}
   - {fileID: 5989702066665707842}
   - {fileID: 3110765077125038295}
-  bulletAlpha: 0.3
+  bulletAlphaLoaded: 0.6
+  bulletAlphaSpented: 0
   interactPrompt: {fileID: 0}
   volumeSlider: {fileID: 4207680607746309746}
   isPaused: 0
@@ -8041,8 +8042,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 7004804796619091088}
     m_Modifications:
     - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 95.599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476467409644206596, guid: 9d65024cbf27677488daf45877856cab, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -120
+      value: 43.94998
       objectReference: {fileID: 0}
     - target: {fileID: 3310204366190488582, guid: 9d65024cbf27677488daf45877856cab, type: 3}
       propertyPath: m_AnchoredPosition.x
