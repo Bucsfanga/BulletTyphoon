@@ -5415,6 +5415,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1769622470}
+    - target: {fileID: 4939756487857465128, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToPauseMenuFromSettings
+      objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5505,7 +5509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7665056365150246054, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7810844857011464275, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_AnchorMax.x

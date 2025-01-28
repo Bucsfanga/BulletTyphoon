@@ -397,61 +397,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Credits
-
-
-
-
-
-    Developed by:
-
-
-    Donald Thatcher..............................................Technical
-    Designer
-
-
-
-
-    Roxythe Harding.................Environmental Hazards/Level
-    Design
-
-
-
-
-    Ian Burke.....................................................Audio/Particle
-    Effects
-
-
-
-
-    Richard Rivera.................Weather/HUD/Structure Visual Effects
-
-
-
-
-    Zachary
-    Honea.....................................................Player Controls
-
-
-
-
-    Tabitha
-    Scherch..................................................Enemy Designer
-
-
-
-
-    Quilliah
-    Smallwood............................................UI/Menu Designer
-
-
-
-
-
-
-
-    Thanks
-    For Playing!'
+  m_text: "Credits\n\n\n\n\nDeveloped by:\n\nDonald Thatcher..............................................Technical
+    Designer\n\n\n\nRoxythe Harding.................Environmental Hazards/Level Design\n\n\n\nIan
+    Burke.....................................................Audio/Particle Effects\n\n\n\nRichard
+    Rivera.................Weather/HUD/Structure Visual Effects\n\n\n\nZachary Honea.....................................................Player
+    Controls\n\n\n\nTabitha Scherch..................................................Enemy
+    Designer\n\n\n\nQuilliah Smallwood............................................UI/Menu
+    Designer\n\n\nUnity Store Free Assets\n\nThe Fallout Nerd..........................................Low
+    Poly Cloud Model\n\n\n\rShMEL.........................................................Cracked
+    Wall Textures\r\n\r\n\r\nPixie Indie..............................................Dungeon
+    Ground Textures\r\n\r\n\r\nLumo-Art 3D................................................Stylized
+    PBR Textures\r\n\r\n\r\nMathew Guz................................................On-Hit
+    Particle Effects\r\n\r\n\r\nDynamic Art...................................................Low
+    Poly Street Pack\r\n\r\n\r\nSametsylmz3d....................................Low
+    Poly WW2 Gun Models\r\n\r\n\r\nVIS Games...........................................................Metal
+    Grids PBR\r\n\r\n\r\nHviluvator.......................................................Metal
+    Plate Textures\r\n\r\n\r\nJermesa Studio...................Mountain Terrain Background
+    Scenery\r\n\r\n\r\nSICS Games.........................................................Helicopter
+    Model\r\n\r\n\r\nDungeon Mason................................Duo Monster Enemy
+    Models\r\n\r\n\r\nAvionx.................................................................................Skybox\r\n\r\n\r\nLowlyPoly................................Metal/Grass/Sci-fi/Tile
+    Texture Pack\r\n\r\n\r\nSlayver.................................................Survivalist
+    Character Model\r\n\r\n\nPolygon Blacksmith.............................WW2 Soldier
+    Enemy Model\n\n\nThanks For Playing"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -615,5 +582,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creditsText: {fileID: 4934533887138677293}
   scrollSpeed: 7
-  offscreenTop: 2550
+  offscreenTop: 5900
   resetDelay: 3
