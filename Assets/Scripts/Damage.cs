@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Damage : MonoBehaviour
@@ -11,8 +10,10 @@ public class Damage : MonoBehaviour
 
     [SerializeField] int damageAmount, damageInterval;
     [SerializeField] float speed;
-    [SerializeField] int destroyTime;
+    [SerializeField] float destroyTime;
     [SerializeField] float delayTime;
+
+    [SerializeField] LayerMask ignoreLayer; // Layer(s) to ignore
 
     private bool hasDealtDamage = false; // Flag to prevent multiple applications of damage
     private bool isApplyingDamage = false;
@@ -23,7 +24,6 @@ public class Damage : MonoBehaviour
         damageRadius = radius;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (type == damageType.falling)
@@ -37,7 +37,7 @@ public class Damage : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator delay()
+    private IEnumerator delay()
     {
         yield return new WaitForSeconds(delayTime);
 
@@ -53,7 +53,7 @@ public class Damage : MonoBehaviour
         if (type != damageType.flood || isApplyingDamage) return;
 
         // Check if the collider is a capsule collider
-        if (other is CapsuleCollider)
+        if (other is CapsuleCollider && !IsIgnoredLayer(other.gameObject.layer))
         {
             IDamage dmg = other.GetComponent<IDamage>();
 
@@ -79,7 +79,6 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // Stop applying damage when the object exits the flood
         if (type == damageType.flood)
         {
             isApplyingDamage = false;
@@ -89,7 +88,7 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || hasDealtDamage)
+        if (other.isTrigger || hasDealtDamage || IsIgnoredLayer(other.gameObject.layer))
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
@@ -101,41 +100,34 @@ public class Damage : MonoBehaviour
             if (!(other is CapsuleCollider))
                 return;
 
-
-            if (dmg != null)
-            {
-                // Start damage coroutine
-                StartCoroutine(applyFloodDamage(dmg));
-            }
+            StartCoroutine(applyFloodDamage(dmg));
         }
         else if (type == damageType.moving)
         {
-            if (dmg != null)
-            {
-                dmg.takeDamage(damageAmount);
-                hasDealtDamage = true;
-                Destroy(gameObject);
-            }
+            dmg.takeDamage(damageAmount);
+            hasDealtDamage = true;
+            Destroy(gameObject);
         }
         else if (type == damageType.falling)
         {
-            // Check if the player/enemy is inside damage area
-            Collider[] colliders = Physics.OverlapSphere(transform.position, damageRadius); // Adjust radius to match damage area
+            Collider[] colliders = Physics.OverlapSphere(transform.position, damageRadius);
 
             foreach (Collider col in colliders)
             {
-                if (col == other)
+                if (col == other && dmg != null)
                 {
-                    if (dmg != null)
-                    {
-                        dmg.takeDamage(damageAmount);
-                        hasDealtDamage = true;
-
-                        Destroy(gameObject);
-                        return;
-                    }
+                    dmg.takeDamage(damageAmount);
+                    hasDealtDamage = true;
+                    Destroy(gameObject);
+                    return;
                 }
             }
         }
+    }
+
+    private bool IsIgnoredLayer(int layer)
+    {
+        // Check if the layer is in the ignoreLayer mask
+        return (ignoreLayer.value & (1 << layer)) != 0;
     }
 }

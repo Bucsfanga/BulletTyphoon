@@ -96,10 +96,15 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
-        volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
+        // Check for null references before proceeding
+        if (audioManager.instance != null && volumeSlider != null)
+        {
+            // Initialize the slider with the current background audio volume
+            volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
 
-        // Add listener to adjust the volume when the slider value changes
-        volumeSlider.onValueChanged.AddListener(UpdateVolume);
+            // Add a listener to update the volume when the slider value changes
+            volumeSlider.onValueChanged.AddListener(UpdateVolume);
+        }
     }
 
     // Update is called once per frame

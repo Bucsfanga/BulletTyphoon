@@ -182,6 +182,9 @@ MonoBehaviour:
   speed: 30
   destroyTime: 3
   delayTime: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &5171957784032228150
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -7487,7 +7487,7 @@ MonoBehaviour:
   - {fileID: 3110765077125038295}
   bulletAlpha: 0.3
   interactPrompt: {fileID: 0}
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 4207680607746309746}
   isPaused: 0
   goalCheckpoint: 0
   incomingWarningText: {fileID: 7167304202022905489}
@@ -7836,7 +7836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179641419157115613, guid: 9d65024cbf27677488daf45877856cab, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256175930677258669, guid: 9d65024cbf27677488daf45877856cab, type: 3}
       propertyPath: m_Pivot.x
