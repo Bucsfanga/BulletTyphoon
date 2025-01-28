@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
     public GameObject damagePanel;
+    public GameObject buttonInteract;
     public Image playerHPBar;
 
+    public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
 
     [SerializeField] GameObject menuPause;
@@ -31,7 +33,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI ammoCounter;
     public Image[] ammoBullets; // Array to hold the bullet images
-    public float bulletAlpha = 0.3f; // Alpha value for empty bullets
+    public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
+    public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI interactPrompt;
 
@@ -294,11 +297,11 @@ public class GameManager : MonoBehaviour
             // If this bullet should be "filled"
             if (i < bulletsToShow)
             {
-                bulletColor.a = .75f; // change opacity
+                bulletColor.a = bulletAlphaLoaded; // change opacity
             }
             else
             {
-                bulletColor.a = bulletAlpha; // Reduced opacity for empty bullets
+                bulletColor.a = bulletAlphaSpented; // Reduced opacity for empty bullets
             }
 
             ammoBullets[i].color = bulletColor;
@@ -391,9 +394,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (menuActive == menuMain)
+        if (menuActive == menuPause)
         {
-            menuMain.SetActive(false);
+            menuPause.SetActive(false);
             hud.SetActive(false);
             menuSettings.SetActive(true);
             menuActive = menuSettings;
@@ -405,8 +408,9 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            menuMain.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuMain;
+            hud.SetActive(true);
+            menuPause.SetActive(true);  // Show main menu after closing settings
+            menuActive = menuPause;
         }
     }
 

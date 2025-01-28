@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //using NUnit.Framework;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 {
     [Header("-----Components-----")]
     #region Variables
