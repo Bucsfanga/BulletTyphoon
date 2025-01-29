@@ -50,7 +50,7 @@ MonoBehaviour:
   stormAmbientLight: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   stormFogDensity: 0.001
   rainManager: {fileID: 5131275925511579950}
-  transitionDuration: 2
+  transitionDuration: 1
 --- !u!114 &5131275925511579950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +72,6 @@ MonoBehaviour:
   rainStartDelay: 2
   ignoreCollisionLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   baseScale: {x: 0.04, y: 0.2, z: 0.04}
   scaleVariation: 0.2
