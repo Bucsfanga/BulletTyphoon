@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
+    [SerializeField] GameObject menuControls;
 
     // HUD Elements
     public RectTransform healthFill;
@@ -162,6 +164,7 @@ public class GameManager : MonoBehaviour
     {
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
+        StartCoroutine(ContrtolsScreen());
         hud.SetActive(true);  // Show HUD
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
@@ -431,5 +434,15 @@ public class GameManager : MonoBehaviour
                 directionalLight.intensity = originalLightIntensity;// This returns the light to its original spot when storm is not active.
             }
         }
+    }
+
+    // ------------------------------
+    // Disply Controls on screen
+    // ------------------------------
+    private IEnumerator ContrtolsScreen()
+    {
+        menuControls.SetActive(true);
+        yield return new WaitForSeconds(3);
+        menuControls.SetActive(false);
     }
 }
