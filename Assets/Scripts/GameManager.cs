@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
     public GameObject damagePanel;
+    public GameObject buttonInteract;
     public Image playerHPBar;
 
+    public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
 
     [SerializeField] GameObject menuPause;
@@ -25,13 +28,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
+    [SerializeField] GameObject menuControls;
 
     // HUD Elements
     public RectTransform healthFill;
 
     public TextMeshProUGUI ammoCounter;
     public Image[] ammoBullets; // Array to hold the bullet images
-    public float bulletAlpha = 0.3f; // Alpha value for empty bullets
+    public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
+    public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI interactPrompt;
 
@@ -159,6 +164,7 @@ public class GameManager : MonoBehaviour
     {
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
+        StartCoroutine(ContrtolsScreen());
         hud.SetActive(true);  // Show HUD
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
@@ -294,11 +300,11 @@ public class GameManager : MonoBehaviour
             // If this bullet should be "filled"
             if (i < bulletsToShow)
             {
-                bulletColor.a = .75f; // change opacity
+                bulletColor.a = bulletAlphaLoaded; // change opacity
             }
             else
             {
-                bulletColor.a = bulletAlpha; // Reduced opacity for empty bullets
+                bulletColor.a = bulletAlphaSpented; // Reduced opacity for empty bullets
             }
 
             ammoBullets[i].color = bulletColor;
@@ -405,6 +411,7 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
+            hud.SetActive(true);
             menuPause.SetActive(true);  // Show main menu after closing settings
             menuActive = menuPause;
         }
@@ -427,5 +434,15 @@ public class GameManager : MonoBehaviour
                 directionalLight.intensity = originalLightIntensity;// This returns the light to its original spot when storm is not active.
             }
         }
+    }
+
+    // ------------------------------
+    // Disply Controls on screen
+    // ------------------------------
+    private IEnumerator ContrtolsScreen()
+    {
+        menuControls.SetActive(true);
+        yield return new WaitForSeconds(3);
+        menuControls.SetActive(false);
     }
 }

@@ -43,7 +43,7 @@ public class buttonFunctions : MonoBehaviour
     }
 
     // Back button for settings menu
-    public void BackToMainMenuFromSettings()
+    public void BackToPauseMenuFromSettings()
     {
         GameManager.instance.CloseSettings();
         

@@ -178,8 +178,13 @@ MonoBehaviour:
   type: 0
   rb: {fileID: 5171957784032228150}
   damageAmount: 1
+  damageInterval: 0
   speed: 25
   destroyTime: 3
+  delayTime: 2
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &5171957784032228150
 Rigidbody:
   m_ObjectHideFlags: 0

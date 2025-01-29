@@ -158,6 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthIncrease: 3
   respawnTime: 60
+  model: {fileID: 5911641781736425736}
+  buttonInfo: Press E To Use Health Pack!
 --- !u!65 &1901324608155637966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -177,7 +179,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2287912, y: 1, z: 0.7763446}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -0.008980274, y: 0, z: -0.010044664}
 --- !u!1 &7937240648713241622
 GameObject:
