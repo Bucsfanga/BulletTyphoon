@@ -7,7 +7,8 @@ public class muzzleFlashParticleEffect : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Shoot"))
+        // Only play muzzle flash if the game is not paused and shoot button is pressed
+        if (!GameManager.instance.isPaused && Input.GetButton("Shoot"))
         {
             PlayMuzzleFlash();
         }
