@@ -6535,63 +6535,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5725515562008848941, guid: 5338837abfa70944b9a2fe5941dd7bce, type: 3}
   m_PrefabInstance: {fileID: 2075475607}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &721796489
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 31.75237
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 93.905266
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -145.3559
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669291574520732919, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5394583358545179971, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
-      propertyPath: m_Name
-      value: Background Mountain Range
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9547dcac4a76f8b419d2c6208b9db5cf, type: 3}
 --- !u!1 &723565591
 GameObject:
   m_ObjectHideFlags: 0
@@ -8292,6 +8235,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e28dc7210d1244c85ba78d7814867b, type: 3}
+--- !u!1001 &820669357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.75237
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 93.905266
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -145.3559
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669291574520732919, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394583358545179971, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
+      propertyPath: m_Name
+      value: Background Mountain Range
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af18b4dda6d22964b8e1a5525c6a786f, type: 3}
 --- !u!1001 &820963758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22185,7 +22185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7543825573840225071, guid: 0f5611f0241f6b047998222cf0d1acde, type: 3}
       propertyPath: cloudSpawnInterval
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22541,7 +22541,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f6cd986829d6781478facd437ed5912c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 88b4a18dbe09fdc4db0cf8a7a3167c56, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2089009551
 Transform:
@@ -23083,7 +23083,7 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 199453158}
   - {fileID: 1520270779}
-  - {fileID: 721796489}
+  - {fileID: 820669357}
   - {fileID: 1198651837}
   - {fileID: 1966407065}
   - {fileID: 1604558974}
