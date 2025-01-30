@@ -44,13 +44,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     [Header("-----Audio-----")]
     
-    [SerializeField] AudioClip[] audSteps;
     [SerializeField][Range(0, 1)] float audStepsVol;
-    [SerializeField] AudioClip[] audHurt;
     [SerializeField] [Range (0,1)] float audHurtVol;
-    [SerializeField] AudioClip[] audJump;
     [SerializeField][Range(0, 1)] float audJumpVol;
-    [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
     [SerializeField] gunshotAudio gunshotAudio;
     [SerializeField] gunReloadAudio gunReloadAudio;
@@ -85,6 +81,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (value)
             {
+                
                 //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
@@ -234,9 +231,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     IEnumerator playSteps()
     {
+        if (isPlayingSteps) yield break; // Prevent overlapping sounds
         isPlayingSteps = true;
 
-        if(!isSprinting)
+        audioManager.PlayRandomFootstepSound();
+
+        if (!isSprinting)
             yield return new WaitForSeconds(0.5f);
         else
             yield return new WaitForSeconds(0.3f);
@@ -252,6 +252,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
                 StartCoroutine(playSteps());
+
+                
             }
 
             isJumping = false;
