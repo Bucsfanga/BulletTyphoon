@@ -37,6 +37,13 @@ public class audioManager : MonoBehaviour
     {
         "Player Jump 1", "Player Jump 2", "Player Jump 3"
     };
+    [SerializeField]
+    private List<string> footStepSounds = new List<string>
+    {
+        "Footsteps 1", "Footsteps 2", "Footsteps 3", 
+        "Footsteps 6", "Footsteps 5", "Footsteps 4", 
+        "Footsteps 7", "Footsteps 8", "Footsteps 9"
+    };
 
     //Labeled section for the audio settings. Created separate background and sound volumes, as well as a boolean to play music on awake, and fade in/out durations
     [Header("Audio Settings")]
@@ -101,7 +108,7 @@ public class audioManager : MonoBehaviour
         AudioSource audioSource = GetAvailableAudioSource();
         AudioClip audioClip = null;
 
-       
+        
 
         // Loop through audio clips and find matching audio clip to input name
         foreach (AudioClip clip in audioClips)
@@ -206,6 +213,11 @@ public class audioManager : MonoBehaviour
     public void PlayRandomJumpSound()
     {
         PlaySound(GetRandomSound(jumpSounds));
+    }
+
+    public void PlayRandomFootstepSound()
+    {
+        PlaySound(GetRandomSound(footStepSounds));
     }
 
     //For delayed sound effects such as thunder, crack of lightning, or explosion. Not currently used in the project.

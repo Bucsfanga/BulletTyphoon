@@ -44,13 +44,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     [Header("-----Audio-----")]
     
-    [SerializeField] AudioClip[] audSteps;
     [SerializeField][Range(0, 1)] float audStepsVol;
-    [SerializeField] AudioClip[] audHurt;
     [SerializeField] [Range (0,1)] float audHurtVol;
-    [SerializeField] AudioClip[] audJump;
     [SerializeField][Range(0, 1)] float audJumpVol;
-    [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
     [SerializeField] gunshotAudio gunshotAudio;
     [SerializeField] gunReloadAudio gunReloadAudio;
@@ -235,6 +231,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     IEnumerator playSteps()
     {
         isPlayingSteps = true;
+
+        audioManager.PlayRandomFootstepSound();
 
         if(!isSprinting)
             yield return new WaitForSeconds(0.5f);
