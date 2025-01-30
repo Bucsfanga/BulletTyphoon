@@ -65,7 +65,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     int HPOrig;
     float baseSpeed;
     int gunListPos;
-    int currentAmmo, maxAmmo;
+   public int currentAmmo, maxAmmo;
     float shootTimer; // Lecture 6
 
     private float originalFOV;
