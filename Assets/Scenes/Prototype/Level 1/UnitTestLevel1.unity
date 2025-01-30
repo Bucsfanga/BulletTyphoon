@@ -8007,6 +8007,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3265916110220748718, guid: 5bbe96f2528e73c488e44dcea6252f56, type: 3}
+      propertyPath: timeBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3581749287525226289, guid: 5bbe96f2528e73c488e44dcea6252f56, type: 3}
       propertyPath: m_Name
       value: Enemy Spawners

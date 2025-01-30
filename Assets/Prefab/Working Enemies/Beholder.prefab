@@ -905,7 +905,7 @@ MonoBehaviour:
   anim: {fileID: 2012021933592415745}
   isElite: 0
   eliteTintColor: {r: 0, g: 0, b: 0, a: 0}
-  HP: 5
+  HP: 6
   faceTargetSpeed: 10
   model: {fileID: 8751709472716852537}
   shootPos: {fileID: 6984397193898417196}
