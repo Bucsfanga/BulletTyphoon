@@ -1613,6 +1613,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53f5b15c510bd214f86a4b4768bd977b, type: 3}
   - {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
   - {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
+  - {fileID: 8300000, guid: 6e50d29e1c83aa6418f93fc06d511dc8, type: 3}
+  - {fileID: 8300000, guid: a3ac8ed6c6929634391da7f78675c1e4, type: 3}
+  - {fileID: 8300000, guid: 4a20121876ca94643a9b0f8fedc8bce2, type: 3}
+  - {fileID: 8300000, guid: 46726fe832e56b744bedda4940dbe59e, type: 3}
+  - {fileID: 8300000, guid: d47ec88f367c9a24bbcfc90249e9623f, type: 3}
+  - {fileID: 8300000, guid: 4b48173a6c1c5064f9a570a2cba90363, type: 3}
+  - {fileID: 8300000, guid: 7b6a37d1ffb2fc84abbd82465d167ba7, type: 3}
+  - {fileID: 8300000, guid: aaf721f8b3037c2439a5ef4def7ceb3a, type: 3}
+  - {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
   backgroundAudioClip: {fileID: 8300000, guid: 878f1878c0dd473439b7371e2572812d, type: 3}
   damageSounds:
   - Player Hurt 1
@@ -1631,6 +1640,16 @@ MonoBehaviour:
   - Player Jump 1
   - Player Jump 2
   - Player Jump 3
+  footStepSounds:
+  - Footsteps 1
+  - Footsteps 2
+  - Footsteps 3
+  - Footsteps 4
+  - Footsteps 5
+  - Footsteps 6
+  - Footsteps 7
+  - Footsteps 8
+  - Footsteps 9
   defaultBackgroundVolume: 0.5
   defaultSoundVolume: 1
   playBackgroundOnAwake: 1
@@ -2352,7 +2371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: de79c0513430f5c46885cfaa1b04f136, type: 3}
+  m_Texture: {fileID: 2800000, guid: 903c35dfed267534eba88fea9217c828, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

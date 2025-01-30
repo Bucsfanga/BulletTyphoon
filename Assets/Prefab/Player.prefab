@@ -808,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 9025270346995750721}
   audioManager: {fileID: 0}
+  muzzleFlashParticleEffect: {fileID: 1601415059602394176}
   ignoreMask:
     serializedVersion: 2
     m_Bits: 8
@@ -817,15 +818,14 @@ MonoBehaviour:
   sprintMod: 3
   jumpMax: 2
   jumpSpeed: 14
-  crouchHeight: 0
-  crouchMod: 0
+  crouchMod: 2
+  crouchHeightOffset: 0.5
   gravity: 18
   targetFOV: 90
   zoomSpeed: 5
   gunList:
   - {fileID: 11400000, guid: d810282fdc4136c4d93fd421854978e3, type: 2}
   gunModel: {fileID: 7401015245959030607}
-  muzzleFlash: {fileID: 1563137703071525387, guid: 1a6b6107e66fa204795b56d25a6144d3, type: 3}
   shootDamage: 1
   shootDist: 150
   shootRate: 0.25
@@ -867,6 +867,8 @@ MonoBehaviour:
   gunshotAudio: {fileID: 4769341030085594309}
   gunReloadAudio: {fileID: 27337346404963363}
   gunClickAudio: {fileID: 9054219787201969602}
+  currentAmmo: 0
+  maxAmmo: 0
 --- !u!114 &9054219787201969602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4527,3 +4529,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8659616553259226246, guid: 1a6b6107e66fa204795b56d25a6144d3, type: 3}
   m_PrefabInstance: {fileID: 7820189842942645207}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1601415059602394176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8844994599462707095, guid: 1a6b6107e66fa204795b56d25a6144d3, type: 3}
+  m_PrefabInstance: {fileID: 7820189842942645207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5417b79be559543a93e4f28ab8e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

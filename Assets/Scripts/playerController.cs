@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] CharacterController controller;
     //[SerializeField] AudioSource aud; // Lecture 6 - IAN NOTE: Commenting out to use the audioManager singleton
     [SerializeField] audioManager audioManager; //using the audioManager rather than accessing the AudioSource directly
+    [SerializeField] muzzleFlashParticleEffect muzzleFlashParticleEffect;
     [SerializeField] LayerMask ignoreMask;
     [SerializeField] Transform playerCamera;
 
@@ -30,7 +31,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [Header("-----Guns-----")]
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
-    [SerializeField] GameObject muzzleFlash; // Lecture 6
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
@@ -44,13 +44,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     [Header("-----Audio-----")]
     
-    [SerializeField] AudioClip[] audSteps;
     [SerializeField][Range(0, 1)] float audStepsVol;
-    [SerializeField] AudioClip[] audHurt;
     [SerializeField] [Range (0,1)] float audHurtVol;
-    [SerializeField] AudioClip[] audJump;
     [SerializeField][Range(0, 1)] float audJumpVol;
-    [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
     [SerializeField] gunshotAudio gunshotAudio;
     [SerializeField] gunReloadAudio gunReloadAudio;
@@ -85,6 +81,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (value)
             {
+                
                 //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
@@ -100,9 +97,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (value)
             {
-                //aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);IAN TODO: Commented out to use the audioManager singleton
-                //audioManager.instance.PlaySound();
-                //gunshotAudio.PlayGunShot();
+
             }
             _isShooting = value;
         }
@@ -117,7 +112,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             {
                 _isReloading = value;
                 Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
-                //aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);IAN TODO: Commented out to use the audioManager singleton
                 gunReloadAudio.PlayGunReload();
 
 
@@ -237,9 +231,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     IEnumerator playSteps()
     {
+        if (isPlayingSteps) yield break; // Prevent overlapping sounds
         isPlayingSteps = true;
 
-        if(!isSprinting)
+        audioManager.PlayRandomFootstepSound();
+
+        if (!isSprinting)
             yield return new WaitForSeconds(0.5f);
         else
             yield return new WaitForSeconds(0.3f);
@@ -255,6 +252,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
                 StartCoroutine(playSteps());
+
+                
             }
 
             isJumping = false;
@@ -335,7 +334,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
                 isCrouching = false;
             }
             isJumping = true;
-            //aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol); // Lecture 6 IAN TODO: Commented out to use the audioManager singleton
             audioManager.PlayRandomJumpSound();
         }
     }
@@ -367,13 +365,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
         // Play shooting sound
         gunshotAudio.PlayGunShot();
-        //if (shootSound != null && shootSound.Length > 0)
-        //{
-        //    isShooting = true;
-        //}
 
         // Visual effects
-        StartCoroutine(flashMuzzleFire());
+        if (muzzleFlashParticleEffect != null)
+        {
+            muzzleFlashParticleEffect.PlayMuzzleFlash();
+        }
 
         // Check for hit
         RaycastHit hit;
@@ -410,17 +407,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         isReloading = false;
     }
 
-    IEnumerator flashMuzzleFire()
-    {
-        muzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        muzzleFlash.SetActive(false);
-    }
-
     public void takeDamage(int amount)
     {
         HP -= amount;
-        //aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol); // Commented out to use the audioManager singleton
         if (HP > 0)
         {
             audioManager.PlayRandomDamageSound();
