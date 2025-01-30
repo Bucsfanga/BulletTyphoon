@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun - Laser Rifle
   m_EditorClassIdentifier: 
   model: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
-  shootDamage: 15
+  shootDamage: 10
   shootDist: 200
   shootRate: 1
   ammoCur: 5
