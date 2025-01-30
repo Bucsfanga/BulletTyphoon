@@ -17,15 +17,10 @@ public class muzzleFlashParticleEffect : MonoBehaviour
 
     private void Update()
     {
-        // Check if game is not paused, player has ammo, and shoot button is pressed
-        if (GameManager.instance != null &&!GameManager.instance.isPaused &playerScript != null && playerScript.currentAmmo > 0 &&
-            Input.GetButton("Shoot"))
-        {
-            PlayMuzzleFlash();
-        }
+        
     }
 
-    private void PlayMuzzleFlash()
+    public void PlayMuzzleFlash()
     {
         foreach (ParticleSystem particleEffect in muzzleFlashParticleEffects)
         {
