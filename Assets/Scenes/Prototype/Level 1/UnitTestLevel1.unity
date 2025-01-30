@@ -513,11 +513,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
---- !u!1 &64562715 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3281851017050223966, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-  m_PrefabInstance: {fileID: 657018693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &83526516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2378385045970906311, guid: a71abe48db8c2c0439cf6a6a02eb2cd0, type: 3}
@@ -2967,10 +2962,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1769622465}
-    - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: menuControls
-      value: 
-      objectReference: {fileID: 64562715}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: playerScript
       value: 
