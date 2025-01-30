@@ -19,8 +19,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [Range(1, 10)][SerializeField] int sprintMod;
     [Range(1, 10)][SerializeField] int jumpMax;
     [Range(1, 20)][SerializeField] int jumpSpeed;
-    [SerializeField] float crouchHeight;
+    //[SerializeField] float crouchHeight; Richard - commented this out as it has become redundant.
     [SerializeField] float crouchMod;
+    [SerializeField] float crouchHeightOffset = 0.5f;
+    private float standingHeight;// Richard - these 2 store the original camera height and movement speed for the crouch
     [Range(1, 20)][SerializeField] int gravity;
     [SerializeField] float targetFOV;
     [SerializeField] private float zoomSpeed = 5f;
@@ -171,15 +173,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (_isCrouching != value)
             {
                 _isCrouching = value;
-                crouchHeight = _isCrouching ? 0 : 1;
-                speed = (isCrouching ? speed /= crouchMod : speed *= crouchMod);
+
+                // Calculate the target height
+                float targetHeight = _isCrouching ? standingHeight - crouchHeightOffset : standingHeight;
 
                 // Update camera position
                 playerCamera.localPosition = new Vector3(
                     playerCamera.localPosition.x,
-                    crouchHeight,
+                    targetHeight,
                     playerCamera.localPosition.z
                 );
+
+                // Update movement speed
+                speed = _isCrouching ? baseSpeed / crouchMod : baseSpeed;
             }
         }
     }
@@ -206,6 +212,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         updatePlayerUI();
         camController = playerCamera.GetComponent<cameraController>();
         shootTimer = shootRate;
+        standingHeight = playerCamera.localPosition.y;  // This stores the original camera height
     }
 
     // Update is called once per frame
