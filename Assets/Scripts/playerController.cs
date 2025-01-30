@@ -81,6 +81,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (value)
             {
+                
                 //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
@@ -230,11 +231,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     IEnumerator playSteps()
     {
+        if (isPlayingSteps) yield break; // Prevent overlapping sounds
         isPlayingSteps = true;
 
         audioManager.PlayRandomFootstepSound();
 
-        if(!isSprinting)
+        if (!isSprinting)
             yield return new WaitForSeconds(0.5f);
         else
             yield return new WaitForSeconds(0.3f);
@@ -250,6 +252,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
                 StartCoroutine(playSteps());
+
+                
             }
 
             isJumping = false;

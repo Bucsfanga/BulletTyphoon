@@ -2999,6 +2999,46 @@ PrefabInstance:
       propertyPath: 'audioClips.Array.data[27]'
       value: 
       objectReference: {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: footStepSounds.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[0]'
+      value: Footsteps 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[1]'
+      value: Footsteps 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[2]'
+      value: Footsteps 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[3]'
+      value: Footsteps 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[4]'
+      value: Footsteps 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[5]'
+      value: Footsteps 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[6]'
+      value: Footsteps 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[7]'
+      value: Footsteps 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: 'footStepSounds.Array.data[8]'
+      value: Footsteps 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3955183871223328722, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Name
       value: BT_UI
