@@ -2954,86 +2954,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: audioClips.Array.size
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[19]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e50d29e1c83aa6418f93fc06d511dc8, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[20]'
-      value: 
-      objectReference: {fileID: 8300000, guid: a3ac8ed6c6929634391da7f78675c1e4, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[21]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 4a20121876ca94643a9b0f8fedc8bce2, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[22]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 46726fe832e56b744bedda4940dbe59e, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[23]'
-      value: 
-      objectReference: {fileID: 8300000, guid: d47ec88f367c9a24bbcfc90249e9623f, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[24]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b48173a6c1c5064f9a570a2cba90363, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[25]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 7b6a37d1ffb2fc84abbd82465d167ba7, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[26]'
-      value: 
-      objectReference: {fileID: 8300000, guid: aaf721f8b3037c2439a5ef4def7ceb3a, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'audioClips.Array.data[27]'
-      value: 
-      objectReference: {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: footStepSounds.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[0]'
-      value: Footsteps 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[1]'
-      value: Footsteps 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[2]'
-      value: Footsteps 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[3]'
-      value: Footsteps 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[4]'
-      value: Footsteps 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[5]'
-      value: Footsteps 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[6]'
-      value: Footsteps 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[7]'
-      value: Footsteps 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: 'footStepSounds.Array.data[8]'
-      value: Footsteps 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3955183871223328722, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Name
       value: BT_UI
@@ -8069,10 +7989,6 @@ PrefabInstance:
     - target: {fileID: 2816704647240767309, guid: 5bbe96f2528e73c488e44dcea6252f56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265916110220748718, guid: 5bbe96f2528e73c488e44dcea6252f56, type: 3}
-      propertyPath: timeBetweenSpawns
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3581749287525226289, guid: 5bbe96f2528e73c488e44dcea6252f56, type: 3}
       propertyPath: m_Name
