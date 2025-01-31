@@ -180,7 +180,7 @@ MonoBehaviour:
   damageAmount: 1
   damageInterval: 0
   speed: 75
-  destroyTime: 2
+  destroyTime: 4
   delayTime: 2
   ignoreLayer:
     serializedVersion: 2

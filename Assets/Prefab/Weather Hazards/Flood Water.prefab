@@ -85,11 +85,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   rb: {fileID: 2898417342005028322}
-  damageAmount: 1
+  damageAmount: 5
   damageInterval: 1
   speed: 0
   destroyTime: 0
   delayTime: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5349918732339127733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +108,7 @@ MonoBehaviour:
   floodLevelHeight: 5
   floodPauseDuration: 15
   floodRisingDuration: 10
-  floodingSpeed: 5
+  floodingSpeed: 1.5
   floodStartTime: 15
   maxFloodHeight: 30
   warningDuration: 10
@@ -310,5 +313,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74469dcfe5d63c2469edec53a0bf1c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeedX: 0.3
-  scrollSpeedY: 0.3
+  scrollSpeedX: 0.15
+  scrollSpeedY: 0.15
