@@ -74,8 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7311448031821520079}
   anim: {fileID: 942845887068889294}
-  isElite: 1
-  eliteTintColor: {r: 1, g: 1, b: 0, a: 1}
+  isElite: 0
+  eliteTintColor: {r: 1, g: 1, b: 0, a: 0.29411766}
   HP: 25
   faceTargetSpeed: 25
   model: {fileID: 2839277094855289739}
@@ -303,7 +303,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1dcd4ea457239f049875b7a7c8f9509e, type: 2}
+  - {fileID: 2100000, guid: 3238faebe0921fa428d48dcf7ac5b5de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
