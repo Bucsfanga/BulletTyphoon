@@ -837,32 +837,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
   shootSoundVol: 0.5
   currentGunStats: {fileID: 11400000, guid: d810282fdc4136c4d93fd421854978e3, type: 2}
-  audSteps:
-  - {fileID: 8300000, guid: 6e50d29e1c83aa6418f93fc06d511dc8, type: 3}
-  - {fileID: 8300000, guid: a3ac8ed6c6929634391da7f78675c1e4, type: 3}
-  - {fileID: 8300000, guid: 4a20121876ca94643a9b0f8fedc8bce2, type: 3}
-  - {fileID: 8300000, guid: 46726fe832e56b744bedda4940dbe59e, type: 3}
-  - {fileID: 8300000, guid: d47ec88f367c9a24bbcfc90249e9623f, type: 3}
-  - {fileID: 8300000, guid: 4b48173a6c1c5064f9a570a2cba90363, type: 3}
-  - {fileID: 8300000, guid: 7b6a37d1ffb2fc84abbd82465d167ba7, type: 3}
-  - {fileID: 8300000, guid: aaf721f8b3037c2439a5ef4def7ceb3a, type: 3}
-  - {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
   audStepsVol: 0.4
-  audHurt:
-  - {fileID: 8300000, guid: 4878fae0161d2284f9d622e046790ced, type: 3}
-  - {fileID: 8300000, guid: c296e7c3c9c8c2245b8583948bb0eebc, type: 3}
-  - {fileID: 8300000, guid: 57080be7b45f63043a83823538af7001, type: 3}
-  - {fileID: 8300000, guid: 46519d4844edb5f43848b22581db1f75, type: 3}
-  - {fileID: 8300000, guid: e2255ec588e46684194a52a8f2bfef35, type: 3}
-  - {fileID: 8300000, guid: d19a8f7d08870344aaf427f29b07227e, type: 3}
   audHurtVol: 0.5
-  audJump:
-  - {fileID: 8300000, guid: 2064747bb2ea26b47b1160d5aade4563, type: 3}
-  - {fileID: 8300000, guid: 683511084dddbb84eb4ad5d15cf0276c, type: 3}
-  - {fileID: 8300000, guid: e3b00927b365aeb4e8f2f26175bf7caf, type: 3}
   audJumpVol: 0.5
-  audReload:
-  - {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
   audReloadVol: 0.5
   gunshotAudio: {fileID: 4769341030085594309}
   gunReloadAudio: {fileID: 27337346404963363}
@@ -1212,6 +1189,7 @@ GameObject:
   - component: {fileID: 898796811669859125}
   - component: {fileID: 8303660971663506413}
   - component: {fileID: 8227136846684190828}
+  - component: {fileID: 6289116454410870338}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1310,6 +1288,50 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2574658178497670294}
   m_Enabled: 1
+--- !u!114 &6289116454410870338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574658178497670294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &2599021513835599859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3488,7 +3510,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7401015245959030607}
-  m_Mesh: {fileID: 7753405534921295286, guid: c1ce864051db441b9bfac2723519107a, type: 3}
+  m_Mesh: {fileID: 0}
 --- !u!23 &4654700367433835880
 MeshRenderer:
   m_ObjectHideFlags: 0

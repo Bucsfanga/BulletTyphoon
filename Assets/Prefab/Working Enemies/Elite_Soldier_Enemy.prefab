@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8034058480946525633}
   - component: {fileID: 7311448031821520079}
   - component: {fileID: 5817465802929593272}
-  - component: {fileID: 750408542064495665}
+  - component: {fileID: 693657485901032331}
   m_Layer: 6
   m_Name: Elite_Soldier_Enemy
   m_TagString: Untagged
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7311448031821520079}
   anim: {fileID: 942845887068889294}
-  isElite: 1
-  eliteTintColor: {r: 1, g: 1, b: 0, a: 1}
+  isElite: 0
+  eliteTintColor: {r: 1, g: 1, b: 0, a: 0.29411766}
   HP: 25
   faceTargetSpeed: 25
   model: {fileID: 2839277094855289739}
@@ -132,8 +132,8 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
---- !u!135 &750408542064495665
-SphereCollider:
+--- !u!65 &693657485901032331
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,8 +151,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 30
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 107.5, y: 27.32, z: 183.02}
+  m_Center: {x: 0, y: 10.45, z: 0}
 --- !u!1 &631915943700890192
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1dcd4ea457239f049875b7a7c8f9509e, type: 2}
+  - {fileID: 2100000, guid: 3238faebe0921fa428d48dcf7ac5b5de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
