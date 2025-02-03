@@ -68,7 +68,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -25.7, z: 0}
   m_LocalScale: {x: 180, y: 50, z: 155}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3958229091664720218}
   m_Father: {fileID: 430843571508055079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &332427147169700720
@@ -85,11 +86,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   rb: {fileID: 2898417342005028322}
-  damageAmount: 1
+  damageAmount: 5
   damageInterval: 1
   speed: 0
   destroyTime: 0
   delayTime: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5349918732339127733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +109,7 @@ MonoBehaviour:
   floodLevelHeight: 5
   floodPauseDuration: 15
   floodRisingDuration: 10
-  floodingSpeed: 5
+  floodingSpeed: 1.5
   floodStartTime: 15
   maxFloodHeight: 30
   warningDuration: 10
@@ -116,7 +120,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 246252689317103158}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6950582208594226516}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &9074781912926977431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -268,7 +272,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2304539169965815422, guid: 3034fbdbcc361f04886b72f9c1e2579b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3958229091664720218}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1217185556074287584, guid: 3034fbdbcc361f04886b72f9c1e2579b, type: 3}
       insertIndex: -1
@@ -310,5 +317,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74469dcfe5d63c2469edec53a0bf1c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeedX: 0.3
-  scrollSpeedY: 0.3
+  scrollSpeedX: 0.15
+  scrollSpeedY: 0.15
+--- !u!1001 &2450600208951998587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3511640581242544151}
+    m_Modifications:
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+      propertyPath: m_Name
+      value: WaterBlock_50m
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+--- !u!4 &3958229091664720218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
+  m_PrefabInstance: {fileID: 2450600208951998587}
+  m_PrefabAsset: {fileID: 0}
