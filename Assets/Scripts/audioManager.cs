@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class audioManager : MonoBehaviour
 {
@@ -31,6 +32,19 @@ public class audioManager : MonoBehaviour
     {
         "Death 1", "Death 2", "Death 3", "Death 4", "Death 5"
     };
+    [SerializeField]
+    private List<string> jumpSounds = new List<string>
+    {
+        "Player Jump 1", "Player Jump 2", "Player Jump 3"
+    };
+    [SerializeField]
+    private List<string> footStepSounds = new List<string>
+    {
+        "Footsteps 1", "Footsteps 2", "Footsteps 3",
+        "Footsteps 6", "Footsteps 5", "Footsteps 4",
+        "Footsteps 7", "Footsteps 8", "Footsteps 9"
+    };
+
 
     //Labeled section for the audio settings. Created separate background and sound volumes, as well as a boolean to play music on awake, and fade in/out durations
     [Header("Audio Settings")]
@@ -39,9 +53,11 @@ public class audioManager : MonoBehaviour
     [SerializeField] private bool playBackgroundOnAwake = true;
     [SerializeField] private float fadeInDuration = 2f;
     [SerializeField] private float fadeOutDuration = 1f;
+    
 
     private void Awake()
     {
+       
         //Singleton method
         if (instance == null)
         {
@@ -91,24 +107,10 @@ public class audioManager : MonoBehaviour
     public void PlaySound(string name)
     {
         //Create audio source and clip variables
-        AudioSource audioSource = null;
+        AudioSource audioSource = GetAvailableAudioSource();
         AudioClip audioClip = null;
 
-        // Loop through sources and find the first available audio source (one that isn't playing)
-        foreach (AudioSource source in audioSources)
-        {
-            if (!source.isPlaying)
-            {
-                audioSource = source;
-                break;
-            }
-        }
-        //If no audio source is available, log a warning and return
-        if (audioSource == null)
-        {
-            Debug.LogWarning("No available audio sources");
-            return;
-        }
+        
 
         // Loop through audio clips and find matching audio clip to input name
         foreach (AudioClip clip in audioClips)
@@ -129,6 +131,36 @@ public class audioManager : MonoBehaviour
         //Set the audio source clip to the found clip and play the sound
         audioSource.clip = audioClip;
         audioSource.Play();
+    }
+
+    public void PlaySoundWithPitch(string name, float minPitch, float maxPitch)
+    {
+        AudioSource audioSource = GetAvailableAudioSource();
+        AudioClip audioClip = null;
+
+        if (audioSource == null) return;
+
+        // Find the clip
+        foreach (AudioClip clip in audioClips)
+        {
+            if (clip.name == name)
+            {
+                audioClip = clip;
+                break;
+            }
+        }
+
+        if (audioClip == null)
+        {
+            Debug.LogError($"Failed to find sound: {name}");
+            return;
+        }
+
+        // Set pitch and play
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.clip = audioClip;
+        audioSource.Play();
+
     }
 
     public void PlayBackgroundAudio(string name)
@@ -180,6 +212,16 @@ public class audioManager : MonoBehaviour
         PlaySound(GetRandomSound(deathSounds));
     }
 
+    public void PlayRandomJumpSound()
+    {
+        PlaySound(GetRandomSound(jumpSounds));
+    }
+
+    public void PlayRandomFootstepSound()
+    {
+        PlaySound(GetRandomSound(footStepSounds));
+    }
+
     //For delayed sound effects such as thunder, crack of lightning, or explosion. Not currently used in the project.
     public IEnumerator DelayPlaySound(string name, float delay)
     {
@@ -208,9 +250,27 @@ public class audioManager : MonoBehaviour
             backgroundAudioSource.Stop();
         }
     }
+
+    public AudioSource GetAvailableAudioSource()
+    {
+        // Loop through sources and find the first available audio source (one that isn't playing)
+        foreach (AudioSource source in audioSources)
+        {
+            if (!source.isPlaying)
+            {
+                return source;
+            }
+        }
+        //If no audio source is available, log a warning and return
+            Debug.LogWarning("No available audio sources");
+            return null;
+    }
 }
 
 //TODO::
+
+//Add volume sliders for jump, footsteps, and other sound effects
+
 //Add a method to play footsteps sounds on an animation event
 //Add a PlayRandomShootSound method
 //Add a PlayGunClickSound method

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 //using NUnit.Framework;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 {
     [Header("-----Components-----")]
     #region Variables
     [SerializeField] CharacterController controller;
-    [SerializeField] AudioSource aud; // Lecture 6
+    //[SerializeField] AudioSource aud; // Lecture 6 - IAN NOTE: Commenting out to use the audioManager singleton
+    [SerializeField] audioManager audioManager; //using the audioManager rather than accessing the AudioSource directly
+    [SerializeField] muzzleFlashParticleEffect muzzleFlashParticleEffect;
     [SerializeField] LayerMask ignoreMask;
     [SerializeField] Transform playerCamera;
 
@@ -18,8 +20,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Range(1, 10)][SerializeField] int sprintMod;
     [Range(1, 10)][SerializeField] int jumpMax;
     [Range(1, 20)][SerializeField] int jumpSpeed;
-    [SerializeField] float crouchHeight;
+    //[SerializeField] float crouchHeight; Richard - commented this out as it has become redundant.
     [SerializeField] float crouchMod;
+    [SerializeField] float crouchHeightOffset = 0.5f;
+    private float standingHeight;// Richard - these 2 store the original camera height and movement speed for the crouch
     [Range(1, 20)][SerializeField] int gravity;
     [SerializeField] float targetFOV;
     [SerializeField] private float zoomSpeed = 5f;
@@ -27,7 +31,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [Header("-----Guns-----")]
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
-    [SerializeField] GameObject muzzleFlash; // Lecture 6
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
@@ -40,14 +43,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public gunStats currentGunStats;
 
     [Header("-----Audio-----")]
-    [SerializeField] AudioClip[] audSteps;
+    
     [SerializeField][Range(0, 1)] float audStepsVol;
-    [SerializeField] AudioClip[] audHurt;
     [SerializeField] [Range (0,1)] float audHurtVol;
-    [SerializeField] AudioClip[] audJump;
     [SerializeField][Range(0, 1)] float audJumpVol;
-    [SerializeField] AudioClip[] audReload;
     [SerializeField][Range(0, 1)] float audReloadVol;
+    [SerializeField] gunshotAudio gunshotAudio;
+    [SerializeField] gunReloadAudio gunReloadAudio;
+    [SerializeField] gunClickAudio gunClickAudio;
 
     cameraController camController;
 
@@ -58,7 +61,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int HPOrig;
     float baseSpeed;
     int gunListPos;
-    int currentAmmo, maxAmmo;
+   public int currentAmmo, maxAmmo;
     float shootTimer; // Lecture 6
 
     private float originalFOV;
@@ -78,7 +81,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (value)
             {
-                aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+                
+                //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
         }
@@ -93,7 +97,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (value)
             {
-                aud.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], shootSoundVol);
+
             }
             _isShooting = value;
         }
@@ -108,7 +112,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             {
                 _isReloading = value;
                 Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
-                aud.PlayOneShot(audReload[Random.Range(0, audReload.Length)], audReloadVol);
+                gunReloadAudio.PlayGunReload();
+
 
                 // Wait for reload time
                 Invoke("FinishReload", reloadTime);
@@ -162,15 +167,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             if (_isCrouching != value)
             {
                 _isCrouching = value;
-                crouchHeight = _isCrouching ? 0 : 1;
-                speed = (isCrouching ? speed /= crouchMod : speed *= crouchMod);
+
+                // Calculate the target height
+                float targetHeight = _isCrouching ? standingHeight - crouchHeightOffset : standingHeight;
 
                 // Update camera position
                 playerCamera.localPosition = new Vector3(
                     playerCamera.localPosition.x,
-                    crouchHeight,
+                    targetHeight,
                     playerCamera.localPosition.z
                 );
+
+                // Update movement speed
+                speed = _isCrouching ? baseSpeed / crouchMod : baseSpeed;
             }
         }
     }
@@ -189,12 +198,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             Debug.LogError("Player has no starting gun assigned!");
         }
 
+        audioManager = audioManager.instance; //set the audioManager instance to the instance in the scene
+
         originalFOV = targetFOV;
         HPOrig = HP;
         baseSpeed = speed;
         updatePlayerUI();
         camController = playerCamera.GetComponent<cameraController>();
         shootTimer = shootRate;
+        standingHeight = playerCamera.localPosition.y;  // This stores the original camera height
     }
 
     // Update is called once per frame
@@ -219,9 +231,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     IEnumerator playSteps()
     {
+        if (isPlayingSteps) yield break; // Prevent overlapping sounds
         isPlayingSteps = true;
 
-        if(!isSprinting)
+        audioManager.PlayRandomFootstepSound();
+
+        if (!isSprinting)
             yield return new WaitForSeconds(0.5f);
         else
             yield return new WaitForSeconds(0.3f);
@@ -237,6 +252,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
                 StartCoroutine(playSteps());
+
+                
             }
 
             isJumping = false;
@@ -317,7 +334,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 isCrouching = false;
             }
             isJumping = true;
-            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol); // Lecture 6
+            audioManager.PlayRandomJumpSound();
         }
     }
 
@@ -347,13 +364,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootTimer = 0; // Reset the timer when shooting.
 
         // Play shooting sound
-        if (shootSound != null && shootSound.Length > 0)
-        {
-            isShooting = true;
-        }
+        gunshotAudio.PlayGunShot();
 
         // Visual effects
-        StartCoroutine(flashMuzzleFire());
+        if (muzzleFlashParticleEffect != null)
+        {
+            muzzleFlashParticleEffect.PlayMuzzleFlash();
+        }
 
         // Check for hit
         RaycastHit hit;
@@ -370,6 +387,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         // Reduce ammo
         currentAmmo--;
+        if( currentAmmo <= 0)
+        {
+            gunClickAudio.PlayGunClick();
+        }
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
     }
         
@@ -386,22 +407,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         isReloading = false;
     }
 
-    IEnumerator flashMuzzleFire()
-    {
-        muzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        muzzleFlash.SetActive(false);
-    }
-
     public void takeDamage(int amount)
     {
         HP -= amount;
-        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol); // Lecture 6
+        if (HP > 0)
+        {
+            audioManager.PlayRandomDamageSound();
+        }
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());
 
         if (HP <= 0)
         {
+            audioManager.PlayRandomDeathSound();
             GameManager.instance.youLose();
         }
     }

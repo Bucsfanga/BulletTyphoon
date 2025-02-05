@@ -4942,6 +4942,7 @@ MonoBehaviour:
   - {fileID: 4552772239601004424}
   - {fileID: 5460918213498388659}
   - {fileID: 2886322706899835961}
+  playerScript: {fileID: 0}
 --- !u!1 &2603051673561246293
 GameObject:
   m_ObjectHideFlags: 0

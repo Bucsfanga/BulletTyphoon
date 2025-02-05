@@ -4,16 +4,23 @@ public class muzzleFlashParticleEffect : MonoBehaviour
 {
     [Header("Particle Effects")]
     [SerializeField] private ParticleSystem[] muzzleFlashParticleEffects;
+    [SerializeField] private playerController playerScript;
 
-    private void Update()
+
+    private void Start()
     {
-        if (Input.GetButtonDown("Shoot"))
+        if (playerScript ==null && GameManager.instance !=null)
         {
-            PlayMuzzleFlash();
+            playerScript = GameManager.instance.playerScript;
         }
     }
 
-    private void PlayMuzzleFlash()
+    private void Update()
+    {
+        
+    }
+
+    public void PlayMuzzleFlash()
     {
         foreach (ParticleSystem particleEffect in muzzleFlashParticleEffects)
         {
