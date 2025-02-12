@@ -55,4 +55,8 @@ public class buttonFunctions : MonoBehaviour
          GameManager.instance.CloseCredits();
         
     }
+    public void RespawnAtCheckpoint()
+    {
+        GameManager.instance.RespawnPlayer(); 
+    }
 }
