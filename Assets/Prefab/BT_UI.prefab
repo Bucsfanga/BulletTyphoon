@@ -8472,7 +8472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5901048832362838139, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -301
+      value: -160
       objectReference: {fileID: 0}
     - target: {fileID: 6567872892792349206, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
       propertyPath: m_Name
@@ -8502,10 +8502,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: startGame
       objectReference: {fileID: 0}
-    - target: {fileID: 7197978729777749217, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7233391070237098086}
     - target: {fileID: 8410165069413646745, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
