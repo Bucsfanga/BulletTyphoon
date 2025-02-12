@@ -3,15 +3,15 @@ using UnityEngine.AI;
 
 public class destructiblePlatform : MonoBehaviour
 {
-    [SerializeField] int destroyCountdown;
-    [SerializeField] int respawnTimer;
+    [SerializeField] int destroyCountdown; // Time it takes to destroy platform
+    [SerializeField] int respawnTimer; // Time it takes to respawn platform
     [SerializeField] GameObject platform;
 
     private bool isBreakingDown;
     private float destroyCountdownTimer;
-    private Vector3 origPos;
+    private Vector3 origPos; // Platform's original position
     private Renderer platformRender;
-    private Color origColor;
+    private Color origColor; // Platform's original color
     private NavMeshObstacle navObstacle;
 
 
