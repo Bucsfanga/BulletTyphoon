@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     private AudioSource audioSource;
-    
-   
+    private Vector3 lastCheckpointPosition;
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -114,8 +113,6 @@ public class GameManager : MonoBehaviour
             // Add a listener to update the volume when the slider value changes
             volumeSlider.onValueChanged.AddListener(UpdateVolume);
         }
-         
-       
     }
 
     // Update is called once per frame
@@ -390,10 +387,16 @@ public class GameManager : MonoBehaviour
 
         
     }
-    
-    
+    public void SetCheckpoint(Vector3 checkpoint)
+    {
+        lastCheckpointPosition = checkpoint;
+    }
 
-   
+    public void RespawnPlayer()
+    {
+        stateUnpause();
+        player.transform.position = lastCheckpointPosition;
+    }
 
     // ------------------------------
     // Settings Menu Functions
