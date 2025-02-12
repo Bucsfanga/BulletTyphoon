@@ -2954,10 +2954,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3082753993918555115, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3955183871223328722, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Name
       value: BT_UI
@@ -2970,10 +2966,6 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1769622470}
-    - target: {fileID: 4744907706425060284, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Pivot.x
       value: 0

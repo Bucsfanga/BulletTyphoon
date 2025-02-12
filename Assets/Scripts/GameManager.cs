@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI interactPrompt;
-    public TextMeshProUGUI loseMessage;
 
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
@@ -50,7 +49,6 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     private AudioSource audioSource;
-    private Vector3 lastCheckpointPosition;
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -63,7 +61,6 @@ public class GameManager : MonoBehaviour
         public static bool isNextLevel;
         public static bool showCredits;
     }
-
 
     void Awake()
     {
@@ -196,12 +193,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Quit.");
     }
 
-    public void youLose(string reason)
+    public void youLose()
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-        loseMessage.text = reason;
     }
     public void statePause()
     {
@@ -388,18 +384,6 @@ public class GameManager : MonoBehaviour
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
         }
-
-        
-    }
-    public void SetCheckpoint(Vector3 checkpoint)
-    {
-        lastCheckpointPosition = checkpoint;
-    }
-
-    public void RespawnPlayer()
-    {
-        stateUnpause();
-        player.transform.position = lastCheckpointPosition;
     }
 
     // ------------------------------
