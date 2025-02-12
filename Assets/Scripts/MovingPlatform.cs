@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private Vector3 moveDirection = Vector3.right; // Default movement direction
+    [SerializeField] private Vector3 moveDirection = Vector3.right; // Default horizonally
     [SerializeField] private float moveDistance = 5f; // Distance to move
     [SerializeField] private float moveSpeed = 2f; // Speed of movement
 
