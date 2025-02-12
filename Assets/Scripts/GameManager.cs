@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI interactPrompt;
+    public TextMeshProUGUI loseMessage;
 
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     private AudioSource audioSource;
+    private Vector3 lastCheckpointPosition;
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
         public static bool isNextLevel;
         public static bool showCredits;
     }
+
 
     void Awake()
     {
@@ -181,11 +184,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void OpenSettingsFromMainMenu()
-    {
-        menuMain.SetActive(false);  // Hide Main Menu
-        menuSettings.SetActive(true);  // Show Settings Menu
-    }
+    
 
     public void QuitGame()
     {
@@ -193,11 +192,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Quit.");
     }
 
-    public void youLose()
+    public void youLose(string reason)
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        loseMessage.text = reason;
     }
     public void statePause()
     {
@@ -384,6 +384,18 @@ public class GameManager : MonoBehaviour
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
         }
+
+        
+    }
+    public void SetCheckpoint(Vector3 checkpoint)
+    {
+        lastCheckpointPosition = checkpoint;
+    }
+
+    public void RespawnPlayer()
+    {
+        stateUnpause();
+        player.transform.position = lastCheckpointPosition;
     }
 
     // ------------------------------
@@ -397,13 +409,21 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (menuActive == menuPause)
+        // If the Main Menu is active, hide it
+        if (menuMain.activeSelf)
+        {
+            menuMain.SetActive(false);
+        }
+        // If the Pause Menu is active, hide it and the HUD
+        else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
             hud.SetActive(false);
-            menuSettings.SetActive(true);
-            menuActive = menuSettings;
         }
+
+        // Open the Settings Menu
+        menuSettings.SetActive(true);
+        menuActive = menuSettings;
     }
 
     public void CloseSettings()
@@ -411,9 +431,20 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            hud.SetActive(true);
-            menuPause.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuPause;
+
+            // Return to Main Menu if it was opened from Main Menu
+            if (!menuPause.activeSelf)
+            {
+                menuMain.SetActive(true);
+            }
+            // Otherwise, return to Pause Menu and show HUD
+            else
+            {
+                menuPause.SetActive(true);
+                hud.SetActive(true);
+            }
+
+            menuActive = menuPause; // Set active menu back to Pause
         }
     }
 
