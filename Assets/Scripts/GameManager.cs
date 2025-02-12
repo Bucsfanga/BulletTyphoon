@@ -181,11 +181,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void OpenSettingsFromMainMenu()
-    {
-        menuMain.SetActive(false);  // Hide Main Menu
-        menuSettings.SetActive(true);  // Show Settings Menu
-    }
+    
 
     public void QuitGame()
     {
@@ -397,13 +393,21 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (menuActive == menuPause)
+        // If the Main Menu is active, hide it
+        if (menuMain.activeSelf)
+        {
+            menuMain.SetActive(false);
+        }
+        // If the Pause Menu is active, hide it and the HUD
+        else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
             hud.SetActive(false);
-            menuSettings.SetActive(true);
-            menuActive = menuSettings;
         }
+
+        // Open the Settings Menu
+        menuSettings.SetActive(true);
+        menuActive = menuSettings;
     }
 
     public void CloseSettings()
@@ -411,9 +415,20 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            hud.SetActive(true);
-            menuPause.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuPause;
+
+            // Return to Main Menu if it was opened from Main Menu
+            if (!menuPause.activeSelf)
+            {
+                menuMain.SetActive(true);
+            }
+            // Otherwise, return to Pause Menu and show HUD
+            else
+            {
+                menuPause.SetActive(true);
+                hud.SetActive(true);
+            }
+
+            menuActive = menuPause; // Set active menu back to Pause
         }
     }
 
