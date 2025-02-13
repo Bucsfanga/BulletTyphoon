@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
+    public TextMeshProUGUI loseMessageText;
     public TextMeshProUGUI interactPrompt;
 
     private float fullWidth;
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
+        audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
 
         if (player != null)
         {
@@ -181,11 +183,8 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void OpenSettingsFromMainMenu()
-    {
-        menuMain.SetActive(false);  // Hide Main Menu
-        menuSettings.SetActive(true);  // Show Settings Menu
-    }
+  
+    
 
     public void QuitGame()
     {
@@ -193,11 +192,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Quit.");
     }
 
-    public void youLose()
+    public void youLose(string reason)
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Debug.Log("You lost! Reason: " + reason); // Show reason 
+        audioManager.instance.PlayLoseMenuMusicAudio();
+        
+        if (loseMessageText != null)
+        {
+            loseMessageText.text = reason; // Display why the player lost
+        }
     }
     public void statePause()
     {
@@ -397,13 +403,21 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        if (menuActive == menuPause)
+        // If the Main Menu is active, hide it
+        if (menuMain.activeSelf)
+        {
+            menuMain.SetActive(false);
+        }
+        // If the Pause Menu is active, hide it and the HUD
+        else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
             hud.SetActive(false);
-            menuSettings.SetActive(true);
-            menuActive = menuSettings;
         }
+
+        // Open the Settings Menu
+        menuSettings.SetActive(true);
+        menuActive = menuSettings;
     }
 
     public void CloseSettings()
@@ -411,9 +425,20 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            hud.SetActive(true);
-            menuPause.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuPause;
+
+            // Return to Main Menu if it was opened from Main Menu
+            if (!menuPause.activeSelf)
+            {
+                menuMain.SetActive(true);
+            }
+            // Otherwise, return to Pause Menu and show HUD
+            else
+            {
+                menuPause.SetActive(true);
+                hud.SetActive(true);
+            }
+
+            menuActive = menuPause; // Set active menu back to Pause
         }
     }
 
