@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
+    public TextMeshProUGUI loseMessageText;
     public TextMeshProUGUI interactPrompt;
 
     private float fullWidth;
@@ -193,11 +194,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Quit.");
     }
 
-    public void youLose()
+    public void youLose(string reason)
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Debug.Log("You lost! Reason: " + reason); // Show reason 
+
+        
+        if (loseMessageText != null)
+        {
+            loseMessageText.text = reason; // Display why the player lost
+        }
     }
     public void statePause()
     {
