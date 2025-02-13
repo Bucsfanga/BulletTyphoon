@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
+        audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
 
         if (player != null)
         {
