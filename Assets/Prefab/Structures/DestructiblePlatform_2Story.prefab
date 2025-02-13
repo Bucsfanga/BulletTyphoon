@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1039940372562003518}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4375, y: -19.000004, z: -0.4375}
+  m_LocalPosition: {x: -0.4375, y: -19, z: -0.4375}
   m_LocalScale: {x: 0.125, y: 37.6, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 1740359419114162159}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4375, y: -19.000004, z: 0.4375}
+  m_LocalPosition: {x: 0.4375, y: -19, z: 0.4375}
   m_LocalScale: {x: 0.125, y: 37.6, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -276,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 3889638818940082847}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4375, y: -19.000004, z: 0.4375}
+  m_LocalPosition: {x: -0.4375, y: -19, z: 0.4375}
   m_LocalScale: {x: 0.125, y: 37.6, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 6944654145148157761}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4375, y: -19.000004, z: -0.4375}
+  m_LocalPosition: {x: 0.4375, y: -19, z: -0.4375}
   m_LocalScale: {x: 0.125, y: 37.6, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 2937354912804068895}
   - component: {fileID: 7993499911340258372}
   - component: {fileID: 6043648506701736329}
+  - component: {fileID: 4903306568973064451}
   m_Layer: 0
   m_Name: DestructiblePlatformFloor
   m_TagString: Untagged
@@ -592,3 +593,24 @@ MonoBehaviour:
   destroyCountdown: 4
   respawnTimer: 8
   platform: {fileID: 7915843459002893435}
+--- !u!65 &4903306568973064451
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915843459002893435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
