@@ -13,6 +13,9 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioSource audioSourceTemplate;
     [SerializeField] private AudioSource backgroundAudioSource;
     [SerializeField] private AudioSource mainMenuMusicSource;
+    [SerializeField] private AudioSource loseMenuMusicSource;
+    [SerializeField] private AudioSource winMenuMusicSource;
+    [SerializeField] private AudioSource creditsMenuMusicSource;
     private AudioSource[] audioSources;
 
     //Labeled section for the audio clips and create audio clips array as well as background audio clip slot
@@ -20,6 +23,9 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private AudioClip backgroundAudioClip;
     [SerializeField] private AudioClip mainMenuMusicClip;
+    [SerializeField] private AudioClip loseMenuMusicClip;
+    [SerializeField] private AudioClip winMenuMusicClip;
+    [SerializeField] private AudioClip creditsMenuMusicClip;
 
     #region Sound Collections
     //Labeled section for the types of sounds that have multiple clips (death, damage taken, etc) and create lists for damage and death sounds
@@ -72,6 +78,7 @@ public class audioManager : MonoBehaviour
             InitializeAudioSources();
             SetupBackgroundAudio();
             SetUpMainMenuMusic();
+            SetUpLoseMenuMusic();
         }
         else if (instance != this)
         {
@@ -92,7 +99,7 @@ public class audioManager : MonoBehaviour
         }
     }
 
-    #region Music
+    #region Main Menu Music
     public void SetUpMainMenuMusic()
     {
         //If the main menu music source gets removed, add a new one
@@ -122,14 +129,7 @@ public class audioManager : MonoBehaviour
     //Stop the music and fade out the audio
     public void StopMenuMusic()
     {
-        if (mainMenuMusicSource != null)
-        {
             StartCoroutine(FadeMenuMusic(fadeOutDuration, 0f));
-        }
-        else
-        {
-            Debug.Log("Attempted to stop music but its null!");
-        }
     }
 
     //Setter for the background audio volume - must be b/w 0 and 1
@@ -158,6 +158,60 @@ public class audioManager : MonoBehaviour
             mainMenuMusicSource.Stop();
         }
     }
+    #endregion
+
+    #region Lose Menu Music
+    public void SetUpLoseMenuMusic()
+    {
+        //If the main menu music source gets removed, add a new one
+        if (loseMenuMusicSource == null)
+        {
+            loseMenuMusicSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        //Set the music setting automatically
+        loseMenuMusicSource.loop = true;
+        SetLoseMenuMusicVolume(MusicVolume);
+    }
+    public void PlayLoseMenuMusicAudio()
+    {
+        //Set the audio source clip to the audio clip, play the audio, and fade in the audio
+        loseMenuMusicSource.clip = loseMenuMusicClip;
+        loseMenuMusicSource.Play();
+        StartCoroutine(FadeLoseMenuMusic(fadeInDuration, MusicVolume));
+    }
+    //Setter for the background audio volume - must be b/w 0 and 1
+    public void SetLoseMenuMusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+        loseMenuMusicSource.volume = MusicVolume;
+    }
+    private IEnumerator FadeLoseMenuMusic(float duration, float targetVolume)
+    {
+        //Set up timer and start volume variables
+        float currentTime = 0;
+        float start = loseMenuMusicSource.volume;
+
+        //While the current time is less than the duration, increase the timer and lerp the volume from the start to the target volume
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            loseMenuMusicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        //Stop the background audio if the target volume is 0
+        if (targetVolume == 0f)
+        {
+            loseMenuMusicSource.Stop();
+        }
+    }
+    #endregion
+
+    #region Win Menu Music
+    #endregion
+
+    #region Credits Menu Music
     #endregion
 
     #region Background

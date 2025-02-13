@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
         Debug.Log("You lost! Reason: " + reason); // Show reason 
-
+        audioManager.instance.PlayLoseMenuMusicAudio();
         
         if (loseMessageText != null)
         {
