@@ -420,7 +420,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (HP <= 0)
         {
             audioManager.PlayRandomDeathSound();
-            GameManager.instance.youLose("You ran out of health!");
+            GameManager.instance.youLose("you ran out of health!");
         }
     }
     public void IncreaseHealth(int amount)

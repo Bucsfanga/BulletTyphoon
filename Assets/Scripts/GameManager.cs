@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    private GameObject lastMenu;
 
     // HUD Elements
     public RectTransform healthFill;
@@ -38,8 +39,8 @@ public class GameManager : MonoBehaviour
     public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
+    public TextMeshProUGUI loseMessageText;
     public TextMeshProUGUI interactPrompt;
-    public TextMeshProUGUI loseMessage;
 
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
@@ -49,8 +50,7 @@ public class GameManager : MonoBehaviour
     public Slider volumeSlider;
 
     public bool isPaused;
-    private AudioSource audioSource;
-    private Vector3 lastCheckpointPosition;
+    
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
         public static bool isNextLevel;
         public static bool showCredits;
     }
-
 
     void Awake()
     {
@@ -90,6 +89,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            audioManager.instance.StopMenuMusic();
 
             if (player != null)
             {
@@ -104,15 +104,6 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
-        // Check for null references before proceeding
-        if (audioManager.instance != null && volumeSlider != null)
-        {
-            // Initialize the slider with the current background audio volume
-            volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
-
-            // Add a listener to update the volume when the slider value changes
-            volumeSlider.onValueChanged.AddListener(UpdateVolume);
-        }
     }
 
     // Update is called once per frame
@@ -172,6 +163,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
+        audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
 
         if (player != null)
         {
@@ -184,11 +176,8 @@ public class GameManager : MonoBehaviour
 
 
 
-    public void OpenSettingsFromMainMenu()
-    {
-        menuMain.SetActive(false);  // Hide Main Menu
-        menuSettings.SetActive(true);  // Show Settings Menu
-    }
+  
+    
 
     public void QuitGame()
     {
@@ -201,7 +190,13 @@ public class GameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-        loseMessage.text = reason;
+        Debug.Log("You lost! Reason: " + reason); // Show reason 
+        audioManager.instance.PlayLoseMenuMusicAudio();
+        
+        if (loseMessageText != null)
+        {
+            loseMessageText.text = reason; // Display why the player lost
+        }
     }
     public void statePause()
     {
@@ -261,10 +256,13 @@ public class GameManager : MonoBehaviour
 
             // Trigger credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
             if (scroller != null)
             {
                 scroller.startScrolling();
+                
             }
+           
         }
     }
 
@@ -274,6 +272,8 @@ public class GameManager : MonoBehaviour
         {
             // Reset credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
+
             if (scroller != null)
             {
                 scroller.resetCredits();
@@ -388,38 +388,32 @@ public class GameManager : MonoBehaviour
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
         }
-
-        
-    }
-    public void SetCheckpoint(Vector3 checkpoint)
-    {
-        lastCheckpointPosition = checkpoint;
-    }
-
-    public void RespawnPlayer()
-    {
-        stateUnpause();
-        player.transform.position = lastCheckpointPosition;
     }
 
     // ------------------------------
     // Settings Menu Functions
     // ------------------------------
-    public void UpdateVolume(float volume)
-    {
-
-        audioManager.instance.SetBackgroundAudioVolume(volume);
-    }
 
     public void ShowSettings()
     {
-        if (menuActive == menuPause)
+        // Store the currently active menu before switching to settings
+        lastMenu = menuActive;
+
+        // If the Main Menu is active, hide it
+        if (menuMain.activeSelf)
+        {
+            menuMain.SetActive(false);
+        }
+        // If the Pause Menu is active, hide it and the HUD
+        else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
             hud.SetActive(false);
-            menuSettings.SetActive(true);
-            menuActive = menuSettings;
         }
+
+        // Open the Settings Menu
+        menuSettings.SetActive(true);
+        menuActive = menuSettings;
     }
 
     public void CloseSettings()
@@ -427,9 +421,19 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            hud.SetActive(true);
-            menuPause.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuPause;
+
+            // Return to the previous menu (Main Menu or Pause Menu)
+            if (lastMenu != null)
+            {
+                lastMenu.SetActive(true);
+                menuActive = lastMenu;
+            }
+
+            // If returning to Pause Menu, re-enable HUD
+            if (lastMenu == menuPause)
+            {
+                hud.SetActive(true);
+            }
         }
     }
 
