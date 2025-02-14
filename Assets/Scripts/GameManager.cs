@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            audioManager.instance.StopMenuMusic();
 
             if (player != null)
             {
@@ -403,7 +404,7 @@ public class GameManager : MonoBehaviour
     public void UpdateVolume(float volume)
     {
 
-        audioManager.instance.SetBackgroundAudioVolume(volume);
+        audioManager.instance.SetMenuMusicVolume(volume);
     }
 
     public void ShowSettings()
