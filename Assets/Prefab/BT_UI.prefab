@@ -1763,7 +1763,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
   backgroundAudioClip: {fileID: 8300000, guid: 878f1878c0dd473439b7371e2572812d, type: 3}
   mainMenuMusicClip: {fileID: 8300000, guid: b5bc10f4d9bd65243b56e20218638cf8, type: 3}
-  loseMenuMusicClip: {fileID: 8300000, guid: bda4649832106be47be70035ee91db08, type: 3}
+  loseMenuMusicClip: {fileID: 8300000, guid: 049abaaa0b6350b4181c080313e27ec1, type: 3}
   winMenuMusicClip: {fileID: 0}
   creditsMenuMusicClip: {fileID: 0}
   damageSounds:

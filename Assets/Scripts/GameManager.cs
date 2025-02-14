@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public Slider volumeSlider;
 
     public bool isPaused;
-    private AudioSource audioSource;
+    
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            audioManager.instance.StopMenuMusic();
 
             if (player != null)
             {
@@ -103,15 +104,6 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
-        // Check for null references before proceeding
-        if (audioManager.instance != null && volumeSlider != null)
-        {
-            // Initialize the slider with the current background audio volume
-            volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
-
-            // Add a listener to update the volume when the slider value changes
-            volumeSlider.onValueChanged.AddListener(UpdateVolume);
-        }
     }
 
     // Update is called once per frame
@@ -264,10 +256,13 @@ public class GameManager : MonoBehaviour
 
             // Trigger credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
             if (scroller != null)
             {
                 scroller.startScrolling();
+                
             }
+           
         }
     }
 
@@ -277,6 +272,8 @@ public class GameManager : MonoBehaviour
         {
             // Reset credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
+
             if (scroller != null)
             {
                 scroller.resetCredits();
@@ -396,11 +393,6 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // Settings Menu Functions
     // ------------------------------
-    public void UpdateVolume(float volume)
-    {
-
-        audioManager.instance.SetBackgroundAudioVolume(volume);
-    }
 
     public void ShowSettings()
     {
