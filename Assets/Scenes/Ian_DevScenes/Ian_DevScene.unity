@@ -952,6 +952,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: BT_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1002807359}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMenuMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: audioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207680607746309746, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: player
       value: 
@@ -960,6 +992,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1844889027}
+    - target: {fileID: 5296115023046030827, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: m_Name
+      value: MusicVolumeSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1045,6 +1081,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+--- !u!114 &1002807359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+  m_PrefabInstance: {fileID: 1002807358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acefaa815f81f184aada25ab68a60fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1169316585
 PrefabInstance:
   m_ObjectHideFlags: 0

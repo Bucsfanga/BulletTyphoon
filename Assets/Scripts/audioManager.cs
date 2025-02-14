@@ -130,7 +130,7 @@ public class audioManager : MonoBehaviour
             mainMenuMusicSource = gameObject.AddComponent<AudioSource>();
         }
 
-        //Set the music setting automatically
+        //Set the music setting
         mainMenuMusicSource.loop = true;
         SetMenuMusicVolume(MusicVolume);
 
@@ -163,7 +163,6 @@ public class audioManager : MonoBehaviour
             StartCoroutine(FadeMenuMusic(fadeOutDuration, 0f));
     }
 
-    //Setter for the background audio volume - must be b/w 0 and 1
     public void SetMenuMusicVolume(float volume)
     {
         MusicVolume = Mathf.Clamp01(volume);
@@ -456,6 +455,14 @@ public class audioManager : MonoBehaviour
         return 0f;
     }
     #endregion
+
+    //#region Updates for Sliders
+    //public void UpdateBackgroundVolume(float vol)
+    //{
+    //    BackgroundVolume = vol;
+    //}
+
+    //#endregion
 }
 
 //TODO::
