@@ -950,6 +950,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 1a45352172a996a4985b063afc0c08e7, type: 2}
+    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: creditsMenuMusicClip
       value: 
       objectReference: {fileID: 8300000, guid: 92c32bab51f7a704688f209cd556ed8b, type: 3}

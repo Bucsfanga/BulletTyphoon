@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class audioManager : MonoBehaviour
 {
     //Using singleton method to make sure we only have one instance of the audio manager
     public static audioManager instance;
+
+    //Audio mixer reference
+    [Header("Audio Mixer")]
+    [SerializeField] private AudioMixer audioMixer;
+
+    //Exposed mixer parameter names
+    private const string MasterVolumeParam = "MasterVolume";
+    private const string BackgroundVolumeParam = "BackgroundVolume";
+    private const string SFXVolumeParam = "SFXVolume";
+    private const string MusicVolumeParam = "MusicVolume";
 
     //Labeled section for the audio sources and create audio sources array
     [Header("Audio Sources")]
@@ -14,8 +25,6 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioSource backgroundAudioSource;
     [SerializeField] private AudioSource mainMenuMusicSource;
     [SerializeField] private AudioSource loseMenuMusicSource;
-    [SerializeField] private AudioSource nextLevelMenuMusicSource;
-    [SerializeField] private AudioSource creditsMenuMusicSource;
     private AudioSource[] audioSources;
 
     //Labeled section for the audio clips and create audio clips array as well as background audio clip slot
@@ -24,8 +33,6 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundAudioClip;
     [SerializeField] private AudioClip mainMenuMusicClip;
     [SerializeField] private AudioClip loseMenuMusicClip;
-    [SerializeField] private AudioClip nextLevelMenuMusicClip;
-    [SerializeField] private AudioClip creditsMenuMusicClip;
 
     #region Sound Collections
     //Labeled section for the types of sounds that have multiple clips (death, damage taken, etc) and create lists for damage and death sounds
@@ -87,6 +94,11 @@ public class audioManager : MonoBehaviour
         }      
     }
 
+    private float ConvertToDecibel(float vol)
+    {
+        return vol > 0 ? 20f * Mathf.Log10(vol) : -80f;
+    }
+
     private void InitializeAudioSources()
     {
         //initialize audio source array with the same number of elements as the audio clips array
@@ -96,6 +108,16 @@ public class audioManager : MonoBehaviour
         {
             audioSources[i] = Instantiate(audioSourceTemplate, transform);
             audioSources[i].volume = SoundVolume;
+
+            //Assign to the SFX Mixer group
+            if(audioMixer != null)
+            {
+                var sfxGroup = audioMixer.FindMatchingGroups("SFX");
+                if (sfxGroup.Length > 0)
+                {
+                    audioSources[i].outputAudioMixerGroup = sfxGroup[0];
+                }
+            }
         }
     }
 
@@ -112,9 +134,18 @@ public class audioManager : MonoBehaviour
         mainMenuMusicSource.loop = true;
         SetMenuMusicVolume(MusicVolume);
 
-        if (mainMenuMusicClip != null && playMenuMusicOnAwake)
+        if (audioMixer != null)
         {
-            PlayMainMenuMusicAudio(mainMenuMusicClip.name);
+            var musicGroup = audioMixer.FindMatchingGroups("Music");
+            if (musicGroup.Length > 0)
+            {
+                mainMenuMusicSource.outputAudioMixerGroup = musicGroup[0];
+            }
+
+            if (mainMenuMusicClip != null && playMenuMusicOnAwake)
+            {
+                PlayMainMenuMusicAudio(mainMenuMusicClip.name);
+            }
         }
     }
 
@@ -137,6 +168,12 @@ public class audioManager : MonoBehaviour
     {
         MusicVolume = Mathf.Clamp01(volume);
         mainMenuMusicSource.volume = MusicVolume;
+
+        //Add mixer control
+        if (audioMixer != null)
+        {
+            audioMixer.SetFloat(MusicVolumeParam, ConvertToDecibel(MusicVolume));
+        }
     }
     private IEnumerator FadeMenuMusic(float duration, float targetVolume)
     {
@@ -208,104 +245,6 @@ public class audioManager : MonoBehaviour
     }
     #endregion
 
-    #region Next Level Menu Music
-    public void SetUpNextLevelMenuMusic()
-    {
-        //If the lose menu music source gets removed, add a new one
-        if (nextLevelMenuMusicSource == null)
-        {
-            nextLevelMenuMusicSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        //Set the music setting automatically
-        nextLevelMenuMusicSource.loop = true;
-        SetNextLevelMenuMusicVolume(MusicVolume);
-    }
-
-    public void PlayNextLevelMenuMusicAudio()
-    {
-        //Set the audio source clip to the audio clip, play the audio, and fade in the audio
-        nextLevelMenuMusicSource.clip = loseMenuMusicClip;
-        nextLevelMenuMusicSource.Play();
-        StartCoroutine(FadeNextLevelMenuMusic(fadeInDuration, MusicVolume));
-    }
-    //Setter for the background audio volume - must be b/w 0 and 1
-    public void SetNextLevelMenuMusicVolume(float volume)
-    {
-        MusicVolume = Mathf.Clamp01(volume);
-        nextLevelMenuMusicSource.volume = MusicVolume;
-    }
-    private IEnumerator FadeNextLevelMenuMusic(float duration, float targetVolume)
-    {
-        //Set up timer and start volume variables
-        float currentTime = 0;
-        float start = nextLevelMenuMusicSource.volume;
-
-        //While the current time is less than the duration, increase the timer and lerp the volume from the start to the target volume
-        while (currentTime < duration)
-        {
-            currentTime += Time.deltaTime;
-            nextLevelMenuMusicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
-            yield return null;
-        }
-
-        //Stop the background audio if the target volume is 0
-        if (targetVolume == 0f)
-        {
-            nextLevelMenuMusicSource.Stop();
-        }
-    }
-    #endregion
-
-    #region Credits Menu Music
-    public void SetUpCreditsMenuMusic()
-    {
-        //If the lose menu music source gets removed, add a new one
-        if (creditsMenuMusicSource == null)
-        {
-            creditsMenuMusicSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        //Set the music setting automatically
-        creditsMenuMusicSource.loop = true;
-        SetCreditsMenuMusicVolume(MusicVolume);
-    }
-
-    public void PlayCreditsMenuMusicAudio()
-    {
-        //Set the audio source clip to the audio clip, play the audio, and fade in the audio
-        creditsMenuMusicSource.clip = creditsMenuMusicClip;
-        creditsMenuMusicSource.Play();
-        StartCoroutine(FadeCreditsMenuMusic(fadeInDuration, MusicVolume));
-    }
-    //Setter for the background audio volume - must be b/w 0 and 1
-    public void SetCreditsMenuMusicVolume(float volume)
-    {
-        MusicVolume = Mathf.Clamp01(volume);
-        creditsMenuMusicSource.volume = MusicVolume;
-    }
-    private IEnumerator FadeCreditsMenuMusic(float duration, float targetVolume)
-    {
-        //Set up timer and start volume variables
-        float currentTime = 0;
-        float start = creditsMenuMusicSource.volume;
-
-        //While the current time is less than the duration, increase the timer and lerp the volume from the start to the target volume
-        while (currentTime < duration)
-        {
-            currentTime += Time.deltaTime;
-            creditsMenuMusicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
-            yield return null;
-        }
-
-        //Stop the background audio if the target volume is 0
-        if (targetVolume == 0f)
-        {
-            creditsMenuMusicSource.Stop();
-        }
-    }
-    #endregion
-
     #region Background
     private void SetupBackgroundAudio()
     {
@@ -318,6 +257,15 @@ public class audioManager : MonoBehaviour
         //Set the audio source seetings automatically
         backgroundAudioSource.loop = true;
         backgroundAudioSource.volume = BackgroundVolume;
+
+        if (audioMixer != null)
+        {
+            var backgroundGroup = audioMixer.FindMatchingGroups("Background");
+            if(backgroundGroup.Length > 0)
+            {
+                backgroundAudioSource.outputAudioMixerGroup = backgroundGroup[0];
+            }
+        }
 
         //Play the background audio on awake if the boolean is set to true (togglable in the inspector for testing)
         if (backgroundAudioClip != null && playBackgroundOnAwake)
@@ -350,7 +298,13 @@ public class audioManager : MonoBehaviour
     //Setter for the background audio volume - must be b/w 0 and 1
     public void SetBackgroundAudioVolume(float volume)
     {
-        backgroundAudioSource.volume = Mathf.Clamp01(volume);
+        BackgroundVolume = Mathf.Clamp01(volume);
+        backgroundAudioSource.volume = BackgroundVolume;
+
+        if (audioMixer != null)
+        {
+            audioMixer.SetFloat(BackgroundVolumeParam, ConvertToDecibel(BackgroundVolume));
+        }
     }
 
     private IEnumerator FadeBackgroundAudio(float duration, float targetVolume)
@@ -490,6 +444,16 @@ public class audioManager : MonoBehaviour
         //If no audio source is available, log a warning and return
             Debug.LogWarning("No available audio sources");
             return null;
+    }
+
+    public float GetVolumeFromMixer(string parameterName)
+    {
+        float volume;
+        if(audioMixer != null && audioMixer.GetFloat(parameterName, out volume))
+        {
+            return Mathf.Pow(10, volume / 20);
+        }
+        return 0f;
     }
     #endregion
 }
