@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    private GameObject lastMenu;
 
     // HUD Elements
     public RectTransform healthFill;
@@ -403,6 +404,9 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
+        // Store the currently active menu before switching to settings
+        lastMenu = menuActive;
+
         // If the Main Menu is active, hide it
         if (menuMain.activeSelf)
         {
@@ -426,19 +430,18 @@ public class GameManager : MonoBehaviour
         {
             menuSettings.SetActive(false);
 
-            // Return to Main Menu if it was opened from Main Menu
-            if (!menuPause.activeSelf)
+            // Return to the previous menu (Main Menu or Pause Menu)
+            if (lastMenu != null)
             {
-                menuMain.SetActive(true);
-            }
-            // Otherwise, return to Pause Menu and show HUD
-            else
-            {
-                menuPause.SetActive(true);
-                hud.SetActive(true);
+                lastMenu.SetActive(true);
+                menuActive = lastMenu;
             }
 
-            menuActive = menuPause; // Set active menu back to Pause
+            // If returning to Pause Menu, re-enable HUD
+            if (lastMenu == menuPause)
+            {
+                hud.SetActive(true);
+            }
         }
     }
 
