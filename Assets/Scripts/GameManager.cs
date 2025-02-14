@@ -263,10 +263,13 @@ public class GameManager : MonoBehaviour
 
             // Trigger credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
             if (scroller != null)
             {
                 scroller.startScrolling();
+                
             }
+           
         }
     }
 
@@ -276,6 +279,8 @@ public class GameManager : MonoBehaviour
         {
             // Reset credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
+
             if (scroller != null)
             {
                 scroller.resetCredits();

@@ -14,7 +14,7 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioSource backgroundAudioSource;
     [SerializeField] private AudioSource mainMenuMusicSource;
     [SerializeField] private AudioSource loseMenuMusicSource;
-    [SerializeField] private AudioSource winMenuMusicSource;
+    [SerializeField] private AudioSource nextLevelMenuMusicSource;
     [SerializeField] private AudioSource creditsMenuMusicSource;
     private AudioSource[] audioSources;
 
@@ -24,7 +24,7 @@ public class audioManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundAudioClip;
     [SerializeField] private AudioClip mainMenuMusicClip;
     [SerializeField] private AudioClip loseMenuMusicClip;
-    [SerializeField] private AudioClip winMenuMusicClip;
+    [SerializeField] private AudioClip nextLevelMenuMusicClip;
     [SerializeField] private AudioClip creditsMenuMusicClip;
 
     #region Sound Collections
@@ -163,7 +163,7 @@ public class audioManager : MonoBehaviour
     #region Lose Menu Music
     public void SetUpLoseMenuMusic()
     {
-        //If the main menu music source gets removed, add a new one
+        //If the lose menu music source gets removed, add a new one
         if (loseMenuMusicSource == null)
         {
             loseMenuMusicSource = gameObject.AddComponent<AudioSource>();
@@ -208,10 +208,102 @@ public class audioManager : MonoBehaviour
     }
     #endregion
 
-    #region Win Menu Music
+    #region Next Level Menu Music
+    public void SetUpNextLevelMenuMusic()
+    {
+        //If the lose menu music source gets removed, add a new one
+        if (nextLevelMenuMusicSource == null)
+        {
+            nextLevelMenuMusicSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        //Set the music setting automatically
+        nextLevelMenuMusicSource.loop = true;
+        SetNextLevelMenuMusicVolume(MusicVolume);
+    }
+
+    public void PlayNextLevelMenuMusicAudio()
+    {
+        //Set the audio source clip to the audio clip, play the audio, and fade in the audio
+        nextLevelMenuMusicSource.clip = loseMenuMusicClip;
+        nextLevelMenuMusicSource.Play();
+        StartCoroutine(FadeNextLevelMenuMusic(fadeInDuration, MusicVolume));
+    }
+    //Setter for the background audio volume - must be b/w 0 and 1
+    public void SetNextLevelMenuMusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+        nextLevelMenuMusicSource.volume = MusicVolume;
+    }
+    private IEnumerator FadeNextLevelMenuMusic(float duration, float targetVolume)
+    {
+        //Set up timer and start volume variables
+        float currentTime = 0;
+        float start = nextLevelMenuMusicSource.volume;
+
+        //While the current time is less than the duration, increase the timer and lerp the volume from the start to the target volume
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            nextLevelMenuMusicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        //Stop the background audio if the target volume is 0
+        if (targetVolume == 0f)
+        {
+            nextLevelMenuMusicSource.Stop();
+        }
+    }
     #endregion
 
     #region Credits Menu Music
+    public void SetUpCreditsMenuMusic()
+    {
+        //If the lose menu music source gets removed, add a new one
+        if (creditsMenuMusicSource == null)
+        {
+            creditsMenuMusicSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        //Set the music setting automatically
+        creditsMenuMusicSource.loop = true;
+        SetCreditsMenuMusicVolume(MusicVolume);
+    }
+
+    public void PlayCreditsMenuMusicAudio()
+    {
+        //Set the audio source clip to the audio clip, play the audio, and fade in the audio
+        creditsMenuMusicSource.clip = creditsMenuMusicClip;
+        creditsMenuMusicSource.Play();
+        StartCoroutine(FadeCreditsMenuMusic(fadeInDuration, MusicVolume));
+    }
+    //Setter for the background audio volume - must be b/w 0 and 1
+    public void SetCreditsMenuMusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+        creditsMenuMusicSource.volume = MusicVolume;
+    }
+    private IEnumerator FadeCreditsMenuMusic(float duration, float targetVolume)
+    {
+        //Set up timer and start volume variables
+        float currentTime = 0;
+        float start = creditsMenuMusicSource.volume;
+
+        //While the current time is less than the duration, increase the timer and lerp the volume from the start to the target volume
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            creditsMenuMusicSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        //Stop the background audio if the target volume is 0
+        if (targetVolume == 0f)
+        {
+            creditsMenuMusicSource.Stop();
+        }
+    }
     #endregion
 
     #region Background
