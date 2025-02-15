@@ -7874,7 +7874,6 @@ GameObject:
   - component: {fileID: 3495079641920820780}
   - component: {fileID: 8408764518668559841}
   - component: {fileID: 1098620178177286214}
-  - component: {fileID: 6711537314947857536}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -7909,7 +7908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 3567458055835469006}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &1098620178177286214
@@ -7943,26 +7942,6 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!114 &6711537314947857536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441140482754532082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &8610993107755322557
 GameObject:
   m_ObjectHideFlags: 0
@@ -9087,7 +9066,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6593092762656060781, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
   m_PrefabInstance: {fileID: 9149196908025970649}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3567458055835469006}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -9096,11 +9075,6 @@ MonoBehaviour:
 --- !u!1 &2728547523218333135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6567872892792349206, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
-  m_PrefabInstance: {fileID: 9149196908025970649}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3567458055835469006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5726980235217386263, guid: 81933e18ecae4ec45b830141890d342b, type: 3}
   m_PrefabInstance: {fileID: 9149196908025970649}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8661713652715500341 stripped
