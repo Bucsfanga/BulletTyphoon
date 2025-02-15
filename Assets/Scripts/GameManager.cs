@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject buttonInteract;
     public Image playerHPBar;
 
+
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
 
@@ -29,14 +30,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    [SerializeField] GameObject aimReticle;
     private GameObject lastMenu;
 
     // HUD Elements
     public RectTransform healthFill;
-
-    public TextMeshProUGUI ammoCounter;
     public Image[] ammoBullets; // Array to hold the bullet images
-    public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
+    public float bulletAlphaLoaded = 0.30f; // Alpha value for loaded bullets
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
     public TextMeshProUGUI loseMessageText;
@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(true);
             }
         }
+        populateBanner();
     }
 
     private void initializeMainMenu()
@@ -318,7 +319,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAmmo(int ammoCur, int ammoMax)
     {
-        ammoCounter.text = $"Ammo: {ammoCur}/{ammoMax}";
         UpdateAmmoBorder(ammoCur, ammoMax);
     }
 
@@ -337,6 +337,12 @@ public class GameManager : MonoBehaviour
     {
         float healthPercentage = currentHealth / maxHealth;  // Calculate percentage (0 to 1)
         healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
+    }
+
+    public void ShootAnim()
+    {
+        Debug.Log("Triggering animation...");
+        aimReticle.GetComponent<Animator>().Play("AimRecticleShoot");
     }
 
     // ------------------------------
@@ -464,5 +470,21 @@ public class GameManager : MonoBehaviour
         menuControls.SetActive(true);
         yield return new WaitForSeconds(3);
         menuControls.SetActive(false);
+    }
+
+    // ------------------------------
+    // Testing aera for Notice Banner by Donald
+    // ------------------------------
+    private void populateBanner()
+    {
+        if (Input.GetKeyDown("k"))
+        {
+            hud.GetComponent<NoticeBanner>().Notice(0);
+        }
+
+        if (Input.GetKeyDown("l"))
+        {
+            hud.GetComponent<NoticeBanner>().Notice(1);
+        }
     }
 }

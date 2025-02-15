@@ -367,6 +367,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         gunshotAudio.PlayGunShot();
 
         // Visual effects
+        GameManager.instance.ShootAnim();
+
         if (muzzleFlashParticleEffect != null)
         {
             muzzleFlashParticleEffect.PlayMuzzleFlash();
