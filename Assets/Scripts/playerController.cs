@@ -251,9 +251,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
-                StartCoroutine(playSteps());
-
-                
+                StartCoroutine(playSteps());            
             }
 
             isJumping = false;
@@ -270,6 +268,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         // Movement implementation
         moveDir = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
+
         controller.Move(moveDir * speed * Time.deltaTime);
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;

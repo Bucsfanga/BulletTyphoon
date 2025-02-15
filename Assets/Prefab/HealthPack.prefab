@@ -156,10 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0b9f8607b5bdf4286d6281e648b714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthIncrease: 3
-  respawnTime: 60
+  healthIncrease: 5
+  respawnTime: 30
   model: {fileID: 5911641781736425736}
-  buttonInfo: Press E To Use Health Pack!
+  buttonInfo: Press E To Restore 5 HP!
 --- !u!65 &1901324608155637966
 BoxCollider:
   m_ObjectHideFlags: 0
