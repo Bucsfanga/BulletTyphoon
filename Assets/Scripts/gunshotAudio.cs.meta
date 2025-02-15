@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f72c5c57c6333044cab7d21766f3590c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gunAudioSource: {instanceID: 0}
+  - gunShotClip: {fileID: 8300000, guid: 6f69689247305dc46aa171b14af933b1, type: 3}
+  - gunClickClip: {fileID: 8300000, guid: 53f5b15c510bd214f86a4b4768bd977b, type: 3}
+  - gunReloadClip: {fileID: 8300000, guid: a43f6d181833270439fdcc86d4c34b3b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

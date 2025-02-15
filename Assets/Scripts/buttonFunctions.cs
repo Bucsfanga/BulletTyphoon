@@ -11,8 +11,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManager.instance.stateUnpause();
+        GameManager.instance.RestartGame();
     }
 
     public void quit()
@@ -22,5 +21,38 @@ public class buttonFunctions : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+    public void ShowCredits()
+    {
+        GameManager.instance.ShowCredits();
+    }
+
+    public void ShowSettings()
+    {
+        GameManager.instance.ShowSettings();
+    }
+
+    public void startGame()
+    {
+        GameManager.instance.StartGame();
+    }
+
+    public void nextLevel()
+    {
+        GameManager.instance.NextLevel();
+    }
+
+    // Back button for settings menu
+    public void BackToPauseMenuFromSettings()
+    {
+        GameManager.instance.CloseSettings();
+        
+    }
+
+    // Back button for credits menu
+    public void BackToMainMenuFromCredits()
+    {
+         GameManager.instance.CloseCredits();
+        
     }
 }

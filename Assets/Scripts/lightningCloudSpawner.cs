@@ -4,8 +4,7 @@ using System.Collections;
 public class lightningCloudSpawner : MonoBehaviour
 {
     [SerializeField] GameObject lightningCloud;
-    [SerializeField] float cloudSpawnInterval;
-    [SerializeField] float initialDelay;
+    [SerializeField] float cloudSpawnInterval, spawnRadius, initialDelay, spawnHeight;
     [SerializeField] bool isTargetingPlayer;
     [SerializeField] weatherController weatherController;
 
@@ -21,17 +20,9 @@ public class lightningCloudSpawner : MonoBehaviour
             Debug.LogError("Player reference is null");
             return;
         }
-        if (weatherController != null)
-        {
-            StartCoroutine(StartStormAfterDelay());
-        }
-        StartCoroutine(spawnLightningCloud());
-    }
 
-    private IEnumerator StartStormAfterDelay()
-    {
-        yield return new WaitForSeconds(initialDelay);
-        weatherController.startStorm();
+        setSpawnHeight();
+        StartCoroutine(spawnLightningCloud());
     }
 
     IEnumerator spawnLightningCloud()
@@ -40,7 +31,7 @@ public class lightningCloudSpawner : MonoBehaviour
 
         while (true)
         {
-            Vector3 spawnPosition = isTargetingPlayer ? player.position + Vector3.up * 50f
+            Vector3 spawnPosition = isTargetingPlayer ? player.position + Vector3.up * spawnHeight
                 : getRandomSpawnPosition();
 
             GameObject cloud = Instantiate(lightningCloud, spawnPosition, Quaternion.identity);
@@ -59,12 +50,17 @@ public class lightningCloudSpawner : MonoBehaviour
 
     Vector3 getRandomSpawnPosition()
     {
-        Vector3 groundMin = calculateGroundMin();
-        Vector3 groundMax = calculateGroundMax();
+        if (player == null)
+        {
+            Debug.LogError("Player reference is null for random spawn position.");
+            return Vector3.zero;
+        }
 
-        float randomX = Random.Range(groundMin.x, groundMax.x);
-        float randomZ = Random.Range(groundMin.z, groundMax.z);
-        float spawnHeight = 50f; // Fixed height above ground
+        // Generate a random point within spawn radius of player
+        float angle = Random.Range(0f, Mathf.PI * 2f); // Random angle in radians
+        float distance = Random.Range(0f, spawnRadius); // Random distance within spawn radius
+        float randomX = player.position.x + Mathf.Cos(angle) * distance;
+        float randomZ = player.position.z + Mathf.Sin(angle) * distance;
 
         return new Vector3(randomX, spawnHeight, randomZ);
     }
@@ -91,5 +87,17 @@ public class lightningCloudSpawner : MonoBehaviour
 
         return new Vector3(groundTransform.position.x + halfWidth, groundTransform.position.y,
             groundTransform.position.z + halfLength);
+    }
+
+    float setSpawnHeight()
+    {
+        if (spawnHeight < 50f)
+        {
+            float newSpawnHeight = 50f;
+            spawnHeight = newSpawnHeight;
+            return spawnHeight;
+        }
+
+        return spawnHeight;
     }
 }

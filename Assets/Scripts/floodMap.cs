@@ -5,97 +5,129 @@ using TMPro;
 
 public class floodMap : MonoBehaviour
 {
-    [SerializeField] float floodHeight, floodDuration, floodStartTime, floodingSpeed;
+    [SerializeField] float floodLevelHeight, floodPauseDuration, floodRisingDuration, floodingSpeed, floodStartTime, maxFloodHeight;
     [SerializeField] int warningDuration;
-    [SerializeField] TMP_Text incomingWarningText, outgoingWarningText;
-    [SerializeField] GameObject submergedOverlay;
-   
+
     private Vector3 startPosition;
-    private Vector3 targetPosition;
+    private Vector3 currentTargetPosition;
     private bool isFlooding;
     private Transform player;
+
+    private GameObject submergedOverlay;
+    private TMP_Text incomingWarningText;
+    private float currentFloodHeight;
+    private bool isFloodInitialized = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPosition = transform.position;
-        targetPosition = new Vector3(startPosition.x, startPosition.y + floodHeight, startPosition.z);
+        // Start flood sequence
+        initializeFloodMap();
+        StartCoroutine(floodSequence());
+    }
 
-        if (submergedOverlay != null)
+    private void Update()
+    {
+        if (isFloodInitialized)
+        {
+            updateSubmergedOverlay();
+        }      
+    }
+
+    private void initializeFloodMap()
+    {
+        if (GameManager.instance != null)
+        {
+            // Get references from GameManager script
+            player = GameManager.instance.player.transform;
+            submergedOverlay = GameManager.instance.submergedOverlay;
+            incomingWarningText = GameManager.instance.incomingWarningText;
+        }
+        else
+        {
+            Debug.LogError("GameManager instance is null!");
+        }
+
+        startPosition = transform.parent.position;
+        currentTargetPosition = startPosition;
+        currentFloodHeight = startPosition.y;
+
+        if (submergedOverlay != null) // Check for submerged overlay
         {
             submergedOverlay.SetActive(false);
         }
 
-        // Start flood sequence
-        StartCoroutine(floodSequence());
+        //Debug.Log($"Flood map initialized. Start Position Y: {startPosition.y}, Current Flood Height: {currentFloodHeight}");
     }
 
     IEnumerator floodSequence()
     {
         yield return new WaitForSeconds(floodStartTime); // Delay until flood start time
+        isFloodInitialized = true;
 
-        // Display incoming warning countdown
-        yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
-        yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 3));
-
-        isFlooding = true;
-        float elapsedTime = 0f;
-        while (elapsedTime < floodDuration)
+        while (currentTargetPosition.y < startPosition.y + maxFloodHeight)
         {
-            // Gradually move the water up to the target height
-            transform.position = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / floodDuration) * floodingSpeed);
-            updateSubmergedOverlay(); // Check if player is submerged
+            // Set next target height for flood level
+            currentTargetPosition = new Vector3(startPosition.x, Mathf.Min(currentTargetPosition.y + floodLevelHeight, startPosition.y + maxFloodHeight), startPosition.z);
 
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+            // Display warning before flood rises and play flood warning sound
+            yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
+            yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
 
-        // Ensure water reaches the target height
-        transform.position = targetPosition;
+            isFlooding = true;
 
-        // Pause briefly at flood height
-        float recedeWarningTime = floodDuration -warningDuration;
-        yield return new WaitForSeconds(recedeWarningTime);
+            // Gradually raise water level to target height
+            float elapsedTime = 0f;
+            Vector3 previousPosition = transform.parent.position;
 
-        yield return StartCoroutine(displayWarning(outgoingWarningText, "Warning: Flood will recede in {0} seconds!", warningDuration));
+            while (elapsedTime < floodRisingDuration)
+            {
+                transform.parent.position = Vector3.Lerp(previousPosition, currentTargetPosition, elapsedTime / floodRisingDuration);
 
-        // Flood recedes to starting position
-        elapsedTime = 0f;
-        while (elapsedTime < floodDuration)
-        {
-            // Gradually move the water up to the target height
-            transform.position = Vector3.Lerp(targetPosition, startPosition, (elapsedTime / floodDuration) * floodingSpeed);
-            updateSubmergedOverlay();
+                updateCurrentFloodHeight(transform.parent.position.y);            
+
+                elapsedTime += Time.deltaTime * floodingSpeed;
+                yield return null;
+            }
+
+            transform.parent.position = currentTargetPosition; // Ensure water reaches target position
+            updateCurrentFloodHeight(transform.parent.position.y);
             
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            yield return new WaitForSeconds(floodPauseDuration); // Pause water level at target height
         }
 
-        // Ensure water returns to start position
-        transform.position = startPosition;
+        isFlooding = false; // Flood reaches maximum height
 
+        // Clear submerged overlay
         if (submergedOverlay != null)
         {
             submergedOverlay.SetActive(false);
         }
+    }
 
-        isFlooding = false;
+    private void updateCurrentFloodHeight(float newHeight)
+    {
+        if (newHeight > currentFloodHeight)
+        {
+            currentFloodHeight = newHeight;
+        }     
     }
 
     void updateSubmergedOverlay()
     {
-        player = GameManager.instance.player.transform;
+        if (player == null)
+        {
+            Debug.LogError("Player not set.");
+            return;
+        }
+
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level
-            if (player.position.y < transform.position.y)
-            {
-                submergedOverlay.SetActive(true);
-            }
-            else 
-            {
-                submergedOverlay.SetActive(false);
-            }
+            bool isUnderwater = player.position.y + 1 < currentFloodHeight;
+            submergedOverlay.SetActive(isUnderwater);
+            //Debug.Log($"Player Y: {player.position.y}, Water Y: {currentFloodHeight}, Underwater: {isUnderwater}");
         }
     }
 
@@ -107,7 +139,7 @@ public class floodMap : MonoBehaviour
             if (warningText != null)
             {
                 warningText.text = string.Format(message, i);
-                audioManager.instance.DelayPlaySound("WarningSirenFinal", 3);
+
             }
             yield return new WaitForSeconds(1f);
         }
