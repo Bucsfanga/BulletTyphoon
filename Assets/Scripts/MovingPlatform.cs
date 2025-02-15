@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -33,6 +34,26 @@ public class MovingPlatform : MonoBehaviour
     void FixedUpdate()
     {
         MovePlatform();
+
+        // Detach player if no longer standing on platform
+        List<playerController> toRemove = new List<playerController>();
+
+        foreach (var player in playersOnPlatform)
+        {
+            CharacterController controller = player.GetComponent<CharacterController>();
+
+            if (controller != null && !controller.isGrounded)
+            {
+                player.transform.SetParent(null);
+                toRemove.Add(player);
+            }
+        }
+
+        // Remove players when no longer grounded
+        foreach (var player in toRemove)
+        {
+            playersOnPlatform.Remove(player);
+        }
     }
 
     private void MovePlatform()
@@ -66,7 +87,24 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            other.transform.SetParent(null);
+            playerController player = other.GetComponent<playerController>();
+
+            if (player != null)
+            {
+                StartCoroutine(checkIfGrounded(player));
+            }
+        }
+    }
+
+    IEnumerator checkIfGrounded(playerController player)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        CharacterController controller = player.GetComponent<CharacterController>();
+
+        if (controller != null && !controller.isGrounded)
+        {
+            player.transform.SetParent(null);
         }
     }
 }
