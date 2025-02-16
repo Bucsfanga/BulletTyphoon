@@ -456,6 +456,18 @@ public class audioManager : MonoBehaviour
     }
     #endregion
 
+    public void SetSFXusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+        mainMenuMusicSource.volume = MusicVolume;
+
+        //Add mixer control
+        if (audioMixer != null)
+        {
+            audioMixer.SetFloat(MusicVolumeParam, ConvertToDecibel(MusicVolume));
+        }
+    }
+
     //#region Updates for Sliders
     //public void UpdateBackgroundVolume(float vol)
     //{

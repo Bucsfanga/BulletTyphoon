@@ -109,6 +109,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == menuPause)
@@ -174,11 +176,6 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-
-
-  
-    
 
     public void QuitGame()
     {
@@ -420,6 +417,7 @@ public class GameManager : MonoBehaviour
         // Open the Settings Menu
         menuSettings.SetActive(true);
         menuActive = menuSettings;
+
     }
 
     public void CloseSettings()
