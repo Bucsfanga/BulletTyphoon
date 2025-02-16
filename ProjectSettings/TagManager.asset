@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Guns
+  - Items
+  - Classified
   layers:
   - Default
   - TransparentFX
@@ -42,6 +45,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Notice
+    uniqueID: 3631968177
+    locked: 0
+  - name: Menu
+    uniqueID: 2660917495
+    locked: 0
+  - name: HUD
+    uniqueID: 3406938481
     locked: 0
   m_RenderingLayers:
   - Default

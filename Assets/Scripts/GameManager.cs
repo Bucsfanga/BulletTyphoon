@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
     public void statePause()
     {
         isPaused = true;
+        hud.SetActive(false);
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -259,6 +260,7 @@ public class GameManager : MonoBehaviour
     public void stateUnpause()
     {
         isPaused = false;
+        hud.SetActive(true);
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -395,6 +397,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        hud.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;  // Pause the game
         isPaused = true;
@@ -403,6 +406,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        hud.SetActive(true);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
     }
@@ -530,11 +534,6 @@ public class GameManager : MonoBehaviour
         {
             noticeBanner.GetComponent<NoticeBanner>().Notice(1);
         }
-
-        if (menuActive == menuClassifiedDoc)
-        {
-            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
-        }
     }
 
     private void PopulateClassifiedWIn()
@@ -547,6 +546,7 @@ public class GameManager : MonoBehaviour
             _documents[1].gameObject.SetActive(false);
             menuActive = menuClassifiedDoc;
             menuActive.SetActive(true);
+            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
         if (Input.GetKeyDown("m"))
@@ -556,11 +556,13 @@ public class GameManager : MonoBehaviour
             _documents[0].gameObject.SetActive(false);
             menuActive = menuClassifiedDoc;
             menuActive.SetActive(true);
+            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
         if(Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
         {
             menuActive.SetActive(false);
+            noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
     }
