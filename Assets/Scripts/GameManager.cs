@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
     private float originalLightIntensity;
 
     // Settings Menu Elements
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider backgroundVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
     public Slider volumeSlider;
 
     public bool isPaused;
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeVolumeSliders();
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -106,6 +111,46 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void InitializeVolumeSliders()
+    {
+        if (masterVolumeSlider != null)
+        {
+            masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
+            masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
+        }
+        if (musicVolumeSlider != null)
+        {
+            musicVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MusicVolume");
+            musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChange);
+        }
+        if( sfxVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("SFXVolume");
+            sfxVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChange);
+        }
+        if (backgroundVolumeSlider != null)
+        {
+            backgroundVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("BackgroundVolume");
+            backgroundVolumeSlider.onValueChanged.AddListener (HandleBackgroundVolumeChange);
+        }
+    }
+
+    private void HandleMasterVolumeChange(float val)
+    {
+        audioManager.instance.SetMasterVolume(val);
+    }
+    private void HandleMusicVolumeChange(float val)
+    {
+        audioManager.instance.SetMusicVolume(val);
+    }
+    private void HandleSFXVolumeChange(float val)
+    {
+        audioManager.instance.SetMusicVolume(val);
+    }
+    private void HandleBackgroundVolumeChange(float val)
+    {
+        audioManager.instance.SetBackgroundVolume(val);
+    }
     // Update is called once per frame
     void Update()
     {
