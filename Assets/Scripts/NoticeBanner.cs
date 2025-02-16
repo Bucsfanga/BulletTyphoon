@@ -19,6 +19,9 @@ public class NoticeBanner : MonoBehaviour
             case 1:
                 StartCoroutine(ClassifiedCollected());
                 break;
+            case 2:
+                textValue = "Press ENTER key to continue ...";
+                break;
             default:
                 break;
 

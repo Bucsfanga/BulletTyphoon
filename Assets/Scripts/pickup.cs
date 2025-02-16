@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class pickup : MonoBehaviour
 {
@@ -12,18 +13,41 @@ public class pickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IPickup pick = other.GetComponent<IPickup>();
-
-        if (pick != null)
+        if (other.CompareTag("Guns"))
         {
-            // Create a new gunStats instance and copy the gun data
-            gunStats newGun = ScriptableObject.CreateInstance<gunStats>();
-            gun.CopyTo(newGun);
+            IPickup pick = other.GetComponent<IPickup>();
 
-            // Transfer the new gun to the player
-            pick.getGunStats(newGun);
+            if (pick != null)
+            {
+                // Create a new gunStats instance and copy the gun data
+                gunStats newGun = ScriptableObject.CreateInstance<gunStats>();
+                gun.CopyTo(newGun);
 
-            Destroy(gameObject);
+                // Transfer the new gun to the player
+                pick.getGunStats(newGun);
+
+                Destroy(gameObject);
+            }
+        }
+        else if (other.CompareTag("Classified"))
+        {
+            IPickup pick = other.GetComponent<IPickup>();
+
+            if (pick != null)
+            {
+                //Createe classified file instance and copy the data
+                string _levelName = SceneManager.GetActiveScene().name;
+                Item_Classified newClassified = ScriptableObject.CreateInstance<Item_Classified>();
+                newClassified.SetLevel(_levelName);
+                newClassified.CopyTo(newClassified);
+
+                // transfer item collected to player
+                pick.collectClassified(newClassified);
+
+                Destroy(gameObject);
+            }
+
+            
         }
     }
 }

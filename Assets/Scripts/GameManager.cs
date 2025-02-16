@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject menuClassifiedDoc;
+    [SerializeField] GameObject noticeBanner;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
+    private RawImage[] _documents; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
     public Slider volumeSlider;
@@ -101,6 +105,8 @@ public class GameManager : MonoBehaviour
             initializeMainMenu(); // Initialize main menu for fresh start
         }
 
+        _documents = menuClassifiedDoc.GetComponentsInChildren<RawImage>();
+
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
@@ -131,6 +137,7 @@ public class GameManager : MonoBehaviour
             }
         }
         populateBanner();
+        PopulateClassifiedWIn();
     }
 
     private void initializeMainMenu()
@@ -226,13 +233,6 @@ public class GameManager : MonoBehaviour
     {
         goalCount += amount;
         goalCountText.text = goalCount.ToString("F0");
-
-        //if (goalCount <= 0)
-        //{
-        //    statePause();
-        //    menuActive = menuWin;
-        //    menuActive.SetActive(true);
-        //}
     }
 
     // Track win condition of player reaching goal position on level
@@ -339,6 +339,7 @@ public class GameManager : MonoBehaviour
         healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
     }
 
+    //Animation not working Donald troubleshooting in next Sprint Beta
     public void ShootAnim()
     {
         Debug.Log("Triggering animation...");
@@ -468,7 +469,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator ContrtolsScreen()
     {
         menuControls.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         menuControls.SetActive(false);
     }
 
@@ -479,12 +480,45 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown("k"))
         {
-            hud.GetComponent<NoticeBanner>().Notice(0);
+            noticeBanner.GetComponent<NoticeBanner>().Notice(0);
         }
 
         if (Input.GetKeyDown("l"))
         {
-            hud.GetComponent<NoticeBanner>().Notice(1);
+            noticeBanner.GetComponent<NoticeBanner>().Notice(1);
+        }
+
+        if (menuActive == menuClassifiedDoc)
+        {
+            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
+        }
+    }
+
+    private void PopulateClassifiedWIn()
+    {
+
+        if (Input.GetKeyDown("n"))
+        {
+            statePause();
+            _documents[0].gameObject.SetActive(true);
+            _documents[1].gameObject.SetActive(false);
+            menuActive = menuClassifiedDoc;
+            menuActive.SetActive(true);
+        }
+
+        if (Input.GetKeyDown("m"))
+        {
+            statePause();
+            _documents[1].gameObject.SetActive(true);
+            _documents[0].gameObject.SetActive(false);
+            menuActive = menuClassifiedDoc;
+            menuActive.SetActive(true);
+        }
+
+        if(Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
+        {
+            menuActive.SetActive(false);
+            initializeMainMenu();
         }
     }
 }

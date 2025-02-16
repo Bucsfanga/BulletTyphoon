@@ -52,6 +52,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] gunReloadAudio gunReloadAudio;
     [SerializeField] gunClickAudio gunClickAudio;
 
+    [SerializeField] List<Item_Classified> classifiedList = new List<Item_Classified>();
+
     cameraController camController;
 
     Vector3 moveDir;
@@ -61,7 +63,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     int HPOrig;
     float baseSpeed;
     int gunListPos;
-   public int currentAmmo, maxAmmo;
+    public int currentAmmo, maxAmmo;
     float shootTimer; // Lecture 6
 
     private float originalFOV;
@@ -461,6 +463,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
         currentGunStats = gun; // Store current gun for reference
         changeGun();
+    }
+
+    public void collectClassified(Item_Classified _classified)
+    {
+        classifiedList.Add(_classified);
     }
 
     void selectGun()
