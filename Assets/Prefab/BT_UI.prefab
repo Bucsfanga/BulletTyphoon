@@ -1869,7 +1869,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2110780405160899831}
-  - {fileID: 4328798409048775974}
   - {fileID: 4939074361699757139}
   - {fileID: 3572490891479701320}
   - {fileID: 7006500308790257617}
@@ -1894,9 +1893,9 @@ RectTransform:
   - {fileID: 8881893026459828407}
   m_Father: {fileID: 7004804796619091088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 185.09998, y: 191.29999}
   m_SizeDelta: {x: 1006, y: 1006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4683165309950919174
@@ -3316,7 +3315,7 @@ RectTransform:
   m_GameObject: {fileID: 3082521926118259322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.37606, y: 3.37606, z: 1.0128181}
+  m_LocalScale: {x: 0.71561676, y: 0.71561676, z: 0.71561676}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7694523976625371983}
@@ -3324,7 +3323,7 @@ RectTransform:
   - {fileID: 2936337134075595531}
   - {fileID: 1981270604843257813}
   - {fileID: 3564673757255104941}
-  m_Father: {fileID: 1195623939474192165}
+  m_Father: {fileID: 7004804796619091088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4494,6 +4493,7 @@ RectTransform:
   - {fileID: 7693900622880404641}
   - {fileID: 3495079641920820780}
   - {fileID: 2529554342618450736}
+  - {fileID: 4328798409048775974}
   - {fileID: 1195623939474192165}
   - {fileID: 2396793083700662440}
   - {fileID: 6245721544794931462}
@@ -10444,8 +10444,8 @@ MonoBehaviour:
   goalCountText: {fileID: 7039732524239520880}
   menuPause: {fileID: 3736460729613925873}
   menuActive: {fileID: 0}
-  menuClassifiedDoc: {fileID: 0}
-  noticeBanner: {fileID: 0}
+  menuClassifiedDoc: {fileID: 3937029102302444372, guid: 983794c7128b98841bdc64f6c6cd676f, type: 3}
+  noticeBanner: {fileID: 6763705694174749382, guid: c2c0f74115a128a4c9f5c07fcef64576, type: 3}
   menuWin: {fileID: 5117835524347632095}
   menuLose: {fileID: 4744907706425060284}
   menuMain: {fileID: 2728547523218333135}
