@@ -163,17 +163,7 @@ public class audioManager : MonoBehaviour
             StartCoroutine(FadeMenuMusic(fadeOutDuration, 0f));
     }
 
-    public void SetMenuMusicVolume(float volume)
-    {
-        MusicVolume = Mathf.Clamp01(volume);
-        mainMenuMusicSource.volume = MusicVolume;
-
-        //Add mixer control
-        if (audioMixer != null)
-        {
-            audioMixer.SetFloat(MusicVolumeParam, ConvertToDecibel(MusicVolume));
-        }
-    }
+    
     private IEnumerator FadeMenuMusic(float duration, float targetVolume)
     {
         //Set up timer and start volume variables
@@ -453,6 +443,56 @@ public class audioManager : MonoBehaviour
             return Mathf.Pow(10, volume / 20);
         }
         return 0f;
+    }
+    #endregion
+
+    #region Setters
+    public void SetMasterVolume(float volume)
+    {
+        float dbValue = ConvertToDecibel(volume);
+        audioMixer.SetFloat(MasterVolumeParam, dbValue);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        float dbValue = ConvertToDecibel(volume);
+        audioMixer.SetFloat(SFXVolumeParam, dbValue);
+    }
+    public void SetMenuMusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+        mainMenuMusicSource.volume = MusicVolume;
+
+        //Add mixer control
+        if (audioMixer != null)
+        {
+            audioMixer.SetFloat(MusicVolumeParam, ConvertToDecibel(MusicVolume));
+        }
+    }
+    public void SetMusicVolume(float volume)
+    {
+        MusicVolume = Mathf.Clamp01(volume);
+
+        // Update the menu music source volume
+        if (mainMenuMusicSource != null)
+            mainMenuMusicSource.volume = MusicVolume;
+
+        // Update the lose menu music source volume
+        if (loseMenuMusicSource != null)
+            loseMenuMusicSource.volume = MusicVolume;
+
+        // Update the mixer - only need to do this once
+        if (audioMixer != null)
+        {
+            float dbValue = ConvertToDecibel(MusicVolume);
+            audioMixer.SetFloat(MusicVolumeParam, dbValue);
+        }
+    }
+
+    public void SetBackgroundVolume(float volume)
+    {
+        float dbValue = ConvertToDecibel(volume);
+        audioMixer.SetFloat(BackgroundVolumeParam, dbValue);
     }
     #endregion
 
