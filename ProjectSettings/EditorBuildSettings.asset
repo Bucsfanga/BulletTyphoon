@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype/Level 2/UnitTestLevel2.unity
     guid: fd0c966fc0a221a4a9fb01c833c67f2a
+  - enabled: 1
+    path: Assets/Scenes/Prototype/Level 3/UnitTestLevel3.unity
+    guid: 311e4cb420f57e640a076913fa3fbb7c
+  - enabled: 1
+    path: Assets/Scenes/Prototype/Level 4/UnitTestLevel4.unity
+    guid: 9d64dd8b27c57f644b1fd7fd7e68a94d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
