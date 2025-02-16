@@ -21,6 +21,8 @@ public class NoticeBanner : MonoBehaviour
                 break;
             case 2:
                 textValue = "Press ENTER key to continue ...";
+                _noticeBanner.text = textValue;
+                _noticeBanner.enabled = true;
                 break;
             default:
                 break;
