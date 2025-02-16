@@ -6,10 +6,12 @@ public class spawner : MonoBehaviour
     [SerializeField] int numToSpawn;
     [SerializeField] int timeBetweenSpawns;
     [SerializeField] Transform[] spawnPos;
+    [SerializeField] bool spawnRandomly; // Toggle to spawn at positions randomly or sequentially
 
     float spawnTimer;
 
     int spawnCount;
+    int sequentialSpawnIndex = 0;
 
     bool startSpawning;
     
@@ -45,8 +47,19 @@ public class spawner : MonoBehaviour
 
     void spawn()
     {
-        int spawnInt = Random.Range(0, spawnPos.Length); // Choose random position
-        int objectInt = Random.Range(0, objectToSpawn.Length); // Choose random object
+        int spawnInt;
+        if (spawnRandomly == true)
+        {
+            spawnInt = Random.Range(0, spawnPos.Length); // Choose random position
+        }
+        else
+        {
+            spawnInt = sequentialSpawnIndex;
+            sequentialSpawnIndex = (sequentialSpawnIndex + 1) % spawnPos.Length; // Loop through spawn positions
+        }
+
+
+        int objectInt = Random.Range(0, objectToSpawn.Length); // Choose random enemy
 
         spawnTimer = 0; // Reset spawn timer
         Instantiate(objectToSpawn[objectInt], spawnPos[spawnInt].position, spawnPos[spawnInt].rotation);
