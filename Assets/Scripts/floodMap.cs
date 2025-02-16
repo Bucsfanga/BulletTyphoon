@@ -73,6 +73,7 @@ public class floodMap : MonoBehaviour
 
             // Display warning before flood rises and play flood warning sound
             yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
+            GameManager.instance.hud.GetComponent<NoticeBanner>().Notice(0);
             yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
 
             isFlooding = true;

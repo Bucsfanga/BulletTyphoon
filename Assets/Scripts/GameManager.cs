@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject buttonInteract;
     public Image playerHPBar;
 
+
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
 
@@ -29,15 +30,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    [SerializeField] GameObject aimReticle;
+    private GameObject lastMenu;
 
     // HUD Elements
     public RectTransform healthFill;
-
-    public TextMeshProUGUI ammoCounter;
     public Image[] ammoBullets; // Array to hold the bullet images
-    public float bulletAlphaLoaded = 0.60f; // Alpha value for loaded bullets
+    public float bulletAlphaLoaded = 0.30f; // Alpha value for loaded bullets
     public float bulletAlphaSpented = -5.0f; // Alpha value for empty bullets
 
+    public TextMeshProUGUI loseMessageText;
     public TextMeshProUGUI interactPrompt;
 
     private float fullWidth;
@@ -45,10 +47,14 @@ public class GameManager : MonoBehaviour
     private float originalLightIntensity;
 
     // Settings Menu Elements
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider backgroundVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
     public Slider volumeSlider;
 
     public bool isPaused;
-    private AudioSource audioSource;
+    
 
     int goalCount;
     public int goalCheckpoint = 0;
@@ -69,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeVolumeSliders();
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -87,6 +94,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            audioManager.instance.StopMenuMusic();
 
             if (player != null)
             {
@@ -101,20 +109,53 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
-        // Check for null references before proceeding
-        if (audioManager.instance != null && volumeSlider != null)
-        {
-            // Initialize the slider with the current background audio volume
-            volumeSlider.value = audioManager.instance.GetBackgroundAudioVolume();
+    }
 
-            // Add a listener to update the volume when the slider value changes
-            volumeSlider.onValueChanged.AddListener(UpdateVolume);
+    private void InitializeVolumeSliders()
+    {
+        if (masterVolumeSlider != null)
+        {
+            masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
+            masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
+        }
+        if (musicVolumeSlider != null)
+        {
+            musicVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MusicVolume");
+            musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChange);
+        }
+        if( sfxVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("SFXVolume");
+            sfxVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChange);
+        }
+        if (backgroundVolumeSlider != null)
+        {
+            backgroundVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("BackgroundVolume");
+            backgroundVolumeSlider.onValueChanged.AddListener (HandleBackgroundVolumeChange);
         }
     }
 
+    private void HandleMasterVolumeChange(float val)
+    {
+        audioManager.instance.SetMasterVolume(val);
+    }
+    private void HandleMusicVolumeChange(float val)
+    {
+        audioManager.instance.SetMusicVolume(val);
+    }
+    private void HandleSFXVolumeChange(float val)
+    {
+        audioManager.instance.SetMusicVolume(val);
+    }
+    private void HandleBackgroundVolumeChange(float val)
+    {
+        audioManager.instance.SetBackgroundVolume(val);
+    }
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == menuPause)
@@ -136,6 +177,7 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(true);
             }
         }
+        populateBanner();
     }
 
     private void initializeMainMenu()
@@ -169,6 +211,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
+        audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
 
         if (player != null)
         {
@@ -179,25 +222,24 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-
-
-    public void OpenSettingsFromMainMenu()
-    {
-        menuMain.SetActive(false);  // Hide Main Menu
-        menuSettings.SetActive(true);  // Show Settings Menu
-    }
-
     public void QuitGame()
     {
         Application.Quit();  // Quit the application
         Debug.Log("Game Quit.");
     }
 
-    public void youLose()
+    public void youLose(string reason)
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Debug.Log("You lost! Reason: " + reason); // Show reason 
+        audioManager.instance.PlayLoseMenuMusicAudio();
+        
+        if (loseMessageText != null)
+        {
+            loseMessageText.text = reason; // Display why the player lost
+        }
     }
     public void statePause()
     {
@@ -257,10 +299,13 @@ public class GameManager : MonoBehaviour
 
             // Trigger credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
             if (scroller != null)
             {
                 scroller.startScrolling();
+                
             }
+           
         }
     }
 
@@ -270,6 +315,8 @@ public class GameManager : MonoBehaviour
         {
             // Reset credit scroller
             creditsScroller scroller = menuCredits.GetComponentInChildren<creditsScroller>();
+            
+
             if (scroller != null)
             {
                 scroller.resetCredits();
@@ -314,7 +361,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAmmo(int ammoCur, int ammoMax)
     {
-        ammoCounter.text = $"Ammo: {ammoCur}/{ammoMax}";
         UpdateAmmoBorder(ammoCur, ammoMax);
     }
 
@@ -333,6 +379,12 @@ public class GameManager : MonoBehaviour
     {
         float healthPercentage = currentHealth / maxHealth;  // Calculate percentage (0 to 1)
         healthFill.sizeDelta = new Vector2(fullWidth * healthPercentage, healthFill.sizeDelta.y);  // Adjust width of health fill
+    }
+
+    public void ShootAnim()
+    {
+        Debug.Log("Triggering animation...");
+        aimReticle.GetComponent<Animator>().Play("AimRecticleShoot");
     }
 
     // ------------------------------
@@ -389,21 +441,28 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // Settings Menu Functions
     // ------------------------------
-    public void UpdateVolume(float volume)
-    {
-
-        audioManager.instance.SetBackgroundAudioVolume(volume);
-    }
 
     public void ShowSettings()
     {
-        if (menuActive == menuPause)
+        // Store the currently active menu before switching to settings
+        lastMenu = menuActive;
+
+        // If the Main Menu is active, hide it
+        if (menuMain.activeSelf)
+        {
+            menuMain.SetActive(false);
+        }
+        // If the Pause Menu is active, hide it and the HUD
+        else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
             hud.SetActive(false);
-            menuSettings.SetActive(true);
-            menuActive = menuSettings;
         }
+
+        // Open the Settings Menu
+        menuSettings.SetActive(true);
+        menuActive = menuSettings;
+
     }
 
     public void CloseSettings()
@@ -411,9 +470,19 @@ public class GameManager : MonoBehaviour
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
-            hud.SetActive(true);
-            menuPause.SetActive(true);  // Show main menu after closing settings
-            menuActive = menuPause;
+
+            // Return to the previous menu (Main Menu or Pause Menu)
+            if (lastMenu != null)
+            {
+                lastMenu.SetActive(true);
+                menuActive = lastMenu;
+            }
+
+            // If returning to Pause Menu, re-enable HUD
+            if (lastMenu == menuPause)
+            {
+                hud.SetActive(true);
+            }
         }
     }
 
@@ -444,5 +513,21 @@ public class GameManager : MonoBehaviour
         menuControls.SetActive(true);
         yield return new WaitForSeconds(3);
         menuControls.SetActive(false);
+    }
+
+    // ------------------------------
+    // Testing aera for Notice Banner by Donald
+    // ------------------------------
+    private void populateBanner()
+    {
+        if (Input.GetKeyDown("k"))
+        {
+            hud.GetComponent<NoticeBanner>().Notice(0);
+        }
+
+        if (Input.GetKeyDown("l"))
+        {
+            hud.GetComponent<NoticeBanner>().Notice(1);
+        }
     }
 }
