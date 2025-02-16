@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class pickup : MonoBehaviour
 {
     [SerializeField] gunStats gun;
+    [SerializeField] Item_Classified classified;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +41,7 @@ public class pickup : MonoBehaviour
                 string _levelName = SceneManager.GetActiveScene().name;
                 Item_Classified newClassified = ScriptableObject.CreateInstance<Item_Classified>();
                 newClassified.SetLevel(_levelName);
-                newClassified.CopyTo(newClassified);
+                classified.CopyTo(newClassified);
 
                 // transfer item collected to player
                 pick.collectClassified(newClassified);
