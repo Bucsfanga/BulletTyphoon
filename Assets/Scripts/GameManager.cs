@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        InitializeVolumeSliders();
+        StartCoroutine(InitializeVolumeSliders());
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -117,46 +117,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void InitializeVolumeSliders()
-    {
-        if (masterVolumeSlider != null)
-        {
-            masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
-            masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
-        }
-        if (musicVolumeSlider != null)
-        {
-            musicVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MusicVolume");
-            musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChange);
-        }
-        if( sfxVolumeSlider != null)
-        {
-            sfxVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("SFXVolume");
-            sfxVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChange);
-        }
-        if (backgroundVolumeSlider != null)
-        {
-            backgroundVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("BackgroundVolume");
-            backgroundVolumeSlider.onValueChanged.AddListener (HandleBackgroundVolumeChange);
-        }
-    }
-
-    private void HandleMasterVolumeChange(float val)
-    {
-        audioManager.instance.SetMasterVolume(val);
-    }
-    private void HandleMusicVolumeChange(float val)
-    {
-        audioManager.instance.SetMusicVolume(val);
-    }
-    private void HandleSFXVolumeChange(float val)
-    {
-        audioManager.instance.SetMusicVolume(val);
-    }
-    private void HandleBackgroundVolumeChange(float val)
-    {
-        audioManager.instance.SetBackgroundVolume(val);
-    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -211,6 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        audioManager.instance.PlayUIClick();
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
         StartCoroutine(ContrtolsScreen());
@@ -231,6 +193,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
+        audioManager.instance.PlayUIClick();
         Application.Quit();  // Quit the application
         Debug.Log("Game Quit.");
     }
@@ -293,6 +256,7 @@ public class GameManager : MonoBehaviour
     }
     public void ShowCredits()
     {
+        audioManager.instance.PlayUIClick();
         if (menuActive == menuMain)
         {
             menuMain.SetActive(false);
@@ -313,6 +277,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseCredits()
     {
+        audioManager.instance.PlayUIClick();
         if (menuActive == menuCredits)
         {
             // Reset credit scroller
@@ -405,6 +370,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        audioManager.instance.PlayUIClick();
         pauseMenu.SetActive(false);
         hud.SetActive(true);
         Time.timeScale = 1f;  // Resume the game
@@ -413,6 +379,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        audioManager.instance.PlayUIClick();
         Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Verify correct scene is reloading
         GameState.isRestarting = true;
         Time.timeScale = 1f;
@@ -421,6 +388,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        audioManager.instance.PlayUIClick();
         Debug.Log("Loading next level");
         GameState.isNextLevel = true;
         Time.timeScale = 1f;
@@ -449,6 +417,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
+        audioManager.instance.PlayUIClick();
         // Store the currently active menu before switching to settings
         lastMenu = menuActive;
 
@@ -472,6 +441,7 @@ public class GameManager : MonoBehaviour
 
     public void CloseSettings()
     {
+        audioManager.instance.PlayUIClick();
         if (menuActive == menuSettings)
         {
             menuSettings.SetActive(false);
@@ -489,6 +459,50 @@ public class GameManager : MonoBehaviour
                 hud.SetActive(true);
             }
         }
+    }
+
+    private IEnumerator InitializeVolumeSliders()
+    {
+        yield return null; //wait a frame to give audio mixer time to initialize
+
+        if (masterVolumeSlider != null)
+        {
+            Debug.Log("Creating Master Volume Slider!");
+            masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
+            masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
+        }
+        if (musicVolumeSlider != null)
+        {
+            musicVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MusicVolume");
+            musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChange);
+        }
+        if (sfxVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("SFXVolume");
+            sfxVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChange);
+        }
+        if (backgroundVolumeSlider != null)
+        {
+            backgroundVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("BackgroundVolume");
+            backgroundVolumeSlider.onValueChanged.AddListener(HandleBackgroundVolumeChange);
+        }
+    }
+
+    private void HandleMasterVolumeChange(float val)
+    {
+        audioManager.instance.SetMasterVolume(val);
+    }
+    private void HandleMusicVolumeChange(float val)
+    {
+        audioManager.instance.SetMusicVolume(val);
+    }
+    private void HandleSFXVolumeChange(float val)
+    {
+        audioManager.instance.SetSFXVolume(val);
+    }
+    private void HandleBackgroundVolumeChange(float val)
+    {
+        audioManager.instance.SetBackgroundVolume(val);
     }
 
     // ------------------------------
