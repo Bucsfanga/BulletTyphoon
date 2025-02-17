@@ -65,13 +65,17 @@ public class audioManager : MonoBehaviour
 
     //Labeled section for the audio settings. Created separate background and sound volumes, as well as a boolean to play music on awake, and fade in/out durations
     [Header("Audio Settings")]
-    [SerializeField][Range(0,1)] float BackgroundVolume = 0.5f;
-    [SerializeField][Range(0, 1)] float MusicVolume = 0.5f;
-    [SerializeField][Range(0, 1)] float SoundVolume = 1f;
+    [SerializeField][Range(0,1)] float BackgroundVolume;
+    [SerializeField][Range(0, 1)] float MusicVolume;
+    [SerializeField][Range(0, 1)] float SoundVolume;
     [SerializeField] private bool playBackgroundOnAwake = true;
     [SerializeField] private bool playMenuMusicOnAwake = true;
     [SerializeField] private float fadeInDuration = 2f;
     [SerializeField] private float fadeOutDuration = 2f;
+
+    [Header("UI Sounds")]
+    [SerializeField] private AudioClip uiClickSound;
+
     
 
     private void Awake()
@@ -348,6 +352,11 @@ public class audioManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void PlayUIClick()
+    {
+        PlaySound("UI - Button Popup");
+    }
+
     public void PlaySoundWithPitch(string name, float minPitch, float maxPitch)
     {
         AudioSource audioSource = GetAvailableAudioSource();
@@ -440,9 +449,9 @@ public class audioManager : MonoBehaviour
         float volume;
         if(audioMixer != null && audioMixer.GetFloat(parameterName, out volume))
         {
-            return Mathf.Pow(10, volume / 20);
+            return Mathf.Pow(10f, volume / 20f);
         }
-        return 0f;
+        return 1f;
     }
     #endregion
 
@@ -495,24 +504,6 @@ public class audioManager : MonoBehaviour
         audioMixer.SetFloat(BackgroundVolumeParam, dbValue);
     }
     #endregion
-
-    //#region Updates for Sliders
-    //public void UpdateBackgroundVolume(float vol)
-    //{
-    //    BackgroundVolume = vol;
-    //}
-
-    //#endregion
 }
 
 //TODO::
-
-//Add volume sliders for jump, footsteps, and other sound effects
-
-//Add a method to play footsteps sounds on an animation event
-//Add a PlayRandomShootSound method
-//Add a PlayGunClickSound method
-//Add a PlayGunReloadSound method
-//Add a method to play ambient water slosh sound during the flood
-//Add a methods to play a damage and dying sound for the enemies
-//Add a method to play a sound when the player picks up a health pack
