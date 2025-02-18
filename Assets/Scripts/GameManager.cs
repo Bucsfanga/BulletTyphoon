@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject damagePanel;
     public GameObject buttonInteract;
     public Image playerHPBar;
-
+    public TallyScreenManager tallyScreenManager;
 
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
@@ -597,5 +597,34 @@ public class GameManager : MonoBehaviour
             noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
+    }
+
+
+
+    public void EndLevel()
+    {
+        
+
+        float completionTime = Time.timeSinceLevelLoad;
+        int damageTaken = 0;
+        int stepsTaken = 0;
+
+        if (player != null) // Check if player is assigned
+        {
+            playerController playerScript = player.GetComponent<playerController>();
+            if (playerScript != null)
+            {
+                damageTaken = playerScript.GetDamageTaken();
+                stepsTaken = playerScript.GetStepsTaken();
+            }
+           
+        }
+       
+
+        if (tallyScreenManager != null) // Check if Tally Screen Manager is assigned
+        {
+            tallyScreenManager.ShowTallyScreen(completionTime, damageTaken, stepsTaken);
+        }
+      
     }
 }
