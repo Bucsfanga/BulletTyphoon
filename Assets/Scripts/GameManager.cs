@@ -129,6 +129,10 @@ public class GameManager : MonoBehaviour
             {
                 stateUnpause();
             }
+            else if (menuActive == menuControls)
+            {
+                CloseControlMenu();
+            }
             else if (menuActive == menuCredits)
             {
                 CloseCredits();
@@ -533,7 +537,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         menuControls.SetActive(false);
     }
+    // Function to Open Control Menu from Pause Menu
+    public void OpenControlMenu()
+    {
+        menuPause.SetActive(false);
+        menuControls.SetActive(true);
+        menuActive = menuControls;
+    }
 
+    // Function to Close Control Menu
+    public void CloseControlMenu()
+    {
+        menuControls.SetActive(false);
+        menuPause.SetActive(true);
+        menuActive = menuPause;
+    }
     // ------------------------------
     // Testing aera for Notice Banner by Donald
     // ------------------------------
