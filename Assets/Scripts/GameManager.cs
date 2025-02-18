@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuControls;
     [SerializeField] GameObject aimReticle;
     private GameObject lastMenu;
+    public float levelStartTime;
+    private float levelCompletionTime;
+    public bool isTimerRunning = false;
 
     // HUD Elements
     public RectTransform healthFill;
@@ -115,6 +118,8 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
+        levelStartTime = Time.time;
+        isTimerRunning = true;
     }
 
     
@@ -619,7 +624,12 @@ public class GameManager : MonoBehaviour
             }
            
         }
-       
+        if (isTimerRunning)
+        {
+            levelCompletionTime = Time.time - levelStartTime;
+            isTimerRunning = false;
+            Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
+        }
 
         if (tallyScreenManager != null) // Check if Tally Screen Manager is assigned
         {
