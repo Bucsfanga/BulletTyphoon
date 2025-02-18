@@ -10,16 +10,16 @@ public class pickup : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Guns"))
-        {
-            IPickup pick = other.GetComponent<IPickup>();
+        IPickup pick = other.GetComponent<IPickup>();
 
-            if (pick != null)
+        if (pick != null)
+        {
+            if (gun != null)
             {
                 // Create a new gunStats instance and copy the gun data
                 gunStats newGun = ScriptableObject.CreateInstance<gunStats>();
@@ -30,14 +30,10 @@ public class pickup : MonoBehaviour
 
                 Destroy(gameObject);
             }
-        }
-        else if (other.CompareTag("Classified"))
-        {
-            IPickup pick = other.GetComponent<IPickup>();
-
-            if (pick != null)
+            else if (classified != null)
             {
-                //Createe classified file instance and copy the data
+
+                //Create classified file instance and copy the data
                 string _levelName = SceneManager.GetActiveScene().name;
                 Item_Classified newClassified = ScriptableObject.CreateInstance<Item_Classified>();
                 newClassified.SetLevel(_levelName);
@@ -48,8 +44,6 @@ public class pickup : MonoBehaviour
 
                 Destroy(gameObject);
             }
-
-            
         }
     }
 }

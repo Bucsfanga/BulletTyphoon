@@ -36,6 +36,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] float shootRate;
     [SerializeField] int ammoCur;
     [SerializeField] int ammoMax;
+    [SerializeField] int totalAmmo;
     [SerializeField] float reloadTime;
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;
@@ -63,7 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     int HPOrig;
     float baseSpeed;
     int gunListPos;
-    public int currentAmmo, maxAmmo;
+    public int currentAmmo, maxAmmo, ammoTotal;
     float shootTimer; // Lecture 6
 
     private float originalFOV;
@@ -401,13 +402,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     {
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
-            isReloading = true;
-        }
-    }
+            if (totalAmmo <= 0) // Check for reserve ammo
+            {
+                Debug.Log("Out of ammo!");
+                return;
+            }
 
-    void FinishReload()
-    {
-        isReloading = false;
+            isReloading = true;
+
+            int ammoNeeded = maxAmmo - currentAmmo; // How many bullets needed to fill clip
+            int ammoToReload = Mathf.Min(ammoNeeded, totalAmmo); // Only reload from reserve ammo
+
+            currentAmmo += ammoToReload; // Increase current ammo
+            totalAmmo -= ammoToReload; // Decrease reserve ammo
+
+            GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+            isReloading = false; // Reset flag
+        }
     }
 
     public void takeDamage(int amount)
@@ -492,6 +503,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         shootRate = gunList[gunListPos].shootRate;
         maxAmmo = gunList[gunListPos].ammoMax;
         currentAmmo = gunList[gunListPos].ammoCur;
+        totalAmmo = gunList[gunListPos].ammoTotal;
         hitEffect = gunList[gunListPos].hitEffect;
         shootSound = gunList[gunListPos].shootSound;
         shootSoundVol = gunList[gunListPos].shootSoundVol;
