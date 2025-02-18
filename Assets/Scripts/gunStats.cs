@@ -14,6 +14,8 @@ public class gunStats : ScriptableObject
     public AudioClip[] shootSound;
     public float shootSoundVol;
 
+    public string gunID;
+
     // Function to deep copy gunStats
     public void CopyTo(gunStats target)
     {
@@ -27,5 +29,6 @@ public class gunStats : ScriptableObject
         target.hitEffect = hitEffect;
         target.shootSound = shootSound;
         target.shootSoundVol = shootSoundVol;
+        target.gunID = gunID;
     }
 }

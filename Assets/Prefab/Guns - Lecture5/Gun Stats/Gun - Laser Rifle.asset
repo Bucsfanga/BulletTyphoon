@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f83abe340e9f34e881cd47e6dc0692, type: 3}
   m_Name: Gun - Laser Rifle
   m_EditorClassIdentifier: 
-  model: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
+  model: {fileID: 4698201593948852689, guid: 185ce04d44da342739f0bef843698e6c, type: 3}
   shootDamage: 10
   shootDist: 200
   shootRate: 1
   ammoCur: 5
   ammoMax: 5
-  ammoTotal: 10
+  ammoTotal: 5
   hitEffect: {fileID: 5396372950321188654, guid: fcb74f28d107e284e80af037bfec14ca, type: 3}
   shootSound:
   - {fileID: 8300000, guid: c43074b427d6fb047b2a7b4b54bd710e, type: 3}
   shootSoundVol: 0.5
+  gunID: 
