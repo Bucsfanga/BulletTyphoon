@@ -25,9 +25,8 @@ public class pickup : MonoBehaviour
                 gunStats newGun = ScriptableObject.CreateInstance<gunStats>();
                 gun.CopyTo(newGun);
 
-                // Transfer the new gun to the player
-                pick.getGunStats(newGun);
-
+                newGun.gunID = System.Guid.NewGuid().ToString(); // Assign unique ID to each gun instance
+                pick.getGunStats(newGun); // Transfer the new gun to the player
                 Destroy(gameObject);
             }
             else if (classified != null)
