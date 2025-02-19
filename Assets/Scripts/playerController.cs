@@ -198,6 +198,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     {
         if (gunList.Count > 0)
         {
+            // Initialize gunIDs for any existing guns in the list
+            foreach (var gun in gunList)
+            {
+                if (string.IsNullOrEmpty(gun.gunID))
+                {
+                    gun.gunID = System.Guid.NewGuid().ToString();
+                }
+            }
             gunListPos = 0;
             changeGun();
         }
