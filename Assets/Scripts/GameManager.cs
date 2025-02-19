@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public float levelStartTime;
     private float levelCompletionTime;
     public bool isTimerRunning = false;
+    private const string HighScoresKey = "HighScores";
 
     // HUD Elements
     public RectTransform healthFill;
@@ -629,12 +631,49 @@ public class GameManager : MonoBehaviour
             levelCompletionTime = Time.time - levelStartTime;
             isTimerRunning = false;
             Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
+            SaveHighScore(levelCompletionTime);
         }
 
         if (tallyScreenManager != null) // Check if Tally Screen Manager is assigned
         {
             tallyScreenManager.ShowTallyScreen(completionTime, damageTaken, stepsTaken);
+
+            FindFirstObjectByType<HighScoreLeaderboard>().UpdateLeaderboard();
         }
       
+    }
+
+    void SaveHighScore(float newScore)
+    {
+        List<float> highScores = LoadHighScores();
+        highScores.Add(newScore);
+        highScores.Sort(); // Sort scores in ascending order (best times first)
+
+        // Keep only the top 10 scores
+        if (highScores.Count > 10)
+        {
+            highScores = highScores.GetRange(0, 10);
+        }
+
+        SaveHighScores(highScores);
+
+       
+    }
+    public List<float> LoadHighScores()
+    {
+        string json = PlayerPrefs.GetString(HighScoresKey, "");
+        if (string.IsNullOrEmpty(json))
+        {
+            return new List<float>(); // Return empty list if no scores exist
+        }
+
+        return JsonUtility.FromJson<HighScoreList>(json).scores;
+    }
+    void SaveHighScores(List<float> highScores)
+    {
+        HighScoreList highScoreList = new HighScoreList { scores = highScores };
+        string json = JsonUtility.ToJson(highScoreList);
+        PlayerPrefs.SetString(HighScoresKey, json);
+        PlayerPrefs.Save();
     }
 }
