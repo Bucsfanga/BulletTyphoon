@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI loseMessageText;
     public TextMeshProUGUI interactPrompt;
+    [SerializeField] TextMeshProUGUI ammoCounterText;
 
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
@@ -157,6 +158,14 @@ public class GameManager : MonoBehaviour
         }
         populateBanner();
         PopulateClassifiedWIn();
+    }
+
+    public void updateAmmoCounter(int currentAmmo, int maxAmmo, int totalAmmo)
+    {
+        if (ammoCounterText != null)
+        {
+            ammoCounterText.text = $"{currentAmmo} / {maxAmmo} | {totalAmmo}";
+        }
     }
 
     private void initializeMainMenu()

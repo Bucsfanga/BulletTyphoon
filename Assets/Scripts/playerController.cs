@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+
 //using NUnit.Framework;
 using UnityEngine;
 
@@ -36,6 +38,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] float shootRate;
     [SerializeField] int ammoCur;
     [SerializeField] int ammoMax;
+    [SerializeField] int totalAmmo;
     [SerializeField] float reloadTime;
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;
@@ -63,8 +66,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     int HPOrig;
     float baseSpeed;
     int gunListPos;
-    public int currentAmmo, maxAmmo;
+    public int currentAmmo, maxAmmo, ammoTotal;
     float shootTimer; // Lecture 6
+
+    // Ammo Dictionary
+    private Dictionary<string, GunAmmoData> GunAmmoDic = new Dictionary<string, GunAmmoData>();
+
     private int totalDamageTaken = 0; // Track total damage taken
     private int totalStepsTaken = 0; // Track total steps
     private float originalFOV;
@@ -377,9 +384,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (shootTimer < shootRate) return; // Prevent shooting if timer is less than the fire rate.
 
         shootTimer = 0; // Reset the timer when shooting.
-
-        // Play shooting sound
-        gunshotAudio.PlayGunShot();
+        gunshotAudio.PlayGunShot(); // Play shooting sound
 
         // Visual effects
         GameManager.instance.ShootAnim();
@@ -402,26 +407,52 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             }
         }
 
-        // Reduce ammo
-        currentAmmo--;
+        currentAmmo--; // Reduce ammo
+
+        string gunID = currentGunStats.gunID;
+        
+        if (GunAmmoDic.ContainsKey(gunID))
+        {
+            GunAmmoDic[gunID].currentAmmo = currentAmmo;
+        }
+
         if( currentAmmo <= 0)
         {
             gunClickAudio.PlayGunClick();
         }
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+        GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
     }
         
     void reload()
     {
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
         {
-            isReloading = true;
-        }
-    }
+            if (totalAmmo <= 0) // Check for reserve ammo
+            {
+                Debug.Log("Out of ammo!");
+                return;
+            }
 
-    void FinishReload()
-    {
-        isReloading = false;
+            isReloading = true;
+
+            int ammoNeeded = maxAmmo - currentAmmo; // How many bullets needed to fill clip
+            int ammoToReload = Mathf.Min(ammoNeeded, totalAmmo); // Only reload from reserve ammo
+
+            currentAmmo += ammoToReload; // Increase current ammo
+            totalAmmo -= ammoToReload; // Decrease reserve ammo
+
+            string gunID = currentGunStats.gunID;
+            if (GunAmmoDic.ContainsKey(gunID)) // Store updated ammo values
+            {
+                GunAmmoDic[gunID].currentAmmo = currentAmmo;
+                GunAmmoDic[gunID].totalAmmo = totalAmmo;
+            }
+
+            GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+            GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
+            isReloading = false; // Reset flag
+        }
     }
 
     public void takeDamage(int amount)
@@ -478,8 +509,50 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     public void getGunStats(gunStats gun)
     {
+        // Search for existing gun of the same type
+        foreach (var existingGun in gunList)
+        {
+            if (existingGun.name == gun.name && existingGun.model == gun.model) // Same gun type found
+            {
+                string existingGunID = existingGun.gunID; // Keep same gunID
+
+                if (GunAmmoDic.ContainsKey(existingGunID))
+                {
+                    GunAmmoDic[existingGunID].totalAmmo += gun.ammoCur + gun.ammoTotal; // Add current and total ammo to current guns total
+                }
+                else // If gun doesn't have a record stored
+                {
+                    GunAmmoDic[existingGunID] = new GunAmmoData(existingGun.ammoCur, existingGun.ammoMax, existingGun.ammoTotal + gun.ammoCur + gun.ammoTotal);
+                }
+
+                // Get updated values
+                GunAmmoData updatedAmmo = GunAmmoDic[existingGunID];
+                currentAmmo = updatedAmmo.currentAmmo;
+                maxAmmo = updatedAmmo.maxAmmo;
+                totalAmmo = updatedAmmo.totalAmmo;
+                GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo); // Update UI
+                return;
+            }
+        }
+
+        // For first time gun pick up
+        gun.gunID = System.Guid.NewGuid().ToString(); // Generate unique ID
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
+        string gunID = gun.gunID;
+
+        // Check if ammo values exist
+        if (!GunAmmoDic.ContainsKey(gunID))
+        {
+            GunAmmoDic[gunID]= new GunAmmoData(gun.ammoCur, gun.ammoMax, gun.ammoTotal);
+        }
+
+        // Get updated values
+        GunAmmoData newGunAmmo = GunAmmoDic[gunID];
+        currentAmmo = newGunAmmo.currentAmmo;
+        maxAmmo = newGunAmmo.maxAmmo;
+        totalAmmo = newGunAmmo.totalAmmo;
+        GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo); // Update UI
 
         currentGunStats = gun; // Store current gun for reference
         changeGun();
@@ -506,17 +579,35 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     void changeGun()
     {
+        currentGunStats = gunList[gunListPos];
+        string gunID = currentGunStats.gunID;
+
         // Change player gun stats
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
-        maxAmmo = gunList[gunListPos].ammoMax;
-        currentAmmo = gunList[gunListPos].ammoCur;
+
+        if (GunAmmoDic.ContainsKey(gunID))
+        {
+            GunAmmoData ammoData = GunAmmoDic[gunID];
+            currentAmmo = ammoData.currentAmmo;
+            maxAmmo = ammoData.maxAmmo;
+            totalAmmo = ammoData.totalAmmo;
+        }
+        else
+        {
+            currentAmmo = currentGunStats.ammoCur; // Default when no value saved
+            maxAmmo = currentGunStats.ammoMax;
+            totalAmmo = currentGunStats.ammoTotal;
+            GunAmmoDic[gunID] = new GunAmmoData(currentAmmo, maxAmmo, totalAmmo);
+        }
+
         hitEffect = gunList[gunListPos].hitEffect;
         shootSound = gunList[gunListPos].shootSound;
         shootSoundVol = gunList[gunListPos].shootSoundVol;
 
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);
+        GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
 
         // Change the model
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
