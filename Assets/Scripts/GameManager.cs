@@ -642,6 +642,20 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void ReturnToMainMenu()
+    {
+        
+
+        // Hide Pause Menu & HUD
+        pauseMenu.SetActive(false);
+        hud.SetActive(false);
+
+        // Show Main Menu UI
+        menuMain.SetActive(true);
+        menuActive = menuMain;
+
+       
+    }
 
     private void SaveSettings()
     {
