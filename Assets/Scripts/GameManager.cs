@@ -238,6 +238,11 @@ public class GameManager : MonoBehaviour
         PersistentData.savedGunList.Clear();
         PersistentData.savedAmmoDic.Clear();
 
+        if (sensitivitySlider != null && cameraController.instance != null)
+        {
+            sensitivitySlider.value = cameraController.instance.GetLookSensitivity();
+        }
+
         menuMain.SetActive(true);
         menuActive = menuMain;
         hud.SetActive(false);
@@ -481,6 +486,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Restoring from snapshot -> Guns: {PersistentData.levelStartGunList.Count}, Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
         Debug.Log($"Restoring Gun Position: {PersistentData.levelStartGunListPos}");
 
+        SaveSettings();
+
         // Snapshot Inventory
         PersistentData.savedGunList = new List<gunStats>(PersistentData.levelStartGunList);
 
@@ -504,6 +511,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager.instance.PlayUIClick();
         Debug.Log("Loading next level");
+        SaveSettings();
         GameState.isNextLevel = true;
         Time.timeScale = 1f;
 
@@ -618,6 +626,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SaveSettings()
+    {
+        if (cameraController.instance != null)
+        {
+            PlayerPrefs.SetFloat("MouseSensitivity", cameraController.instance.GetLookSensitivity());
+        }
+        PlayerPrefs.Save();
+    }
     private IEnumerator InitializeSettingsSliders()
     {
         yield return null; //wait a frame to give audio mixer time to initialize
