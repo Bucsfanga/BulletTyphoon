@@ -23,11 +23,11 @@ public class Ability : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (false) //Placeholder for Getter/Setter if already have ability
-                {
-                    Debug.Log("Already powered up!");
-                    return;
-                }
+                //if (false) //Placeholder for Getter/Setter if already have ability
+                //{
+                //    Debug.Log("Already powered up!");
+                //    return;
+                //}
 
                 model.SetActive(false);
                 GameManager.instance.buttonInteract.SetActive(false);

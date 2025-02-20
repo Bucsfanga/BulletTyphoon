@@ -2,15 +2,32 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-    [SerializeField] public int sens;
+    public static cameraController instance;
+
+    [SerializeField][Range(0,2)] public float sens;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
-
     float rotX;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private GameManager gameManager;
+
+    void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -18,10 +35,13 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameManager != null && gameManager.isPaused)
+        {
+            return;
+        }
         // Get inputs
-        float mouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sens; //* Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sens; //* Time.deltaTime;
 
         // Tie the mouseY to the rotX of the camera - look up and down
         if (invertY)
@@ -37,5 +57,15 @@ public class cameraController : MonoBehaviour
 
         // Rotate the player on the Y-Axis - look left and right
         transform.parent.Rotate(Vector3.up * mouseX);
+    }
+
+    public void SetLookSensitivity(float val)
+    {
+        sens = val;
+    }
+
+    public float GetLookSensitivity()
+    {
+        return sens;
     }
 }
