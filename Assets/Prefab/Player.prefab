@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5363295779679572579
 Transform:
   m_ObjectHideFlags: 0
@@ -865,7 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8c80917c92f08488f74e5dbd586389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -881,7 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c5c57c6333044cab7d21766f3590c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -967,7 +965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c704db290a4462549a5daa4410e4e601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
