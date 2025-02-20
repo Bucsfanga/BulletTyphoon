@@ -21,7 +21,7 @@ public class cameraController : MonoBehaviour
 
         // Set up the singleton instance
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // Only set default sensitivity if no saved value exists
         if (!PlayerPrefs.HasKey("MouseSensitivity"))

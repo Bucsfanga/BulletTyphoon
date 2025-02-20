@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider sfxVolumeSlider;
     public Slider volumeSlider;
 
+    [SerializeField] private AudioListener playerListener;
+    [SerializeField] private AudioListener settingsListener;
+
     public bool isPaused;
     
 
@@ -586,6 +589,13 @@ public class GameManager : MonoBehaviour
         // Store the currently active menu before switching to settings
         lastMenu = menuActive;
 
+
+        if(settingsListener != null && playerListener != null)
+        {
+            settingsListener.enabled = true;
+            playerListener.enabled = false;
+        }
+
         // If the Main Menu is active, hide it
         if (menuMain.activeSelf)
         {
@@ -607,8 +617,15 @@ public class GameManager : MonoBehaviour
     public void CloseSettings()
     {
         audioManager.instance.PlayUIClick();
+
         if (menuActive == menuSettings)
         {
+            if (settingsListener != null && playerListener != null)
+            {
+                settingsListener.enabled = false;
+                playerListener.enabled = true;
+            }
+
             menuSettings.SetActive(false);
 
             // Return to the previous menu (Main Menu or Pause Menu)

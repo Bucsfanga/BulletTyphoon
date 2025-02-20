@@ -13122,6 +13122,8 @@ MonoBehaviour:
   backgroundVolumeSlider: {fileID: 1035520093446128521}
   sfxVolumeSlider: {fileID: 6121802202030968335}
   volumeSlider: {fileID: 4207680607746309746}
+  playerListener: {fileID: 0}
+  settingsListener: {fileID: 1512281333211730795}
   isPaused: 0
   goalCheckpoint: 0
   incomingWarningText: {fileID: 7167304202022905489}
