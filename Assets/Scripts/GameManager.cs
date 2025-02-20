@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject damagePanel;
     public GameObject buttonInteract;
     public Image playerHPBar;
-
+    public TallyScreenManager tallyScreenManager;
 
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuControls;
     [SerializeField] GameObject aimReticle;
     private GameObject lastMenu;
+    public float levelStartTime;
+    private float levelCompletionTime;
+    public bool isTimerRunning = false;
+    private const string HighScoresKey = "HighScores";
 
     // HUD Elements
     public RectTransform healthFill;
@@ -120,6 +124,8 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
+        levelStartTime = Time.time;
+        isTimerRunning = true;
     }
 
     
@@ -132,6 +138,10 @@ public class GameManager : MonoBehaviour
             if (menuActive == menuPause)
             {
                 stateUnpause();
+            }
+            else if (menuActive == menuControls)
+            {
+                CloseControlMenu();
             }
             else if (menuActive == menuCredits)
             {
@@ -679,7 +689,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         menuControls.SetActive(false);
     }
+    // Function to Open Control Menu from Pause Menu
+    public void OpenControlMenu()
+    {
+        menuPause.SetActive(false);
+        menuControls.SetActive(true);
+        menuActive = menuControls;
+    }
 
+    // Function to Close Control Menu
+    public void CloseControlMenu()
+    {
+        menuControls.SetActive(false);
+        menuPause.SetActive(true);
+        menuActive = menuPause;
+    }
     // ------------------------------
     // Testing aera for Notice Banner by Donald
     // ------------------------------
@@ -725,5 +749,76 @@ public class GameManager : MonoBehaviour
             noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
+    }
+
+
+
+    public void EndLevel()
+    {
+        
+
+        float completionTime = Time.timeSinceLevelLoad;
+        int damageTaken = 0;
+        int stepsTaken = 0;
+
+        if (player != null) // Check if player is assigned
+        {
+            playerController playerScript = player.GetComponent<playerController>();
+            if (playerScript != null)
+            {
+                damageTaken = playerScript.GetDamageTaken();
+                stepsTaken = playerScript.GetStepsTaken();
+            }
+           
+        }
+        if (isTimerRunning)
+        {
+            levelCompletionTime = Time.time - levelStartTime;
+            isTimerRunning = false;
+            Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
+            SaveHighScore(levelCompletionTime);
+        }
+
+        if (tallyScreenManager != null) // Check if Tally Screen Manager is assigned
+        {
+            tallyScreenManager.ShowTallyScreen(completionTime, damageTaken, stepsTaken);
+
+            FindFirstObjectByType<HighScoreLeaderboard>().UpdateLeaderboard();
+        }
+      
+    }
+
+    void SaveHighScore(float newScore)
+    {
+        List<float> highScores = LoadHighScores();
+        highScores.Add(newScore);
+        highScores.Sort(); // Sort scores in ascending order (best times first)
+
+        // Keep only the top 10 scores
+        if (highScores.Count > 10)
+        {
+            highScores = highScores.GetRange(0, 10);
+        }
+
+        SaveHighScores(highScores);
+
+       
+    }
+    public List<float> LoadHighScores()
+    {
+        string json = PlayerPrefs.GetString(HighScoresKey, "");
+        if (string.IsNullOrEmpty(json))
+        {
+            return new List<float>(); // Return empty list if no scores exist
+        }
+
+        return JsonUtility.FromJson<HighScoreList>(json).scores;
+    }
+    void SaveHighScores(List<float> highScores)
+    {
+        HighScoreList highScoreList = new HighScoreList { scores = highScores };
+        string json = JsonUtility.ToJson(highScoreList);
+        PlayerPrefs.SetString(HighScoresKey, json);
+        PlayerPrefs.Save();
     }
 }

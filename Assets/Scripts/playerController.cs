@@ -72,6 +72,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     // Ammo Dictionary
     public Dictionary<string, GunAmmoData> GunAmmoDic = new Dictionary<string, GunAmmoData>();
 
+    private int totalDamageTaken = 0; // Track total damage taken
+    private int totalStepsTaken = 0; // Track total steps
     private float originalFOV;
     private bool _isShooting;
     private bool _isReloading;
@@ -301,7 +303,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         jump();
         crouch();
         reload();
-
+       
+        Vector3 previousPosition = transform.position; // Store previous position
+       
         // Movement implementation
         moveDir = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
@@ -309,6 +313,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         controller.Move(moveDir * speed * Time.deltaTime);
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
+
+        // Track movement distance and count steps
+        float distanceMoved = Vector3.Distance(previousPosition, transform.position);
+        if (distanceMoved > 0.1f)  // Avoid counting tiny movements
+        {
+            totalStepsTaken += Mathf.FloorToInt(distanceMoved * 10); // Scale step count
+        }
 
         // Controls
         if (gunList.Count > 0 && gunListPos >= 0 && gunListPos < gunList.Count)
@@ -338,7 +349,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         }
 
     }
-
+    //Function to return total steps taken
+    public int GetStepsTaken()
+    {
+        return totalStepsTaken;
+    }
     void zoom(float speed)
     {
         targetFOV = speed;
@@ -472,6 +487,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     public void takeDamage(int amount)
     {
         HP -= amount;
+        totalDamageTaken += amount;  // Track total damage
         if (HP > 0)
         {
             audioManager.PlayRandomDamageSound();
@@ -484,6 +500,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             audioManager.PlayRandomDeathSound();
             GameManager.instance.youLose("you ran out of health!");
         }
+    }
+    // Function to return total damage taken
+    public int GetDamageTaken()
+    {
+        return totalDamageTaken;
     }
     public void IncreaseHealth(int amount)
     {
