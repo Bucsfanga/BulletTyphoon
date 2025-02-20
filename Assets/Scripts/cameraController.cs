@@ -4,7 +4,7 @@ public class cameraController : MonoBehaviour
 {
     public static cameraController instance;
 
-    [SerializeField][Range(0,2)] public float sens;
+    [SerializeField][Range(0,2)] public float sens = 1f;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
     float rotX;
@@ -13,20 +13,31 @@ public class cameraController : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        Debug.Log($"Camera Controller Awake - Initial sens: {sens}");
+        // Clamp initial value to valid range
+        sens = Mathf.Clamp(sens, 0f, 2f);
+
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
         }
+
+        // Set up the singleton instance
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Store initial sensitivity value
+        PlayerPrefs.SetFloat("MouseSensitivity", sens);
+        PlayerPrefs.Save();
     }
 
     private void Start()
     {
+        Debug.Log($"Camera Controller Start - Before load sens: {sens}");
+        sens = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        Debug.Log($"Camera Controller Start - After load sens: {sens}");
         gameManager = GameManager.instance;
+
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -62,6 +73,8 @@ public class cameraController : MonoBehaviour
     public void SetLookSensitivity(float val)
     {
         sens = val;
+        PlayerPrefs.SetFloat("MouseSensitivity", sens);
+        PlayerPrefs.Save();
     }
 
     public float GetLookSensitivity()
