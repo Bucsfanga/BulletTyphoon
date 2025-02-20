@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     private RawImage[] _documents; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
+    [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider backgroundVolumeSlider;
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(InitializeVolumeSliders());
+        StartCoroutine(InitializeSettingsSliders());
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -481,13 +482,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator InitializeVolumeSliders()
+    private IEnumerator InitializeSettingsSliders()
     {
         yield return null; //wait a frame to give audio mixer time to initialize
 
+
+        if (sensitivitySlider != null)
+        {
+            if(cameraController.instance != null)
+            {
+                sensitivitySlider.value = cameraController.instance.GetLookSensitivity();
+                sensitivitySlider.onValueChanged.AddListener(HandleSensitivityChange);
+            }
+        }
         if (masterVolumeSlider != null)
         {
-            Debug.Log("Creating Master Volume Slider!");
             masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
             masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
         }
@@ -508,6 +517,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HandleSensitivityChange(float val)
+    {
+        if (cameraController.instance != null)
+        {
+            cameraController.instance.SetLookSensitivity(val);
+        }
+    }
     private void HandleMasterVolumeChange(float val)
     {
         audioManager.instance.SetMasterVolume(val);
