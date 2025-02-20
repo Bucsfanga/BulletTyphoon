@@ -33,7 +33,7 @@ public class NoticeBanner : MonoBehaviour
 
     IEnumerator FloodWarning()
     {
-        textValue = "Warning Flooding in 1o minutes";
+        textValue = "Warning Flooding in 1o seconds";
         _noticeBanner.text = textValue;
         _noticeBanner.enabled = true;
         yield return new WaitForSeconds(0.5f);
