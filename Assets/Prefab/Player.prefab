@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5363295779679572579
 Transform:
   m_ObjectHideFlags: 0
@@ -849,6 +849,7 @@ MonoBehaviour:
   gunClickAudio: {fileID: 9054219787201969602}
   classifiedList:
   - {fileID: 0}
+  gunListPos: 0
   currentAmmo: 0
   maxAmmo: 0
   ammoTotal: 0

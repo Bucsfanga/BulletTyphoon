@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(InitializeVolumeSliders());
+
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -108,6 +110,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //PersistentData.savedGunList.Clear();
+            //PersistentData.savedAmmoDic.Clear();
             initializeMainMenu(); // Initialize main menu for fresh start
         }
 
@@ -122,7 +126,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 
         if (Input.GetButtonDown("Cancel"))
         {
@@ -149,17 +152,81 @@ public class GameManager : MonoBehaviour
         PopulateClassifiedWIn();
     }
 
-    public void updateAmmoCounter(int currentAmmo, int maxAmmo, int totalAmmo)
+    // ------------------------------
+    // Player Persistence
+    // ------------------------------
+
+    public void savePlayerData(playerController player)
     {
-        if (ammoCounterText != null)
+        PersistentData.savedGunList = new List<gunStats>(player.gunList);
+
+        // Deep copy ammo dictionary
+        var tempAmmoDic = new Dictionary<string, GunAmmoData>();
+
+        foreach (var gun in player.GunAmmoDic)
         {
-            ammoCounterText.text = $"{currentAmmo} / {maxAmmo} | {totalAmmo}";
+            tempAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
         }
+
+        PersistentData.savedAmmoDic = tempAmmoDic;
+        PersistentData.savedGunListPos = player.gunListPos;
+    }
+
+    // Load player inventory/ammo after scene change
+    public void loadPlayerData(playerController player)
+    {
+        Debug.Log("Load player data");
+
+        if (GameState.isRestarting)
+        {
+            Debug.Log("Restoring from level start snapshot");
+            player.gunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+            // Deep Copy ammo dictionary
+            player.GunAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.levelStartAmmoDic);
+            foreach (var gun in PersistentData.levelStartAmmoDic)
+            {
+                player.GunAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            player.gunListPos = PersistentData.levelStartGunListPos;
+
+            // Reset persistent data to reflect level start state
+            PersistentData.savedGunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+            PersistentData.savedAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.levelStartAmmoDic);
+            foreach (var gun in PersistentData.levelStartAmmoDic)
+            {
+                PersistentData.savedAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            PersistentData.savedGunListPos = PersistentData.levelStartGunListPos;
+        }
+        else
+        {
+            Debug.Log("Loading from persistent data (NOT RESTART)");
+            player.gunList = new List<gunStats>(PersistentData.savedGunList);
+            player.GunAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.savedAmmoDic);
+            player.gunListPos = PersistentData.savedGunListPos;
+        }
+
+        Debug.Log($"Player Now Has: {player.gunList.Count} Guns | {player.GunAmmoDic.Count} Ammo Types");
+        Debug.Log($"Player Gun Position: {player.gunListPos}");
+
+        if (player.gunList.Count > 0)
+        {
+            player.changeGun(); // Update UI and equip last gun player used
+        }
+
     }
 
     private void initializeMainMenu()
     {
         Debug.Log("Initializing Main Menu!");
+
+        PersistentData.savedGunList.Clear();
+        PersistentData.savedAmmoDic.Clear();
+
         menuMain.SetActive(true);
         menuActive = menuMain;
         hud.SetActive(false);
@@ -181,6 +248,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        PersistentData.savedGunList.Clear();
+        PersistentData.savedAmmoDic.Clear();
         audioManager.instance.PlayUIClick();
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
@@ -334,6 +403,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void updateAmmoCounter(int currentAmmo, int maxAmmo, int totalAmmo)
+    {
+        if (ammoCounterText != null)
+        {
+            ammoCounterText.text = $"{currentAmmo} / {maxAmmo} | {totalAmmo}";
+        }
+    }
 
     public void UpdateAmmo(int ammoCur, int ammoMax)
     {
@@ -389,7 +465,25 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         audioManager.instance.PlayUIClick();
-        Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Verify correct scene is reloading
+
+        Debug.Log("Restart level");
+        Debug.Log($"Restoring from snapshot -> Guns: {PersistentData.levelStartGunList.Count}, Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+        Debug.Log($"Restoring Gun Position: {PersistentData.levelStartGunListPos}");
+
+        // Snapshot Inventory
+        PersistentData.savedGunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+        // Deep copy ammo dictionary
+        var tempAmmoDic = new Dictionary<string, GunAmmoData>();
+        foreach (var gun in PersistentData.levelStartAmmoDic)
+        {
+            tempAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+        }
+
+        PersistentData.savedAmmoDic = tempAmmoDic;
+
+        PersistentData.savedGunListPos = PersistentData.levelStartGunListPos;
+        
         GameState.isRestarting = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload current scene
@@ -402,6 +496,33 @@ public class GameManager : MonoBehaviour
         GameState.isNextLevel = true;
         Time.timeScale = 1f;
 
+        playerController player = FindFirstObjectByType<playerController>();
+
+        if (player != null)
+        {
+            player.savePlayerInventory(); // Save weapons/ammo
+
+            // Snapshot Inventory
+            PersistentData.levelStartGunList = new List<gunStats>(PersistentData.savedGunList);
+
+            // Deep copy ammo dictionary
+            PersistentData.levelStartAmmoDic = new Dictionary<string, GunAmmoData>();
+            foreach (var gun in PersistentData.savedAmmoDic)
+            {
+                PersistentData.levelStartAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            PersistentData.levelStartGunListPos = PersistentData.savedGunListPos;
+
+            Debug.Log("Take snapshot before scene change");
+            Debug.Log($"Guns: {PersistentData.levelStartGunList.Count} | Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+            Debug.Log($"Starting Gun Position: {PersistentData.levelStartGunListPos}");
+        }
+        else
+        {
+            Debug.LogWarning("No player found when changing scenes");
+        }
+
         // Load next scene based on build index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
@@ -409,7 +530,7 @@ public class GameManager : MonoBehaviour
         // Check if next scene index is within bounds
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            changeScene(nextSceneIndex);
         }
         else
         {
@@ -418,6 +539,22 @@ public class GameManager : MonoBehaviour
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void changeScene(int sceneNumber)
+    {
+        playerController player = FindFirstObjectByType<playerController>();
+
+        if (player != null)
+        {
+            player.savePlayerInventory(); // Save weapons/ammo
+        }
+        else
+        {
+            Debug.LogWarning("No player found when changing scenes");
+        }
+
+        SceneManager.LoadScene(sceneNumber);
     }
 
     // ------------------------------

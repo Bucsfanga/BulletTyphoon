@@ -1520,6 +1520,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 2.980646
       objectReference: {fileID: 0}
+    - target: {fileID: 5517734250829737435, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517734250829737435, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 108
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1880,6 +1888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5363295779679572579, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.63308
@@ -1920,6 +1932,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1274440579431720167, guid: 7a2122861c5bf7247bf43b4cbf72adbb, type: 3}
     - target: {fileID: 7401015245959030607, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
       propertyPath: m_IsActive
       value: 1
