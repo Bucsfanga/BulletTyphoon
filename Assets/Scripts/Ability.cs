@@ -1,10 +1,21 @@
+using System.Collections;
 using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
+    public enum AbilityType
+    {
+        Speed,
+        Jump,
+        Damage,
+        GodMode,
+        Points
+    }
+
     [SerializeField] float respawnTime;
     [SerializeField] GameObject model;
     [SerializeField] string buttonInfo;
+    [SerializeField] AbilityType type;
 
     bool inTrigger;
     private playerController player;
@@ -23,18 +34,22 @@ public class Ability : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (false) //Placeholder for Getter/Setter if already have ability
+                if (player.hasAbility) //Placeholder for Getter/Setter if already have ability
                 {
                     Debug.Log("Already powered up!");
                     return;
                 }
+                else
+                {
+                    model.SetActive(false);
+                    player.hasAbility = true;
+                    GameManager.instance.buttonInteract.SetActive(false);
+                    GameManager.instance.buttonInfo.text = "";
+                    Debug.Log("Ability picked up");
 
-                model.SetActive(false);
-                GameManager.instance.buttonInteract.SetActive(false);
-                GameManager.instance.buttonInfo.text = "";
-                Debug.Log("Ability picked up");
-
-                Invoke("Respawn", respawnTime); // Respawn after delay
+                    Invoke("Respawn", respawnTime); // Respawn after delay
+                    StartCoroutine(checkAbility(respawnTime, player));
+                }
             }
         }
     }
@@ -73,6 +88,13 @@ public class Ability : MonoBehaviour
     {
         transform.position = initialPosition;
         model.SetActive(true); // Re-activate model
+        GameManager.instance.playerScript.hasAbility = false;
     }
 
+    IEnumerator checkAbility(float respawnTime, playerController player)
+    {
+        yield return new WaitForSeconds(respawnTime);
+        player.hasAbility = false; // Set _hasAbility to false after waiting
+        Debug.Log("Ability has expired!");
+    }
 }

@@ -849,6 +849,7 @@ MonoBehaviour:
   gunClickAudio: {fileID: 9054219787201969602}
   classifiedList:
   - {fileID: 0}
+  gunListPos: 0
   currentAmmo: 0
   maxAmmo: 0
   ammoTotal: 0
@@ -864,7 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8c80917c92f08488f74e5dbd586389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -880,7 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c5c57c6333044cab7d21766f3590c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -966,7 +965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c704db290a4462549a5daa4410e4e601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05

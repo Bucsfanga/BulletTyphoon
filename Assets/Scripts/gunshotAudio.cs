@@ -4,7 +4,6 @@ public class gunshotAudio : MonoBehaviour
 {
     private audioManager audioManager;
   
-    [SerializeField] private float volumeMultiplier = 1f;
     [SerializeField] public bool useRandomPitch = true;
     [SerializeField] private float minPitch = 0.95f;
     [SerializeField] private float maxPitch = 1.05f;
