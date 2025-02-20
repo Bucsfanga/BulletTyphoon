@@ -85,6 +85,9 @@ public class audioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
+            LoadSavedVolumeSettings();
+
             //Initialize appropriate number of audio sources and set up the background audio
             InitializeAudioSources();
             SetupBackgroundAudio();
@@ -123,6 +126,20 @@ public class audioManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void LoadSavedVolumeSettings()
+    {
+        // Load saved volumes with default of 1f if not found
+        float masterVol = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+        float musicVol = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        float sfxVol = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        float bgVol = PlayerPrefs.GetFloat("BackgroundVolume", 0.5f);
+
+        SetMasterVolume(masterVol);
+        SetMusicVolume(musicVol);
+        SetSFXVolume(sfxVol);
+        SetBackgroundVolume(bgVol);
     }
 
     #region Main Menu Music
@@ -460,12 +477,16 @@ public class audioManager : MonoBehaviour
     {
         float dbValue = ConvertToDecibel(volume);
         audioMixer.SetFloat(MasterVolumeParam, dbValue);
+        PlayerPrefs.SetFloat("MasterVolume", volume);
+        PlayerPrefs.Save();
     }
 
     public void SetSFXVolume(float volume)
     {
         float dbValue = ConvertToDecibel(volume);
         audioMixer.SetFloat(SFXVolumeParam, dbValue);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
     }
     public void SetMenuMusicVolume(float volume)
     {
@@ -496,12 +517,17 @@ public class audioManager : MonoBehaviour
             float dbValue = ConvertToDecibel(MusicVolume);
             audioMixer.SetFloat(MusicVolumeParam, dbValue);
         }
+
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.Save();
     }
 
     public void SetBackgroundVolume(float volume)
     {
         float dbValue = ConvertToDecibel(volume);
         audioMixer.SetFloat(BackgroundVolumeParam, dbValue);
+        PlayerPrefs.SetFloat("BackgroundVolume", volume);
+        PlayerPrefs.Save();
     }
     #endregion
 }

@@ -501,6 +501,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (HP > 0)
         {
             audioManager.PlayRandomDamageSound();
+            CameraShake.instance.TriggerShake(); // trigger camera shake
         }
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());

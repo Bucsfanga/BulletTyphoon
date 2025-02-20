@@ -13,9 +13,6 @@ public class cameraController : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log($"Camera Controller Awake - Initial sens: {sens}");
-        // Clamp initial value to valid range
-        sens = Mathf.Clamp(sens, 0f, 2f);
 
         if (instance != null && instance != this)
         {
@@ -24,21 +21,24 @@ public class cameraController : MonoBehaviour
 
         // Set up the singleton instance
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
-        // Store initial sensitivity value
-        PlayerPrefs.SetFloat("MouseSensitivity", sens);
-        PlayerPrefs.Save();
+        // Only set default sensitivity if no saved value exists
+        if (!PlayerPrefs.HasKey("MouseSensitivity"))
+        {
+            PlayerPrefs.SetFloat("MouseSensitivity", sens);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            // Load saved sensitivity immediately
+            sens = Mathf.Clamp(PlayerPrefs.GetFloat("MouseSensitivity"), 0f, 2f);
+        }
     }
 
     private void Start()
     {
-        Debug.Log($"Camera Controller Start - Before load sens: {sens}");
-        sens = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
-        Debug.Log($"Camera Controller Start - After load sens: {sens}");
         gameManager = GameManager.instance;
-
-
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

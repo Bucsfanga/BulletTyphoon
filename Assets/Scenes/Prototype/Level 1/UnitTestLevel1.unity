@@ -4694,6 +4694,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 1096860540}
+    - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
+      propertyPath: playerListener
+      value: 
+      objectReference: {fileID: 793071040}
     - target: {fileID: 7004804796619091088, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6258,6 +6262,11 @@ PrefabInstance:
       addedObject: {fileID: 83526516}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61a5cdd05be9384984b2dc5adeffd77, type: 3}
+--- !u!81 &793071040 stripped
+AudioListener:
+  m_CorrespondingSourceObject: {fileID: 8227136846684190828, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  m_PrefabInstance: {fileID: 598422420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &807209115
 PrefabInstance:
   m_ObjectHideFlags: 0
