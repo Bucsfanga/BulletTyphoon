@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject damagePanel;
     public GameObject buttonInteract;
     public Image playerHPBar;
-
+    public TallyScreenManager tallyScreenManager;
 
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
@@ -35,6 +36,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuControls;
     [SerializeField] GameObject aimReticle;
     private GameObject lastMenu;
+    public float levelStartTime;
+    private float levelCompletionTime;
+    public bool isTimerRunning = false;
+    private const string HighScoresKey = "HighScores";
 
     // HUD Elements
     public RectTransform healthFill;
@@ -52,6 +57,7 @@ public class GameManager : MonoBehaviour
     private RawImage[] _documents; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
+    [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider backgroundVolumeSlider;
@@ -80,7 +86,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(InitializeVolumeSliders());
+        StartCoroutine(InitializeSettingsSliders());
+
         if (GameState.showCredits)
         {
             initializeMainMenu();
@@ -108,6 +115,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //PersistentData.savedGunList.Clear();
+            //PersistentData.savedAmmoDic.Clear();
             initializeMainMenu(); // Initialize main menu for fresh start
         }
 
@@ -116,6 +125,8 @@ public class GameManager : MonoBehaviour
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
 
+        levelStartTime = Time.time;
+        isTimerRunning = true;
     }
 
     
@@ -123,12 +134,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == menuPause)
             {
                 stateUnpause();
+            }
+            else if (menuActive == menuControls)
+            {
+                CloseControlMenu();
             }
             else if (menuActive == menuCredits)
             {
@@ -149,17 +163,81 @@ public class GameManager : MonoBehaviour
         PopulateClassifiedWIn();
     }
 
-    public void updateAmmoCounter(int currentAmmo, int maxAmmo, int totalAmmo)
+    // ------------------------------
+    // Player Persistence
+    // ------------------------------
+
+    public void savePlayerData(playerController player)
     {
-        if (ammoCounterText != null)
+        PersistentData.savedGunList = new List<gunStats>(player.gunList);
+
+        // Deep copy ammo dictionary
+        var tempAmmoDic = new Dictionary<string, GunAmmoData>();
+
+        foreach (var gun in player.GunAmmoDic)
         {
-            ammoCounterText.text = $"{currentAmmo} / {maxAmmo} | {totalAmmo}";
+            tempAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
         }
+
+        PersistentData.savedAmmoDic = tempAmmoDic;
+        PersistentData.savedGunListPos = player.gunListPos;
+    }
+
+    // Load player inventory/ammo after scene change
+    public void loadPlayerData(playerController player)
+    {
+        Debug.Log("Load player data");
+
+        if (GameState.isRestarting)
+        {
+            Debug.Log("Restoring from level start snapshot");
+            player.gunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+            // Deep Copy ammo dictionary
+            player.GunAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.levelStartAmmoDic);
+            foreach (var gun in PersistentData.levelStartAmmoDic)
+            {
+                player.GunAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            player.gunListPos = PersistentData.levelStartGunListPos;
+
+            // Reset persistent data to reflect level start state
+            PersistentData.savedGunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+            PersistentData.savedAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.levelStartAmmoDic);
+            foreach (var gun in PersistentData.levelStartAmmoDic)
+            {
+                PersistentData.savedAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            PersistentData.savedGunListPos = PersistentData.levelStartGunListPos;
+        }
+        else
+        {
+            Debug.Log("Loading from persistent data (NOT RESTART)");
+            player.gunList = new List<gunStats>(PersistentData.savedGunList);
+            player.GunAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.savedAmmoDic);
+            player.gunListPos = PersistentData.savedGunListPos;
+        }
+
+        Debug.Log($"Player Now Has: {player.gunList.Count} Guns | {player.GunAmmoDic.Count} Ammo Types");
+        Debug.Log($"Player Gun Position: {player.gunListPos}");
+
+        if (player.gunList.Count > 0)
+        {
+            player.changeGun(); // Update UI and equip last gun player used
+        }
+
     }
 
     private void initializeMainMenu()
     {
         Debug.Log("Initializing Main Menu!");
+
+        PersistentData.savedGunList.Clear();
+        PersistentData.savedAmmoDic.Clear();
+
         menuMain.SetActive(true);
         menuActive = menuMain;
         hud.SetActive(false);
@@ -181,6 +259,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        PersistentData.savedGunList.Clear();
+        PersistentData.savedAmmoDic.Clear();
         audioManager.instance.PlayUIClick();
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
@@ -334,6 +414,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void updateAmmoCounter(int currentAmmo, int maxAmmo, int totalAmmo)
+    {
+        if (ammoCounterText != null)
+        {
+            ammoCounterText.text = $"{currentAmmo} / {maxAmmo} | {totalAmmo}";
+        }
+    }
 
     public void UpdateAmmo(int ammoCur, int ammoMax)
     {
@@ -389,7 +476,25 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         audioManager.instance.PlayUIClick();
-        Debug.Log("Restarting Scene: " + SceneManager.GetActiveScene().name); // Verify correct scene is reloading
+
+        Debug.Log("Restart level");
+        Debug.Log($"Restoring from snapshot -> Guns: {PersistentData.levelStartGunList.Count}, Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+        Debug.Log($"Restoring Gun Position: {PersistentData.levelStartGunListPos}");
+
+        // Snapshot Inventory
+        PersistentData.savedGunList = new List<gunStats>(PersistentData.levelStartGunList);
+
+        // Deep copy ammo dictionary
+        var tempAmmoDic = new Dictionary<string, GunAmmoData>();
+        foreach (var gun in PersistentData.levelStartAmmoDic)
+        {
+            tempAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+        }
+
+        PersistentData.savedAmmoDic = tempAmmoDic;
+
+        PersistentData.savedGunListPos = PersistentData.levelStartGunListPos;
+        
         GameState.isRestarting = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  // Reload current scene
@@ -402,6 +507,33 @@ public class GameManager : MonoBehaviour
         GameState.isNextLevel = true;
         Time.timeScale = 1f;
 
+        playerController player = FindFirstObjectByType<playerController>();
+
+        if (player != null)
+        {
+            player.savePlayerInventory(); // Save weapons/ammo
+
+            // Snapshot Inventory
+            PersistentData.levelStartGunList = new List<gunStats>(PersistentData.savedGunList);
+
+            // Deep copy ammo dictionary
+            PersistentData.levelStartAmmoDic = new Dictionary<string, GunAmmoData>();
+            foreach (var gun in PersistentData.savedAmmoDic)
+            {
+                PersistentData.levelStartAmmoDic[gun.Key] = new GunAmmoData(gun.Value.currentAmmo, gun.Value.maxAmmo, gun.Value.totalAmmo);
+            }
+
+            PersistentData.levelStartGunListPos = PersistentData.savedGunListPos;
+
+            Debug.Log("Take snapshot before scene change");
+            Debug.Log($"Guns: {PersistentData.levelStartGunList.Count} | Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+            Debug.Log($"Starting Gun Position: {PersistentData.levelStartGunListPos}");
+        }
+        else
+        {
+            Debug.LogWarning("No player found when changing scenes");
+        }
+
         // Load next scene based on build index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
@@ -409,7 +541,7 @@ public class GameManager : MonoBehaviour
         // Check if next scene index is within bounds
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            changeScene(nextSceneIndex);
         }
         else
         {
@@ -418,6 +550,22 @@ public class GameManager : MonoBehaviour
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void changeScene(int sceneNumber)
+    {
+        playerController player = FindFirstObjectByType<playerController>();
+
+        if (player != null)
+        {
+            player.savePlayerInventory(); // Save weapons/ammo
+        }
+        else
+        {
+            Debug.LogWarning("No player found when changing scenes");
+        }
+
+        SceneManager.LoadScene(sceneNumber);
     }
 
     // ------------------------------
@@ -470,13 +618,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator InitializeVolumeSliders()
+    private IEnumerator InitializeSettingsSliders()
     {
         yield return null; //wait a frame to give audio mixer time to initialize
 
+
+        if (sensitivitySlider != null)
+        {
+            if(cameraController.instance != null)
+            {
+                sensitivitySlider.value = cameraController.instance.GetLookSensitivity();
+                sensitivitySlider.onValueChanged.AddListener(HandleSensitivityChange);
+            }
+        }
         if (masterVolumeSlider != null)
         {
-            Debug.Log("Creating Master Volume Slider!");
             masterVolumeSlider.value = audioManager.instance.GetVolumeFromMixer("MasterVolume");
             masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChange);
         }
@@ -497,6 +653,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HandleSensitivityChange(float val)
+    {
+        if (cameraController.instance != null)
+        {
+            cameraController.instance.SetLookSensitivity(val);
+        }
+    }
     private void HandleMasterVolumeChange(float val)
     {
         audioManager.instance.SetMasterVolume(val);
@@ -542,7 +705,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         menuControls.SetActive(false);
     }
+    // Function to Open Control Menu from Pause Menu
+    public void OpenControlMenu()
+    {
+        menuPause.SetActive(false);
+        menuControls.SetActive(true);
+        menuActive = menuControls;
+    }
 
+    // Function to Close Control Menu
+    public void CloseControlMenu()
+    {
+        menuControls.SetActive(false);
+        menuPause.SetActive(true);
+        menuActive = menuPause;
+    }
     // ------------------------------
     // Testing aera for Notice Banner by Donald
     // ------------------------------
@@ -588,5 +765,76 @@ public class GameManager : MonoBehaviour
             noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
+    }
+
+
+
+    public void EndLevel()
+    {
+        
+
+        float completionTime = Time.timeSinceLevelLoad;
+        int damageTaken = 0;
+        int stepsTaken = 0;
+
+        if (player != null) // Check if player is assigned
+        {
+            playerController playerScript = player.GetComponent<playerController>();
+            if (playerScript != null)
+            {
+                damageTaken = playerScript.GetDamageTaken();
+                stepsTaken = playerScript.GetStepsTaken();
+            }
+           
+        }
+        if (isTimerRunning)
+        {
+            levelCompletionTime = Time.time - levelStartTime;
+            isTimerRunning = false;
+            Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
+            SaveHighScore(levelCompletionTime);
+        }
+
+        if (tallyScreenManager != null) // Check if Tally Screen Manager is assigned
+        {
+            tallyScreenManager.ShowTallyScreen(completionTime, damageTaken, stepsTaken);
+
+            FindFirstObjectByType<HighScoreLeaderboard>().UpdateLeaderboard();
+        }
+      
+    }
+
+    void SaveHighScore(float newScore)
+    {
+        List<float> highScores = LoadHighScores();
+        highScores.Add(newScore);
+        highScores.Sort(); // Sort scores in ascending order (best times first)
+
+        // Keep only the top 10 scores
+        if (highScores.Count > 10)
+        {
+            highScores = highScores.GetRange(0, 10);
+        }
+
+        SaveHighScores(highScores);
+
+       
+    }
+    public List<float> LoadHighScores()
+    {
+        string json = PlayerPrefs.GetString(HighScoresKey, "");
+        if (string.IsNullOrEmpty(json))
+        {
+            return new List<float>(); // Return empty list if no scores exist
+        }
+
+        return JsonUtility.FromJson<HighScoreList>(json).scores;
+    }
+    void SaveHighScores(List<float> highScores)
+    {
+        HighScoreList highScoreList = new HighScoreList { scores = highScores };
+        string json = JsonUtility.ToJson(highScoreList);
+        PlayerPrefs.SetString(HighScoresKey, json);
+        PlayerPrefs.Save();
     }
 }

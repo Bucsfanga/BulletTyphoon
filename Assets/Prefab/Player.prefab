@@ -849,6 +849,7 @@ MonoBehaviour:
   gunClickAudio: {fileID: 9054219787201969602}
   classifiedList:
   - {fileID: 0}
+  gunListPos: 0
   currentAmmo: 0
   maxAmmo: 0
   ammoTotal: 0
@@ -864,7 +865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8c80917c92f08488f74e5dbd586389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -880,7 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c5c57c6333044cab7d21766f3590c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -966,7 +965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c704db290a4462549a5daa4410e4e601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 1
   useRandomPitch: 1
   minPitch: 0.95
   maxPitch: 1.05
@@ -3142,7 +3140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4910164171803090047}
   - component: {fileID: 206450212145894922}
-  - component: {fileID: 2397006365072527205}
   - component: {fileID: 4314853032853625928}
   m_Layer: 3
   m_Name: MinimapCamera
@@ -3221,14 +3218,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2397006365072527205
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6244444688415885366}
-  m_Enabled: 1
 --- !u!114 &4314853032853625928
 MonoBehaviour:
   m_ObjectHideFlags: 0

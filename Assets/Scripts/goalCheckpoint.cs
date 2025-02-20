@@ -13,6 +13,7 @@ public class goalCheckpoint : MonoBehaviour
                 GameManager.instance.goalCheckpoint++;
                 GameManager.instance.updateGameWinCondition(0);
                 Debug.Log("Goal checkpoint has been reached! Current goal count: " +  GameManager.instance.goalCheckpoint);
+                GameManager.instance.EndLevel();
             }
             else
             {

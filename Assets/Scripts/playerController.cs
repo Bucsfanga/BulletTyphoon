@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] Transform playerCamera;
 
     [Header("-----Stats-----")]
-    [Range(1, 10)] [SerializeField] int HP;
+    [Range(1, 10)][SerializeField] int HP;
     [Range(1, 10)][SerializeField] float speed;
     [Range(1, 10)][SerializeField] int sprintMod;
     [Range(1, 10)][SerializeField] int jumpMax;
@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] private float zoomSpeed = 5f;
 
     [Header("-----Guns-----")]
-    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] public List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -46,9 +46,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     public gunStats currentGunStats;
 
     [Header("-----Audio-----")]
-    
+
     [SerializeField][Range(0, 1)] float audStepsVol;
-    [SerializeField] [Range (0,1)] float audHurtVol;
+    [SerializeField][Range(0, 1)] float audHurtVol;
     [SerializeField][Range(0, 1)] float audJumpVol;
     [SerializeField][Range(0, 1)] float audReloadVol;
     [SerializeField] gunshotAudio gunshotAudio;
@@ -65,13 +65,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     int jumpCount;
     int HPOrig;
     float baseSpeed;
-    int gunListPos;
+    public int gunListPos;
     public int currentAmmo, maxAmmo, ammoTotal;
     float shootTimer; // Lecture 6
 
     // Ammo Dictionary
-    private Dictionary<string, GunAmmoData> GunAmmoDic = new Dictionary<string, GunAmmoData>();
+    public Dictionary<string, GunAmmoData> GunAmmoDic = new Dictionary<string, GunAmmoData>();
 
+    private int totalDamageTaken = 0; // Track total damage taken
+    private int totalStepsTaken = 0; // Track total steps
     private float originalFOV;
     private bool _isShooting;
     private bool _isReloading;
@@ -79,9 +81,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     private bool _isJumping;
     private bool _isCrouching;
     private bool _isPlayingSteps;
+    private bool _hasAbility;
     #endregion
 
     #region GET/SET
+    public bool hasAbility
+    {
+        get => _hasAbility;
+        set
+        {
+            _hasAbility = value;
+        }
+    }
+
     public bool isPlayingSteps
     {
         get => _isPlayingSteps;
@@ -89,7 +101,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (value)
             {
-                
+
                 //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
             }
             _isPlayingSteps = value;
@@ -193,18 +205,47 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     }
     #endregion
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        //DontDestroyOnLoad(this.gameObject); // Don't destroy player on scene change
+
+        //// Prevent player being created multiple times when reloading
+        //if (FindObjectsByType<playerController>(FindObjectsSortMode.None).Length > 1)
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
+
     void Start()
     {
-        if (gunList.Count > 0)
+        // Load player data when changing to a new scene
+        GameManager.instance.loadPlayerData(this);
+
+        if (gunList.Count == 0)
         {
-            gunListPos = 0;
-            changeGun();
+            gunStats defaultGun = Resources.Load<gunStats>("Guns/GunDefault");
+
+            if (defaultGun != null)
+            {
+                gunList.Add(defaultGun);
+            }
+            else
+            {
+                Debug.LogError("Cannot load default gun. Verify location in Resources folder");
+            }
         }
-        else
+
+        // Initialize gunIDs for any existing guns in the list
+        foreach (var gun in gunList)
         {
-            Debug.LogError("Player has no starting gun assigned!");
+            if (string.IsNullOrEmpty(gun.gunID))
+            {
+                gun.gunID = System.Guid.NewGuid().ToString();
+            }
         }
+
+        gunListPos = 0;
+        changeGun();
 
         audioManager = audioManager.instance; //set the audioManager instance to the instance in the scene
 
@@ -259,7 +300,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (moveDir.magnitude > 0.3f && !isPlayingSteps)
             {
-                StartCoroutine(playSteps());            
+                StartCoroutine(playSteps());
             }
 
             isJumping = false;
@@ -272,7 +313,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         jump();
         crouch();
         reload();
-
+       
+        Vector3 previousPosition = transform.position; // Store previous position
+       
         // Movement implementation
         moveDir = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
@@ -280,6 +323,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         controller.Move(moveDir * speed * Time.deltaTime);
         controller.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
+
+        // Track movement distance and count steps
+        float distanceMoved = Vector3.Distance(previousPosition, transform.position);
+        if (distanceMoved > 0.1f)  // Avoid counting tiny movements
+        {
+            totalStepsTaken += Mathf.FloorToInt(distanceMoved * 10); // Scale step count
+        }
 
         // Controls
         if (gunList.Count > 0 && gunListPos >= 0 && gunListPos < gunList.Count)
@@ -300,16 +350,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (Input.GetButtonDown("Fire2"))
         {
             zoom(targetFOV / 2);
-            camController.sens = (int)(camController.sens * 0.4);
+            camController.sens = (float)(camController.sens * 0.4);
         }
         if (Input.GetButtonUp("Fire2"))
         {
             zoom(originalFOV);
-            camController.sens = (int)(camController.sens / 0.4);
+            camController.sens = (float)(camController.sens / 0.4);
         }
 
     }
-
+    //Function to return total steps taken
+    public int GetStepsTaken()
+    {
+        return totalStepsTaken;
+    }
     void zoom(float speed)
     {
         targetFOV = speed;
@@ -395,20 +449,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         currentAmmo--; // Reduce ammo
 
         string gunID = currentGunStats.gunID;
-        
+
         if (GunAmmoDic.ContainsKey(gunID))
         {
             GunAmmoDic[gunID].currentAmmo = currentAmmo;
         }
 
-        if( currentAmmo <= 0)
+        if (currentAmmo <= 0)
         {
             gunClickAudio.PlayGunClick();
         }
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
         GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
     }
-        
+
     void reload()
     {
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo)
@@ -443,6 +497,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     public void takeDamage(int amount)
     {
         HP -= amount;
+        totalDamageTaken += amount;  // Track total damage
         if (HP > 0)
         {
             audioManager.PlayRandomDamageSound();
@@ -456,9 +511,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             GameManager.instance.youLose("you ran out of health!");
         }
     }
+    // Function to return total damage taken
+    public int GetDamageTaken()
+    {
+        return totalDamageTaken;
+    }
     public void IncreaseHealth(int amount)
     {
-        if(isHealthFull)
+        if (isHealthFull)
         {
             Debug.Log("Health is already full");
             return;
@@ -523,7 +583,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         // Check if ammo values exist
         if (!GunAmmoDic.ContainsKey(gunID))
         {
-            GunAmmoDic[gunID]= new GunAmmoData(gun.ammoCur, gun.ammoMax, gun.ammoTotal);
+            GunAmmoDic[gunID] = new GunAmmoData(gun.ammoCur, gun.ammoMax, gun.ammoTotal);
         }
 
         // Get updated values
@@ -544,7 +604,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
             gunListPos++;
             changeGun();
@@ -556,8 +616,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         }
     }
 
-    void changeGun()
+    public void changeGun()
     {
+        if (gunList.Count == 0)
+        {
+            return;
+        }
+        if (gunListPos < 0 || gunListPos >= gunList.Count)
+        {
+            Debug.LogWarning("Invalid gunListPos, resetting to 0.");
+            gunListPos = 0;
+        }
+
         currentGunStats = gunList[gunListPos];
         string gunID = currentGunStats.gunID;
 
@@ -591,5 +661,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         // Change the model
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    // Save data for player persistence
+    public void savePlayerInventory()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.savePlayerData(this);
+        }
     }
 }
