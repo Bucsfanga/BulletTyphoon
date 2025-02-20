@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(InitializeVolumeSliders());
         StartCoroutine(InitializeSettingsSliders());
 
         if (GameState.showCredits)
