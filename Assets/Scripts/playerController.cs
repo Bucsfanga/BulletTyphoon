@@ -340,12 +340,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (Input.GetButtonDown("Fire2"))
         {
             zoom(targetFOV / 2);
-            camController.sens = (int)(camController.sens * 0.4);
+            camController.sens = (float)(camController.sens * 0.4);
         }
         if (Input.GetButtonUp("Fire2"))
         {
             zoom(originalFOV);
-            camController.sens = (int)(camController.sens / 0.4);
+            camController.sens = (float)(camController.sens / 0.4);
         }
 
     }
