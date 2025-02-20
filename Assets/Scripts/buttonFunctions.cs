@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
-{
+{ 
+    public GameObject tutorialPanel;
 
     public void resume()
     {
@@ -54,5 +55,10 @@ public class buttonFunctions : MonoBehaviour
     {
          GameManager.instance.CloseCredits();
         
+    }
+
+    public void CloseTutorial()
+    {
+        GameManager.instance.CloseTutorial(tutorialPanel);
     }
 }
