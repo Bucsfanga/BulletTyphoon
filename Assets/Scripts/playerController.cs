@@ -81,9 +81,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     private bool _isJumping;
     private bool _isCrouching;
     private bool _isPlayingSteps;
+    private bool _hasAbility;
     #endregion
 
     #region GET/SET
+    public bool hasAbility
+    {
+        get => _hasAbility;
+        set
+        {
+            _hasAbility = value;
+        }
+    }
+
     public bool isPlayingSteps
     {
         get => _isPlayingSteps;
