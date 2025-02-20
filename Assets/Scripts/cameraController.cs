@@ -1,22 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem.DualShock;
 
 public class cameraController : MonoBehaviour
 {
-    [SerializeField][Range(0, 1)] public float normalizedSens;
+    [SerializeField] public int sens;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY;
 
     float rotX;
-
-    public int sens
-    {
-        get => (int)(normalizedSens * 100);
-        set
-        {
-            sens = value;
-        }
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
