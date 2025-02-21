@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 2302226045568468791}
   - {fileID: 6834171927386249230}
+  - {fileID: 7327867242476122307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1831966720107105397
@@ -211,6 +212,92 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2370372006077772256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 872808966563411186}
+    m_Modifications:
+    - target: {fileID: 1819996151236982112, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218330683853990495, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_Name
+      value: FireGunPickUpVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644153849477970501, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750508020083357951, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750508020083357951, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8bfc7cd666aae6542b529bc14b7fdd9c, type: 2}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09354311
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.23535538
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740438622227428458, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_Name
+      value: FireGunPickupVFX (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731383163860952933, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+      propertyPath: m_Name
+      value: FireGunPickupVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+--- !u!4 &7327867242476122307 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4995776944110371107, guid: 857a4a721cf59574ebc6d76a8c380268, type: 3}
+  m_PrefabInstance: {fileID: 2370372006077772256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6286206724522775242
 PrefabInstance:
   m_ObjectHideFlags: 0
