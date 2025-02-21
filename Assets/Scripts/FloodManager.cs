@@ -45,7 +45,7 @@ public class FloodManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("GameManager instance is null!");
+            //Debug.LogError("GameManager instance is null!");
         }
 
         startPosition = transform.parent.position;
