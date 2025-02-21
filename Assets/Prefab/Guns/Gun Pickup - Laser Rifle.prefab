@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 2754646790344573037}
   - {fileID: 6823604794240449430}
+  - {fileID: 1444311641771155744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8984951531319766770
@@ -211,6 +212,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1889195433491976242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3229273083444861100}
+    m_Modifications:
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01307869
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16268277
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.45833206
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198956822262990799, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+      propertyPath: m_Name
+      value: LaserGunPickUpVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+--- !u!4 &1444311641771155744 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1025972948427567378, guid: fbe0be3924625e14a807b8fd8f85db73, type: 3}
+  m_PrefabInstance: {fileID: 1889195433491976242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7995096022347961744
 PrefabInstance:
   m_ObjectHideFlags: 0
