@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -389,6 +389,7 @@ public class GameManager : MonoBehaviour
             menuCredits.SetActive(false);
             menuMain.SetActive(true);
             menuActive = menuMain;
+            SelectFirstButton(menuMain);
         }
     }
 
@@ -611,7 +612,7 @@ public class GameManager : MonoBehaviour
         // Open the Settings Menu
         menuSettings.SetActive(true);
         menuActive = menuSettings;
-
+        SelectFirstButton(menuSettings);
     }
 
     public void CloseSettings()
@@ -640,6 +641,7 @@ public class GameManager : MonoBehaviour
             {
                 hud.SetActive(true);
             }
+            SelectFirstButton(lastMenu);
         }
     }
     public void ReturnToMainMenu()
@@ -654,9 +656,23 @@ public class GameManager : MonoBehaviour
         menuMain.SetActive(true);
         menuActive = menuMain;
 
-       
+        SelectFirstButton(menuMain);
     }
+    private void SelectFirstButton(GameObject menu)
+    {
+        if (menu == null) return;
 
+        // Clear selection first (prevents Unity from ignoring re-selection)
+        EventSystem.current.SetSelectedGameObject(null);
+
+        // Get the first button in the menu
+        Button firstButton = menu.GetComponentInChildren<Button>();
+
+        if (firstButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+        }
+    }
     private void SaveSettings()
     {
         if (cameraController.instance != null)
