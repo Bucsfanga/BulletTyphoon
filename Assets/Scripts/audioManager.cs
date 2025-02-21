@@ -153,7 +153,7 @@ public class audioManager : MonoBehaviour
 
         //Set the music setting
         mainMenuMusicSource.loop = true;
-        SetMenuMusicVolume(MusicVolume);
+        SetMusicVolume(MusicVolume);
 
         if (audioMixer != null)
         {
@@ -488,17 +488,7 @@ public class audioManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", volume);
         PlayerPrefs.Save();
     }
-    public void SetMenuMusicVolume(float volume)
-    {
-        MusicVolume = Mathf.Clamp01(volume);
-        mainMenuMusicSource.volume = MusicVolume;
-
-        //Add mixer control
-        if (audioMixer != null)
-        {
-            audioMixer.SetFloat(MusicVolumeParam, ConvertToDecibel(MusicVolume));
-        }
-    }
+   
     public void SetMusicVolume(float volume)
     {
         MusicVolume = Mathf.Clamp01(volume);
@@ -511,7 +501,7 @@ public class audioManager : MonoBehaviour
         if (loseMenuMusicSource != null)
             loseMenuMusicSource.volume = MusicVolume;
 
-        // Update the mixer - only need to do this once
+        // Update the mixer
         if (audioMixer != null)
         {
             float dbValue = ConvertToDecibel(MusicVolume);

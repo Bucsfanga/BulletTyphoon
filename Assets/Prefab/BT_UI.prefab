@@ -3545,7 +3545,7 @@ MonoBehaviour:
   - Footsteps 8
   - Footsteps 9
   BackgroundVolume: 0.337
-  MusicVolume: 0.059
+  MusicVolume: 0.25
   SoundVolume: 0.2
   playBackgroundOnAwake: 1
   playMenuMusicOnAwake: 1
@@ -13396,8 +13396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHUD: {fileID: 1377207491128861346}
   floodManager: {fileID: 1409224624233797590, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
-  player: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-  playerScript: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
   damagePanel: {fileID: 5542092471514405164}
   buttonInteract: {fileID: 1694713216968174484}
   playerHPBar: {fileID: 8715877879688395109}
@@ -13890,8 +13890,8 @@ PrefabInstance:
       value: "Credits\n\n\n\n\nDeveloped by:\n\nDonald Thatcher..............................................Technical
         Designer\n\n\n\nRoxythe Harding.................Environmental Hazards/Level
         Design\n\n\n\nIan Burke.....................................................Audio/Particle
-        Effects\n\n\n\nRichard Rivera.................Weather/HUD/Structure Visual
-        Effects\n\n\n\nZachary Honea.....................................................Player
+        Effects/Enemy Developer\n\n\n\nRichard Rivera.................Weather/HUD/Structure
+        Visual Effects\n\n\n\nZachary Honea.....................................................Player
         Controls\n\n\n\nTabitha Scherch..................................................Enemy
         Designer\n\n\n\nQuilliah Smallwood............................................UI/Menu
         Designer\n\n\nUnity Store Free Assets\n\nThe Fallout Nerd..........................................Low
