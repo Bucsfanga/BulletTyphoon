@@ -5,43 +5,44 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    [Header("-----Managers-----")]
     // UI Panels
-    public GameObject hud;
-    public GameObject pauseMenu;
+    public GameObject playerHUD;
+    public GameObject floodManager;
     public GameObject player;
     public playerController playerScript;
     public GameObject damagePanel;
     public GameObject buttonInteract;
     public Image playerHPBar;
     public TallyScreenManager tallyScreenManager;
-
+    [Header("-----UI Components-----")]
     public TMP_Text buttonInfo;
     public TMP_Text goalCountText;
-
+    [SerializeField] GameObject noticeBanner;
+    [SerializeField] GameObject aimReticle;
+    [Header("-----UI Menus-----")]
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuClassifiedDoc;
-    [SerializeField] GameObject noticeBanner;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
-    [SerializeField] GameObject aimReticle;
     private GameObject lastMenu;
+
     public float levelStartTime;
     private float levelCompletionTime;
     public bool isTimerRunning = false;
     private const string HighScoresKey = "HighScores";
 
-    // HUD Elements
+    // playerHUD Elements
     public RectTransform healthFill;
     public Image[] ammoBullets; // Array to hold the bullet images
     public float bulletAlphaLoaded = 0.30f; // Alpha value for loaded bullets
@@ -77,7 +78,6 @@ public class GameManager : MonoBehaviour
 
     int goalCount;
     public int goalCheckpoint = 0;
-    public TMP_Text incomingWarningText;
     public GameObject submergedOverlay;
 
     public static class GameState
@@ -87,9 +87,21 @@ public class GameManager : MonoBehaviour
         public static bool showCredits;
     }
 
-    void Awake()
+    private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        playerHUD = GameObject.Find("PlayerHUD");
+        floodManager = GameObject.Find("Flood Water");
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<playerController>();
     }
 
     void Start()
@@ -107,8 +119,8 @@ public class GameManager : MonoBehaviour
         if (GameState.isRestarting || GameState.isNextLevel)
         {
             // Skip initializing main menu and unpause game
-            hud.SetActive(true);
-            pauseMenu.SetActive(false);
+            playerHUD.SetActive(true);
+            menuPause.SetActive(false);
             menuMain.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
@@ -160,16 +172,13 @@ public class GameManager : MonoBehaviour
             {
                 CloseSettings();
             }
-            else if (menuActive == null && hud.activeSelf)
+            else if (menuActive == null && playerHUD.activeSelf)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
         }
-
-        populateBanner();
-        PopulateClassifiedWIn();
     }
 
     // ------------------------------
@@ -254,8 +263,8 @@ public class GameManager : MonoBehaviour
 
         menuMain.SetActive(true);
         menuActive = menuMain;
-        hud.SetActive(false);
-        pauseMenu.SetActive(false);
+        playerHUD.SetActive(false);
+        menuPause.SetActive(false);
         statePause();
 
         if (player != null)
@@ -279,8 +288,8 @@ public class GameManager : MonoBehaviour
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
         //StartCoroutine(ContrtolsScreen());
-        hud.SetActive(true);  // Show HUD
-        pauseMenu.SetActive(false);
+        playerHUD.SetActive(true);  // Show playerHUD
+        menuPause.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
         audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
@@ -317,7 +326,7 @@ public class GameManager : MonoBehaviour
     public void statePause()
     {
         isPaused = true;
-        hud.SetActive(false);
+        playerHUD.SetActive(false);
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -326,7 +335,7 @@ public class GameManager : MonoBehaviour
     public void stateUnpause()
     {
         isPaused = false;
-        hud.SetActive(true);
+        playerHUD.SetActive(true);
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -353,6 +362,7 @@ public class GameManager : MonoBehaviour
         if (goalCheckpoint >= 1)
         {
             statePause();
+            //PopulateClassifiedWIn();
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
@@ -395,11 +405,12 @@ public class GameManager : MonoBehaviour
             menuCredits.SetActive(false);
             menuMain.SetActive(true);
             menuActive = menuMain;
+            SelectFirstButton(menuMain);
         }
     }
 
     // ------------------------------
-    // HUD Functions
+    // playerHUD Functions
     // ------------------------------
 
 
@@ -472,8 +483,8 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        hud.SetActive(false);
-        pauseMenu.SetActive(true);
+        playerHUD.SetActive(false);
+        menuPause.SetActive(true);
         Time.timeScale = 0f;  // Pause the game
         isPaused = true;
     }
@@ -481,8 +492,8 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         audioManager.instance.PlayUIClick();
-        pauseMenu.SetActive(false);
-        hud.SetActive(true);
+        menuPause.SetActive(false);
+        playerHUD.SetActive(true);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
     }
@@ -607,17 +618,17 @@ public class GameManager : MonoBehaviour
         {
             menuMain.SetActive(false);
         }
-        // If the Pause Menu is active, hide it and the HUD
+        // If the Pause Menu is active, hide it and the playerHUD
         else if (menuActive == menuPause)
         {
             menuPause.SetActive(false);
-            hud.SetActive(false);
+            playerHUD.SetActive(false);
         }
 
         // Open the Settings Menu
         menuSettings.SetActive(true);
         menuActive = menuSettings;
-
+        SelectFirstButton(menuSettings);
     }
 
     public void CloseSettings()
@@ -641,14 +652,43 @@ public class GameManager : MonoBehaviour
                 menuActive = lastMenu;
             }
 
-            // If returning to Pause Menu, re-enable HUD
+            // If returning to Pause Menu, re-enable playerHUD
             if (lastMenu == menuPause)
             {
-                hud.SetActive(true);
+                playerHUD.SetActive(true);
             }
+            SelectFirstButton(lastMenu);
         }
     }
+    public void ReturnToMainMenu()
+    {
+        
 
+        // Hide Pause Menu & HUD
+        menuPause.SetActive(false);
+        playerHUD.SetActive(false);
+
+        // Show Main Menu UI
+        menuMain.SetActive(true);
+        menuActive = menuMain;
+
+        SelectFirstButton(menuMain);
+    }
+    private void SelectFirstButton(GameObject menu)
+    {
+        if (menu == null) return;
+
+        // Clear selection first (prevents Unity from ignoring re-selection)
+        EventSystem.current.SetSelectedGameObject(null);
+
+        // Get the first button in the menu
+        Button firstButton = menu.GetComponentInChildren<Button>();
+
+        if (firstButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+        }
+    }
     private void SaveSettings()
     {
         if (cameraController.instance != null)
@@ -762,9 +802,9 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // Testing aera for Notice Banner by Donald
     // ------------------------------
-    private void populateBanner()
+    public void populateBanner()
     {
-        if (Input.GetKeyDown("k"))
+        if (floodManager.GetComponent<FloodManager>().isFlooding)
         {
             noticeBanner.GetComponent<NoticeBanner>().Notice(0);
         }
@@ -778,7 +818,7 @@ public class GameManager : MonoBehaviour
     private void PopulateClassifiedWIn()
     {
 
-        if (Input.GetKeyDown("n"))
+        if (playerScript.classifiedList.Count > 5)
         {
             statePause();
             _documents[0].gameObject.SetActive(true);
@@ -788,7 +828,7 @@ public class GameManager : MonoBehaviour
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
-        if (Input.GetKeyDown("m"))
+        if (playerScript.classifiedList.Count == 5)
         {
             statePause();
             _documents[1].gameObject.SetActive(true);

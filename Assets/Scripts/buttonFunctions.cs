@@ -56,9 +56,8 @@ public class buttonFunctions : MonoBehaviour
          GameManager.instance.CloseCredits();
         
     }
-
-    public void CloseTutorial()
+    public void BackToMainMenuFromPause()
     {
-        GameManager.instance.CloseTutorial(tutorialPanel);
+        GameManager.instance.ReturnToMainMenu();
     }
 }

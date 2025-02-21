@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class floodMap : MonoBehaviour
+public class FloodManager : MonoBehaviour
 {
     [SerializeField] float floodLevelHeight, floodPauseDuration, floodRisingDuration, floodingSpeed, floodStartTime, maxFloodHeight;
     [SerializeField] int warningDuration;
 
     private Vector3 startPosition;
     private Vector3 currentTargetPosition;
-    private bool isFlooding;
+    public bool isFlooding;
     private Transform player;
 
     private GameObject submergedOverlay;
@@ -42,7 +42,6 @@ public class floodMap : MonoBehaviour
             // Get references from GameManager script
             player = GameManager.instance.player.transform;
             submergedOverlay = GameManager.instance.submergedOverlay;
-            incomingWarningText = GameManager.instance.incomingWarningText;
         }
         else
         {
@@ -74,7 +73,7 @@ public class floodMap : MonoBehaviour
             // Display warning before flood rises and play flood warning sound
             yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
             //GameManager.instance.hud.GetComponent<NoticeBanner>().Notice(0);
-            yield return StartCoroutine(displayWarning(incomingWarningText, "Warning: Map will flood in {0} seconds!", warningDuration));
+            GameManager.instance.populateBanner();
 
             isFlooding = true;
 
