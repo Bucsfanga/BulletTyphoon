@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     [SerializeField] gunReloadAudio gunReloadAudio;
     [SerializeField] gunClickAudio gunClickAudio;
 
-    [SerializeField] List<Item_Classified> classifiedList = new List<Item_Classified>();
+    [SerializeField] public List<Item_Classified> classifiedList = new List<Item_Classified>();
 
     cameraController camController;
 
@@ -501,6 +501,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (HP > 0)
         {
             audioManager.PlayRandomDamageSound();
+            CameraShake.instance.TriggerShake(); // trigger camera shake
         }
         updatePlayerUI();
         StartCoroutine(flashDamagePanel());
