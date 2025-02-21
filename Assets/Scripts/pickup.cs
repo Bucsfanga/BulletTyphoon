@@ -41,6 +41,8 @@ public class pickup : MonoBehaviour
                 // transfer item collected to player
                 pick.collectClassified(newClassified);
 
+                audioManager.instance.PlaySound("FifthArp");
+
                 Destroy(gameObject);
             }
         }

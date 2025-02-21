@@ -3514,6 +3514,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aaf721f8b3037c2439a5ef4def7ceb3a, type: 3}
   - {fileID: 8300000, guid: c67fe54b45e4c5742915479f9aa18e50, type: 3}
   - {fileID: 8300000, guid: 879d7dac1f5ce0349bd30cf40521b63c, type: 3}
+  - {fileID: 8300000, guid: 8280c530d69704332b5d64462ab86062, type: 3}
+  - {fileID: 8300000, guid: d1bb89f105bb341f99afb707c5080b18, type: 3}
   backgroundAudioClip: {fileID: 8300000, guid: 878f1878c0dd473439b7371e2572812d, type: 3}
   mainMenuMusicClip: {fileID: 8300000, guid: b5bc10f4d9bd65243b56e20218638cf8, type: 3}
   loseMenuMusicClip: {fileID: 8300000, guid: 049abaaa0b6350b4181c080313e27ec1, type: 3}

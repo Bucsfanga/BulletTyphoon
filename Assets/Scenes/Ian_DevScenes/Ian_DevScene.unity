@@ -456,7 +456,7 @@ PrefabInstance:
       objectReference: {fileID: 168096573}
     - target: {fileID: 3600049272510767049, guid: adc6f78ac353ee742ae466205e8712bd, type: 3}
       propertyPath: m_VersionIndex
-      value: 1163
+      value: 1178
       objectReference: {fileID: 0}
     - target: {fileID: 3792163255878825219, guid: adc6f78ac353ee742ae466205e8712bd, type: 3}
       propertyPath: m_Mesh
@@ -468,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 1487397210}
     - target: {fileID: 3944354787675220782, guid: adc6f78ac353ee742ae466205e8712bd, type: 3}
       propertyPath: m_VersionIndex
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6130120431515791609, guid: adc6f78ac353ee742ae466205e8712bd, type: 3}
       propertyPath: m_Mesh
@@ -1060,6 +1060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUp - Double Points
       objectReference: {fileID: 0}
+    - target: {fileID: 6022558223006791920, guid: 01a580eb6101562448958dc4dfa79d22, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1126916917}
     - target: {fileID: 8846279234746759635, guid: 01a580eb6101562448958dc4dfa79d22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.66652
@@ -1116,10 +1120,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1707325234358397586, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
-      propertyPath: MusicVolume
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 3955183871223328722, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: m_Name
       value: BT_UI
@@ -1852,7 +1852,7 @@ PrefabInstance:
       objectReference: {fileID: 775160672}
     - target: {fileID: 8767728559537136861, guid: 32ce5157609733d4ea8a54e3141a56ad, type: 3}
       propertyPath: m_VersionIndex
-      value: 2182
+      value: 2197
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2189,7 +2189,7 @@ PrefabInstance:
       objectReference: {fileID: 1233033933}
     - target: {fileID: 3719201633609241960, guid: 5de9987d5553b6440887b13ef3a38be7, type: 3}
       propertyPath: m_VersionIndex
-      value: 6691
+      value: 6706
       objectReference: {fileID: 0}
     - target: {fileID: 4267265437671140994, guid: 5de9987d5553b6440887b13ef3a38be7, type: 3}
       propertyPath: m_Mesh
@@ -2302,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 560040058}
     - target: {fileID: 251187170097598824, guid: 5bdd7d071c0919b4ca80302d3243df4d, type: 3}
       propertyPath: m_VersionIndex
-      value: 1169
+      value: 1184
       objectReference: {fileID: 0}
     - target: {fileID: 2465776443084720002, guid: 5bdd7d071c0919b4ca80302d3243df4d, type: 3}
       propertyPath: m_Mesh

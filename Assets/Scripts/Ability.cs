@@ -41,6 +41,7 @@ public class Ability : MonoBehaviour
                 }
                 else
                 {
+                    audioManager.instance.PlaySound("FifthOctArpH");
                     model.SetActive(false);
                     player.hasAbility = true;
                     GameManager.instance.buttonInteract.SetActive(false);
