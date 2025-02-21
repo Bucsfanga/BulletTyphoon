@@ -60,4 +60,9 @@ public class buttonFunctions : MonoBehaviour
     {
         GameManager.instance.ReturnToMainMenu();
     }
+
+    public void CloseTutorial()
+    {
+        GameManager.instance.CloseTutorial(tutorialPanel);
+    }
 }
