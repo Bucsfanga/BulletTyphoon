@@ -2395,9 +2395,9 @@ RectTransform:
   - {fileID: 6287301787692267218}
   m_Father: {fileID: 7004804796619091088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 185, y: 192}
   m_SizeDelta: {x: 1006, y: 1006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4683165309950919174
@@ -7208,10 +7208,10 @@ RectTransform:
   - {fileID: 2449128311627330466}
   m_Father: {fileID: 1195623939474192165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.36999512}
-  m_SizeDelta: {x: 8072.0254, y: 4080.7861}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 3096.5999, y: 2200.9993}
+  m_SizeDelta: {x: 9078.025, y: 5086.786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4690188546350763983
 GameObject:
@@ -10679,6 +10679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6d5e7cfc25bf343a8e9a867e7eaa8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialPanel: {fileID: 0}
 --- !u!1 &6931892826061536573
 GameObject:
   m_ObjectHideFlags: 0
@@ -13450,6 +13451,9 @@ MonoBehaviour:
   volumeSlider: {fileID: 4207680607746309746}
   playerListener: {fileID: 0}
   settingsListener: {fileID: 1512281333211730795}
+  tutorialPanel: {fileID: 0}
+  tutorialText: {fileID: 0}
+  tutorialImage: {fileID: 0}
   isPaused: 0
   goalCheckpoint: 0
   submergedOverlay: {fileID: 4518836500613931572}
@@ -13837,7 +13841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860839154851772852, guid: b14d4eb06bd60bb42a1e68ef12fb6115, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -281
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5860839154851772852, guid: b14d4eb06bd60bb42a1e68ef12fb6115, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

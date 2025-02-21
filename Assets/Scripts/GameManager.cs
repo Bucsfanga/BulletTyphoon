@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioListener playerListener;
     [SerializeField] private AudioListener settingsListener;
 
+    // Tutorial UI
+    [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private TMP_Text tutorialText;
+    [SerializeField] private Image tutorialImage;
+
     public bool isPaused;
     
 
@@ -199,11 +204,11 @@ public class GameManager : MonoBehaviour
     // Load player inventory/ammo after scene change
     public void loadPlayerData(playerController player)
     {
-        Debug.Log("Load player data");
+        //Debug.Log("Load player data");
 
         if (GameState.isRestarting)
         {
-            Debug.Log("Restoring from level start snapshot");
+            //Debug.Log("Restoring from level start snapshot");
             player.gunList = new List<gunStats>(PersistentData.levelStartGunList);
 
             // Deep Copy ammo dictionary
@@ -228,14 +233,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Loading from persistent data (NOT RESTART)");
+            //Debug.Log("Loading from persistent data (NOT RESTART)");
             player.gunList = new List<gunStats>(PersistentData.savedGunList);
             player.GunAmmoDic = new Dictionary<string, GunAmmoData>(PersistentData.savedAmmoDic);
             player.gunListPos = PersistentData.savedGunListPos;
         }
 
-        Debug.Log($"Player Now Has: {player.gunList.Count} Guns | {player.GunAmmoDic.Count} Ammo Types");
-        Debug.Log($"Player Gun Position: {player.gunListPos}");
+        //Debug.Log($"Player Now Has: {player.gunList.Count} Guns | {player.GunAmmoDic.Count} Ammo Types");
+        //Debug.Log($"Player Gun Position: {player.gunListPos}");
 
         if (player.gunList.Count > 0)
         {
@@ -246,7 +251,7 @@ public class GameManager : MonoBehaviour
 
     private void initializeMainMenu()
     {
-        Debug.Log("Initializing Main Menu!");
+        //Debug.Log("Initializing Main Menu!");
 
         PersistentData.savedGunList.Clear();
         PersistentData.savedAmmoDic.Clear();
@@ -282,7 +287,7 @@ public class GameManager : MonoBehaviour
         audioManager.instance.PlayUIClick();
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
-        StartCoroutine(ContrtolsScreen());
+        //StartCoroutine(ContrtolsScreen());
         playerHUD.SetActive(true);  // Show playerHUD
         menuPause.SetActive(false);
         Time.timeScale = 1f;  // Resume the game
@@ -302,7 +307,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager.instance.PlayUIClick();
         Application.Quit();  // Quit the application
-        Debug.Log("Game Quit.");
+        //Debug.Log("Game Quit.");
     }
 
     public void youLose(string reason)
@@ -310,7 +315,7 @@ public class GameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-        Debug.Log("You lost! Reason: " + reason); // Show reason 
+        //Debug.Log("You lost! Reason: " + reason); // Show reason 
         audioManager.instance.PlayLoseMenuMusicAudio();
         
         if (loseMessageText != null)
@@ -497,9 +502,9 @@ public class GameManager : MonoBehaviour
     {
         audioManager.instance.PlayUIClick();
 
-        Debug.Log("Restart level");
-        Debug.Log($"Restoring from snapshot -> Guns: {PersistentData.levelStartGunList.Count}, Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
-        Debug.Log($"Restoring Gun Position: {PersistentData.levelStartGunListPos}");
+        //Debug.Log("Restart level");
+        //Debug.Log($"Restoring from snapshot -> Guns: {PersistentData.levelStartGunList.Count}, Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+        //Debug.Log($"Restoring Gun Position: {PersistentData.levelStartGunListPos}");
 
         SaveSettings();
 
@@ -525,7 +530,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         audioManager.instance.PlayUIClick();
-        Debug.Log("Loading next level");
+        //Debug.Log("Loading next level");
         SaveSettings();
         GameState.isNextLevel = true;
         Time.timeScale = 1f;
@@ -548,14 +553,14 @@ public class GameManager : MonoBehaviour
 
             PersistentData.levelStartGunListPos = PersistentData.savedGunListPos;
 
-            Debug.Log("Take snapshot before scene change");
-            Debug.Log($"Guns: {PersistentData.levelStartGunList.Count} | Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
-            Debug.Log($"Starting Gun Position: {PersistentData.levelStartGunListPos}");
+            //Debug.Log("Take snapshot before scene change");
+            //Debug.Log($"Guns: {PersistentData.levelStartGunList.Count} | Ammo Types: {PersistentData.levelStartAmmoDic.Count}");
+            //Debug.Log($"Starting Gun Position: {PersistentData.levelStartGunListPos}");
         }
-        else
-        {
-            Debug.LogWarning("No player found when changing scenes");
-        }
+        //else
+        //{
+        //    Debug.LogWarning("No player found when changing scenes");
+        //}
 
         // Load next scene based on build index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -568,7 +573,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No more levels to load. Play credits.");
+            //Debug.LogWarning("No more levels to load. Play credits.");
             GameState.isNextLevel = false;
             GameState.showCredits = true;
             SceneManager.LoadScene(0);
@@ -585,7 +590,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No player found when changing scenes");
+            //Debug.LogWarning("No player found when changing scenes");
         }
 
         SceneManager.LoadScene(sceneNumber);
@@ -773,12 +778,12 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // Disply Controls on screen
     // ------------------------------
-    private IEnumerator ContrtolsScreen()
-    {
-        menuControls.SetActive(true);
-        yield return new WaitForSeconds(2);
-        menuControls.SetActive(false);
-    }
+    //private IEnumerator ContrtolsScreen()
+    //{
+    //    menuControls.SetActive(true);
+    //    yield return new WaitForSeconds(2);
+    //    menuControls.SetActive(false);
+    //}
     // Function to Open Control Menu from Pause Menu
     public void OpenControlMenu()
     {
@@ -865,7 +870,7 @@ public class GameManager : MonoBehaviour
         {
             levelCompletionTime = Time.time - levelStartTime;
             isTimerRunning = false;
-            Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
+            //Debug.Log("Level Completed in: " + levelCompletionTime + " seconds");
             SaveHighScore(levelCompletionTime);
         }
 
@@ -910,5 +915,42 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(highScoreList);
         PlayerPrefs.SetString(HighScoresKey, json);
         PlayerPrefs.Save();
+    }
+
+    // ------------------------------
+    // Tutorial UI
+    // ------------------------------
+
+    public void ShowTutorial(string text, Sprite image)
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(true); // Turn on tutorial screen
+            statePause(); // Pause game
+
+            // Update UI with custom trigger text and image
+            if (tutorialText != null)
+            {
+                tutorialText.text = text;
+            }
+
+            if (tutorialImage != null)
+            {
+                tutorialImage.sprite = image;
+            }
+        }
+        else
+        {
+            Debug.LogError("Tutorial panel is not assigned in Game Manager!");
+        }
+    }
+
+    public void CloseTutorial(GameObject tutorialPanel)
+    {
+        if (tutorialPanel != null)
+        {
+            tutorialPanel.SetActive(false); // Hide tutorial panel
+            stateUnpause(); // Unpause game
+        }
     }
 }

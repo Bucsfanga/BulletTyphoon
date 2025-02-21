@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
-{
+{ 
+    public GameObject tutorialPanel;
 
     public void resume()
     {
@@ -58,5 +59,10 @@ public class buttonFunctions : MonoBehaviour
     public void BackToMainMenuFromPause()
     {
         GameManager.instance.ReturnToMainMenu();
+    }
+
+    public void CloseTutorial()
+    {
+        GameManager.instance.CloseTutorial(tutorialPanel);
     }
 }
