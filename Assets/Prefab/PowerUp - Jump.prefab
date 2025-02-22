@@ -4877,6 +4877,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 30
+  buffTime: 15
+  buffAmount: 1
   model: {fileID: 5889819554833326514}
   buttonInfo: Press E For Jump Ability!
   type: 1

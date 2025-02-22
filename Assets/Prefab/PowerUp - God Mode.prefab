@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 30
+  buffTime: 15
+  buffAmount: 0
   model: {fileID: 6884616506178665418}
   buttonInfo: Press E For Invincible Ability!
   type: 3
