@@ -131,12 +131,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (value)
             {
                 _isReloading = value;
-                Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
+                //Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
                 gunReloadAudio.PlayGunReload();
 
 
                 // Wait for reload time
-                Invoke("FinishReload", reloadTime);
+                //Invoke("FinishReload", reloadTime);
             }
             else
             {
@@ -144,7 +144,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
                 currentAmmo = maxAmmo;
 
                 GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
-                Debug.Log("Reload complete!"); // Debug log to confirm.
+                //Debug.Log("Reload complete!"); // Debug log to confirm.
             }
         }
     }
@@ -221,7 +221,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             }
             else
             {
-                Debug.LogError("Cannot load default gun. Verify location in Resources folder");
+                //Debug.LogError("Cannot load default gun. Verify location in Resources folder");
             }
         }
 
@@ -410,6 +410,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     void shoot()
     {
+        if (isReloading) return;
         if (shootTimer < shootRate) return; // Prevent shooting if timer is less than the fire rate.
 
         shootTimer = 0; // Reset the timer when shooting.
@@ -459,29 +460,38 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             if (totalAmmo <= 0) // Check for reserve ammo
             {
-                Debug.Log("Out of ammo!");
+                //Debug.Log("Out of ammo!");
                 return;
             }
 
-            isReloading = true;
+            StartCoroutine(reloadCoroutine());
 
-            int ammoNeeded = maxAmmo - currentAmmo; // How many bullets needed to fill clip
-            int ammoToReload = Mathf.Min(ammoNeeded, totalAmmo); // Only reload from reserve ammo
 
-            currentAmmo += ammoToReload; // Increase current ammo
-            totalAmmo -= ammoToReload; // Decrease reserve ammo
-
-            string gunID = currentGunStats.gunID;
-            if (GunAmmoDic.ContainsKey(gunID)) // Store updated ammo values
-            {
-                GunAmmoDic[gunID].currentAmmo = currentAmmo;
-                GunAmmoDic[gunID].totalAmmo = totalAmmo;
-            }
-
-            GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
-            GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
-            isReloading = false; // Reset flag
         }
+    }
+
+    IEnumerator reloadCoroutine()
+    {
+        isReloading = true;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        int ammoNeeded = maxAmmo - currentAmmo; // How many bullets needed to fill clip
+        int ammoToReload = Mathf.Min(ammoNeeded, totalAmmo); // Only reload from reserve ammo
+
+        currentAmmo += ammoToReload; // Increase current ammo
+        totalAmmo -= ammoToReload; // Decrease reserve ammo
+
+        string gunID = currentGunStats.gunID;
+        if (GunAmmoDic.ContainsKey(gunID)) // Store updated ammo values
+        {
+            GunAmmoDic[gunID].currentAmmo = currentAmmo;
+            GunAmmoDic[gunID].totalAmmo = totalAmmo;
+        }
+
+        GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
+        GameManager.instance.updateAmmoCounter(currentAmmo, maxAmmo, totalAmmo);
+        isReloading = false; // Reset flag
     }
 
     public void takeDamage(int amount)
@@ -499,7 +509,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (HP <= 0)
         {
             audioManager.PlayRandomDeathSound();
-            GameManager.instance.youLose("you ran out of health!");
+            GameManager.instance.youLose("Health dropped to 0!");
         }
     }
     // Function to return total damage taken
@@ -511,7 +521,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     {
         if (isHealthFull)
         {
-            Debug.Log("Health is already full");
+            //Debug.Log("Health is already full");
             return;
         }
 
@@ -522,7 +532,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         }
 
         updatePlayerUI();
-        Debug.Log("Health increased. Current health: " + HP);
+        //Debug.Log("Health increased. Current health: " + HP);
     }
 
     IEnumerator flashDamagePanel()
@@ -615,7 +625,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         }
         if (gunListPos < 0 || gunListPos >= gunList.Count)
         {
-            Debug.LogWarning("Invalid gunListPos, resetting to 0.");
+            //Debug.LogWarning("Invalid gunListPos, resetting to 0.");
             gunListPos = 0;
         }
 

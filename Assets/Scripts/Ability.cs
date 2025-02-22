@@ -36,7 +36,7 @@ public class Ability : MonoBehaviour
             {
                 if (player.hasAbility) //Placeholder for Getter/Setter if already have ability
                 {
-                    Debug.Log("Already powered up!");
+                    //Debug.Log("Already powered up!");
                     return;
                 }
                 else
@@ -46,7 +46,7 @@ public class Ability : MonoBehaviour
                     player.hasAbility = true;
                     GameManager.instance.buttonInteract.SetActive(false);
                     GameManager.instance.buttonInfo.text = "";
-                    Debug.Log("Ability picked up");
+                    //Debug.Log("Ability picked up");
 
                     Invoke("Respawn", respawnTime); // Respawn after delay
                     StartCoroutine(checkAbility(respawnTime, player));
@@ -97,6 +97,6 @@ public class Ability : MonoBehaviour
         yield return new WaitForSeconds(respawnTime);
         audioManager.instance.PlaySound("MinThird");
         player.hasAbility = false; // Set _hasAbility to false after waiting
-        Debug.Log("Ability has expired!");
+        //Debug.Log("Ability has expired!");
     }
 }

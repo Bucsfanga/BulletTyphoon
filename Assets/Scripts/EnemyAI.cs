@@ -38,13 +38,13 @@ public class EnemyAI : MonoBehaviour, IDamage
     {
         if (model == null)
         {
-            Debug.LogError($"Renderer (model) is not assigned on {gameObject.name}");
+            //Debug.LogError($"Renderer (model) is not assigned on {gameObject.name}");
             return;
         }
 
         if (model.sharedMaterial == null)
         {
-            Debug.LogError($"Material is missing on the Renderer of {gameObject.name}");
+            //Debug.LogError($"Material is missing on the Renderer of {gameObject.name}");
             return;
         }
 
@@ -157,7 +157,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     }
     public void takeDamage(int amount)
     {
-        Debug.Log($"[Damage Taken] Object: {gameObject.name}, Damage: {amount}");
+        //Debug.Log($"[Damage Taken] Object: {gameObject.name}, Damage: {amount}");
         HP -= amount;
 
         if (agent != null && agent.isActiveAndEnabled)

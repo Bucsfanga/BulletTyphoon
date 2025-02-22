@@ -480,7 +480,7 @@ public class GameManager : MonoBehaviour
     //Animation not working Donald troubleshooting in next Sprint Beta
     public void ShootAnim()
     {
-        Debug.Log("Triggering animation...");
+        //Debug.Log("Triggering animation...");
         aimReticle.GetComponent<Animator>().Play("AimRecticleShoot");
     }
 
@@ -949,7 +949,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Tutorial panel is not assigned in Game Manager!");
+            //Debug.LogError("Tutorial panel is not assigned in Game Manager!");
         }
     }
 

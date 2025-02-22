@@ -28,7 +28,7 @@ public class HealthPack : MonoBehaviour
             {
                 if (player.isHealthFull)
                 {
-                    Debug.Log("Health is already full!");
+                    //Debug.Log("Health is already full!");
                     return;
                 }
 

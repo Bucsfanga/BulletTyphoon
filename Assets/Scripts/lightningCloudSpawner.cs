@@ -17,7 +17,7 @@ public class lightningCloudSpawner : MonoBehaviour
         player = GameManager.instance.player.transform;
         if (player == null)
         {
-            Debug.LogError("Player reference is null");
+            //Debug.LogError("Player reference is null");
             return;
         }
 
@@ -52,7 +52,7 @@ public class lightningCloudSpawner : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("Player reference is null for random spawn position.");
+            //Debug.LogError("Player reference is null for random spawn position.");
             return Vector3.zero;
         }
 
