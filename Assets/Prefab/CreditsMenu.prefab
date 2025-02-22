@@ -415,10 +415,12 @@ MonoBehaviour:
     Plate Textures\r\n\r\n\r\nJermesa Studio...................Mountain Terrain Background
     Scenery\r\n\r\n\r\nSICS Games.........................................................Helicopter
     Model\r\n\r\n\r\nDungeon Mason................................Duo Monster Enemy
-    Models\r\n\r\n\r\nAvionx.................................................................................Skybox\r\n\r\n\r\nLowlyPoly................................Metal/Grass/Sci-fi/Tile
+    Models\r\n\r\n\r\nAvionx.................................................................................SkySeries
+    Freebie\r\n\r\n\r\nLowlyPoly................................Metal/Grass/Sci-fi/Tile
     Texture Pack\r\n\r\n\r\nSlayver.................................................Survivalist
     Character Model\r\n\r\n\nPolygon Blacksmith.............................WW2 Soldier
-    Enemy Model\n\n\nThanks For Playing"
+    Enemy Model\n\n\nIgnitCoder.......................................................Simple
+    Water Shader\n\nThanks For Playing"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
