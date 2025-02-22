@@ -32,6 +32,7 @@ public class HealthPack : MonoBehaviour
                     return;
                 }
 
+                audioManager.instance.PlaySound("FifthOctArpH");
                 player.IncreaseHealth(healthIncrease); // Heal player on interact
 
                 // Hide health pack and interact screen

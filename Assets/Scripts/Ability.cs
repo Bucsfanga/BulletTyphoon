@@ -41,7 +41,7 @@ public class Ability : MonoBehaviour
                 }
                 else
                 {
-                    audioManager.instance.PlaySound("FifthOctArpH");
+                    audioManager.instance.PlaySound("FifthArp");
                     model.SetActive(false);
                     player.hasAbility = true;
                     GameManager.instance.buttonInteract.SetActive(false);
@@ -95,6 +95,7 @@ public class Ability : MonoBehaviour
     IEnumerator checkAbility(float respawnTime, playerController player)
     {
         yield return new WaitForSeconds(respawnTime);
+        audioManager.instance.PlaySound("MinThird");
         player.hasAbility = false; // Set _hasAbility to false after waiting
         Debug.Log("Ability has expired!");
     }
