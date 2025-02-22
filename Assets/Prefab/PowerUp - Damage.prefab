@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 30
+  buffTime: 15
+  buffAmount: 2
   model: {fileID: 8170741958425833837}
   buttonInfo: Press E For Damage Ability!
   type: 2

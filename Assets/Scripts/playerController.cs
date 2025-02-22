@@ -18,7 +18,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     [Header("-----Stats-----")]
     [Range(1, 10)][SerializeField] int HP;
-    [Range(1, 10)][SerializeField] float speed;
+    [Range(1, 50)][SerializeField] float speed;
     [Range(1, 10)][SerializeField] int sprintMod;
     [Range(1, 10)][SerializeField] int jumpMax;
     [Range(1, 20)][SerializeField] int jumpSpeed;
@@ -69,6 +69,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     public int currentAmmo, maxAmmo, ammoTotal;
     float shootTimer; // Lecture 6
 
+    //Ability Buffs
+    public Ability.AbilityType type;
+    public float damageMultiplier = 1f;
+    public int jumpBuff = 0;
+    public float speedBuff;
     // Ammo Dictionary
     public Dictionary<string, GunAmmoData> GunAmmoDic = new Dictionary<string, GunAmmoData>();
 
@@ -175,7 +180,22 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         set
         {
             _isSprinting = value;
-            speed = value ? baseSpeed * sprintMod : baseSpeed;
+
+            if (value)
+            {
+                speed = baseSpeed * (sprintMod + speedBuff);
+            }
+            else
+            {
+                if (speedBuff != 0)
+                {
+                    speed = baseSpeed * speedBuff;
+                }
+                else
+                {
+                    speed = baseSpeed;
+                }
+            }
         }
     }
 
@@ -378,7 +398,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     void jump()
     {
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (Input.GetButtonDown("Jump") && jumpCount < (jumpMax + jumpBuff))
         {
             if (isCrouching)
             {
@@ -430,10 +450,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         {
             Instantiate(hitEffect, hit.point, Quaternion.identity);
 
+            int effectiveDamage = Mathf.RoundToInt(currentGunStats.shootDamage * damageMultiplier); // Calculate effective damage using the current buff multiplier
+
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if (dmg != null)
             {
-                dmg.takeDamage(shootDamage);
+                dmg.takeDamage(effectiveDamage);
             }
         }
 
@@ -496,6 +518,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 
     public void takeDamage(int amount)
     {
+        if (_hasAbility && type == Ability.AbilityType.GodMode)
+        {
+            audioManager.PlayRandomDamageSound();
+            CameraShake.instance.TriggerShake(); // trigger camera shake
+            return;
+        }
         HP -= amount;
         totalDamageTaken += amount;  // Track total damage
         if (HP > 0)

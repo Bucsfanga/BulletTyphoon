@@ -13,6 +13,8 @@ public class Ability : MonoBehaviour
     }
 
     [SerializeField] float respawnTime;
+    [SerializeField] float buffTime;
+    [SerializeField] float buffAmount;
     [SerializeField] GameObject model;
     [SerializeField] string buttonInfo;
     [SerializeField] AbilityType type;
@@ -20,6 +22,7 @@ public class Ability : MonoBehaviour
     bool inTrigger;
     private playerController player;
     private Vector3 initialPosition;
+    private float originalDmgBuff;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,9 +37,9 @@ public class Ability : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (player.hasAbility) //Placeholder for Getter/Setter if already have ability
+                if (player.hasAbility)
                 {
-                    //Debug.Log("Already powered up!");
+                    Debug.Log("Already powered up!");
                     return;
                 }
                 else
@@ -46,10 +49,12 @@ public class Ability : MonoBehaviour
                     player.hasAbility = true;
                     GameManager.instance.buttonInteract.SetActive(false);
                     GameManager.instance.buttonInfo.text = "";
-                    //Debug.Log("Ability picked up");
+                    Debug.Log("Ability picked up");
+
+                    ApplyAbility(type);
+                    Debug.Log("Ability applied");
 
                     Invoke("Respawn", respawnTime); // Respawn after delay
-                    StartCoroutine(checkAbility(respawnTime, player));
                 }
             }
         }
@@ -92,11 +97,60 @@ public class Ability : MonoBehaviour
         GameManager.instance.playerScript.hasAbility = false;
     }
 
-    IEnumerator checkAbility(float respawnTime, playerController player)
+    void ApplyAbility(AbilityType type)
     {
-        yield return new WaitForSeconds(respawnTime);
+        switch(type)
+        {
+            case (AbilityType.Speed):
+                StartCoroutine(SpeedBuff(buffTime, player));
+                return;
+            case (AbilityType.GodMode):
+                StartCoroutine(GodmodeBuff(buffTime, player));
+                return;
+            case (AbilityType.Jump):
+                StartCoroutine(JumpBuff(buffTime, player));
+                return;
+            case (AbilityType.Damage):
+                StartCoroutine(DamageBuff(buffTime, player));
+                return;
+        }
+    }
+
+    IEnumerator GodmodeBuff(float bufftime, playerController player)
+    {
+        player.hasAbility = true;
+        player.type = AbilityType.GodMode;
+        yield return new WaitForSeconds(bufftime);
+        player.type = new AbilityType();
+        player.hasAbility = false;
+    }
+
+    IEnumerator SpeedBuff(float bufftime, playerController player)
+    {
+        player.speedBuff = buffAmount;
+        player.hasAbility = true;
+        yield return new WaitForSeconds(bufftime);
+        player.hasAbility = false;
+        player.speedBuff = 0f;
+    }
+
+    IEnumerator JumpBuff(float buffTime, playerController player)
+    {
+        player.jumpBuff += (int)buffAmount;
+        player.hasAbility = true;
+        yield return new WaitForSeconds(buffTime);
+        player.hasAbility = false;
+        player.jumpBuff -= (int)buffAmount;
+    }
+
+    IEnumerator DamageBuff(float buffTime, playerController player)
+    {
+        originalDmgBuff = player.damageMultiplier;
+        player.damageMultiplier = buffAmount;
+        player.hasAbility = true;
+        yield return new WaitForSeconds(buffTime);
+        player.hasAbility = false;
+        player.damageMultiplier = originalDmgBuff;
         audioManager.instance.PlaySound("MinThird");
-        player.hasAbility = false; // Set _hasAbility to false after waiting
-        //Debug.Log("Ability has expired!");
     }
 }
