@@ -205,16 +205,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     }
     #endregion
 
-    void Awake()
-    {
-        //DontDestroyOnLoad(this.gameObject); // Don't destroy player on scene change
-
-        //// Prevent player being created multiple times when reloading
-        //if (FindObjectsByType<playerController>(FindObjectsSortMode.None).Length > 1)
-        //{
-        //    Destroy(gameObject);
-        //}
-    }
 
     void Start()
     {

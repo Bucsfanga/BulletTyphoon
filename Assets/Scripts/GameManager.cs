@@ -282,8 +282,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        // Clear persistent data
         PersistentData.savedGunList.Clear();
         PersistentData.savedAmmoDic.Clear();
+        PersistentData.savedGunListPos = 0;
+
+        // Clear level snapshot
+        PersistentData.levelStartGunList.Clear();
+        PersistentData.levelStartAmmoDic.Clear();
+        PersistentData.levelStartGunListPos = 0;
+
         audioManager.instance.PlayUIClick();
         stateUnpause();
         menuMain.SetActive(false);  // Hide Main Menu
