@@ -1216,6 +1216,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9174498013074733771}
+  - {fileID: 169895566807468061}
   m_Father: {fileID: 5363295779679572579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &898796811669859125
@@ -4722,6 +4723,68 @@ Transform:
   - {fileID: 3185675415135568849}
   m_Father: {fileID: 7385263592130117051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &530206645398031238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2254086628070290735}
+    m_Modifications:
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000042146848
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271596756043221937, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+      propertyPath: m_Name
+      value: RainVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+--- !u!4 &169895566807468061 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 360353101908624283, guid: 2639a61a97c6d9a4e800e22210d57334, type: 3}
+  m_PrefabInstance: {fileID: 530206645398031238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7820189842942645207
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -56,6 +56,9 @@ MonoBehaviour:
   speed: 150
   destroyTime: 3
   delayTime: 2
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &2956158390569432616
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -85,7 +88,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2731511340950769273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -144,8 +147,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.36528063, b: 1, a: 1}
-      key1: {r: 0, g: 0.36528063, b: 1, a: 1}
+      key0: {r: 0, g: 0.36528063, b: 1, a: 0}
+      key1: {r: 0, g: 0.36528063, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -199,7 +202,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2731511340950769273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
