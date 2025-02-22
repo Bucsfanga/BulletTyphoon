@@ -39,7 +39,7 @@ public class Ability : MonoBehaviour
             {
                 if (player.hasAbility)
                 {
-                    Debug.Log("Already powered up!");
+                    //Debug.Log("Already powered up!");
                     return;
                 }
                 else
@@ -49,10 +49,10 @@ public class Ability : MonoBehaviour
                     player.hasAbility = true;
                     GameManager.instance.buttonInteract.SetActive(false);
                     GameManager.instance.buttonInfo.text = "";
-                    Debug.Log("Ability picked up");
+                    //Debug.Log("Ability picked up");
 
                     ApplyAbility(type);
-                    Debug.Log("Ability applied");
+                    //Debug.Log("Ability applied");
 
                     Invoke("Respawn", respawnTime); // Respawn after delay
                 }

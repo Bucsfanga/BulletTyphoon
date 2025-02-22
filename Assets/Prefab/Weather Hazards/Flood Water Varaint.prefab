@@ -10,19 +10,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1217185556074287584, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_Name
-      value: Flood Water
+      value: Flood Water Varaint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791777, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.407
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304539169965815422, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607475586312836618, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: m_Size.y
+      value: 0.90906674
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607475586312836618, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: m_Center.y
+      value: -0.04546522
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627446555043107403, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: floodingSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5762412438365236205, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 5762412438365236205, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5762412438365236205, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 5762412438365236205, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52,7 +72,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5600654055929752919, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

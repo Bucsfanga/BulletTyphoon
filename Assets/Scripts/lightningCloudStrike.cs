@@ -35,7 +35,7 @@ public class lightningCloudStrike : MonoBehaviour
         player = GameManager.instance.player.transform;
         if (ground == null)
         {
-            Debug.LogError("Map boundary reference is null");
+            //Debug.LogError("Map boundary reference is null");
             return;
         }
 

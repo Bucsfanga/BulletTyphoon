@@ -118,14 +118,14 @@ public class FloodManager : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("Player not set.");
+            //Debug.LogError("Player not set.");
             return;
         }
 
         if (player != null && submergedOverlay != null)
         {
             // Check if player's y position is below water level
-            bool isUnderwater = player.position.y + 1 < currentFloodHeight;
+            bool isUnderwater = player.position.y + 2.5f < currentFloodHeight;
             submergedOverlay.SetActive(isUnderwater);
             //Debug.Log($"Player Y: {player.position.y}, Water Y: {currentFloodHeight}, Underwater: {isUnderwater}");
         }
