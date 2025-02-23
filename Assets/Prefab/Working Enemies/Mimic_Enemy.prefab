@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 6014524032342794627}
   - component: {fileID: 1707293218554412485}
   - component: {fileID: 1713638461884756441}
+  - component: {fileID: -3318056214753818715}
   m_Layer: 6
   m_Name: Mimic_Enemy
   m_TagString: Untagged
@@ -359,6 +360,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.71, z: 0}
+--- !u!114 &-3318056214753818715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522116479346015511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2da63e934945b34caf4382d61c3315a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  rb: {fileID: 0}
+  damageAmount: 0
+  damageInterval: 0
+  speed: 0
+  destroyTime: 0
+  delayTime: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1627175557545691436
 GameObject:
   m_ObjectHideFlags: 0

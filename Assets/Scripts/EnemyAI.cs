@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         {
             eliteTint();
         }
-
+        
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
     }
