@@ -360,7 +360,7 @@ public class audioManager : MonoBehaviour
         //If no audio clip is found, log an error and return
         if (audioClip == null)
         {
-            Debug.LogError($"Failed to find sound: {name}");
+          //  Debug.LogError($"Failed to find sound: {name}");
             return;
         }
 
@@ -393,7 +393,7 @@ public class audioManager : MonoBehaviour
 
         if (audioClip == null)
         {
-            Debug.LogError($"Failed to find sound: {name}");
+          //  Debug.LogError($"Failed to find sound: {name}");
             return;
         }
 
@@ -440,7 +440,7 @@ public class audioManager : MonoBehaviour
         //Handle exception for empty or null list otherwise use Random.Rnage between 0 and the count of the list
         if (names == null || names.Count == 0)
         {
-            Debug.LogError("Sound list is empty or null");
+          //  Debug.LogError("Sound list is empty or null");
             return string.Empty;
         }
         return names[Random.Range(0, names.Count)];
@@ -457,7 +457,7 @@ public class audioManager : MonoBehaviour
             }
         }
         //If no audio source is available, log a warning and return
-            Debug.LogWarning("No available audio sources");
+        //    Debug.LogWarning("No available audio sources");
             return null;
     }
 

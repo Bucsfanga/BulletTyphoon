@@ -34,7 +34,7 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No GunStats assigned to WeaponController!");
+           // Debug.LogError("No GunStats assigned to WeaponController!");
         }
 
         // Update UI at start
@@ -73,7 +73,7 @@ public class WeaponController : MonoBehaviour
     void Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading...");
+       // Debug.Log("Reloading...");
 
         // Wait for reload time
         Invoke("FinishReload", reloadTime);
@@ -86,7 +86,7 @@ public class WeaponController : MonoBehaviour
 
         // Update UI
         GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo);
-        Debug.Log("Reload complete!");
+      //  Debug.Log("Reload complete!");
     }
 
     // Method to change weapons
