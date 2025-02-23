@@ -492,7 +492,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f5f7d4d2b3764ec4aa59441ec6c2697b, type: 2}
+  - {fileID: 2100000, guid: 295cb212341b58046b4f148d11405d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 350780170884715871}
   - component: {fileID: 3311068166349380804}
   m_Layer: 6
-  m_Name: Elite_FloatingEye_Enemy
+  m_Name: Elite_WaterElemental_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   agent: {fileID: 3311068166349380804}
   anim: {fileID: 922870814593666821}
   isElite: 1
-  eliteTintColor: {r: 0.093996234, g: 0.33962262, b: 0.062477753, a: 0}
+  eliteTintColor: {r: 0.093996234, g: 0.33962262, b: 0.062477753, a: 0.9137255}
   HP: 5
   faceTargetSpeed: 10
   model: {fileID: 3224822234529201682}
@@ -656,6 +656,7 @@ MonoBehaviour:
   animSpeedTrans: 2
   roamPauseTime: 1
   roamDist: 30
+  isShooting: 0
 --- !u!135 &4217901933879319346
 SphereCollider:
   m_ObjectHideFlags: 0

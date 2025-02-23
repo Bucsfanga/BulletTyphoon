@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 7292047713495743517}
   - component: {fileID: 1277018659126475591}
   m_Layer: 6
-  m_Name: 'Turtle_Enemy '
+  m_Name: IceElemental_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,6 +661,7 @@ MonoBehaviour:
   animSpeedTrans: 1
   roamPauseTime: 3
   roamDist: 15
+  isShooting: 0
 --- !u!195 &5498700037292151844
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1013,7 +1014,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9c0226bd4324f01bc178cf4a515ef84, type: 2}
+  - {fileID: 2100000, guid: 2ed1ae5d9155b1548801106617a4fb04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
