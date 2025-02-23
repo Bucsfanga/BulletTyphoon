@@ -104,11 +104,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         get => _isPlayingSteps;
         set
         {
-            if (value)
-            {
-
-                //aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);IAN TODO: Commented out to use the audioManager singleton
-            }
             _isPlayingSteps = value;
         }
     }
@@ -120,10 +115,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         get => _isShooting;
         set
         {
-            if (value)
-            {
-
-            }
             _isShooting = value;
         }
     }
@@ -136,12 +127,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             if (value)
             {
                 _isReloading = value;
-                //Debug.Log("Reloading..."); // Debug log to ensure method is triggered.
                 gunReloadAudio.PlayGunReload();
-
-
-                // Wait for reload time
-                //Invoke("FinishReload", reloadTime);
             }
             else
             {
@@ -149,7 +135,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
                 currentAmmo = maxAmmo;
 
                 GameManager.instance.UpdateAmmo(currentAmmo, maxAmmo); // Update UI
-                //Debug.Log("Reload complete!"); // Debug log to confirm.
             }
         }
     }
@@ -314,7 +299,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             }
 
             isJumping = false;
-            jumpCount = 0;
 
             // Ensures correct speed when landing
             isSprinting = Input.GetButton("Sprint");
