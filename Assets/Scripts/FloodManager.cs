@@ -42,6 +42,7 @@ public class FloodManager : MonoBehaviour
             // Get references from GameManager script
             player = GameManager.instance.player.transform;
             submergedOverlay = GameManager.instance.submergedOverlay;
+            incomingWarningText = GameManager.instance.floodWarningText;
         }
         else
         {
@@ -71,6 +72,12 @@ public class FloodManager : MonoBehaviour
             currentTargetPosition = new Vector3(startPosition.x, Mathf.Min(currentTargetPosition.y + floodLevelHeight, startPosition.y + maxFloodHeight), startPosition.z);
 
             // Display warning before flood rises and play flood warning sound
+            if (incomingWarningText != null)
+            {
+                yield return StartCoroutine(displayWarning(incomingWarningText, "The area will flood in {0} seconds!", 10));
+            }
+
+            // Play warning sound
             yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
             isFlooding = true;
             // Gradually raise water level to target height
@@ -80,10 +87,9 @@ public class FloodManager : MonoBehaviour
             while (elapsedTime < floodRisingDuration)
             {
                 transform.parent.position = Vector3.Lerp(previousPosition, currentTargetPosition, elapsedTime / floodRisingDuration);
-
                 updateCurrentFloodHeight(transform.parent.position.y);            
-
                 elapsedTime += Time.deltaTime * floodingSpeed;
+
                 yield return null;
             }
 

@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text tutorialText;
     [SerializeField] private Image tutorialImage;
 
+    [SerializeField] public TMP_Text floodWarningText;
+
     public bool isPaused;
     
 
@@ -315,8 +317,18 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         audioManager.instance.PlayUIClick();
-        Application.Quit();  // Quit the application
-        //Debug.Log("Game Quit.");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            ReturnToMainMenu();
+        }
+        else
+        {
+            Application.Quit();  // Quit the application        
+        }
+#endif
     }
 
     public void youLose(string reason)
@@ -671,7 +683,7 @@ public class GameManager : MonoBehaviour
     }
     public void ReturnToMainMenu()
     {
-        
+        audioManager.instance.PlayUIClick();
 
         // Hide Pause Menu & HUD
         menuPause.SetActive(false);
@@ -682,6 +694,9 @@ public class GameManager : MonoBehaviour
         menuActive = menuMain;
 
         SelectFirstButton(menuMain);
+
+        player.SetActive(false);
+        SceneManager.LoadScene(0);
     }
     private void SelectFirstButton(GameObject menu)
     {
