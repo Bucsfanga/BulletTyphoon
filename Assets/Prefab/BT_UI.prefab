@@ -13986,7 +13986,9 @@ PrefabInstance:
         Texture Pack\r\n\r\n\r\nSlayver.................................................Survivalist
         Character Model\r\n\r\n\nPolygon Blacksmith.............................WW2
         Soldier Enemy Model\n\n\nIgnitCoder.......................................................Simple
-        Water Shader\n\nThanks For Playing!"
+        Water Shader\n\nHoveAudio...........................................Collectables
+        Sound Pack\n\nThe Indie Devs Nation...........................Free Gane Music
+        Collection\n\nThanks For Playing!"
       objectReference: {fileID: 0}
     - target: {fileID: 1380242238236833123, guid: 9d65024cbf27677488daf45877856cab, type: 3}
       propertyPath: m_isRightToLeft

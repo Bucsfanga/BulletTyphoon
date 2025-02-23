@@ -927,12 +927,13 @@ MonoBehaviour:
   model: {fileID: 4969937794390741342}
   shootPos: {fileID: 3763057242127426031}
   headPos: {fileID: 2128248506614451851}
-  bullet: {fileID: 2541754595932758718, guid: 7c291fa046b9b884cb14959745a4e2d0, type: 3}
-  shootRate: 0.5
+  bullet: {fileID: 4979378271530418836, guid: 555527fe7edfdfc49acd4bd963b1eda9, type: 3}
+  shootRate: 5
   FOV: 180
   animSpeedTrans: 1
   roamPauseTime: 3
   roamDist: 30
+  isShooting: 0
 --- !u!195 &4395541275847709145
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, falling, flood }
+    enum damageType { moving, stationary, falling, flood, persistentMoving }
 
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
@@ -30,7 +30,7 @@ public class Damage : MonoBehaviour
         {
             StartCoroutine(delay());
         }
-        else if (type == damageType.moving && rb != null)
+        else if ((type == damageType.moving || type == damageType.persistentMoving) && rb != null)
         {
             rb.linearVelocity = transform.forward * speed;
             Destroy(gameObject, destroyTime);
@@ -107,6 +107,14 @@ public class Damage : MonoBehaviour
             dmg.takeDamage(damageAmount);
             hasDealtDamage = true;
             Destroy(gameObject);
+        }
+        else if (type == damageType.persistentMoving)  // New type for persistent projectiles
+        {
+            dmg.takeDamage(damageAmount);
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;  // This will actually stop the movement
+            }
         }
         else if (type == damageType.falling)
         {

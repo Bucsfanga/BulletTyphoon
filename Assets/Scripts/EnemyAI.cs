@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     float stoppingDistOrig;
 
-    bool isShooting;
+    public bool isShooting;
     bool playerInRange;
     bool isRoaming;
 
