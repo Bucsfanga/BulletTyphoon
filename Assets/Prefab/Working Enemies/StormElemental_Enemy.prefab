@@ -55,7 +55,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f5f7d4d2b3764ec4aa59441ec6c2697b, type: 2}
+  - {fileID: 2100000, guid: 295cb212341b58046b4f148d11405d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8276521185156445246}
   - component: {fileID: 6625184736068304293}
   m_Layer: 6
-  m_Name: FloatingEye_Enemy
+  m_Name: StormElemental_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,6 +186,7 @@ MonoBehaviour:
   animSpeedTrans: 2
   roamPauseTime: 1
   roamDist: 30
+  isShooting: 0
 --- !u!135 &5515462483493812819
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 652288775752618398}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 7.771561e-18, z: -7.771561e-18}
+  m_LocalPosition: {x: -3.92, y: 0, z: -0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,7 +88,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1724eecaf9d4e7e93cc07cfcb6b4b97, type: 2}
+  - {fileID: 2100000, guid: 2ef441647d780f2459941697afff6649, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1707293218554412485}
   - component: {fileID: 1713638461884756441}
   m_Layer: 6
-  m_Name: Mimic_Enemy
+  m_Name: Mud_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   animSpeedTrans: 1
   roamPauseTime: 1
   roamDist: 0
+  isShooting: 0
 --- !u!195 &6014524032342794627
 NavMeshAgent:
   m_ObjectHideFlags: 0

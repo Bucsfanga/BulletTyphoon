@@ -255,7 +255,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d9c0226bd4324f01bc178cf4a515ef84, type: 2}
+  - {fileID: 2100000, guid: 2ed1ae5d9155b1548801106617a4fb04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 2675797821767725424}
   - component: {fileID: 5884015069085382186}
   m_Layer: 6
-  m_Name: Elite_Turtle_Enemy
+  m_Name: Elite_IceElemental_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   agent: {fileID: 891598099449878857}
   anim: {fileID: 4987604536306877390}
   isElite: 1
-  eliteTintColor: {r: 0, g: 0, b: 0, a: 0}
+  eliteTintColor: {r: 0, g: 0, b: 0, a: 0.9019608}
   HP: 15
   faceTargetSpeed: 20
   model: {fileID: 4788812054648027133}
@@ -1284,6 +1284,7 @@ MonoBehaviour:
   animSpeedTrans: 1
   roamPauseTime: 3
   roamDist: 15
+  isShooting: 0
 --- !u!195 &891598099449878857
 NavMeshAgent:
   m_ObjectHideFlags: 0
