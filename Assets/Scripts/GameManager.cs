@@ -179,6 +179,7 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(true);
             }
         }
+        //FloodCheck();
     }
 
     // ------------------------------
@@ -370,7 +371,7 @@ public class GameManager : MonoBehaviour
         if (goalCheckpoint >= 1)
         {
             statePause();
-            //PopulateClassifiedWIn();
+            PopulateClassifiedWIn();
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
@@ -810,23 +811,28 @@ public class GameManager : MonoBehaviour
     // ------------------------------
     // Testing aera for Notice Banner by Donald
     // ------------------------------
-    public void populateBanner()
+    public void populateBanner(int _value)
     {
-        if (floodManager.GetComponent<FloodManager>().isFlooding)
-        {
-            noticeBanner.GetComponent<NoticeBanner>().Notice(0);
-        }
+        switch (_value)
+        { 
+            case 0:
+                noticeBanner.GetComponent<NoticeBanner>().Notice(0);
+                break;
+            case 1:
+                noticeBanner.GetComponent<NoticeBanner>().Notice(1);
+                break;
+            case 2:
 
-        if (Input.GetKeyDown("l"))
-        {
-            noticeBanner.GetComponent<NoticeBanner>().Notice(1);
+                break;
+            default:
+                break;            
         }
     }
 
     private void PopulateClassifiedWIn()
     {
 
-        if (playerScript.classifiedList.Count > 5)
+        if (playerScript.classifiedList.Count < 4)
         {
             statePause();
             _documents[0].gameObject.SetActive(true);
@@ -836,7 +842,7 @@ public class GameManager : MonoBehaviour
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
-        if (playerScript.classifiedList.Count == 5)
+        if (playerScript.classifiedList.Count == 4)
         {
             statePause();
             _documents[1].gameObject.SetActive(true);
@@ -854,6 +860,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void FloodCheck()
+    {
+        if (floodManager.GetComponent<FloodManager>().isFlooding)
+        {
+            populateBanner(0);
+        }
+    }
 
 
     public void EndLevel()

@@ -72,11 +72,7 @@ public class FloodManager : MonoBehaviour
 
             // Display warning before flood rises and play flood warning sound
             yield return StartCoroutine(audioManager.instance.DelayPlaySound("WarningSirenFinal", 0));
-            //GameManager.instance.hud.GetComponent<NoticeBanner>().Notice(0);
-            GameManager.instance.populateBanner();
-
             isFlooding = true;
-
             // Gradually raise water level to target height
             float elapsedTime = 0f;
             Vector3 previousPosition = transform.parent.position;
