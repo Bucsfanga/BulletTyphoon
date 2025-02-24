@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     [Header("-----UI Menus-----")]
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuClassifiedDoc;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
@@ -55,7 +54,8 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
-    private RawImage[] _documents; // Doanld added for Classifiecation menu only 
+    private GameObject Classifieddocuments; // Doanld added for Classifiecation menu only 
+    private GameObject Declassifieddocuments; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
     [SerializeField] private Slider sensitivitySlider;
@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
         player = GameObject.Find("Player");
+        Classifieddocuments = GameObject.Find("ClassDoc");
+        Declassifieddocuments = GameObject.Find("DeclassDoc");
         playerScript = player.GetComponent<playerController>();
     }
 
@@ -141,8 +143,6 @@ public class GameManager : MonoBehaviour
             //PersistentData.savedAmmoDic.Clear();
             initializeMainMenu(); // Initialize main menu for fresh start
         }
-
-        _documents = menuClassifiedDoc.GetComponentsInChildren<RawImage>();
 
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
@@ -382,10 +382,15 @@ public class GameManager : MonoBehaviour
 
         if (goalCheckpoint >= 1)
         {
-            statePause();
-            PopulateClassifiedWIn();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            if (SceneManager.GetActiveScene().name != "UnitTestLevel4")
+            {
+                GameManager.instance.NextLevel();
+            }
+            else
+            {
+                statePause();
+                PopulateClassifiedWIn();
+            }
         }
     }
     public void ShowCredits()
@@ -850,9 +855,7 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count < 4)
         {
             statePause();
-            _documents[0].gameObject.SetActive(true);
-            _documents[1].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
+            menuActive = Classifieddocuments;
             menuActive.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
@@ -860,17 +863,14 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count == 4)
         {
             statePause();
-            _documents[1].gameObject.SetActive(true);
-            _documents[0].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
+            menuActive = Declassifieddocuments;
             menuActive.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
-        if(Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
+        if(Input.GetKeyDown("enter") && (menuActive == Classifieddocuments || Declassifieddocuments))
         {
             menuActive.SetActive(false);
-            noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
     }
