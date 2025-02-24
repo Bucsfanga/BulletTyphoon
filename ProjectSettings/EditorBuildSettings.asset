@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Showcase/ShowcaseLevel.unity
-    guid: 52870de002efca54fbac9f3b43412a42
   - enabled: 1
     path: Assets/Scenes/Prototype/Tutorial/UnitTestTutorial.unity
     guid: a6fba4f12f3cf794482a3ee10f68d356
