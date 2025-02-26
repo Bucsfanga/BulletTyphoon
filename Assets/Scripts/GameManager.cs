@@ -932,8 +932,16 @@ public class GameManager : MonoBehaviour
         }
 
         SaveHighScores(highScores);
-
        
+        float bestTime = PlayerPrefs.GetFloat("HighScore", float.MaxValue);
+
+        // If the new time is better, save it
+        if (newScore < bestTime)
+        {
+            PlayerPrefs.SetFloat("HighScore", newScore);
+            PlayerPrefs.Save();
+        }
+
     }
     public List<float> LoadHighScores()
     {
