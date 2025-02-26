@@ -10,7 +10,7 @@ public class goalCheckpoint : MonoBehaviour
             // Access Game Manager instance and update goalCheckpoint
             if (GameManager.instance != null)
             {
-                GameManager.instance.goalCheckpoint++;
+                //GameManager.instance.goalCheckpoint++;
                 GameManager.instance.updateGameWinCondition(0);
                 //Debug.Log("Goal checkpoint has been reached! Current goal count: " +  GameManager.instance.goalCheckpoint);
                 GameManager.instance.EndLevel();

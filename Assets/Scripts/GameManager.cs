@@ -29,13 +29,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuClassifiedDoc;
-    [SerializeField] GameObject menuWin;
+    [SerializeField] public GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
     [SerializeField] GameObject menuTimers;
+    [SerializeField] public GameObject menuTally;
     private GameObject lastMenu;
 
     public float levelStartTime;
@@ -382,14 +383,17 @@ public class GameManager : MonoBehaviour
     // Track win condition of player reaching goal position on level
     public void updateGameWinCondition(int amount)
     {
-        goalCheckpoint += amount;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        goalCheckpoint = currentSceneIndex;
+        goalCheckpoint = amount;
 
-        if (goalCheckpoint >= 1)
+        if (goalCheckpoint >= 0)
         {
             statePause();
             PopulateClassifiedWIn();
             menuActive = menuWin;
             menuActive.SetActive(true);
+            menuTally.SetActive(true);
         }
     }
     public void ShowCredits()
@@ -856,33 +860,35 @@ public class GameManager : MonoBehaviour
 
     private void PopulateClassifiedWIn()
     {
-
-        if (playerScript.classifiedList.Count < 4)
+        if (goalCheckpoint >= 4)
         {
-            statePause();
-            _documents[0].gameObject.SetActive(true);
-            _documents[1].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
-            menuActive.SetActive(true);
-            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
-        }
+            if (playerScript.classifiedList.Count < 4)
+            {
+                statePause();
+                _documents[0].gameObject.SetActive(true);
+                _documents[1].gameObject.SetActive(false);
+                menuActive = menuClassifiedDoc;
+                menuActive.SetActive(true);
+                noticeBanner.GetComponent<NoticeBanner>().Notice(2);
+            }
 
-        if (playerScript.classifiedList.Count == 4)
-        {
-            statePause();
-            _documents[1].gameObject.SetActive(true);
-            _documents[0].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
-            menuActive.SetActive(true);
-            noticeBanner.GetComponent<NoticeBanner>().Notice(2);
-        }
+            if (playerScript.classifiedList.Count == 4)
+            {
+                statePause();
+                _documents[1].gameObject.SetActive(true);
+                _documents[0].gameObject.SetActive(false);
+                menuActive = menuClassifiedDoc;
+                menuActive.SetActive(true);
+                noticeBanner.GetComponent<NoticeBanner>().Notice(2);
+            }
 
-        if(Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
-        {
-            menuActive.SetActive(false);
-            noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
-            initializeMainMenu();
-        }
+            if (Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
+            {
+                menuActive.SetActive(false);
+                noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
+                initializeMainMenu();
+            }
+        }    
     }
 
     private void FloodCheck()
@@ -895,9 +901,7 @@ public class GameManager : MonoBehaviour
 
 
     public void EndLevel()
-    {
-        
-
+    {        
         float completionTime = Time.timeSinceLevelLoad;
         int damageTaken = 0;
         int stepsTaken = 0;

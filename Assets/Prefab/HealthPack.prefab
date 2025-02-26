@@ -161,7 +161,7 @@ MonoBehaviour:
   healthIncrease: 5
   respawnTime: 30
   model: {fileID: 5911641781736425736}
-  buttonInfo: Press E To Restore 5 HP!
+  buttonInfo: Press E To Restore 10 HP!
 --- !u!65 &1901324608155637966
 BoxCollider:
   m_ObjectHideFlags: 0
