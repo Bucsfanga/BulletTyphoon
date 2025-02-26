@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    [SerializeField] GameObject menuTimers;
     private GameObject lastMenu;
 
     public float levelStartTime;
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
             playerHUD.SetActive(true);
             menuPause.SetActive(false);
             menuMain.SetActive(false);
+            menuTimers.SetActive(true);
             Time.timeScale = 1f;
             isPaused = false;
             Cursor.visible = false;
@@ -268,6 +270,7 @@ public class GameManager : MonoBehaviour
         menuActive = menuMain;
         playerHUD.SetActive(false);
         menuPause.SetActive(false);
+        menuTimers.SetActive(false);
         statePause();
 
         if (player != null)
@@ -301,6 +304,7 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(ContrtolsScreen());
         playerHUD.SetActive(true);  // Show playerHUD
         menuPause.SetActive(false);
+        menuTimers.SetActive(true);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
         audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
@@ -395,6 +399,7 @@ public class GameManager : MonoBehaviour
         {
             menuMain.SetActive(false);
             menuCredits.SetActive(true);
+            menuTimers.SetActive(false);
             menuActive = menuCredits;
 
             // Trigger credit scroller
@@ -648,6 +653,7 @@ public class GameManager : MonoBehaviour
 
         // Open the Settings Menu
         menuSettings.SetActive(true);
+        menuTimers.SetActive(false);
         menuActive = menuSettings;
         SelectFirstButton(menuSettings);
     }
@@ -677,6 +683,7 @@ public class GameManager : MonoBehaviour
             if (lastMenu == menuPause)
             {
                 playerHUD.SetActive(true);
+                menuTimers.SetActive(true);
             }
             SelectFirstButton(lastMenu);
         }
@@ -688,6 +695,7 @@ public class GameManager : MonoBehaviour
         // Hide Pause Menu & HUD
         menuPause.SetActive(false);
         playerHUD.SetActive(false);
+        menuTimers.SetActive(false);
 
         // Show Main Menu UI
         menuMain.SetActive(true);
@@ -812,6 +820,7 @@ public class GameManager : MonoBehaviour
     public void OpenControlMenu()
     {
         menuPause.SetActive(false);
+        menuTimers.SetActive(false);
         menuControls.SetActive(true);
         menuActive = menuControls;
     }
@@ -820,6 +829,7 @@ public class GameManager : MonoBehaviour
     public void CloseControlMenu()
     {
         menuControls.SetActive(false);
+        menuTimers.SetActive(true);
         menuPause.SetActive(true);
         menuActive = menuPause;
     }
@@ -969,6 +979,7 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
+            menuTimers.SetActive(false);
             tutorialPanel.SetActive(true); // Turn on tutorial screen
             statePause(); // Pause game
 
@@ -993,6 +1004,7 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
+            menuTimers.SetActive(true);
             tutorialPanel.SetActive(false); // Hide tutorial panel
             stateUnpause(); // Unpause game
         }
