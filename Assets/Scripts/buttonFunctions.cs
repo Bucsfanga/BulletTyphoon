@@ -61,10 +61,4 @@ public class buttonFunctions : MonoBehaviour
     {
         GameManager.instance.CloseTutorial(tutorialPanel);
     }
-
-    public void BackToMainMenuFromControls()
-    {
-        GameManager.instance.CloseControlMenu();
-
-    }
 }
