@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 7765516491075839235}
   - component: {fileID: 7347745045896319551}
   - component: {fileID: 4504620267449868778}
+  - component: {fileID: 7859213497632488380}
   m_Layer: 5
   m_Name: TutorialScreen
   m_TagString: Untagged
@@ -289,6 +290,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7859213497632488380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429183182891986229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfb304e2f8abb84ebdf8a6502f9be80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 8068346197277571444}
 --- !u!1 &7419235727517894408
 GameObject:
   m_ObjectHideFlags: 0
