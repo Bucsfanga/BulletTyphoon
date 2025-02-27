@@ -32,7 +32,7 @@ public class spawner : MonoBehaviour
             if(spawnCount < numToSpawn && spawnTimer >= timeBetweenSpawns)
             {
                 spawn();
-                GameManager.instance.updateGameGoal(1);
+                GameManager.instance.updateEnemyCount(1);
             }
         }
     }

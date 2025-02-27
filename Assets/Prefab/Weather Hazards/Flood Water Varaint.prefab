@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 298785485376269855, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
+      propertyPath: damageAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1217185556074287584, guid: 917e272ac19cc3b4f9ac8a221eba7a45, type: 3}
       propertyPath: m_Name
       value: Flood Water Varaint

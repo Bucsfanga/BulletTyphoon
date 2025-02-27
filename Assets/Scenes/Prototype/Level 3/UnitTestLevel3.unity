@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042890950783620314, guid: 981bcf4fb2c9ef0459a87a5104646813, type: 3}
       propertyPath: m_Name
-      value: Gun Pickup - Laser Rifle
+      value: Gun Pickup - Explosive shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3247,7 +3247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042890950783620314, guid: 981bcf4fb2c9ef0459a87a5104646813, type: 3}
       propertyPath: m_Name
-      value: Gun Pickup - Laser Rifle (1)
+      value: Gun Pickup - Explosive Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4556,7 +4556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3229273083444861100, guid: 72879f2fa0bb1eb43a0e6db9a73a126f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -59.44967
+      value: -59.36367
       objectReference: {fileID: 0}
     - target: {fileID: 3229273083444861100, guid: 72879f2fa0bb1eb43a0e6db9a73a126f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4596,7 +4596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3290868648703233770, guid: 72879f2fa0bb1eb43a0e6db9a73a126f, type: 3}
       propertyPath: m_Name
-      value: Gun Pickup - Explosive Shotgun
+      value: Gun Pickup - Laser Rifle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8319,7 +8319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4959241070173762060, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: 13.023001
       objectReference: {fileID: 0}
     - target: {fileID: 4959241070173762060, guid: 6a0f93298b19683448f821cd4162b830, type: 3}
       propertyPath: m_LocalPosition.z
