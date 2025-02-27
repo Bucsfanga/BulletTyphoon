@@ -802,10 +802,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BT_UI
       objectReference: {fileID: 0}
-    - target: {fileID: 6841354996230327569, guid: e3e2e434e41069941a68afb23d3de89c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: e3e2e434e41069941a68afb23d3de89c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -884,10 +880,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7004804796619091088, guid: e3e2e434e41069941a68afb23d3de89c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829057544925203872, guid: e3e2e434e41069941a68afb23d3de89c, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
