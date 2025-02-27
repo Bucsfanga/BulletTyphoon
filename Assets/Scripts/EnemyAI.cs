@@ -178,7 +178,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
         else
         {
-            GameManager.instance.updateGameGoal(-1); // Subtract 1 from game goals enemy counter
+            GameManager.instance.updateEnemyCount(-1); // Subtract 1 from game goals enemy counter
 
             // Stop any remaining coroutines
             StopAllCoroutines();

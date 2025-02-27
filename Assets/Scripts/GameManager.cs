@@ -374,7 +374,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Track number of living enemies in level
-    public void updateGameGoal(int amount)
+    public void updateEnemyCount(int amount)
     {
         goalCount += amount;
         goalCountText.text = goalCount.ToString("F0");
@@ -383,17 +383,14 @@ public class GameManager : MonoBehaviour
     // Track win condition of player reaching goal position on level
     public void updateGameWinCondition(int amount)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        goalCheckpoint = currentSceneIndex;
-        goalCheckpoint = amount;
+        goalCheckpoint += amount;
 
-        if (goalCheckpoint >= 0)
+        if (goalCheckpoint >= 1)
         {
             statePause();
             PopulateClassifiedWIn();
             menuActive = menuWin;
-            menuActive.SetActive(true);
-            menuTally.SetActive(true);
+            menuActive.SetActive(true);       
         }
     }
     public void ShowCredits()
@@ -865,8 +862,8 @@ public class GameManager : MonoBehaviour
             if (playerScript.classifiedList.Count < 4)
             {
                 statePause();
-                _documents[0].gameObject.SetActive(true);
-                _documents[1].gameObject.SetActive(false);
+                //_documents[0].gameObject.SetActive(true);
+                //_documents[1].gameObject.SetActive(false);
                 menuActive = menuClassifiedDoc;
                 menuActive.SetActive(true);
                 noticeBanner.GetComponent<NoticeBanner>().Notice(2);
@@ -875,8 +872,8 @@ public class GameManager : MonoBehaviour
             if (playerScript.classifiedList.Count == 4)
             {
                 statePause();
-                _documents[1].gameObject.SetActive(true);
-                _documents[0].gameObject.SetActive(false);
+                //_documents[1].gameObject.SetActive(true);
+                //_documents[0].gameObject.SetActive(false);
                 menuActive = menuClassifiedDoc;
                 menuActive.SetActive(true);
                 noticeBanner.GetComponent<NoticeBanner>().Notice(2);
