@@ -6209,7 +6209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.52000004}
   m_AnchorMax: {x: 0.5, y: 0.52000004}
-  m_AnchoredPosition: {x: 0, y: -1400}
+  m_AnchoredPosition: {x: 126.08606, y: -6783.2646}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.50000006, y: 0.5000001}
 --- !u!222 &8397135648722244795
@@ -6240,32 +6240,53 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Credits\n\n\n\n\nDeveloped by:\n\nDonald Thatcher..............................................Technical
-    Designer\n\n\n\nRoxythe Harding.................Environmental Hazards/Level Design\n\n\n\nIan
-    Burke.......................Audio/Particle Effects/Enemy Developer\n\n\n\nRichard
-    Rivera.................Weather/HUD/Structure Visual Effects\n\n\n\nZachary Honea.....................................................Player
-    Controls\n\n\n\nTabitha Scherch..................................................Enemy
-    Designer\n\n\n\nQuilliah Smallwood............................................UI/Menu
-    Designer\n\n\nUnity Store Free Assets\n\nThe Fallout Nerd..........................................Low
-    Poly Cloud Model\n\n\n\rShMEL.........................................................Cracked
-    Wall Textures\r\n\r\n\r\nPixie Indie..............................................Dungeon
-    Ground Textures\r\n\r\n\r\nLumo-Art 3D................................................Stylized
-    PBR Textures\r\n\r\n\r\nMathew Guz................................................On-Hit
-    Particle Effects\r\n\r\n\r\nDynamic Art...................................................Low
-    Poly Street Pack\r\n\r\n\r\nSametsylmz3d....................................Low
-    Poly WW2 Gun Models\r\n\r\n\r\nVIS Games...........................................................Metal
-    Grids PBR\r\n\r\n\r\nHviluvator.......................................................Metal
-    Plate Textures\r\n\r\n\r\nJermesa Studio...................Mountain Terrain Background
-    Scenery\r\n\r\n\r\nSICS Games.........................................................Helicopter
-    Model\r\n\r\n\r\nDungeon Mason................................Duo Monster Enemy
-    Models\r\n\r\n\r\nAvionx...............................................................SkySeries
-    Freebie\r\n\r\n\r\nLowlyPoly................................Metal/Grass/Sci-fi/Tile
-    Texture Pack\r\n\r\n\r\nSlayver.................................................Survivalist
-    Character Model\r\n\r\n\nPolygon Blacksmith.............................WW2 Soldier
-    Enemy Model\n\n\nIgnitCoder.......................................................Simple
-    Water Shader\n\nHoveAudio...........................................Collectables
-    Sound Pack\n\nThe Indie Devs Nation...........................Free Gane Music
-    Collection\n\nThanks For Playing!"
+  m_text: "Credits \r\n\r\n  \r\n\r\nDeveloped by: \r\n\r\n  \r\n\r\nDonald Thatcher..............................................Technical
+    Designer \r\n\r\n  \r\n\r\nRoxythe Harding.................Environmental Hazards/Level
+    Design \r\n\r\n  \r\n\r\nIan Burke.......................Audio/Particle Effects/Enemy
+    Developer \r\n\r\n  \r\n\r\nRichard Rivera.................Weather/HUD/Structure
+    Visual Effects \r\n\r\n  \r\n\r\nZachary Honea.....................................................Player
+    Controls \r\n\r\n  \r\n\r\nTabitha Scherch..................................................Enemy
+    Designer \r\n\r\n  \r\n\r\nQuilliah Smallwood............................................UI/Menu
+    Designer \r\n\r\n  \r\n\r\nUnity Store Free Assets \r\n\r\n  \r\n\r\nThe Fallout
+    Nerd..........................................Low Poly Cloud Model \r\n\r\nhttps://assetstore.unity.com/packages/3d/3le-low-poly-cloud-pa
+    \r\n\r\nck-65911 \r\n\r\n \r\nSHMEL Studio...............................................Cracked
+    Wall Textures \r\n\r\n https://assetstore.unity.com/packages/2d/textures-materials/con
+    \r\n\r\ncrete/cracked-seamless-wall-texture-and-material-120127 \r\n\r\nPixie
+    Indie..............................................Dungeon Ground Textures \r\n\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/floo
+    \r\n\r\nrs/dungeon-ground-texture-33296 \r\n \r\n\r\nLumo-Art 3D................................................Stylized
+    PBR Textures \r\n\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/free
+    \r\n\r\n-stylized-pbr-textures-pack-111778 \r\n\r\n \r\nMathew Guz.......................................................Hit
+    Effects FREE \r\n\r\nhttps://assetstore.unity.com/packages/vfx/particles/hit-effects-f
+    \r\n\r\nree-284613 \r\n\r\n \r\nDynamic Art...................................................Low
+    Poly Street Pack \r\n\r\nhttps://assetstore.unity.com/packages/3d/environments/urban/l
+    \r\n\r\now-poly-street-pack-67475 \r\n\r\n \r\nSametsylmz3d....................................
+    3D Stylized Guns WW2 U.S \r\n\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/lowpo
+    \r\n\r\nly-3d-stylized-guns-ww2-u-s-207761 \r\n\r\n \r\nVIS Games...........................................................Metal
+    Grids PBR \r\n\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/me
+    \r\n\r\ntal-grids-pbr-139298 \r\n\r\n \r\nHviluvator.......................................................Metal
+    Plate Textures \r\n\r\nhttps://assetstore.unity.com/packages/3d/props/exterior/metal-
+    \r\n\r\nplates-64240 \r\n\r\n \r\nJermesa Studio............................
+    Mountain Terrain, Rocks and Tree \r\n\r\nhttps://assetstore.unity.com/packages/3d/environments/landsca
+    \r\n\r\npes/mountain-terrain-rocks-and-tree-97905 \r\n\r\n \r\nSICS Games..............................................
+    Police Car & Helicopter \r\n\r\nhttps://assetstore.unity.com/packages/3d/vehicles/land/police-c
+    \r\n\r\nar-helicopter-52496 \r\n\r\n \r\nDungeon Mason..............................
+    RPG Monster Duo PBR Polyart \r\n\r\nhttps://assetstore.unity.com/packages/3d/characters/creatures/r
+    \r\n\r\npg-monster-duo-pbr-polyart-157762 \r\n\r\n \r\nDungeon Mason........................
+    RPG Monster Partners PBR Polyart \r\n\r\nhttps://assetstore.unity.com/packages/3d/characters/creatures/rp
+    \r\n\r\ng-monster-partners-pbr-polyart-168251 \r\n\r\n \r\nAvionx..............................................................
+    Skybox Series Free \r\n\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/sky
+    \r\n\r\n/skybox-series-free-103633 \r\n\r\n \r\nLowlyPoly................................Metal/Grass/Sci-fi/Tile
+    Texture Pack \r\n\r\nhttps://assetstore.unity.com/publishers/16677 \r\n\r\n \r\nSlayver..........................................................Survivalist
+    Character \r\n\r\nhttps://assetstore.unity.com/packages/3d/characters/survivalist
+    \r\n\r\n-character-181470 \r\n\r\n \r\nPolygon Blacksmith.............................
+    Toon Soldiers WW2 demo \r\n\r\nhttps://assetstore.unity.com/packages/3d/characters/humanoi
+    \r\n\r\nds/toon-soldiers-ww2-demo-85702 \r\n\r\nIgniteCoder............................................Simple
+    Water Shader URP \r\n\r\nhttps://assetstore.unity.com/packages/2d/textures-materials/w
+    \r\n\r\nater/simple-water-shader-urp-191449 \r\n\r\n \r\nHoveAudio....................................
+    Collectables Sound Effects Pack \r\n\r\nhttps://assetstore.unity.com/packages/audio/sound-fx/collecta
+    \r\n\r\nbles-sound-effects-pack-290553 \r\n\r\n \r\nThe Indie Devs Nation..........................
+    Free Game Music Collection \r\n\r\nhttps://assetstore.unity.com/packages/audio/music/orchestral/f
+    \r\n\r\nree-game-music-collection-177094 \r\n\r\n \r\n\r\nThanks For Playing! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6292,15 +6313,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6330,7 +6351,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -855.62756, y: -164.4607, z: -856.9697, w: -787.1962}
+  m_margin: {x: 53.087097, y: -144.35083, z: 36.845215, w: 205.19757}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16448,8 +16469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHUD: {fileID: 1377207491128861346}
   floodManager: {fileID: 1409224624233797590, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
-  player: {fileID: 0}
-  playerScript: {fileID: 0}
+  player: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  playerScript: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
   damagePanel: {fileID: 5542092471514405164}
   buttonInteract: {fileID: 1694713216968174484}
   playerHPBar: {fileID: 8715877879688395109}
