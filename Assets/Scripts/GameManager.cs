@@ -28,15 +28,12 @@ public class GameManager : MonoBehaviour
     [Header("-----UI Menus-----")]
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuClassifiedDoc;
-    [SerializeField] public GameObject menuWin;
+    [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
-    [SerializeField] GameObject menuTimers;
-    [SerializeField] public GameObject menuTally;
     private GameObject lastMenu;
 
     public float levelStartTime;
@@ -57,8 +54,8 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
-    [SerializeField] RawImage Classifieddocuments; // Doanld added for Classifiecation menu only 
-    [SerializeField] RawImage Declassifieddocuments; // Doanld added for Classifiecation menu only 
+    private GameObject Classifieddocuments; // Doanld added for Classifiecation menu only 
+    private GameObject Declassifieddocuments; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
     [SerializeField] private Slider sensitivitySlider;
@@ -106,6 +103,8 @@ public class GameManager : MonoBehaviour
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
         player = GameObject.Find("Player");
+        Classifieddocuments = GameObject.Find("ClassDoc");
+        Declassifieddocuments = GameObject.Find("DeclassDoc");
         playerScript = player.GetComponent<playerController>();
     }
 
@@ -127,7 +126,6 @@ public class GameManager : MonoBehaviour
             playerHUD.SetActive(true);
             menuPause.SetActive(false);
             menuMain.SetActive(false);
-            menuTimers.SetActive(true);
             Time.timeScale = 1f;
             isPaused = false;
             Cursor.visible = false;
@@ -270,7 +268,6 @@ public class GameManager : MonoBehaviour
         menuActive = menuMain;
         playerHUD.SetActive(false);
         menuPause.SetActive(false);
-        menuTimers.SetActive(false);
         statePause();
 
         if (player != null)
@@ -304,7 +301,6 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(ContrtolsScreen());
         playerHUD.SetActive(true);  // Show playerHUD
         menuPause.SetActive(false);
-        menuTimers.SetActive(true);
         Time.timeScale = 1f;  // Resume the game
         isPaused = false;
         audioManager.instance.StopMenuMusic(); //Ian add - fade out the menu music as the game starts
@@ -382,11 +378,9 @@ public class GameManager : MonoBehaviour
     // Track win condition of player reaching goal position on level
     public void updateGameWinCondition(int amount)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        goalCheckpoint = currentSceneIndex;
-        goalCheckpoint = amount;
+        goalCheckpoint += amount;
 
-        if (goalCheckpoint >= 0)
+        if (goalCheckpoint >= 1)
         {
             if (SceneManager.GetActiveScene().name != "UnitTestLevel4")
             {
@@ -406,7 +400,6 @@ public class GameManager : MonoBehaviour
         {
             menuMain.SetActive(false);
             menuCredits.SetActive(true);
-            menuTimers.SetActive(false);
             menuActive = menuCredits;
 
             // Trigger credit scroller
@@ -660,7 +653,6 @@ public class GameManager : MonoBehaviour
 
         // Open the Settings Menu
         menuSettings.SetActive(true);
-        menuTimers.SetActive(false);
         menuActive = menuSettings;
         SelectFirstButton(menuSettings);
     }
@@ -690,7 +682,6 @@ public class GameManager : MonoBehaviour
             if (lastMenu == menuPause)
             {
                 playerHUD.SetActive(true);
-                menuTimers.SetActive(true);
             }
             SelectFirstButton(lastMenu);
         }
@@ -702,7 +693,6 @@ public class GameManager : MonoBehaviour
         // Hide Pause Menu & HUD
         menuPause.SetActive(false);
         playerHUD.SetActive(false);
-        menuTimers.SetActive(false);
 
         // Show Main Menu UI
         menuMain.SetActive(true);
@@ -827,7 +817,6 @@ public class GameManager : MonoBehaviour
     public void OpenControlMenu()
     {
         menuPause.SetActive(false);
-        menuTimers.SetActive(false);
         menuControls.SetActive(true);
         menuActive = menuControls;
     }
@@ -836,7 +825,6 @@ public class GameManager : MonoBehaviour
     public void CloseControlMenu()
     {
         menuControls.SetActive(false);
-        menuTimers.SetActive(true);
         menuPause.SetActive(true);
         menuActive = menuPause;
     }
@@ -854,10 +842,7 @@ public class GameManager : MonoBehaviour
                 noticeBanner.GetComponent<NoticeBanner>().Notice(1);
                 break;
             case 2:
-                noticeBanner.GetComponent<NoticeBanner>().Notice(2);
-                break;
-            case 3:
-                noticeBanner.GetComponent<NoticeBanner>().Notice(3);
+
                 break;
             default:
                 break;            
@@ -870,14 +855,16 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count < 4)
         {
             statePause();
-            Classifieddocuments.enabled = true;
+            menuActive = Classifieddocuments;
+            menuActive.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
         if (playerScript.classifiedList.Count == 4)
         {
             statePause();
-            Declassifieddocuments.enabled = true;
+            menuActive = Declassifieddocuments;
+            menuActive.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
@@ -898,7 +885,9 @@ public class GameManager : MonoBehaviour
 
 
     public void EndLevel()
-    {        
+    {
+        
+
         float completionTime = Time.timeSinceLevelLoad;
         int damageTaken = 0;
         int stepsTaken = 0;
@@ -943,16 +932,8 @@ public class GameManager : MonoBehaviour
         }
 
         SaveHighScores(highScores);
+
        
-        float bestTime = PlayerPrefs.GetFloat("HighScore", float.MaxValue);
-
-        // If the new time is better, save it
-        if (newScore < bestTime)
-        {
-            PlayerPrefs.SetFloat("HighScore", newScore);
-            PlayerPrefs.Save();
-        }
-
     }
     public List<float> LoadHighScores()
     {
@@ -980,7 +961,6 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
-            menuTimers.SetActive(false);
             tutorialPanel.SetActive(true); // Turn on tutorial screen
             statePause(); // Pause game
 
@@ -1005,7 +985,6 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialPanel != null)
         {
-            menuTimers.SetActive(true);
             tutorialPanel.SetActive(false); // Hide tutorial panel
             stateUnpause(); // Unpause game
         }
