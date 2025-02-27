@@ -841,8 +841,8 @@ public class GameManager : MonoBehaviour
             case 1:
                 noticeBanner.GetComponent<NoticeBanner>().Notice(1);
                 break;
-            case 2:
-
+            case 3:
+                noticeBanner.GetComponent<NoticeBanner>().Notice(3);
                 break;
             default:
                 break;            
