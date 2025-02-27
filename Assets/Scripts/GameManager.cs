@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
-    private GameObject Classifieddocuments; // Doanld added for Classifiecation menu only 
-    private GameObject Declassifieddocuments; // Doanld added for Classifiecation menu only 
+    [SerializeField] RawImage Classifieddocuments; // Doanld added for Classifiecation menu only 
+    [SerializeField] RawImage Declassifieddocuments; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
     [SerializeField] private Slider sensitivitySlider;
@@ -106,8 +106,6 @@ public class GameManager : MonoBehaviour
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
         player = GameObject.Find("Player");
-        Classifieddocuments = GameObject.Find("ClassDoc");
-        Declassifieddocuments = GameObject.Find("DeclassDoc");
         playerScript = player.GetComponent<playerController>();
     }
 
@@ -856,7 +854,10 @@ public class GameManager : MonoBehaviour
                 noticeBanner.GetComponent<NoticeBanner>().Notice(1);
                 break;
             case 2:
-
+                noticeBanner.GetComponent<NoticeBanner>().Notice(2);
+                break;
+            case 3:
+                noticeBanner.GetComponent<NoticeBanner>().Notice(3);
                 break;
             default:
                 break;            
@@ -869,16 +870,14 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count < 4)
         {
             statePause();
-            menuActive = Classifieddocuments;
-            menuActive.SetActive(true);
+            Classifieddocuments.enabled = true;
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
         if (playerScript.classifiedList.Count == 4)
         {
             statePause();
-            menuActive = Declassifieddocuments;
-            menuActive.SetActive(true);
+            Declassifieddocuments.enabled = true;
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
