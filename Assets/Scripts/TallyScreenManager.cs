@@ -18,7 +18,7 @@ public class TallyScreenManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.menuTally.SetActive(false);
+        tallyScreen.SetActive(false);
         skipButton.onClick.AddListener(SkipTally);
     }
 
@@ -28,7 +28,7 @@ public class TallyScreenManager : MonoBehaviour
         damageTaken = damage;
         stepsTaken = steps;
 
-        GameManager.instance.menuTally.SetActive(true);
+        tallyScreen.SetActive(true);
         StartCoroutine(AnimateTally());
     }
 
@@ -71,8 +71,8 @@ public class TallyScreenManager : MonoBehaviour
 
     public void ConfirmTally()
     {
-        GameManager.instance.menuTally.SetActive(false); // Close tally screen
-        GameManager.instance.menuWin.SetActive(true); // Now show Win Menu
+        tallyScreen.SetActive(false); // Close tally screen
+        winMenu.SetActive(true); // Now show Win Menu
     }
     void Update()
     {
