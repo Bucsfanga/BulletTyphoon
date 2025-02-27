@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
+    [SerializeField]GameObject Classifieddocuments;
+    [SerializeField] GameObject Declassifieddocuments;
     private GameObject lastMenu;
 
     public float levelStartTime;
@@ -54,8 +56,7 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
-    private GameObject Classifieddocuments; // Doanld added for Classifiecation menu only 
-    private GameObject Declassifieddocuments; // Doanld added for Classifiecation menu only 
+
 
     // Settings Menu Elements
     [SerializeField] private Slider sensitivitySlider;
@@ -103,8 +104,6 @@ public class GameManager : MonoBehaviour
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
         player = GameObject.Find("Player");
-        Classifieddocuments = GameObject.Find("ClassDoc");
-        Declassifieddocuments = GameObject.Find("DeclassDoc");
         playerScript = player.GetComponent<playerController>();
     }
 
@@ -181,7 +180,13 @@ public class GameManager : MonoBehaviour
                 menuActive.SetActive(true);
             }
         }
-        //FloodCheck();
+
+        if (Input.GetKeyDown("enter") && (Classifieddocuments.activeSelf || Declassifieddocuments.activeSelf))
+        {
+            Classifieddocuments.SetActive(false);
+            Declassifieddocuments.SetActive(false);
+            initializeMainMenu();
+        }
     }
 
     // ------------------------------
@@ -388,7 +393,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                statePause();
                 PopulateClassifiedWIn();
             }
         }
@@ -855,23 +859,14 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count < 4)
         {
             statePause();
-            menuActive = Classifieddocuments;
-            menuActive.SetActive(true);
+            Classifieddocuments.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
-
-        if (playerScript.classifiedList.Count == 4)
+       else
         {
             statePause();
-            menuActive = Declassifieddocuments;
-            menuActive.SetActive(true);
+            Declassifieddocuments.SetActive(true);
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
-        }
-
-        if(Input.GetKeyDown("enter") && (menuActive == Classifieddocuments || Declassifieddocuments))
-        {
-            menuActive.SetActive(false);
-            initializeMainMenu();
         }
     }
 
