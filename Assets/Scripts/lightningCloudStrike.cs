@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class lightningCloudStrike : MonoBehaviour
@@ -33,6 +34,7 @@ public class lightningCloudStrike : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.player.transform;
+
         if (ground == null)
         {
             //Debug.LogError("Map boundary reference is null");
@@ -89,6 +91,7 @@ public class lightningCloudStrike : MonoBehaviour
         // Wait for all active strikes to finish before destroying the cloud
         while (activeStrikes > 0)
         {
+            if (player)
             yield return null;
         }
 
