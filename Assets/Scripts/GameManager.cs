@@ -29,13 +29,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuClassifiedDoc;
-    [SerializeField] GameObject menuWin;
+    [SerializeField] public GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuMain;
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuCredits;
     [SerializeField] GameObject menuControls;
     [SerializeField] GameObject menuTimers;
+    [SerializeField] public GameObject menuTally;
     private GameObject lastMenu;
 
     public float levelStartTime;
@@ -56,7 +57,8 @@ public class GameManager : MonoBehaviour
     private float fullWidth;
     private Light directionalLight; //variable for finding light and its intensity.
     private float originalLightIntensity;
-    private RawImage[] _documents; // Doanld added for Classifiecation menu only 
+    [SerializeField] RawImage Classifieddocuments; // Doanld added for Classifiecation menu only 
+    [SerializeField] RawImage Declassifieddocuments; // Doanld added for Classifiecation menu only 
 
     // Settings Menu Elements
     [SerializeField] private Slider sensitivitySlider;
@@ -143,8 +145,6 @@ public class GameManager : MonoBehaviour
             //PersistentData.savedAmmoDic.Clear();
             initializeMainMenu(); // Initialize main menu for fresh start
         }
-
-        _documents = menuClassifiedDoc.GetComponentsInChildren<RawImage>();
 
         GameState.isRestarting = false; // Reset flag
         GameState.isNextLevel = false; // Reset flag
@@ -382,14 +382,21 @@ public class GameManager : MonoBehaviour
     // Track win condition of player reaching goal position on level
     public void updateGameWinCondition(int amount)
     {
-        goalCheckpoint += amount;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        goalCheckpoint = currentSceneIndex;
+        goalCheckpoint = amount;
 
-        if (goalCheckpoint >= 1)
+        if (goalCheckpoint >= 0)
         {
-            statePause();
-            PopulateClassifiedWIn();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            if (SceneManager.GetActiveScene().name != "UnitTestLevel4")
+            {
+                GameManager.instance.NextLevel();
+            }
+            else
+            {
+                statePause();
+                PopulateClassifiedWIn();
+            }
         }
     }
     public void ShowCredits()
@@ -847,7 +854,10 @@ public class GameManager : MonoBehaviour
                 noticeBanner.GetComponent<NoticeBanner>().Notice(1);
                 break;
             case 2:
-
+                noticeBanner.GetComponent<NoticeBanner>().Notice(2);
+                break;
+            case 3:
+                noticeBanner.GetComponent<NoticeBanner>().Notice(3);
                 break;
             default:
                 break;            
@@ -860,27 +870,20 @@ public class GameManager : MonoBehaviour
         if (playerScript.classifiedList.Count < 4)
         {
             statePause();
-            _documents[0].gameObject.SetActive(true);
-            _documents[1].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
-            menuActive.SetActive(true);
+            Classifieddocuments.enabled = true;
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
         if (playerScript.classifiedList.Count == 4)
         {
             statePause();
-            _documents[1].gameObject.SetActive(true);
-            _documents[0].gameObject.SetActive(false);
-            menuActive = menuClassifiedDoc;
-            menuActive.SetActive(true);
+            Declassifieddocuments.enabled = true;
             noticeBanner.GetComponent<NoticeBanner>().Notice(2);
         }
 
-        if(Input.GetKeyDown("enter") && (menuActive == menuClassifiedDoc))
+        if(Input.GetKeyDown("enter") && (menuActive == Classifieddocuments || Declassifieddocuments))
         {
             menuActive.SetActive(false);
-            noticeBanner.GetComponent<NoticeBanner>()._noticeBanner.enabled = false;
             initializeMainMenu();
         }
     }
@@ -895,9 +898,7 @@ public class GameManager : MonoBehaviour
 
 
     public void EndLevel()
-    {
-        
-
+    {        
         float completionTime = Time.timeSinceLevelLoad;
         int damageTaken = 0;
         int stepsTaken = 0;
