@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Damage : MonoBehaviour
 {
-    enum damageType { moving, stationary, falling, flood, persistentMoving }
+    enum damageType { moving, stationary, falling, flood, persistentMoving}
 
     [SerializeField] damageType type;
     [SerializeField] Rigidbody rb;
