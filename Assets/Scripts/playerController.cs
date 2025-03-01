@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
 {
     [Header("-----Components-----")]
     #region Variables
-    [SerializeField] CharacterController controller;
+    [SerializeField] public CharacterController controller;
     //[SerializeField] AudioSource aud; // Lecture 6 - IAN NOTE: Commenting out to use the audioManager singleton
     [SerializeField] audioManager audioManager; //using the audioManager rather than accessing the AudioSource directly
     [SerializeField] muzzleFlashParticleEffect muzzleFlashParticleEffect;
@@ -298,10 +298,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
                 StartCoroutine(playSteps());
             }
 
-            isJumping = false;
+            if (isJumping) // Reset jumping state when grounded
+            {
+                isJumping = false;
+                jumpCount = 0;
+            }
 
-            // Ensures correct speed when landing
-            isSprinting = Input.GetButton("Sprint");
+            isSprinting = Input.GetButton("Sprint"); // Ensures correct speed when landing
         }
 
         jump();
@@ -388,7 +391,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             {
                 isCrouching = false;
             }
+
+            playerVel.y = 0; // Reset vertical velocity to prevent stacking momentum
             isJumping = true;
+            playerVel.y += jumpSpeed; // Apply jump force
             audioManager.PlayRandomJumpSound();
         }
     }
