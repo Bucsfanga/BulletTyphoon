@@ -912,7 +912,7 @@ MonoBehaviour:
   shootPos: {fileID: 6984397193898417196}
   headPos: {fileID: 8084965246013820568}
   bullet: {fileID: 1045496012876992585, guid: 72add64ae9873b6448385bd7662d9847, type: 3}
-  shootRate: 3
+  shootRate: 1
   FOV: 180
   animSpeedTrans: 1
   roamPauseTime: 2

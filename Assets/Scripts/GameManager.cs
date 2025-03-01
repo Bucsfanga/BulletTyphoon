@@ -104,8 +104,8 @@ public class GameManager : MonoBehaviour
 
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
-        player = GameObject.Find("Player");
-        playerScript = player.GetComponent<playerController>();
+        //player = GameObject.Find("Player");
+        //playerScript = player.GetComponent<playerController>();
     }
 
     void Start()

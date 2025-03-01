@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     Vector3 moveDir;
     Vector3 playerVel;
 
-    int jumpCount;
+    public int jumpCount;
     int HPOrig;
     float baseSpeed;
     public int gunListPos;

@@ -90,6 +90,7 @@ public class MovingPlatform : MonoBehaviour
 
         if (Physics.Raycast(rayStart, Vector3.down, out hit, 1.0f))
         {
+            player.jumpCount = 0;
             return hit.collider.gameObject == gameObject; // ensure hit object is a platform
         }
         return false;
