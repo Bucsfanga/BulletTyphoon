@@ -278,6 +278,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &4105649
 Transform:
   m_ObjectHideFlags: 0
@@ -1559,6 +1560,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &40401881
 Transform:
   m_ObjectHideFlags: 0
@@ -3347,6 +3349,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &99122197
 Transform:
   m_ObjectHideFlags: 0
@@ -3848,6 +3851,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &111737490
 Transform:
   m_ObjectHideFlags: 0
@@ -4715,6 +4719,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &136141495
 Transform:
   m_ObjectHideFlags: 0
@@ -5216,6 +5221,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &150684937
 Transform:
   m_ObjectHideFlags: 0
@@ -7242,6 +7248,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &232119379
 Transform:
   m_ObjectHideFlags: 0
@@ -7743,6 +7750,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &248484197
 Transform:
   m_ObjectHideFlags: 0
@@ -8293,6 +8301,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &280549407
 Transform:
   m_ObjectHideFlags: 0
@@ -9149,6 +9158,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &331403932
 Transform:
   m_ObjectHideFlags: 0
@@ -9977,6 +9987,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &368667547
 Transform:
   m_ObjectHideFlags: 0
@@ -10151,6 +10162,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &374795632
 Transform:
   m_ObjectHideFlags: 0
@@ -11324,6 +11336,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &431691147
 Transform:
   m_ObjectHideFlags: 0
@@ -11913,6 +11926,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &455533304
 Transform:
   m_ObjectHideFlags: 0
@@ -12663,6 +12677,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &490593074
 Transform:
   m_ObjectHideFlags: 0
@@ -13465,6 +13480,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!1 &539908498
 GameObject:
   m_ObjectHideFlags: 0
@@ -14335,6 +14351,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &574411081
 Transform:
   m_ObjectHideFlags: 0
@@ -15303,6 +15320,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &623261236
 Transform:
   m_ObjectHideFlags: 0
@@ -15477,6 +15495,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &624739467
 Transform:
   m_ObjectHideFlags: 0
@@ -15869,6 +15888,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &632222327
 Transform:
   m_ObjectHideFlags: 0
@@ -16043,6 +16063,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 8
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &651362318
 Transform:
   m_ObjectHideFlags: 0
@@ -16484,6 +16505,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &662964228
 Transform:
   m_ObjectHideFlags: 0
@@ -16767,6 +16789,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &669763570
 Transform:
   m_ObjectHideFlags: 0
@@ -17159,6 +17182,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &687700739
 Transform:
   m_ObjectHideFlags: 0
@@ -17870,6 +17894,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &718808523
 Transform:
   m_ObjectHideFlags: 0
@@ -18293,6 +18318,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &748607985
 Transform:
   m_ObjectHideFlags: 0
@@ -18467,6 +18493,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &748642395
 Transform:
   m_ObjectHideFlags: 0
@@ -18641,6 +18668,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &748949120
 Transform:
   m_ObjectHideFlags: 0
@@ -19502,6 +19530,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &771518306
 Transform:
   m_ObjectHideFlags: 0
@@ -19785,6 +19814,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &809950407
 Transform:
   m_ObjectHideFlags: 0
@@ -20628,6 +20658,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!1 &844695687
 GameObject:
   m_ObjectHideFlags: 0
@@ -21150,6 +21181,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &849761891
 Transform:
   m_ObjectHideFlags: 0
@@ -21900,6 +21932,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &891453914
 Transform:
   m_ObjectHideFlags: 0
@@ -22292,6 +22325,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &916745787
 Transform:
   m_ObjectHideFlags: 0
@@ -22982,6 +23016,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &941660306
 Transform:
   m_ObjectHideFlags: 0
@@ -23156,6 +23191,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &946116232
 Transform:
   m_ObjectHideFlags: 0
@@ -23911,6 +23947,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &976151257
 Transform:
   m_ObjectHideFlags: 0
@@ -24552,6 +24589,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1008616139
 Transform:
   m_ObjectHideFlags: 0
@@ -24944,6 +24982,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1036822673
 Transform:
   m_ObjectHideFlags: 0
@@ -25227,6 +25266,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1047346855
 Transform:
   m_ObjectHideFlags: 0
@@ -26773,6 +26813,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1120124633
 Transform:
   m_ObjectHideFlags: 0
@@ -26952,6 +26993,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1134973463
 Transform:
   m_ObjectHideFlags: 0
@@ -27126,6 +27168,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1144297500
 Transform:
   m_ObjectHideFlags: 0
@@ -27357,6 +27400,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1146191442
 Transform:
   m_ObjectHideFlags: 0
@@ -27992,6 +28036,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1185424157
 Transform:
   m_ObjectHideFlags: 0
@@ -28607,6 +28652,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1211978054
 Transform:
   m_ObjectHideFlags: 0
@@ -29466,6 +29512,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1258933571
 Transform:
   m_ObjectHideFlags: 0
@@ -30285,6 +30332,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &1302390418
 Transform:
   m_ObjectHideFlags: 0
@@ -30900,6 +30948,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 8
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1356563293
 Transform:
   m_ObjectHideFlags: 0
@@ -31886,6 +31935,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1400467254
 Transform:
   m_ObjectHideFlags: 0
@@ -32237,6 +32287,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1418348455
 Transform:
   m_ObjectHideFlags: 0
@@ -32520,6 +32571,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1437292271
 Transform:
   m_ObjectHideFlags: 0
@@ -33187,6 +33239,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1459927421
 Transform:
   m_ObjectHideFlags: 0
@@ -33963,6 +34016,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &1492981141
 Transform:
   m_ObjectHideFlags: 0
@@ -34355,6 +34409,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1507085365
 Transform:
   m_ObjectHideFlags: 0
@@ -35900,6 +35955,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1564290497
 Transform:
   m_ObjectHideFlags: 0
@@ -36183,6 +36239,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1567979082
 Transform:
   m_ObjectHideFlags: 0
@@ -36590,6 +36647,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!1001 &1599439544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37457,6 +37515,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1618469738
 Transform:
   m_ObjectHideFlags: 0
@@ -38015,6 +38074,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1638371093
 Transform:
   m_ObjectHideFlags: 0
@@ -38578,6 +38638,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1646448752
 Transform:
   m_ObjectHideFlags: 0
@@ -38785,6 +38846,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1654461451
 Transform:
   m_ObjectHideFlags: 0
@@ -39068,6 +39130,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &1671349875
 Transform:
   m_ObjectHideFlags: 0
@@ -39569,6 +39632,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1686880845
 Transform:
   m_ObjectHideFlags: 0
@@ -39758,6 +39822,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!1 &1687736870
 GameObject:
   m_ObjectHideFlags: 0
@@ -39917,6 +39982,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1687736877
 Transform:
   m_ObjectHideFlags: 0
@@ -41019,6 +41085,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1716616610
 Transform:
   m_ObjectHideFlags: 0
@@ -41738,6 +41805,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1739943122
 Transform:
   m_ObjectHideFlags: 0
@@ -42650,6 +42718,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1775127761
 Transform:
   m_ObjectHideFlags: 0
@@ -43478,6 +43547,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1792607957
 Transform:
   m_ObjectHideFlags: 0
@@ -44699,6 +44769,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1832546851
 Transform:
   m_ObjectHideFlags: 0
@@ -44873,6 +44944,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1835909980
 Transform:
   m_ObjectHideFlags: 0
@@ -45048,6 +45120,10 @@ PrefabInstance:
     - target: {fileID: 5363295779679572579, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+      propertyPath: jumpSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46547,6 +46623,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1961529281
 Transform:
   m_ObjectHideFlags: 0
@@ -46830,6 +46907,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &1963472811
 Transform:
   m_ObjectHideFlags: 0
@@ -47465,6 +47543,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &1984886035
 Transform:
   m_ObjectHideFlags: 0
@@ -48132,6 +48211,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &2017362091
 Transform:
   m_ObjectHideFlags: 0
@@ -48799,6 +48879,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &2058791978
 Transform:
   m_ObjectHideFlags: 0
@@ -49736,6 +49817,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &2130544808
 Transform:
   m_ObjectHideFlags: 0
@@ -50019,6 +50101,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &2136871981
 Transform:
   m_ObjectHideFlags: 0
@@ -50416,6 +50499,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &2147267616
 Transform:
   m_ObjectHideFlags: 0
@@ -51784,6 +51868,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!114 &3892444199230099323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51799,6 +51884,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!65 &3903129081392716235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52436,6 +52522,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!1 &6326215428894215313
 GameObject:
   m_ObjectHideFlags: 0
@@ -52878,6 +52965,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!114 &7650974043837030654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52893,6 +52981,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!114 &7650974044526989006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52908,6 +52997,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!114 &7650974044802790466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52923,6 +53013,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!4 &7844239729540567448
 Transform:
   m_ObjectHideFlags: 0
