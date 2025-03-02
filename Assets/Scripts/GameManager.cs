@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
             isPaused = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            audioManager.instance.StopMenuMusic();
+            //audioManager.instance.StopMenuMusic();
 
             if (player != null)
             {
