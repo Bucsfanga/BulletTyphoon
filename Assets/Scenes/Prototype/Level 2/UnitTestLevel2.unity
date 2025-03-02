@@ -692,6 +692,22 @@ AudioListener:
   m_CorrespondingSourceObject: {fileID: 8227136846684190828, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
   m_PrefabInstance: {fileID: 56164563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &56164565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  m_PrefabInstance: {fileID: 56164563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56164566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac53480498c2fa46969184f64ef9b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &56164566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  m_PrefabInstance: {fileID: 56164563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &56982192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,11 +1780,11 @@ PrefabInstance:
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 56164566}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: playerScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 56164565}
     - target: {fileID: 4659297583126158997, guid: 7f8c3af090435764090b0e98f8bd2d92, type: 3}
       propertyPath: playerListener
       value: 
@@ -15213,6 +15229,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 10
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!4 &1864369601
 Transform:
   m_ObjectHideFlags: 0
@@ -18204,6 +18221,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 9
   moveSpeed: 4
+  triggerCollider: {fileID: 0}
 --- !u!33 &1775483136340076671
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -18896,6 +18914,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 15
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!65 &6086840350090805397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19048,6 +19067,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!65 &6976937869834515099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19084,6 +19104,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 15
   moveSpeed: 2
+  triggerCollider: {fileID: 0}
 --- !u!1 &7020301681657017700
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,6 +87,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
     private bool _isCrouching;
     private bool _isPlayingSteps;
     private bool _hasAbility;
+
+    private Coroutine jumpResetCoroutine;
     #endregion
 
     #region GET/SET
@@ -305,6 +307,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             }
 
             isSprinting = Input.GetButton("Sprint"); // Ensures correct speed when landing
+
+            if (jumpResetCoroutine != null) // Stop jump reset if player lands
+            {
+                StopCoroutine(jumpResetCoroutine);
+                jumpResetCoroutine = null;
+            }
+        }
+        else
+        {
+            if (jumpResetCoroutine == null) // Start coroutine when player leaves ground
+            {
+                jumpResetCoroutine = StartCoroutine(ForceResetJump());
+            }
         }
 
         jump();
@@ -396,6 +411,24 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
             isJumping = true;
             playerVel.y += jumpSpeed; // Apply jump force
             audioManager.PlayRandomJumpSound();
+        }
+    }
+
+    private IEnumerator ForceResetJump()
+    {
+        float timeAirborn = 0f;
+        
+        while (!controller.isGrounded)
+        {
+            timeAirborn += Time.deltaTime;
+
+            if (timeAirborn >= 2f)
+            {
+                jumpCount = 0;
+                yield break;
+            }
+
+            yield return null;
         }
     }
 

@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -104,8 +104,17 @@ public class GameManager : MonoBehaviour
 
         playerHUD = GameObject.Find("PlayerHUD");
         floodManager = GameObject.Find("Flood Water");
-        //player = GameObject.Find("Player");
-        //playerScript = player.GetComponent<playerController>();
+
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
+        if (playerScript == null)
+        {
+            playerScript = player.GetComponent<playerController>();
+        }
+
     }
 
     void Start()

@@ -278,7 +278,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 4105644}
 --- !u!4 &4105649
 Transform:
   m_ObjectHideFlags: 0
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 40401876}
 --- !u!4 &40401881
 Transform:
   m_ObjectHideFlags: 0
@@ -3506,7 +3506,6 @@ GameObject:
   - component: {fileID: 95035751}
   - component: {fileID: 95035750}
   - component: {fileID: 95035749}
-  - component: {fileID: 95035748}
   - component: {fileID: 95035747}
   m_Layer: 0
   m_Name: Stationary Platform (5)
@@ -3542,27 +3541,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &95035748
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95035746}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &95035749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3811,7 +3789,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 99122192}
 --- !u!4 &99122197
 Transform:
   m_ObjectHideFlags: 0
@@ -4379,7 +4357,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 111737485}
 --- !u!4 &111737490
 Transform:
   m_ObjectHideFlags: 0
@@ -4862,7 +4840,6 @@ GameObject:
   - component: {fileID: 130003571}
   - component: {fileID: 130003570}
   - component: {fileID: 130003569}
-  - component: {fileID: 130003568}
   - component: {fileID: 130003567}
   m_Layer: 0
   m_Name: Stationary Platform (3)
@@ -4898,27 +4875,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &130003568
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130003566}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &130003569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5313,7 +5269,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 136141490}
 --- !u!4 &136141495
 Transform:
   m_ObjectHideFlags: 0
@@ -5881,7 +5837,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 150684932}
 --- !u!4 &150684937
 Transform:
   m_ObjectHideFlags: 0
@@ -7312,7 +7268,6 @@ GameObject:
   - component: {fileID: 201894689}
   - component: {fileID: 201894688}
   - component: {fileID: 201894687}
-  - component: {fileID: 201894686}
   - component: {fileID: 201894685}
   m_Layer: 0
   m_Name: Stationary Platform (24)
@@ -7348,27 +7303,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &201894686
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201894684}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &201894687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8180,7 +8114,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 232119374}
 --- !u!4 &232119379
 Transform:
   m_ObjectHideFlags: 0
@@ -8748,7 +8682,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 248484192}
 --- !u!4 &248484197
 Transform:
   m_ObjectHideFlags: 0
@@ -8907,7 +8841,6 @@ GameObject:
   - component: {fileID: 252203018}
   - component: {fileID: 252203017}
   - component: {fileID: 252203016}
-  - component: {fileID: 252203015}
   - component: {fileID: 252203014}
   m_Layer: 0
   m_Name: Stationary Platform (2)
@@ -8943,27 +8876,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &252203015
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252203013}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &252203016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9343,7 +9255,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 280549402}
 --- !u!4 &280549407
 Transform:
   m_ObjectHideFlags: 0
@@ -10310,7 +10222,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 331403927}
 --- !u!4 &331403932
 Transform:
   m_ObjectHideFlags: 0
@@ -11271,7 +11183,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 368667542}
 --- !u!4 &368667547
 Transform:
   m_ObjectHideFlags: 0
@@ -11446,7 +11358,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 374795627}
 --- !u!4 &374795632
 Transform:
   m_ObjectHideFlags: 0
@@ -11474,7 +11386,6 @@ GameObject:
   - component: {fileID: 378244310}
   - component: {fileID: 378244309}
   - component: {fileID: 378244308}
-  - component: {fileID: 378244307}
   - component: {fileID: 378244306}
   m_Layer: 0
   m_Name: Stationary Platform (9)
@@ -11510,27 +11421,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &378244307
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378244305}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &378244308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12141,7 +12031,6 @@ GameObject:
   - component: {fileID: 413422335}
   - component: {fileID: 413422334}
   - component: {fileID: 413422333}
-  - component: {fileID: 413422332}
   - component: {fileID: 413422331}
   m_Layer: 0
   m_Name: Stationary Platform (6)
@@ -12177,27 +12066,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &413422332
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413422330}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &413422333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12708,7 +12576,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 431691142}
 --- !u!4 &431691147
 Transform:
   m_ObjectHideFlags: 0
@@ -13364,7 +13232,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 455533299}
 --- !u!4 &455533304
 Transform:
   m_ObjectHideFlags: 0
@@ -14225,7 +14093,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 490593069}
 --- !u!4 &490593074
 Transform:
   m_ObjectHideFlags: 0
@@ -15116,7 +14984,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 537552271}
 --- !u!1 &539908498
 GameObject:
   m_ObjectHideFlags: 0
@@ -16119,7 +15987,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 574411076}
 --- !u!4 &574411081
 Transform:
   m_ObjectHideFlags: 0
@@ -17242,7 +17110,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 623261231}
 --- !u!4 &623261236
 Transform:
   m_ObjectHideFlags: 0
@@ -17417,7 +17285,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 624739462}
 --- !u!4 &624739467
 Transform:
   m_ObjectHideFlags: 0
@@ -17854,7 +17722,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 632222322}
 --- !u!4 &632222327
 Transform:
   m_ObjectHideFlags: 0
@@ -18029,7 +17897,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 8
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 651362313}
 --- !u!4 &651362318
 Transform:
   m_ObjectHideFlags: 0
@@ -18057,7 +17925,6 @@ GameObject:
   - component: {fileID: 653251789}
   - component: {fileID: 653251788}
   - component: {fileID: 653251787}
-  - component: {fileID: 653251786}
   - component: {fileID: 653251785}
   m_Layer: 0
   m_Name: Stationary Platform (8)
@@ -18093,27 +17960,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &653251786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653251784}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &653251787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18493,7 +18339,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 662964223}
 --- !u!4 &662964228
 Transform:
   m_ObjectHideFlags: 0
@@ -18799,7 +18645,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 669763565}
 --- !u!4 &669763570
 Transform:
   m_ObjectHideFlags: 0
@@ -19236,7 +19082,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 687700734}
 --- !u!4 &687700739
 Transform:
   m_ObjectHideFlags: 0
@@ -19264,7 +19110,6 @@ GameObject:
   - component: {fileID: 694993171}
   - component: {fileID: 694993170}
   - component: {fileID: 694993169}
-  - component: {fileID: 694993168}
   - component: {fileID: 694993167}
   m_Layer: 0
   m_Name: Stationary Platform (23)
@@ -19300,27 +19145,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &694993168
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694993166}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &694993169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20016,7 +19840,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 718808518}
 --- !u!4 &718808523
 Transform:
   m_ObjectHideFlags: 0
@@ -20484,7 +20308,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 748607980}
 --- !u!4 &748607985
 Transform:
   m_ObjectHideFlags: 0
@@ -20659,7 +20483,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 748642390}
 --- !u!4 &748642395
 Transform:
   m_ObjectHideFlags: 0
@@ -20834,7 +20658,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 748949115}
 --- !u!4 &748949120
 Transform:
   m_ObjectHideFlags: 0
@@ -21828,7 +21652,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 771518301}
 --- !u!4 &771518306
 Transform:
   m_ObjectHideFlags: 0
@@ -22134,7 +21958,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 809950402}
 --- !u!4 &809950407
 Transform:
   m_ObjectHideFlags: 0
@@ -23110,7 +22934,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 840025203}
 --- !u!1 &844695687
 GameObject:
   m_ObjectHideFlags: 0
@@ -23699,7 +23523,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 849761886}
 --- !u!4 &849761891
 Transform:
   m_ObjectHideFlags: 0
@@ -24560,7 +24384,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 891453909}
 --- !u!4 &891453914
 Transform:
   m_ObjectHideFlags: 0
@@ -24997,7 +24821,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 916745782}
 --- !u!4 &916745787
 Transform:
   m_ObjectHideFlags: 0
@@ -25776,7 +25600,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 941660301}
 --- !u!4 &941660306
 Transform:
   m_ObjectHideFlags: 0
@@ -25951,7 +25775,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 946116227}
 --- !u!4 &946116232
 Transform:
   m_ObjectHideFlags: 0
@@ -26175,7 +25999,6 @@ GameObject:
   - component: {fileID: 963474005}
   - component: {fileID: 963474004}
   - component: {fileID: 963474003}
-  - component: {fileID: 963474002}
   - component: {fileID: 963474001}
   m_Layer: 0
   m_Name: Stationary Platform (4)
@@ -26211,27 +26034,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &963474002
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963474000}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &963474003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26773,7 +26575,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 976151252}
 --- !u!4 &976151257
 Transform:
   m_ObjectHideFlags: 0
@@ -27503,7 +27305,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1008616134}
 --- !u!4 &1008616139
 Transform:
   m_ObjectHideFlags: 0
@@ -27940,7 +27742,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1036822668}
 --- !u!4 &1036822673
 Transform:
   m_ObjectHideFlags: 0
@@ -28246,7 +28048,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1047346850}
 --- !u!4 &1047346855
 Transform:
   m_ObjectHideFlags: 0
@@ -30057,7 +29859,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1120124628}
 --- !u!4 &1120124633
 Transform:
   m_ObjectHideFlags: 0
@@ -30237,7 +30039,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1134973458}
 --- !u!4 &1134973463
 Transform:
   m_ObjectHideFlags: 0
@@ -30412,7 +30214,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1144297495}
 --- !u!4 &1144297500
 Transform:
   m_ObjectHideFlags: 0
@@ -30644,7 +30446,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1146191437}
 --- !u!4 &1146191442
 Transform:
   m_ObjectHideFlags: 0
@@ -31346,7 +31148,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1185424152}
 --- !u!4 &1185424157
 Transform:
   m_ObjectHideFlags: 0
@@ -32050,7 +31852,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1211978049}
 --- !u!4 &1211978054
 Transform:
   m_ObjectHideFlags: 0
@@ -33042,7 +32844,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1258933566}
 --- !u!4 &1258933571
 Transform:
   m_ObjectHideFlags: 0
@@ -33972,7 +33774,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1302390413}
 --- !u!4 &1302390418
 Transform:
   m_ObjectHideFlags: 0
@@ -34676,7 +34478,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 8
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1356563288}
 --- !u!4 &1356563293
 Transform:
   m_ObjectHideFlags: 0
@@ -34835,7 +34637,6 @@ GameObject:
   - component: {fileID: 1373688932}
   - component: {fileID: 1373688931}
   - component: {fileID: 1373688930}
-  - component: {fileID: 1373688929}
   - component: {fileID: 1373688928}
   m_Layer: 0
   m_Name: Stationary Platform (11)
@@ -34871,27 +34672,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &1373688929
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373688927}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1373688930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35795,7 +35575,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1400467249}
 --- !u!4 &1400467254
 Transform:
   m_ObjectHideFlags: 0
@@ -36169,7 +35949,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1418348450}
 --- !u!4 &1418348455
 Transform:
   m_ObjectHideFlags: 0
@@ -36475,7 +36255,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1437292266}
 --- !u!4 &1437292271
 Transform:
   m_ObjectHideFlags: 0
@@ -37231,7 +37011,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1459927416}
 --- !u!4 &1459927421
 Transform:
   m_ObjectHideFlags: 0
@@ -38118,7 +37898,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1492981136}
 --- !u!4 &1492981141
 Transform:
   m_ObjectHideFlags: 0
@@ -38555,7 +38335,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1507085360}
 --- !u!4 &1507085365
 Transform:
   m_ObjectHideFlags: 0
@@ -39500,7 +39280,6 @@ GameObject:
   - component: {fileID: 1538265568}
   - component: {fileID: 1538265567}
   - component: {fileID: 1538265566}
-  - component: {fileID: 1538265565}
   - component: {fileID: 1538265564}
   m_Layer: 0
   m_Name: Stationary Platform (10)
@@ -39536,27 +39315,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &1538265565
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538265563}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1538265566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40321,7 +40079,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1564290492}
 --- !u!4 &1564290497
 Transform:
   m_ObjectHideFlags: 0
@@ -40627,7 +40385,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1567979077}
 --- !u!4 &1567979082
 Transform:
   m_ObjectHideFlags: 0
@@ -41079,7 +40837,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1598392818}
 --- !u!1001 &1599439544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41411,7 +41169,6 @@ GameObject:
   - component: {fileID: 1603117545}
   - component: {fileID: 1603117544}
   - component: {fileID: 1603117543}
-  - component: {fileID: 1603117542}
   - component: {fileID: 1603117541}
   m_Layer: 0
   m_Name: Stationary Platform
@@ -41447,27 +41204,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &1603117542
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603117540}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1603117543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42035,7 +41771,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1618469733}
 --- !u!4 &1618469738
 Transform:
   m_ObjectHideFlags: 0
@@ -42660,7 +42396,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1638371088}
 --- !u!4 &1638371093
 Transform:
   m_ObjectHideFlags: 0
@@ -43290,7 +43026,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1646448747}
 --- !u!4 &1646448752
 Transform:
   m_ObjectHideFlags: 0
@@ -43498,7 +43234,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1654461446}
 --- !u!4 &1654461451
 Transform:
   m_ObjectHideFlags: 0
@@ -43804,7 +43540,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1671349870}
 --- !u!4 &1671349875
 Transform:
   m_ObjectHideFlags: 0
@@ -44372,7 +44108,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1686880840}
 --- !u!4 &1686880845
 Transform:
   m_ObjectHideFlags: 0
@@ -44562,7 +44298,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1687350136}
 --- !u!1 &1687736870
 GameObject:
   m_ObjectHideFlags: 0
@@ -44722,7 +44458,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1687736872}
 --- !u!4 &1687736877
 Transform:
   m_ObjectHideFlags: 0
@@ -45446,7 +45182,6 @@ GameObject:
   - component: {fileID: 1701643927}
   - component: {fileID: 1701643926}
   - component: {fileID: 1701643925}
-  - component: {fileID: 1701643924}
   - component: {fileID: 1701643923}
   m_Layer: 0
   m_Name: Stationary Platform (7)
@@ -45482,27 +45217,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &1701643924
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701643922}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1701643925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45913,7 +45627,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1716616605}
 --- !u!4 &1716616610
 Transform:
   m_ObjectHideFlags: 0
@@ -46743,7 +46457,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1739943117}
 --- !u!4 &1739943122
 Transform:
   m_ObjectHideFlags: 0
@@ -47744,7 +47458,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1775127756}
 --- !u!4 &1775127761
 Transform:
   m_ObjectHideFlags: 0
@@ -48705,7 +48419,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1792607952}
 --- !u!4 &1792607957
 Transform:
   m_ObjectHideFlags: 0
@@ -50037,7 +49751,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1832546846}
 --- !u!4 &1832546851
 Transform:
   m_ObjectHideFlags: 0
@@ -50212,7 +49926,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1835909975}
 --- !u!4 &1835909980
 Transform:
   m_ObjectHideFlags: 0
@@ -52151,7 +51865,7 @@ MonoBehaviour:
   moveDirection: {x: -1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1961529276}
 --- !u!4 &1961529281
 Transform:
   m_ObjectHideFlags: 0
@@ -52457,7 +52171,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: -1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1963472806}
 --- !u!4 &1963472811
 Transform:
   m_ObjectHideFlags: 0
@@ -52832,7 +52546,6 @@ GameObject:
   - component: {fileID: 1975964918}
   - component: {fileID: 1975964917}
   - component: {fileID: 1975964916}
-  - component: {fileID: 1975964915}
   - component: {fileID: 1975964914}
   m_Layer: 0
   m_Name: Stationary Platform (1)
@@ -52868,27 +52581,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!65 &1975964915
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975964913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1975964916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53137,7 +52829,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 1984886030}
 --- !u!4 &1984886035
 Transform:
   m_ObjectHideFlags: 0
@@ -53893,7 +53585,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 2017362086}
 --- !u!4 &2017362091
 Transform:
   m_ObjectHideFlags: 0
@@ -54649,7 +54341,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 2058791973}
 --- !u!4 &2058791978
 Transform:
   m_ObjectHideFlags: 0
@@ -55741,7 +55433,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 2130544803}
 --- !u!4 &2130544808
 Transform:
   m_ObjectHideFlags: 0
@@ -56047,7 +55739,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 5
   moveSpeed: 2
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 2136871976}
 --- !u!4 &2136871981
 Transform:
   m_ObjectHideFlags: 0
@@ -56489,7 +56181,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 2147267611}
 --- !u!4 &2147267616
 Transform:
   m_ObjectHideFlags: 0
@@ -57859,7 +57551,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 3903129081433056710}
 --- !u!114 &3892444199230099323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57875,7 +57567,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 1, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 3903129081392716235}
 --- !u!65 &3903129081392716235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58513,7 +58205,7 @@ MonoBehaviour:
   moveDirection: {x: 1, y: 0, z: 0}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 6270698163225321054}
 --- !u!1 &6326215428894215313
 GameObject:
   m_ObjectHideFlags: 0
@@ -58956,7 +58648,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 7639149517336092262}
 --- !u!114 &7650974043837030654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58972,7 +58664,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 7639149517881275982}
 --- !u!114 &7650974044526989006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58988,7 +58680,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 7639149518529288318}
 --- !u!114 &7650974044802790466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59004,7 +58696,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: -1}
   moveDistance: 10
   moveSpeed: 4
-  triggerCollider: {fileID: 0}
+  triggerCollider: {fileID: 7639149518797087474}
 --- !u!4 &7844239729540567448
 Transform:
   m_ObjectHideFlags: 0
