@@ -4129,6 +4129,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1bb89f105bb341f99afb707c5080b18, type: 3}
   - {fileID: 8300000, guid: 8280c530d69704332b5d64462ab86062, type: 3}
   - {fileID: 8300000, guid: ac367774f55704609b72253177fd6de1, type: 3}
+  - {fileID: 8300000, guid: c96c9b645abffb144850b43871b46f47, type: 3}
+  - {fileID: 8300000, guid: c43074b427d6fb047b2a7b4b54bd710e, type: 3}
   backgroundAudioClip: {fileID: 8300000, guid: 878f1878c0dd473439b7371e2572812d, type: 3}
   mainMenuMusicClip: {fileID: 8300000, guid: b5bc10f4d9bd65243b56e20218638cf8, type: 3}
   loseMenuMusicClip: {fileID: 8300000, guid: 049abaaa0b6350b4181c080313e27ec1, type: 3}
@@ -15588,7 +15590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -131.66077, y: 60.294006}
+  m_AnchoredPosition: {x: -131.66089, y: 60.293945}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4389600678110162796
@@ -16469,8 +16471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHUD: {fileID: 1377207491128861346}
   floodManager: {fileID: 1409224624233797590, guid: 05e6fc8a9d9de484cbcff09f57aad9c3, type: 3}
-  player: {fileID: 2046948246320397972, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
-  playerScript: {fileID: 7389063939951855673, guid: c218ea2ead84d6a46b79f31cdb7f41a5, type: 3}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
   damagePanel: {fileID: 5542092471514405164}
   buttonInteract: {fileID: 1694713216968174484}
   playerHPBar: {fileID: 8715877879688395109}

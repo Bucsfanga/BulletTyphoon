@@ -424,7 +424,31 @@ public class playerController : MonoBehaviour, IDamage, IPickup, iInteract
         if (shootTimer < shootRate) return; // Prevent shooting if timer is less than the fire rate.
 
         shootTimer = 0; // Reset the timer when shooting.
-        gunshotAudio.PlayGunShot(); // Play shooting sound
+
+        // Play gun sound directly from the currentGunStats
+        if (currentGunStats.shootSound != null && currentGunStats.shootSound.Length > 0)
+        {
+            
+            AudioClip gunSound = currentGunStats.shootSound[Random.Range(0, currentGunStats.shootSound.Length)];
+
+            
+            AudioSource audioSource = audioManager.instance.GetAvailableAudioSource();
+            if (audioSource != null)
+            {
+                audioSource.clip = gunSound;
+                audioSource.volume = currentGunStats.shootSoundVol;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            // fallback if no sounds defined for this gun
+            audioManager.instance.PlaySoundWithPitch("Gun Shot", .8f, 1.2f);
+        }
+
+
+
+        //gunshotAudio.PlayGunShot(); // Play shooting sound
 
         // Visual effects
         GameManager.instance.ShootAnim();
